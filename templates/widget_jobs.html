@@ -1,0 +1,21 @@
+<div class="bgbox {{ classes }}">
+
+    <h2>{{data.title}}</h2>
+
+{% if data.text %}<p class="space-bottom">{{ data.text }}</p>{% endif %}
+
+<div>
+    <ul class="greenArrow nextList">
+    {% for job in data.jobs %}
+            <li>
+                <a href="/unternehmen/jobs/job?id={{job.id}}">{{ job.title }}<br/></a>
+            </li>
+    {% endfor %}
+    </ul>
+</div>    
+
+
+    <a class="button block bigspace-top" href="{{ data.button_link }}">{{ data.button_title }}</a>
+
+
+</div>

@@ -1,0 +1,65 @@
+{
+    "title":"News",
+    "tablename":"next_news",
+    "path":"next_content/news.php",
+    "idName":"id",
+    "sortable":false,
+    "orderby":"newsdate DESC",
+    
+    "vars":
+    [
+        { 
+            "title":"Titel", 
+            "name":"title", 
+            "input":"input",
+            "visible":true,
+            "editable":true,
+            "default":"Neuer Titel"
+        },
+        { 
+            "title":"date", 
+            "name":"newsdate", 
+            "input":"date",
+            "visible":false,
+            "editable":true,
+            "default":""
+        },
+        { 
+            "title":"Text", 
+            "name":"text", 
+            "input":"textarea",
+            "visible":false,
+            "editable":true,
+            "default":""
+        },        
+        { 
+            "title":"Link Titel", 
+            "name":"linktitle", 
+            "input":"input",
+            "visible":false,
+            "editable":true,
+            "default":""
+        },
+        { 
+            "title":"Link URL", 
+            "name":"linkurl", 
+            "input":"input",
+            "visible":false,
+            "editable":true,
+            "default":""
+        }
+
+
+
+    ],
+
+    "l":
+    {
+        "edit":"Bearbeiten",
+        "save":"Speichern",
+        "delete":"Löschen",
+        "create":"Neuen Eintrag erstellen",
+        "save_order":"Reihenfolge speichern"
+    }
+}
+

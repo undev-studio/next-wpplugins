@@ -1,0 +1,33 @@
+<div class="bgbox {{ classes }}" style="margin-bottom:0px;">
+    <h2 class="nomargin">{{data.title}}</h2>
+    {% if data.text %}<p class="bigspace-bottom">{{ data.text }}</p>{% endif %}
+</div> 
+<div class="space-bottom brightBG" style="margin-bottom:0px;">
+
+    {% for new in data.news %}
+
+        <div class="mouseoverblock" onclick="document.location.href='{{ new.linkurl }}';">
+            <span class="space-top h3" style="margin-top:0px;">{{ new.title }}</span>
+            <span class="small">{{ new.date_readable }}</span>
+            <br/>
+            <p>
+                {{ new.text }}
+            </p>
+
+            {% if new.linkurl %}
+            <br/>
+            <a class="readmore" href="{{ new.linkurl }}">{{ new.linktitle }}</a>
+            {% endif %}
+        </div>
+            
+    {% endfor %}
+
+
+
+</div>
+
+<div class="bgbox {{ classes }}" style="margin-top:0px;">
+    {% if data.button_title %}
+    <a class="button block " href="{{ data.button_link }}">{{ data.button_title }}</a>
+{% endif %}
+</div>

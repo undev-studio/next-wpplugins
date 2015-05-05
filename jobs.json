@@ -1,0 +1,107 @@
+{
+    "title":"Jobs",
+    "tablename":"next_jobs",
+    "path":"next_content/jobs.php",
+    "idName":"id",
+    "sortable":true,
+    "orderby":"sort",
+
+    "vars":
+    [
+        { 
+            "title":"Titel", 
+            "name":"title", 
+            "input":"input",
+            "visible":true,
+            "editable":true,
+            "default":"Neuer Job"
+        },
+        { 
+            "title":"Status", 
+            "name":"activated", 
+            "input":"select",
+            "visible":true,
+            "editable":true,
+            "default":"1",
+            "options":[{"title":"Aktiv","value":"1"},{"title":"Inaktiv","value":"0"}]
+        },
+        { 
+            "title":"Standort", 
+            "name":"location", 
+            "input":"input",
+            "visible":true,
+            "editable":true,
+            "default":"Für den Standort Köln"
+        },
+
+        { 
+            "title":"Text",
+            "name":"text", 
+            "input":"textarea",
+            "visible":false,
+            "editable":true,
+            "default":""
+        },
+        { 
+            "title":"Liste 1 Titel", 
+            "name":"list_title", 
+            "input":"input",
+            "visible":true,
+            "editable":true,
+            "default":"Ihr Aufgabengebiet"
+        },
+        { 
+            "title":"Liste 1",
+            "name":"list", 
+            "input":"textarea",
+            "visible":false,
+            "editable":true,
+            "default":""
+        }
+        ,
+        { 
+            "title":"Liste 2 Titel", 
+            "name":"list2_title", 
+            "input":"input",
+            "visible":true,
+            "editable":true,
+            "default":"Ihr Idealprofil"
+        },
+        { 
+            "title":"Liste 2",
+            "name":"list2", 
+            "input":"textarea",
+            "visible":false,
+            "editable":true,
+            "default":""
+        }
+        ,
+        { 
+            "title":"Text2",
+            "name":"text2", 
+            "input":"textarea",
+            "visible":false,
+            "editable":true,
+            "default":""
+        },
+        {
+            "title":"PDF",
+            "name":"media", 
+            "input":"media",
+            "visible":true,
+            "editable":true,
+            "default":""
+        }
+    ],
+
+    "l":
+    {
+        "edit":"Bearbeiten",
+        "save":"Speichern",
+        "delete":"Löschen",
+        "create":"Neuen Eintrag erstellen",
+        "save_order":"Reihenfolge speichern"
+    }
+
+}
+

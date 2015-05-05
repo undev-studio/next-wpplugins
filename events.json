@@ -1,0 +1,136 @@
+{
+    "title":"Events",
+    "tablename":"next_events",
+    "path":"next_content/events.php",
+    "idName":"id",
+    "sortable":false,
+    "orderby":"date_start DESC",
+
+    "vars":
+    [
+        { 
+            "title":"Titel", 
+            "name":"title", 
+            "input":"input",
+            "visible":true,
+            "editable":true,
+            "default":"Neuer Titel"
+        },
+        { 
+            "title":"Start", 
+            "name":"date_start", 
+            "input":"date",
+            "visible":false,
+            "editable":true,
+            "default":""
+        },
+        { 
+            "title":"Ende", 
+            "name":"date_end", 
+            "input":"date",
+            "visible":false,
+            "editable":true,
+            "default":""
+        },
+        { 
+            "title":"Ort", 
+            "name":"city", 
+            "input":"input",
+            "visible":false,
+            "editable":true,
+            "default":""
+        },
+        { 
+            "title":"Text", 
+            "name":"text", 
+            "input":"textarea",
+            "visible":false,
+            "editable":true,
+            "default":""
+        },
+        {
+            "title":"Link Titel", 
+            "name":"linktitle", 
+            "input":"input",
+            "visible":false,
+            "editable":true,
+            "default":""
+        },
+        {
+            "title":"Link Text",
+            "name":"linktext", 
+            "input":"input",
+            "visible":false,
+            "editable":true,
+            "default":""
+        },
+        { 
+            "title":"Link URL", 
+            "name":"linkurl", 
+            "input":"input",
+            "visible":false,
+            "editable":true,
+            "default":""
+        },
+        { 
+            "title":"Link Titel", 
+            "name":"linktitle2", 
+            "input":"input",
+            "visible":false,
+            "editable":true,
+            "default":""
+        },
+        {
+            "title":"Link Text",
+            "name":"linktext2", 
+            "input":"input",
+            "visible":false,
+            "editable":true,
+            "default":""
+        },
+        { 
+            "title":"Link URL", 
+            "name":"linkurl2", 
+            "input":"input",
+            "visible":false,
+            "editable":true,
+            "default":""
+        },
+        { 
+            "title":"Link Titel", 
+            "name":"linktitle3", 
+            "input":"input",
+            "visible":false,
+            "editable":true,
+            "default":""
+        },
+        {
+            "title":"Link Text",
+            "name":"linktext3", 
+            "input":"input",
+            "visible":false,
+            "editable":true,
+            "default":""
+        },
+        { 
+            "title":"Link URL", 
+            "name":"linkurl3", 
+            "input":"input",
+            "visible":false,
+            "editable":true,
+            "default":""
+        }
+
+
+    ],
+
+    "l":
+    {
+        "edit":"Bearbeiten",
+        "save":"Speichern",
+        "delete":"Löschen",
+        "create":"Neuen Eintrag erstellen",
+        "save_order":"Reihenfolge speichern"
+    }
+}
+

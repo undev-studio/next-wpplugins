@@ -1,0 +1,72 @@
+{
+    
+    "title":"Referenzen",
+    "tablename":"next_references",
+    "path":"next_content/referenzen.php",
+    "idName":"id",
+    "sortable":true,
+    "orderby":"sort",
+    
+    "vars":
+    [
+        { 
+            "title":"Titel", 
+            "name":"title", 
+            "input":"input",
+            "visible":true,
+            "editable":true,
+            "default":"Neuer Titel"
+        },
+        { 
+            "title":"Link Titel",
+            "name":"longtitle", 
+            "input":"textarea",
+            "visible":true,
+            "editable":true,
+            "default":"Neuer Titel"
+        },
+        {
+            "title":"Bild (Sidebar Widget) 350x190 pixel",
+            "name":"image", 
+            "input":"media",
+            "visible":true,
+            "editable":true,
+            "default":""
+        },
+        {
+            "title":"Bild Gross (Home) 1280x426 pixel",
+            "name":"imagebig", 
+            "input":"media",
+            "visible":false,
+            "editable":true,
+            "default":""
+        },
+        {
+            "title":"Bild Klein/Mobile (Home)",
+            "name":"imageMobile", 
+            "input":"media",
+            "visible":false,
+            "editable":true,
+            "default":""
+        },
+        {
+            "title":"seite",
+            "name":"page", 
+            "input":"page",
+            "visible":false,
+            "editable":true,
+            "default":""
+        }
+    ],
+
+    "l":
+    {
+        "edit":"Bearbeiten",
+        "save":"Speichern",
+        "delete":"Löschen",
+        "create":"Neuen Eintrag erstellen",
+        "save_order":"Reihenfolge speichern"
+    }
+
+}
+

@@ -1,0 +1,48 @@
+<div class="bgbox kennzahlenwidget '.$this->getDisplaySizeClasses($instance).'" style="text-align:left;">
+    <h2>{{data.title}}</h2>
+
+{% for i in 1..ROWS if data[ ("icon" ~ i)] %}
+<div class="space-bottom">
+
+    {% if data[ ("url" ~ i)] %}
+    <a href="{{ data[ ("url" ~ i)] }}" title="{{ data[ ("seo_linktitle" ~ i)] }}">
+    {% endif %}
+        <div class="roundwhiteicon left">
+            &#x{{ data[ ("icon" ~ i)] }}
+        </div>
+    {% if data[ ("url" ~ i)] %}
+    </a>
+    {% endif %}
+
+
+
+    <div class="title" style="margin-top:8px;">
+        {% if data[ ("title" ~ i)] %}
+            <b>{{ data[ ("title" ~ i)] }}</b><br/>
+        {% endif %}
+
+        {{ data[ ("value" ~ i)] }}
+    </div>
+
+
+
+
+
+    <div class="clear"></div>
+</div>
+{% endfor %}
+
+{% if data.titlea %}
+<div class="space-bottom bigspace-top">
+    <b>{{ data.titlea }}</b><br/>
+    {{ data.valuea }}
+</div>
+{% endif %}
+
+{% if data.titleb %}
+<div class="space-bottom">
+    <b>{{ data.titleb }}</b><br/>
+    {{ data.valueb }}
+</div>
+{% endif %}
+</div>

@@ -1,0 +1,65 @@
+{
+    
+    "title":"Partner",
+    "tablename":"next_partner",
+    "path":"next_content/partner.php",
+    "idName":"id",
+    "sortable":true,
+    "orderby":"sort",
+
+    "vars":
+    [
+        { 
+            "title":"Titel", 
+            "name":"title", 
+            "input":"input",
+            "visible":true,
+            "editable":true,
+            "default":"Lorem ipsum dolor"
+        },
+        { 
+            "title":"URL", 
+            "name":"link", 
+            "input":"input",
+            "visible":true,
+            "editable":true,
+            "default":"http://"
+        },
+        { 
+            "title":"Text",
+            "name":"text", 
+            "input":"textarea",
+            "visible":false,
+            "editable":true,
+            "default":"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+        },
+        {
+            "title":"Bild",
+            "name":"image", 
+            "input":"media",
+            "visible":false,
+            "editable":true,
+            "default":""
+        },
+        { 
+            "title":"Gruppe", 
+            "name":"ngroup", 
+            "input":"input",
+            "visible":true,
+            "editable":true,
+            "default":""
+        }
+
+    ],
+
+    "l":
+    {
+        "edit":"Bearbeiten",
+        "save":"Speichern",
+        "delete":"Löschen",
+        "create":"Neuen Eintrag erstellen",
+        "save_order":"Reihenfolge speichern"
+    }
+
+}
+
