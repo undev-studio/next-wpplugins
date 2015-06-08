@@ -56,6 +56,9 @@ add_action( 'widgets_init', create_function('', 'return register_widget("nextKen
 require_once('widget_footerhomemenu.php');
 add_action( 'widgets_init', create_function('', 'return register_widget("nextFooterHomeMenu");') );
 
+require_once('widget_erloes.php');
+add_action( 'widgets_init', create_function('', 'return register_widget("nextErloesWidget");') );
+
 
 
 

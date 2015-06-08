@@ -1,10 +1,14 @@
-<div class="bgbox{{classes}} iconwidget" style="padding-left:70px;">
-<a href="{{data.linkURL}}" class="left bigGreenIcon iconwidget" title="{{ data.seo_linktitle }}">{{ data.icon|raw }}</a>
-{% if data.title %}<h2>{{ data.title|raw }}</h2>{% endif %}
-{% if data.text %}{{data.text|raw|nl2br}}{% endif %}
+<div class="bgbox{{classes}} iconwidget" >
 
-{% if data.linktext %}
+    <a href="{{data.linkURL}}" class="left bigGreenIcon iconwidget" style="margin-right:10px;" title="{{ data.seo_linktitle }}">{{ data.icon|raw }}</a>
+    {% if data.title %}<h2>{{ data.title|raw }}</h2>{% endif %}
 
-<a href="{{data.linkURL}}" class="readmore" title="{{ data.seo_linktitle }}">{{ data.linktext|raw }}</a>
-{% endif %}
-</div> 
+    <div class="space-top">
+        {% if data.text %}{{data.text|raw|nl2br}}{% endif %}
+
+        {% if data.linktext %}
+
+        <a href="{{data.linkURL}}" class="readmore" title="{{ data.seo_linktitle }}">{{ data.linktext|raw }}</a>
+        {% endif %}
+    </div> 
+</div>
