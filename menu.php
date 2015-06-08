@@ -11,8 +11,8 @@ Author URI: http://undev.de/
 error_reporting(E_ERROR|E_WARNING);
 ini_set('display_errors', '1');
 
- error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
- ini_set('display_errors', '1');
+// error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
+// ini_set('display_errors', '1');
 
 require_once('widget_footernav.php');
 add_action( 'widgets_init', create_function('', 'return register_widget("next_footernav");') );

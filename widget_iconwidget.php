@@ -152,9 +152,10 @@ class next_iconwidget extends unWidget
     {
         global $post;
 
-        $image=$instance['image'];
+        // $image=$instance['image'];
         $icon='';
-
+        $html='';
+        
         if($instance['icon']) $instance['icon']='&#x'.$instance['icon'].';';
 
         $instance['classes']=$this->getDisplaySizeClasses($instance);

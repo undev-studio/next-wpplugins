@@ -129,6 +129,7 @@ class nextImageSpecialWidget extends unWidget
     {
         global $post;
 
+        $html='';
         $instance['classes'] = $this->getDisplaySizeClasses($instance);
 
         $twig = initTwig();

@@ -14,8 +14,8 @@ $wpdb->get_results("DELETE FROM erloes_plz WHERE start = 0 AND end = 0;");
 
 
 
-  error_reporting(E_ERROR|E_WARNING);
-  ini_set('display_errors', '1');
+//  error_reporting(E_ERROR|E_WARNING);
+//  ini_set('display_errors', '1');
 
 
 class PlzRangedb
