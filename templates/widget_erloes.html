@@ -1,0 +1,17 @@
+<div class="bgbox{{classes}}  center" onclick="document.location.href='/meta/erloesrechner'" style="cursor:pointer;">
+
+    <h2 class="nomargin">{{ data.title|raw }}</h2>
+
+
+    <a href="/meta/erloesrechner" class="veryBigGreenIcon" >&#xf1ec;</a>
+
+
+
+    <div class="space-top">
+        {% if data.text %}{{data.text|raw|nl2br}}{% endif %}
+
+
+    </div> 
+</div>
+
+
