@@ -11,8 +11,8 @@ Author URI: http://undev.de/
 error_reporting(E_ERROR|E_WARNING);
 ini_set('display_errors', '1');
 
-// error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
-// ini_set('display_errors', '1');
+ error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
+ ini_set('display_errors', '1');
 
 require_once('widget_footernav.php');
 add_action( 'widgets_init', create_function('', 'return register_widget("next_footernav");') );
@@ -76,14 +76,14 @@ function next_content_menu()
     );
 
 
-    add_submenu_page( 'next_content/news.php', 'News', 'News', 'next', 'next_content/news.php' ); 
-    add_submenu_page( 'next_content/news.php', 'Referenzen', 'Referenzen', 'next', 'next_content/referenzen.php' ); 
-    add_submenu_page( 'next_content/news.php', 'Erloesrechner', 'Erloesrechner', 'next', 'next_content/erloesrechner.php' ); 
-    add_submenu_page( 'next_content/news.php', 'EMaillog', 'EMaillog', 'next', 'next_content/emaillog.php' ); 
-    add_submenu_page( 'next_content/news.php', 'Next Pool', 'Next Pool', 'next', 'next_content/nextpool.php' ); 
-    add_submenu_page( 'next_content/news.php', 'Jobs', 'Jobs', 'next', 'next_content/jobs.php' ); 
-    add_submenu_page( 'next_content/news.php', 'Termine', 'Termine', 'next', 'next_content/events.php' ); 
-    add_submenu_page( 'next_content/news.php', 'Partner', 'Partner', 'next', 'next_content/partner.php' ); 
+    add_submenu_page( 'next_content/news.php', 'News', 'News', 'publish_posts', 'next_content/news.php' ); 
+    add_submenu_page( 'next_content/news.php', 'Referenzen', 'Referenzen', 'publish_posts', 'next_content/referenzen.php' ); 
+    add_submenu_page( 'next_content/news.php', 'Erloesrechner', 'Erloesrechner', 'publish_posts', 'next_content/erloesrechner.php' ); 
+    add_submenu_page( 'next_content/news.php', 'EMaillog', 'EMaillog', 'publish_posts', 'next_content/emaillog.php' ); 
+    add_submenu_page( 'next_content/news.php', 'Next Pool', 'Next Pool', 'publish_posts', 'next_content/nextpool.php' ); 
+    add_submenu_page( 'next_content/news.php', 'Jobs', 'Jobs', 'publish_posts', 'next_content/jobs.php' ); 
+    add_submenu_page( 'next_content/news.php', 'Termine', 'Termine', 'publish_posts', 'next_content/events.php' ); 
+    add_submenu_page( 'next_content/news.php', 'Partner', 'Partner', 'publish_posts', 'next_content/partner.php' ); 
 
 
     // wp_enqueue_script('custom-script','/wp-content/themes/nextkraftwerke/js/jquery-sortable.js',array( 'jquery' ));
