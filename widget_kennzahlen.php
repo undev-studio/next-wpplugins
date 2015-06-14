@@ -15,7 +15,7 @@ require_once('widget_.php');
 
 class nextKennzahlenWidget extends unWidget
 {
-    const ROWS = 5;
+    const ROWS = 10;
 
     function nextKennzahlenWidget()
     {
@@ -26,6 +26,7 @@ class nextKennzahlenWidget extends unWidget
 
     function form($instance)
     {
+
         $instance = wp_parse_args( (array) $instance);
      
         echo $this->getWidgetInput(
@@ -38,6 +39,12 @@ class nextKennzahlenWidget extends unWidget
 
         for ($i = 1; $i <= self::ROWS; $i++) {
             
+            $rnd=rand();
+            echo '<a onclick="jQuery(\'#kennzahleniconrow'.$i.$rnd.'\').slideToggle();" style="cursor:pointer">';
+            echo 'Icon Reihe '.$i;
+            echo '</a>';
+            echo '<div id="kennzahleniconrow'.$i.$rnd.'" style="display:none;">';
+
             echo $this->getWidgetInput(
                 'icon'. $i,
                 $this->get_field_id('icon'. $i),
@@ -68,7 +75,7 @@ class nextKennzahlenWidget extends unWidget
                 $this->get_field_name('seo_linktitle'. $i),
                 $instance['seo_linktitle'. $i]);
 
-
+            echo '</div>';
             echo '<hr/>';
         }
 
