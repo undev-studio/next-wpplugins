@@ -63,7 +63,8 @@ class nextBlogWidget extends unWidget
 
         $args=array(
                 'numberposts' => $instance['numberposts'],
-                'category_name' => 'energie-blog'
+                'category_name' => 'energie-blog',
+                'post_status' => 'publish'
         );
 
         $recent= wp_get_recent_posts($args);

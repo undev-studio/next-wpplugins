@@ -36,6 +36,14 @@
             "default":""
         },
         {
+            "title":"Icon alt",
+            "name":"alt", 
+            "input":"input",
+            "visible":false,
+            "editable":true,
+            "default":""
+        },
+        {
             "title":"URL",
             "name":"url", 
             "input":"page",

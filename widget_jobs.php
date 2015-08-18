@@ -80,7 +80,7 @@ class nextJobsWidget extends unWidget
     {
         global $post;
         global $wpdb;
-        $sql='SELECT * FROM next_jobs ORDER BY sort';
+        $sql='SELECT * FROM next_jobs WHERE activated =1 ORDER BY sort ';
         $jobs=$wpdb->get_results( $sql );
 
         if($wpdb->last_error!='') printError($wpdb->last_error); 

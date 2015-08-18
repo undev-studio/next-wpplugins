@@ -33,7 +33,7 @@ class nextReferenzWidget extends WP_Widget
       $ref=getRandomReference();
       print('<li class="widget reference">');
       print('  <div class="referenzcontainer">');
-      print('  <span class="h2">'.$ref->title.'</span>');
+      print('  <span class="h3">'.$ref->title.'</span>');
 
       print('    <a class="" href="'.$ref->permalink.'" title="'.$ref->longtitle.'">');
       print('<img src="'.$ref->image.'" class="responsive-img"/>');

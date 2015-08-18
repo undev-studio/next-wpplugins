@@ -61,7 +61,7 @@ class nextTextWidget extends unWidget
         global $post;
 
         echo '<div class="bgbox '.$this->getDisplaySizeClasses($instance).'">';
-        echo '<h2>'.$instance['title'].'</h2>';
+        echo '<h3>'.$instance['title'].'</h3>';
         echo $instance['text'];
         echo '</div>';
     }

@@ -1,7 +1,7 @@
 <div class="bgbox{{classes}} iconwidget" >
 
     <a href="{{data.linkURL}}" class="left bigGreenIcon iconwidget" style="margin-right:10px;" title="{{ data.seo_linktitle }}">{{ data.icon|raw }}</a>
-    {% if data.title %}<h2>{{ data.title|raw }}</h2>{% endif %}
+    {% if data.title %}<h3>{{ data.title|raw }}</h3>{% endif %}
 
     <div class="space-top">
         {% if data.text %}{{data.text|raw|nl2br}}{% endif %}
