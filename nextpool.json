@@ -20,6 +20,14 @@
             "default":"Neuer Titel"
         },
         { 
+            "title":"Group", 
+            "name":"ngroup", 
+            "input":"input",
+            "visible":true,
+            "editable":true,
+            "default":"default"
+        },
+        { 
             "title":"Text",
             "name":"text", 
             "input":"input",
