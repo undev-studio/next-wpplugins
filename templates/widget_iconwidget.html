@@ -1,9 +1,9 @@
-<div class="bgbox{{classes}} iconwidget" >
+<div class="bgbox{{classes}} iconwidget nextwidget" >
 
     <a href="{{data.linkURL}}" class="left bigGreenIcon iconwidget" style="margin-right:10px;" title="{{ data.seo_linktitle }}">{{ data.icon|raw }}</a>
     {% if data.title %}<h3>{{ data.title|raw }}</h3>{% endif %}
 
-    <div class="space-top">
+    <div class="{% if data.title %}space-top{% endif %}">
         {% if data.text %}{{data.text|raw|nl2br}}{% endif %}
 
         {% if data.linktext %}

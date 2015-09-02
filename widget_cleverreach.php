@@ -217,11 +217,11 @@ class nextCleverreachWidget extends WP_Widget
         $icon='';
         if($instance['icon']) $icon='&#x'.$instance['icon'];
 
-        echo '<div class="bgbox widgetwithicon" >';
+        echo '<div class="bgbox nextwidget widgetwithicon" >';
 
 
         if($icon) echo '<div class="left bigGreenIcon" style="margin-right:10px;">'.$icon.'</div>';
-echo '  <h2>'.$instance['title'].'</h2>';
+echo '  <h3>'.$instance['title'].'</h3>';
 
         echo '<div id="cleverreach_form" class="space-top">';
 
