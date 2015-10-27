@@ -49,7 +49,7 @@
             "default":""
         },
         {
-            "title":"Link Titel", 
+            "title":"Link Text", 
             "name":"linktitle", 
             "input":"input",
             "visible":false,
@@ -57,7 +57,7 @@
             "default":""
         },
         {
-            "title":"Link Text",
+            "title":"Link SEO Title",
             "name":"linktext", 
             "input":"input",
             "visible":false,
@@ -73,7 +73,7 @@
             "default":""
         },
         { 
-            "title":"Link Titel", 
+            "title":"Link Text", 
             "name":"linktitle2", 
             "input":"input",
             "visible":false,
@@ -81,7 +81,7 @@
             "default":""
         },
         {
-            "title":"Link Text",
+            "title":"Link SEO Title",
             "name":"linktext2", 
             "input":"input",
             "visible":false,
@@ -97,7 +97,7 @@
             "default":""
         },
         { 
-            "title":"Link Titel", 
+            "title":"Link Text", 
             "name":"linktitle3", 
             "input":"input",
             "visible":false,
@@ -105,7 +105,7 @@
             "default":""
         },
         {
-            "title":"Link Text",
+            "title":"Link SEO Title",
             "name":"linktext3", 
             "input":"input",
             "visible":false,
