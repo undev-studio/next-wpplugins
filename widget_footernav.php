@@ -45,6 +45,7 @@ function getWidgetInput($title,$id,$fieldname,$value)
         $title.': ';
 
         $str.='<select name="'.$fieldname.'">';
+        $str.='<option value="" '.$sel.'>-- None</option>';
 
         foreach ($pages as &$page)
         {
@@ -62,19 +63,48 @@ function getWidgetInput($title,$id,$fieldname,$value)
 
     function form($instance)
     {
-        $instance = wp_parse_args( (array) $instance, array( 'title' => '','pageid' => '' ) );
+        $instance = wp_parse_args( (array) $instance, array( 
+            'title' => '','pageid' => '',
+            'title2' => '','pageid2' => '',
+            'title3' => '','pageid3' => '' ) );
 
         echo $this->getPageInput(
-            'pageid',
+            'Page',
             $this->get_field_id('pageid'),
             $this->get_field_name('pageid'),
             $instance['pageid']);
 
         echo $this->getWidgetInput(
-            'title',
+            'Title',
             $this->get_field_id('title'),
             $this->get_field_name('title'),
             $instance['title']);
+
+
+        echo $this->getPageInput(
+            'Page 2',
+            $this->get_field_id('pageid1'),
+            $this->get_field_name('pageid1'),
+            $instance['pageid1']);
+
+        echo $this->getWidgetInput(
+            'Title 1',
+            $this->get_field_id('title1'),
+            $this->get_field_name('title1'),
+            $instance['title1']);
+
+
+        echo $this->getPageInput(
+            'Page 3',
+            $this->get_field_id('pageid2'),
+            $this->get_field_name('pageid2'),
+            $instance['pageid2']);
+
+        echo $this->getWidgetInput(
+            'Title 2',
+            $this->get_field_id('title2'),
+            $this->get_field_name('title2'),
+            $instance['title2']);
 
 
     }
@@ -84,6 +114,12 @@ function getWidgetInput($title,$id,$fieldname,$value)
         $instance = $old_instance;
         $instance['title'] = $new_instance['title'];
         $instance['pageid'] = $new_instance['pageid'];
+
+        $instance['title1'] = $new_instance['title1'];
+        $instance['pageid1'] = $new_instance['pageid1'];
+
+        $instance['title2'] = $new_instance['title2'];
+        $instance['pageid2'] = $new_instance['pageid2'];
         return $instance;
     }
 
@@ -102,24 +138,12 @@ function getWidgetInput($title,$id,$fieldname,$value)
         return $depth;
     }
 
-    function widget($args, $instance)
+
+    function printNav($pageid,$title,$children)
     {
-        global $post;
-
-        $pageid=$instance['pageid'];
-
-        // $pg=get_page ( $pageid ); 
-
-
-        $depth=$this->getDepth();
-        $title="NEXT POOL";
-
-        $children = wp_list_pages('title_li=&child_of='.$pageid.'&echo=0&depth=1');
-        
-        echo '<div class="footernav hide-phone hide-tablet">';
         echo '<b>';
         echo '<a href="'.get_permalink($pageid).'">';
-        echo $instance['title'];
+        echo $title;
         echo '</a>';
         echo '</b>';
 
@@ -127,8 +151,33 @@ function getWidgetInput($title,$id,$fieldname,$value)
         {
             print($children);
         }
-        echo '<div class="clear"></div>';
-        echo '</div>';
+        // echo '<div class="clear"></div>';
+        echo '<br/>';
+    }
+
+
+    function widget($args, $instance)
+    {
+        global $post;
+
+        echo '<div class="footernav hide-phone hide-tablet">';
+
+        $children = wp_list_pages('title_li=&child_of='.$instance['pageid'].'&echo=0&depth=1');
+        $this->printNav($instance['pageid'],$instance['title'],$children);
+
+        if($instance['pageid1']!='')
+        {
+            $children = wp_list_pages('title_li=&child_of='.$instance['pageid1'].'&echo=0&depth=1');
+            $this->printNav($instance['pageid1'],$instance['title1'],$children);
+        }
+
+        if($instance['pageid2']!='')
+        {
+            $children = wp_list_pages('title_li=&child_of='.$instance['pageid2'].'&echo=0&depth=1');
+            $this->printNav($instance['pageid2'],$instance['title2'],$children);
+        }
+
+        echo '</div>';        
     }
 }
 
