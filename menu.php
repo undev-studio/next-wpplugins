@@ -11,8 +11,13 @@ Author URI: http://undev.de/
 error_reporting(E_ERROR|E_WARNING);
 ini_set('display_errors', '1');
 
+
+
 // error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
 // ini_set('display_errors', '1');
+
+
+require_once('ajax_formdvpv.php');
 
 require_once('widget_footernav.php');
 add_action( 'widgets_init', create_function('', 'return register_widget("next_footernav");') );
@@ -62,35 +67,30 @@ add_action( 'widgets_init', create_function('', 'return register_widget("nextPro
 require_once('widget_erloes.php');
 add_action( 'widgets_init', create_function('', 'return register_widget("nextErloesWidget");') );
 
-
-
 add_action('admin_menu', 'next_content_menu');
 
-
-function next_content_menu() 
+function next_content_menu()
 {
-    $settings_page = add_menu_page( 
+    $settings_page = add_menu_page(
         'next_content/news.php',
         'NEXT Inhalte',
-        0, 
+        0,
         'next_content/news.php'
     );
 
 
-    add_submenu_page( 'next_content/news.php', 'News', 'News', 'publish_posts', 'next_content/news.php' ); 
-    add_submenu_page( 'next_content/news.php', 'Referenzen', 'Referenzen', 'publish_posts', 'next_content/referenzen.php' ); 
-    add_submenu_page( 'next_content/news.php', 'Erloesrechner', 'Erloesrechner', 'publish_posts', 'next_content/erloesrechner.php' ); 
-    add_submenu_page( 'next_content/news.php', 'EMaillog', 'EMaillog', 'publish_posts', 'next_content/emaillog.php' ); 
-    add_submenu_page( 'next_content/news.php', 'Next Pool', 'Next Pool', 'publish_posts', 'next_content/nextpool.php' ); 
-    add_submenu_page( 'next_content/news.php', 'Jobs', 'Jobs', 'publish_posts', 'next_content/jobs.php' ); 
-    add_submenu_page( 'next_content/news.php', 'Termine', 'Termine', 'publish_posts', 'next_content/events.php' ); 
-    add_submenu_page( 'next_content/news.php', 'Partner', 'Partner', 'publish_posts', 'next_content/partner.php' ); 
-
+    add_submenu_page( 'next_content/news.php', 'News', 'News', 'publish_posts', 'next_content/news.php' );
+    add_submenu_page( 'next_content/news.php', 'Referenzen', 'Referenzen', 'publish_posts', 'next_content/referenzen.php' );
+    add_submenu_page( 'next_content/news.php', 'Erloesrechner', 'Erloesrechner', 'publish_posts', 'next_content/erloesrechner.php' );
+    add_submenu_page( 'next_content/news.php', 'EMaillog', 'EMaillog', 'publish_posts', 'next_content/emaillog.php' );
+    add_submenu_page( 'next_content/news.php', 'Next Pool', 'Next Pool', 'publish_posts', 'next_content/nextpool.php' );
+    add_submenu_page( 'next_content/news.php', 'Jobs', 'Jobs', 'publish_posts', 'next_content/jobs.php' );
+    add_submenu_page( 'next_content/news.php', 'Termine', 'Termine', 'publish_posts', 'next_content/events.php' );
+    add_submenu_page( 'next_content/news.php', 'Partner', 'Partner', 'publish_posts', 'next_content/partner.php' );
+    add_submenu_page( 'next_content/news.php', 'Remit', 'Remit', 'publish_posts', 'next_content/remit.php' );
 
     // wp_enqueue_script('custom-script','/wp-content/themes/nextkraftwerke/js/jquery-sortable.js',array( 'jquery' ));
-
 }
-
 
 
 ?>

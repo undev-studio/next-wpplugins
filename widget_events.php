@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Next Events
-Description: 
+Description:
 Author: undefined development
 Version: 1
 Author URI: http://undev.de/
@@ -15,8 +15,6 @@ Author URI: http://undev.de/
 require_once('widget_.php');
 require_once('twig.php');
 require_once('truncatehtml.php');
-
-
 
 add_action('admin_enqueue_scripts', 'upload_scripts');
 // add_action('admin_enqueue_styles', array($this, 'upload_styles'));
@@ -33,15 +31,14 @@ class nextEventsWidget extends unWidget
 
     function form($instance)
     {
-        $instance = wp_parse_args( (array) $instance, array( 
+        $instance = wp_parse_args( (array) $instance, array(
             'title' => '',
             'icon' => '',
             'text' => '',
             'textlength' => '50',
             'displaysize' => '',
             'title' => 'Alle Termine'
-
-            ) );
+            ));
 
         echo $this->getWidgetInput(
             'title',
@@ -92,7 +89,7 @@ class nextEventsWidget extends unWidget
         $sql='SELECT * FROM next_events WHERE DATEDIFF(date_start,NOW())>=0 OR DATEDIFF(date_end,NOW())>=0 ORDER BY DATEDIFF(date_start,NOW()) ASC LIMIT 0,3';
         $events=$wpdb->get_results( $sql );
 
-        if($wpdb->last_error!='') echo($wpdb->last_error); 
+        if($wpdb->last_error!='') echo($wpdb->last_error);
 
         $data=array();
         $data['events']=$events;
@@ -127,7 +124,7 @@ class nextEventsWidget extends unWidget
             $event->text=strip_tags($event->text);
             if(strlen($event->text)>$instance['textlength']) $event->text=truncateHtml($event->text,$instance['textlength'],'...');
         }
-       
+
         $twig=initTwig();
         $template = $twig->loadTemplate('widget_events.html');
         $html.=$template->render(array(
@@ -135,7 +132,7 @@ class nextEventsWidget extends unWidget
             'classes' => $this->getDisplaySizeClasses($instance),
             'wp' => $wp
         ));
-        
+
         echo $html;
 
 

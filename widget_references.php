@@ -7,7 +7,7 @@ Version: 1
 Author URI: http://undev.de/
 */
  
-require_once(__DIR__.'/../../themes/next2015/util/random_reference.php');
+require_once(__DIR__.'/../theme/util/random_reference.php');
 
 class nextReferenzWidget extends WP_Widget
 {
@@ -44,6 +44,7 @@ class nextReferenzWidget extends WP_Widget
 
             $str.='<option '.$sel.' value="'.$ref->id.'">'.$ref->title.'</option>';
         }
+
 
         $str.='</select>'.
             '</p>';
