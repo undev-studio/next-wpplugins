@@ -22,6 +22,8 @@
         $jsonArr['navsteps']=Array();
         $jsonArr['errormsg']=Array();
 
+        $fromStep=$_REQUEST['step'];
+
         // step 1
 
         $currentStep=0;
@@ -120,54 +122,74 @@
          if($_REQUEST['formdata']['nennleistung']=='')
          {
              $jsonArr['navsteps'][$currentStep]=false;
-             $jsonArr['errors'][]='nennleistung';
+
+             if($fromStep >= $currentStep )
+                $jsonArr['errors'][]='nennleistung';
          }
          if($_REQUEST['formdata']['zaehlbezeichn']=='')
          {
              $jsonArr['navsteps'][$currentStep]=false;
-             $jsonArr['errors'][]='zaehlbezeichn';
+
+             if($fromStep >= $currentStep )
+                $jsonArr['errors'][]='zaehlbezeichn';
          }
          if($_REQUEST['formdata']['registrnr']=='')
          {
              $jsonArr['navsteps'][$currentStep]=false;
-             $jsonArr['errors'][]='registrnr';
+
+             if($fromStep >= $currentStep )
+                $jsonArr['errors'][]='registrnr';
          }
          if($_REQUEST['formdata']['zaehlernr']=='')
          {
              $jsonArr['navsteps'][$currentStep]=false;
-             $jsonArr['errors'][]='zaehlernr';
+
+             if($fromStep >= $currentStep )
+                $jsonArr['errors'][]='zaehlernr';
          }
          if($_REQUEST['formdata']['eigenverbrauch']=='')
          {
              $jsonArr['navsteps'][$currentStep]=false;
-             $jsonArr['errors'][]='eigenverbrauch';
+
+             if($fromStep >= $currentStep )
+                $jsonArr['errors'][]='eigenverbrauch';
          }
          if($_REQUEST['formdata']['anlage_strasse']=='')
          {
              $jsonArr['navsteps'][$currentStep]=false;
-             $jsonArr['errors'][]='anlage_strasse';
+
+             if($fromStep >= $currentStep )
+                $jsonArr['errors'][]='anlage_strasse';
          }
          if($_REQUEST['formdata']['anlage_strassenr']=='')
          {
              $jsonArr['navsteps'][$currentStep]=false;
-             $jsonArr['errors'][]='anlage_strassenr';
+
+             if($fromStep >= $currentStep )
+                $jsonArr['errors'][]='anlage_strassenr';
          }
          if($_REQUEST['formdata']['anlage_plz']=='')
          {
              $jsonArr['navsteps'][$currentStep]=false;
-             $jsonArr['errors'][]='anlage_plz';
+
+             if($fromStep >= $currentStep )
+                $jsonArr['errors'][]='anlage_plz';
          }
 
          if($_REQUEST['formdata']['anlage_ort']=='')
          {
              $jsonArr['navsteps'][$currentStep]=false;
-             $jsonArr['errors'][]='anlage_ort';
+
+             if($fromStep >= $currentStep )
+                $jsonArr['errors'][]='anlage_ort';
          }
 
          if($_REQUEST['formdata']['netzbetreiber']=='')
          {
              $jsonArr['navsteps'][$currentStep]=false;
-             $jsonArr['errors'][]='netzbetreiber';
+
+             if($fromStep >= $currentStep )
+                $jsonArr['errors'][]='netzbetreiber';
          }
 
 
@@ -182,37 +204,43 @@
          if($_REQUEST['formdata']['konto_inhaber']=='')
          {
              $jsonArr['navsteps'][$currentStep]=false;
-             $jsonArr['errors'][]='konto_inhaber';
+             if($fromStep >= $currentStep )
+                $jsonArr['errors'][]='konto_inhaber';
          }
 
          if($_REQUEST['formdata']['konto_iban']=='')
          {
              $jsonArr['navsteps'][$currentStep]=false;
-             $jsonArr['errors'][]='konto_iban';
+             if($fromStep >= $currentStep )
+                $jsonArr['errors'][]='konto_iban';
          }
 
          if($_REQUEST['formdata']['konto_bic']=='')
          {
              $jsonArr['navsteps'][$currentStep]=false;
-             $jsonArr['errors'][]='konto_bic';
+             if($fromStep >= $currentStep )
+                $jsonArr['errors'][]='konto_bic';
          }
 
          if($_REQUEST['formdata']['konto_nr']=='')
          {
              $jsonArr['navsteps'][$currentStep]=false;
-             $jsonArr['errors'][]='konto_nr';
+             if($fromStep >= $currentStep )
+                $jsonArr['errors'][]='konto_nr';
          }
 
          if($_REQUEST['formdata']['konto_blz']=='')
          {
              $jsonArr['navsteps'][$currentStep]=false;
-             $jsonArr['errors'][]='konto_blz';
+             if($fromStep >= $currentStep )
+                $jsonArr['errors'][]='konto_blz';
          }
 
          if($_REQUEST['formdata']['konto_institut']=='')
          {
              $jsonArr['navsteps'][$currentStep]=false;
-             $jsonArr['errors'][]='konto_institut';
+             if($fromStep >= $currentStep )
+                $jsonArr['errors'][]='konto_institut';
          }
 
 
@@ -282,24 +310,24 @@
 
         $pdf->Cell(0,6, 'email: '.$data->email ,0,1);
 
-         $pdf->Cell(0,6, 'nennleistung: '.$data->nennleistung ,0,1);
-         $pdf->Cell(0,6, 'zaehlbezeichn: '.$data->zaehlbezeichn ,0,1);
-         $pdf->Cell(0,6, 'registrnr: '.$data->registrnr ,0,1);
-         $pdf->Cell(0,6, 'zaehlernr: '.$data->zaehlernr ,0,1);
-         $pdf->Cell(0,6, 'eigenverbrauch: '.$data->eigenverbrauch ,0,1);
-         $pdf->Cell(0,6, 'anlage_strasse: '.$data->anlage_strasse ,0,1);
-         $pdf->Cell(0,6, 'anlage_strassenr: '.$data->anlage_strassenr ,0,1);
-         $pdf->Cell(0,6, 'anlage_plz: '.$data->anlage_plz ,0,1);
+        $pdf->Cell(0,6, 'nennleistung: '.$data->nennleistung ,0,1);
+        $pdf->Cell(0,6, 'zaehlbezeichn: '.$data->zaehlbezeichn ,0,1);
+        $pdf->Cell(0,6, 'registrnr: '.$data->registrnr ,0,1);
+        $pdf->Cell(0,6, 'zaehlernr: '.$data->zaehlernr ,0,1);
+        $pdf->Cell(0,6, 'eigenverbrauch: '.$data->eigenverbrauch ,0,1);
+        $pdf->Cell(0,6, 'anlage_strasse: '.$data->anlage_strasse ,0,1);
+        $pdf->Cell(0,6, 'anlage_strassenr: '.$data->anlage_strassenr ,0,1);
+        $pdf->Cell(0,6, 'anlage_plz: '.$data->anlage_plz ,0,1);
 
-         $pdf->Cell(0,6, 'anlage_ort: '.$data->anlage_ort ,0,1);
-         $pdf->Cell(0,6, 'netzbetreiber: '.$data->netzbetreiber ,0,1);
-         $pdf->Cell(0,6, 'konto_inhaber: '.$data->konto_inhaber ,0,1);
-         $pdf->Cell(0,6, 'konto_iban: '.$data->konto_iban ,0,1);
-         $pdf->Cell(0,6, 'konto_bic: '.$data->konto_bic ,0,1);
+        $pdf->Cell(0,6, 'anlage_ort: '.$data->anlage_ort ,0,1);
+        $pdf->Cell(0,6, 'netzbetreiber: '.$data->netzbetreiber ,0,1);
+        $pdf->Cell(0,6, 'konto_inhaber: '.$data->konto_inhaber ,0,1);
+        $pdf->Cell(0,6, 'konto_iban: '.$data->konto_iban ,0,1);
+        $pdf->Cell(0,6, 'konto_bic: '.$data->konto_bic ,0,1);
 
-         $pdf->Cell(0,6, 'konto_nr: '.$data->konto_nr ,0,1);
-         $pdf->Cell(0,6, 'konto_blz: '.$data->konto_blz ,0,1);
-         $pdf->Cell(0,6, 'konto_institut: '.$data->konto_institut ,0,1);
+        $pdf->Cell(0,6, 'konto_nr: '.$data->konto_nr ,0,1);
+        $pdf->Cell(0,6, 'konto_blz: '.$data->konto_blz ,0,1);
+        $pdf->Cell(0,6, 'konto_institut: '.$data->konto_institut ,0,1);
 
 
 
