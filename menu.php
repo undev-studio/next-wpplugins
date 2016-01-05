@@ -18,6 +18,7 @@ ini_set('display_errors', '1');
 
 
 require_once('ajax_formdvpv.php');
+require_once('ajax_gallery.php');
 
 require_once('widget_footernav.php');
 add_action( 'widgets_init', create_function('', 'return register_widget("next_footernav");') );

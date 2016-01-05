@@ -1,6 +1,7 @@
 <?php
 
     require_once('libs/fpdf/fpdf.php');
+    require_once('libs/phpmailer/PHPMailerAutoload.php');
 
     add_action( 'wp_ajax_nopriv_formdvpv', 'ajax_formdvpv' );
     add_action( 'wp_ajax_nopriv_formdvpv_pdf', 'ajax_formdvpv_pdf' );
@@ -10,7 +11,8 @@
     add_action( 'wp_ajax_formdvpv_zip', 'ajax_formdvpv_zip' );
 
     //--------------------------------------
-    function generate_uuid() {
+    function generate_uuid()
+    {
         return sprintf( 'DVPV%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
             mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff ),
             mt_rand( 0, 0xffff ),
@@ -133,20 +135,30 @@
              if($fromStep >= $currentStep )
                 $jsonArr['errors'][]='nennleistung';
          }
-         if($_REQUEST['formdata']['zaehlbezeichn']=='')
-         {
-             $jsonArr['navsteps'][$currentStep]=false;
 
-             if($fromStep >= $currentStep )
-                $jsonArr['errors'][]='zaehlbezeichn';
-         }
-         if($_REQUEST['formdata']['registrnr']=='')
-         {
-             $jsonArr['navsteps'][$currentStep]=false;
+        if($_REQUEST['formdata']['hasNoZaehlbezeichnung']==true)
+        {
+            if($_REQUEST['formdata']['registrnr']=='')
+            {
+                $jsonArr['navsteps'][$currentStep]=false;
 
-             if($fromStep >= $currentStep )
-                $jsonArr['errors'][]='registrnr';
-         }
+                if($fromStep >= $currentStep )
+                   $jsonArr['errors'][]='registrnr';
+            }
+
+        }
+        else
+        {
+            if($_REQUEST['formdata']['zaehlbezeichn']=='')
+            {
+                $jsonArr['navsteps'][$currentStep]=false;
+
+                if($fromStep >= $currentStep )
+                   $jsonArr['errors'][]='zaehlbezeichn';
+            }
+
+        }
+
          if($_REQUEST['formdata']['zaehlernr']=='')
          {
              $jsonArr['navsteps'][$currentStep]=false;
@@ -154,13 +166,13 @@
              if($fromStep >= $currentStep )
                 $jsonArr['errors'][]='zaehlernr';
          }
-         if($_REQUEST['formdata']['eigenverbrauch']=='')
-         {
-             $jsonArr['navsteps'][$currentStep]=false;
-
-             if($fromStep >= $currentStep )
-                $jsonArr['errors'][]='eigenverbrauch';
-         }
+        //  if($_REQUEST['formdata']['eigenverbrauch']=='')
+        //  {
+        //      $jsonArr['navsteps'][$currentStep]=false;
+         //
+        //      if($fromStep >= $currentStep )
+        //         $jsonArr['errors'][]='eigenverbrauch';
+        //  }
          if($_REQUEST['formdata']['anlage_strasse']=='')
          {
              $jsonArr['navsteps'][$currentStep]=false;
@@ -208,6 +220,43 @@
          $currentStep=3;
          $jsonArr['navsteps'][$currentStep]=true;
 
+         if($_REQUEST['formdata']['konto_format']=='' || $_REQUEST['formdata']['konto_format']=='new' )
+         {
+             if($_REQUEST['formdata']['konto_iban']=='')
+             {
+                 $jsonArr['navsteps'][$currentStep]=false;
+                 if($fromStep >= $currentStep) $jsonArr['errors'][]='konto_iban';
+             }
+
+             if($_REQUEST['formdata']['konto_bic']=='')
+             {
+                 $jsonArr['navsteps'][$currentStep]=false;
+                 if($fromStep >= $currentStep) $jsonArr['errors'][]='konto_bic';
+             }
+
+         }
+         else
+         {
+             if($_REQUEST['formdata']['konto_nr']=='')
+             {
+                 $jsonArr['navsteps'][$currentStep]=false;
+                 if($fromStep >= $currentStep) $jsonArr['errors'][]='konto_nr';
+             }
+
+             if($_REQUEST['formdata']['konto_blz']=='')
+             {
+                 $jsonArr['navsteps'][$currentStep]=false;
+                 if($fromStep >= $currentStep) $jsonArr['errors'][]='konto_blz';
+             }
+
+             if($_REQUEST['formdata']['konto_institut']=='')
+             {
+                 $jsonArr['navsteps'][$currentStep]=false;
+                 if($fromStep >= $currentStep) $jsonArr['errors'][]='konto_institut';
+             }
+
+         }
+
          if($_REQUEST['formdata']['konto_inhaber']=='')
          {
              $jsonArr['navsteps'][$currentStep]=false;
@@ -215,55 +264,77 @@
                 $jsonArr['errors'][]='konto_inhaber';
          }
 
-         if($_REQUEST['formdata']['konto_iban']=='')
-         {
-             $jsonArr['navsteps'][$currentStep]=false;
-             if($fromStep >= $currentStep )
-                $jsonArr['errors'][]='konto_iban';
-         }
-
-         if($_REQUEST['formdata']['konto_bic']=='')
-         {
-             $jsonArr['navsteps'][$currentStep]=false;
-             if($fromStep >= $currentStep )
-                $jsonArr['errors'][]='konto_bic';
-         }
-
-         if($_REQUEST['formdata']['konto_nr']=='')
-         {
-             $jsonArr['navsteps'][$currentStep]=false;
-             if($fromStep >= $currentStep )
-                $jsonArr['errors'][]='konto_nr';
-         }
-
-         if($_REQUEST['formdata']['konto_blz']=='')
-         {
-             $jsonArr['navsteps'][$currentStep]=false;
-             if($fromStep >= $currentStep )
-                $jsonArr['errors'][]='konto_blz';
-         }
-
-         if($_REQUEST['formdata']['konto_institut']=='')
-         {
-             $jsonArr['navsteps'][$currentStep]=false;
-             if($fromStep >= $currentStep )
-                $jsonArr['errors'][]='konto_institut';
-         }
-
-
          if($jsonArr['navsteps'][0]==true && $jsonArr['navsteps'][1]==true && $jsonArr['navsteps'][2]==true && $jsonArr['navsteps'][3]==true )
          {
+             global $wpdb;
+
              $row=Array();
              $row['id']=generate_uuid();
              $row['json']=json_encode($_REQUEST['formdata']);
 
-             global $wpdb;
+             $row['firma']= $_REQUEST['formdata']['firma'] ;
+             $row['phone']= $_REQUEST['formdata']['phone'] ;
+             $row['strasse']= $_REQUEST['formdata']['strasse'] ;
+             $row['strassenr']= $_REQUEST['formdata']['strassenr'] ;
+             $row['plz']= $_REQUEST['formdata']['plz'] ;
+             $row['vorname']= $_REQUEST['formdata']['vorname'] ;
+             $row['nachname']= $_REQUEST['formdata']['nachname'] ;
+             $row['email']= $_REQUEST['formdata']['email'] ;
+             $row['nennleistung']= $_REQUEST['formdata']['nennleistung'] ;
+             $row['zaehlbezeichn']= $_REQUEST['formdata']['zaehlbezeichn'] ;
+             $row['registrnr']= $_REQUEST['formdata']['registrnr'] ;
+             $row['zaehlernr']= $_REQUEST['formdata']['zaehlernr'] ;
+             $row['eigenverbrauch']= $_REQUEST['formdata']['eigenverbrauch'] ;
+             $row['anlage_strasse']= $_REQUEST['formdata']['anlage_strasse'] ;
+             $row['anlage_strassenr']= $_REQUEST['formdata']['anlage_strassenr'] ;
+             $row['anlage_plz']= $_REQUEST['formdata']['anlage_plz'] ;
+             $row['anlage_ort']= $_REQUEST['formdata']['anlage_ort'] ;
+             $row['netzbetreiber']= $_REQUEST['formdata']['netzbetreiber'] ;
+             $row['konto_inhaber']= $_REQUEST['formdata']['konto_inhaber'] ;
+             $row['konto_iban']= $_REQUEST['formdata']['konto_iban'] ;
+             $row['konto_bic']= $_REQUEST['formdata']['konto_bic'] ;
+             $row['konto_nr']= $_REQUEST['formdata']['konto_nr'] ;
+             $row['konto_blz']= $_REQUEST['formdata']['konto_blz'] ;
+             $row['konto_institut']= $_REQUEST['formdata']['konto_institut'] ;
+
              $wpdb->insert('next_formdvpv', $row);
 
-            //  echo json_encode($row);
 
 
-             $jsonArr['id']=$row['id'];
+
+
+
+
+             if($wpdb->last_error!='')
+             {
+                 $jsonArr['dberror']=$wpdb->last_error;
+             }
+             else
+             {
+                 $jsonArr['id']=$row['id'];
+
+                 $pdf=genPDF($row['id']);
+                 $filename=getcwd().'/../../formdvpv/'.$row['id'].'.pdf';
+                 $pdf->Output($filename,'F');
+
+                 $email = new PHPMailer();
+                 $email->From      = 'you@example.com';
+                 $email->FromName  = 'Your Name';
+                 $email->Subject   = 'Message Subject';
+                 $email->Body      = 'form dv pv...';
+                 $email->AddAddress( $_REQUEST['formdata']['email'] );
+
+
+                //  $file_to_attach = 'PATH_OF_YOUR_FILE_HERE';
+
+                 $email->AddAttachment( $filename , 'formular.pdf' );
+
+                //  return $email->Send();
+
+
+
+
+             }
 
          }
 
@@ -279,10 +350,11 @@
         die();
     }
 
-    function ajax_formdvpv_pdf()
+
+    function genPDF($id)
     {
         global $wpdb;
-        $rows = $wpdb->get_results('SELECT * FROM next_formdvpv WHERE id="'.esc_sql($_REQUEST['id']).'";');
+        $rows = $wpdb->get_results('SELECT * FROM next_formdvpv WHERE id="'.esc_sql($id).'";');
 
         if($wpdb->last_error!='')
         {
@@ -294,8 +366,6 @@
         // var_dump($rows[0]);
         $data=json_decode($rows[0]->json);
 
-
-
         $pdf = new FPDF();
         $pdf->AddPage();
         $pdf->SetFont('Arial','B',10);
@@ -303,8 +373,7 @@
         $pdf->Cell(0,10, "ID: ".$rows[0]->id,0,1);
         $pdf->Cell(0,10, "Firma: ".$data->firma,0,1);
 
-
-
+        // reminder: also add new fields to the database !
 
         $pdf->Cell(0,6, 'firma: '.$data->firma ,0,1);
         $pdf->Cell(0,6, 'phone: '.$data->phone ,0,1);
@@ -336,9 +405,15 @@
         $pdf->Cell(0,6, 'konto_blz: '.$data->konto_blz ,0,1);
         $pdf->Cell(0,6, 'konto_institut: '.$data->konto_institut ,0,1);
 
-        $pdf->Output();
-        // $pdf->Output('../','F');
+        // reminder: also add new fields to the database !
 
+        return $pdf;
+    }
+
+    function ajax_formdvpv_pdf()
+    {
+        $pdf=genPDF($_REQUEST['id']);
+        $pdf->Output();
         die();
     }
 
