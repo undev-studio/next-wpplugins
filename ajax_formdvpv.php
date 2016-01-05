@@ -2,6 +2,12 @@
 
     require_once('libs/fpdf/fpdf.php');
 
+    add_action( 'wp_ajax_nopriv_formdvpv', 'ajax_formdvpv' );
+    add_action( 'wp_ajax_nopriv_formdvpv_pdf', 'ajax_formdvpv_pdf' );
+    add_action( 'wp_ajax_nopriv_formdvpv_zip', 'ajax_formdvpv_zip' );
+    add_action( 'wp_ajax_formdvpv', 'ajax_formdvpv' );
+    add_action( 'wp_ajax_formdvpv_pdf', 'ajax_formdvpv_pdf' );
+    add_action( 'wp_ajax_formdvpv_zip', 'ajax_formdvpv_zip' );
 
     //--------------------------------------
     function generate_uuid() {
@@ -15,8 +21,9 @@
     }
 
 
-    function ajax_formDvPv()
+    function ajax_formdvpv()
     {
+
         $jsonArr=Array();
         $jsonArr['errors']=Array();
         $jsonArr['navsteps']=Array();
@@ -272,7 +279,7 @@
         die();
     }
 
-    function ajax_formDvPv_pdf()
+    function ajax_formdvpv_pdf()
     {
         global $wpdb;
         $rows = $wpdb->get_results('SELECT * FROM next_formdvpv WHERE id="'.esc_sql($_REQUEST['id']).'";');
@@ -329,22 +336,13 @@
         $pdf->Cell(0,6, 'konto_blz: '.$data->konto_blz ,0,1);
         $pdf->Cell(0,6, 'konto_institut: '.$data->konto_institut ,0,1);
 
-
-
-
-
-
-
-
-
-
         $pdf->Output();
         // $pdf->Output('../','F');
 
         die();
     }
 
-    function ajax_formDvPv_zip()
+    function ajax_formdvpv_zip()
     {
         global $wpdb;
         $rows = $wpdb->get_results('SELECT * FROM next_zip WHERE zip="'.esc_sql($_REQUEST['zip']).'";');
@@ -352,10 +350,6 @@
         echo json_encode($rows[0]);
         die();
     }
-
-    add_action( 'wp_ajax_formdvpv', 'ajax_formDvPv' );
-    add_action( 'wp_ajax_formdvpv_pdf', 'ajax_formDvPv_pdf' );
-    add_action( 'wp_ajax_formdvpv_zip', 'ajax_formDvPv_zip' );
 
 
 
