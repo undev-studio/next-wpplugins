@@ -7,13 +7,13 @@
 
     function ajax_gallery()
     {
-        $cat=335;
+        // $cat=335;
 
         $query_images_args = array(
             'post_type' => 'attachment', 'post_mime_type' =>'image', 'post_status' => 'inherit', 'posts_per_page' => -1,
             'orderby' => 'title',
             'order' => 'ASC',
-            'tax_query' => array( array('taxonomy' => 'media_category', 'field' => 'id', 'terms' => $cat ) )
+            'tax_query' => array( array('taxonomy' => 'media_category', 'field' => 'id', 'terms' => $_REQUEST['cat'] ) )
         );
 
         $query_images = new WP_Query( $query_images_args );

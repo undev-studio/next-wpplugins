@@ -68,6 +68,9 @@ add_action( 'widgets_init', create_function('', 'return register_widget("nextPro
 require_once('widget_erloes.php');
 add_action( 'widgets_init', create_function('', 'return register_widget("nextErloesWidget");') );
 
+require_once('widget_awards.php');
+add_action( 'widgets_init', create_function('', 'return register_widget("nextAwardsWidget");') );
+
 add_action('admin_menu', 'next_content_menu');
 
 function next_content_menu()
