@@ -29,7 +29,8 @@ class nextAwardsWidget extends unWidget
     function form($instance)
     {
         $instance = wp_parse_args( (array) $instance, array(
-            'title' => ''
+            'title' => '',
+            'text' => '',
             ));
 
         echo $this->getWidgetInput(
@@ -37,6 +38,12 @@ class nextAwardsWidget extends unWidget
             $this->get_field_id('title'),
             $this->get_field_name('title'),
             $instance['title']);
+
+        echo $this->getWidgetInput(
+            'text',
+            $this->get_field_id('text'),
+            $this->get_field_name('text'),
+            $instance['text']);
 
 
     }
@@ -51,10 +58,12 @@ class nextAwardsWidget extends unWidget
         global $post;
 
         $data=array();
-        $data['title']=$instance['title'];
 
         echo'<div class="bgbox">';
-        echo'<div id="next_awards">awards...</div>';
+        echo'<h3>'.$instance['title'].'</h3>';
+        echo'<p class="space-bottom">'.$instance['text'].'</p>';
+
+        echo'<div id="next_awards"></div>';
         echo'</div>';
 
 
