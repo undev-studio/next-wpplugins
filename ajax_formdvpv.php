@@ -337,7 +337,7 @@
 
                  $email->AddAddress( $_REQUEST['formdata']['email'] );
                  $email->AddAttachment( $filename , "Direktvermarktung_".$docId.".pdf" );
-                //  $email->addBCC('ew@next-kraftwerke.de');
+                 $email->addBCC('ew@next-kraftwerke.de');
                  $email->isHTML(true);
 
                  $email->Send();
