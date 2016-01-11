@@ -7,7 +7,6 @@
     require_once('libs/hashids/HashGenerator.php');
     require_once('libs/hashids/Hashids.php');
 
-
     add_action( 'wp_ajax_nopriv_formdvpv', 'ajax_formdvpv' );
     add_action( 'wp_ajax_nopriv_formdvpv_pdf', 'ajax_formdvpv_pdf' );
     add_action( 'wp_ajax_nopriv_formdvpv_zip', 'ajax_formdvpv_zip' );
@@ -28,10 +27,8 @@
         );
     }
 
-
     function ajax_formdvpv()
     {
-
         $jsonArr=Array();
         $jsonArr['errors']=Array();
         $jsonArr['navsteps']=Array();
@@ -136,9 +133,9 @@
         }
 
         /////////////////////////////////////////////////////////////////
-         // step 2
-         $currentStep=1;
-         $jsonArr['navsteps'][$currentStep]=true;
+        // step 2
+        $currentStep=1;
+        $jsonArr['navsteps'][$currentStep]=true;
 
          if($_REQUEST['formdata']['nennleistung']=='')
          {
@@ -202,6 +199,11 @@
              if($fromStep >= $currentStep) $jsonArr['errors'][]='netzbetreiber';
          }
 
+         if($_REQUEST['formdata']['anlage_fernsteuerung']=='')
+         {
+             $jsonArr['navsteps'][$currentStep]=false;
+             if($fromStep >= $currentStep) $jsonArr['errors'][]='anlage_fernsteuerung';
+         }
 
          // step 3
          $currentStep=2;
@@ -260,36 +262,35 @@
              $row['id']=generate_uuid();
              $row['json']=json_encode($_REQUEST['formdata']);
 
-             $row['firma']= $_REQUEST['formdata']['firma'] ;
-             $row['phone']= $_REQUEST['formdata']['phone'] ;
-             $row['strasse']= $_REQUEST['formdata']['strasse'] ;
-             $row['strassenr']= $_REQUEST['formdata']['strassenr'] ;
-             $row['plz']= $_REQUEST['formdata']['plz'];
-             $row['ort']= $_REQUEST['formdata']['ort'];
-             $row['vorname']= $_REQUEST['formdata']['vorname'] ;
-             $row['nachname']= $_REQUEST['formdata']['nachname'] ;
-             $row['email']= $_REQUEST['formdata']['email'] ;
-             $row['nennleistung']= $_REQUEST['formdata']['nennleistung'] ;
-             $row['zaehlbezeichn']= $_REQUEST['formdata']['zaehlbezeichn'] ;
-             $row['registrnr']= $_REQUEST['formdata']['registrnr'] ;
-             $row['zaehlernr']= $_REQUEST['formdata']['zaehlernr'] ;
-             $row['eigenverbrauch']= $_REQUEST['formdata']['eigenverbrauch'] ;
-             $row['anlage_strasse']= $_REQUEST['formdata']['anlage_strasse'] ;
-             $row['anlage_strassenr']= $_REQUEST['formdata']['anlage_strassenr'] ;
-             $row['anlage_plz']= $_REQUEST['formdata']['anlage_plz'] ;
-             $row['anlage_ort']= $_REQUEST['formdata']['anlage_ort'] ;
-             $row['netzbetreiber']= $_REQUEST['formdata']['netzbetreiber'] ;
-             $row['konto_inhaber']= $_REQUEST['formdata']['konto_inhaber'] ;
-             $row['konto_iban']= $_REQUEST['formdata']['konto_iban'] ;
-             $row['konto_bic']= $_REQUEST['formdata']['konto_bic'] ;
-             $row['konto_nr']= $_REQUEST['formdata']['konto_nr'] ;
-             $row['konto_blz']= $_REQUEST['formdata']['konto_blz'] ;
-             $row['konto_institut']= $_REQUEST['formdata']['konto_institut'] ;
-             $row['ustid']= $_REQUEST['formdata']['ustid'] ;
-             $row['vermarktung']= $_REQUEST['formdata']['vermarktung'] ;
-             $row['beginvermarktung']= $_REQUEST['formdata']['beginvermarktung'] ;
-
-
+             $row['firma'] = $_REQUEST['formdata']['firma'];
+             $row['phone'] = $_REQUEST['formdata']['phone'];
+             $row['strasse'] = $_REQUEST['formdata']['strasse'];
+             $row['strassenr'] = $_REQUEST['formdata']['strassenr'];
+             $row['plz'] = $_REQUEST['formdata']['plz'];
+             $row['ort'] = $_REQUEST['formdata']['ort'];
+             $row['vorname'] = $_REQUEST['formdata']['vorname'];
+             $row['nachname'] = $_REQUEST['formdata']['nachname'];
+             $row['email'] = $_REQUEST['formdata']['email'];
+             $row['nennleistung'] = $_REQUEST['formdata']['nennleistung'];
+             $row['zaehlbezeichn'] = $_REQUEST['formdata']['zaehlbezeichn'];
+             $row['registrnr'] = $_REQUEST['formdata']['registrnr'];
+             $row['zaehlernr'] = $_REQUEST['formdata']['zaehlernr'];
+             $row['eigenverbrauch'] = $_REQUEST['formdata']['eigenverbrauch'];
+             $row['anlage_strasse'] = $_REQUEST['formdata']['anlage_strasse'];
+             $row['anlage_strassenr'] = $_REQUEST['formdata']['anlage_strassenr'];
+             $row['anlage_plz'] = $_REQUEST['formdata']['anlage_plz'];
+             $row['anlage_ort'] = $_REQUEST['formdata']['anlage_ort'];
+             $row['netzbetreiber'] = $_REQUEST['formdata']['netzbetreiber'];
+             $row['konto_inhaber'] = $_REQUEST['formdata']['konto_inhaber'];
+             $row['konto_iban'] = $_REQUEST['formdata']['konto_iban'];
+             $row['konto_bic'] = $_REQUEST['formdata']['konto_bic'];
+             $row['konto_nr'] = $_REQUEST['formdata']['konto_nr'];
+             $row['konto_blz'] = $_REQUEST['formdata']['konto_blz'];
+             $row['konto_institut'] = $_REQUEST['formdata']['konto_institut'];
+             $row['ustid'] = $_REQUEST['formdata']['ustid'];
+             $row['vermarktung'] = $_REQUEST['formdata']['vermarktung'];
+             $row['beginvermarktung'] = $_REQUEST['formdata']['beginvermarktung'];
+             $row['anlage_fernsteuerung'] = $_REQUEST['formdata']['anlage_fernsteuerung'];
 
              $wpdb->insert('next_formdvpv', $row);
              $pkey=$wpdb->insert_id;
@@ -300,7 +301,6 @@
 
              $wpdb->update( 'next_formdvpv', array( 'docid' => $docId ), array( 'pkey' => $pkey ) );
 
-
              if($wpdb->last_error!='')
              {
                  $jsonArr['dberror']=$wpdb->last_error;
@@ -308,8 +308,6 @@
              else
              {
                  $jsonArr['id']=$row['id'];
-
-
 
                  $body='';
                  $body.='Sehr geehrte(r) '.$_REQUEST['formdata']['vorname'].' '.$_REQUEST['formdata']['nachname'].',';
@@ -326,8 +324,6 @@
                  $body.='Mit freundlichen Gr&uuml;&szlig;en,<br/>';
                  $body.='Ihr Next Kraftwerke Team<br/><br/>';
 
-
-
                  $dompdf = genPDF($row['id']);
                  $filename = getcwd().'/../../formdvpv/Direktvermarktung_'.$docId.'.pdf';
                  $output = $dompdf->output();
@@ -341,13 +337,11 @@
 
                  $email->AddAddress( $_REQUEST['formdata']['email'] );
                  $email->AddAttachment( $filename , "Direktvermarktung_".$docId.".pdf" );
-                 $email->addBCC('ew@next-kraftwerke.de');
+                //  $email->addBCC('ew@next-kraftwerke.de');
                  $email->isHTML(true);
 
                  $email->Send();
-
              }
-
          }
 
         echo json_encode($jsonArr);
