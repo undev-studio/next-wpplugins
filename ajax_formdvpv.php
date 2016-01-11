@@ -16,6 +16,7 @@
     add_action( 'wp_ajax_formdvpv_zip', 'ajax_formdvpv_zip' );
 
     //--------------------------------------
+
     function generate_uuid()
     {
         return sprintf( 'DVPV%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
@@ -142,9 +143,7 @@
          if($_REQUEST['formdata']['nennleistung']=='')
          {
              $jsonArr['navsteps'][$currentStep]=false;
-
-             if($fromStep >= $currentStep )
-                $jsonArr['errors'][]='nennleistung';
+             if($fromStep >= $currentStep) $jsonArr['errors'][]='nennleistung';
          }
 
         if($_REQUEST['formdata']['hasNoZaehlbezeichnung']==true)
@@ -152,74 +151,55 @@
             if($_REQUEST['formdata']['registrnr']=='')
             {
                 $jsonArr['navsteps'][$currentStep]=false;
-
-                if($fromStep >= $currentStep )
-                   $jsonArr['errors'][]='registrnr';
+                if($fromStep >= $currentStep) $jsonArr['errors'][]='registrnr';
             }
-
         }
         else
         {
             if($_REQUEST['formdata']['zaehlbezeichn']=='')
             {
                 $jsonArr['navsteps'][$currentStep]=false;
-
-                if($fromStep >= $currentStep )
-                   $jsonArr['errors'][]='zaehlbezeichn';
+                if($fromStep >= $currentStep) $jsonArr['errors'][]='zaehlbezeichn';
             }
-
         }
-
-         if($_REQUEST['formdata']['zaehlernr']=='')
-         {
-             $jsonArr['navsteps'][$currentStep]=false;
-
-             if($fromStep >= $currentStep )
-                $jsonArr['errors'][]='zaehlernr';
-         }
+        if($_REQUEST['formdata']['zaehlernr']=='')
+        {
+            $jsonArr['navsteps'][$currentStep]=false;
+            if($fromStep >= $currentStep) $jsonArr['errors'][]='zaehlernr';
+        }
         //  if($_REQUEST['formdata']['eigenverbrauch']=='')
         //  {
         //      $jsonArr['navsteps'][$currentStep]=false;
          //
-        //      if($fromStep >= $currentStep )
+        //      if($fromStep >= $currentStep)
         //         $jsonArr['errors'][]='eigenverbrauch';
         //  }
          if($_REQUEST['formdata']['anlage_strasse']=='')
          {
              $jsonArr['navsteps'][$currentStep]=false;
-
-             if($fromStep >= $currentStep )
-                $jsonArr['errors'][]='anlage_strasse';
+             if($fromStep >= $currentStep) $jsonArr['errors'][]='anlage_strasse';
          }
          if($_REQUEST['formdata']['anlage_strassenr']=='')
          {
              $jsonArr['navsteps'][$currentStep]=false;
-
-             if($fromStep >= $currentStep )
-                $jsonArr['errors'][]='anlage_strassenr';
+             if($fromStep >= $currentStep) $jsonArr['errors'][]='anlage_strassenr';
          }
          if($_REQUEST['formdata']['anlage_plz']=='')
          {
              $jsonArr['navsteps'][$currentStep]=false;
-
-             if($fromStep >= $currentStep )
-                $jsonArr['errors'][]='anlage_plz';
+             if($fromStep >= $currentStep) $jsonArr['errors'][]='anlage_plz';
          }
 
          if($_REQUEST['formdata']['anlage_ort']=='')
          {
              $jsonArr['navsteps'][$currentStep]=false;
-
-             if($fromStep >= $currentStep )
-                $jsonArr['errors'][]='anlage_ort';
+             if($fromStep >= $currentStep) $jsonArr['errors'][]='anlage_ort';
          }
 
          if($_REQUEST['formdata']['netzbetreiber']=='')
          {
              $jsonArr['navsteps'][$currentStep]=false;
-
-             if($fromStep >= $currentStep )
-                $jsonArr['errors'][]='netzbetreiber';
+             if($fromStep >= $currentStep) $jsonArr['errors'][]='netzbetreiber';
          }
 
 
@@ -244,7 +224,6 @@
                  $jsonArr['navsteps'][$currentStep]=false;
                  if($fromStep >= $currentStep) $jsonArr['errors'][]='konto_bic';
              }
-
          }
          else
          {
@@ -265,14 +244,12 @@
                  $jsonArr['navsteps'][$currentStep]=false;
                  if($fromStep >= $currentStep) $jsonArr['errors'][]='konto_institut';
              }
-
          }
 
          if($_REQUEST['formdata']['konto_inhaber']=='')
          {
              $jsonArr['navsteps'][$currentStep]=false;
-             if($fromStep >= $currentStep )
-                $jsonArr['errors'][]='konto_inhaber';
+             if($fromStep >= $currentStep) $jsonArr['errors'][]='konto_inhaber';
          }
 
          if($jsonArr['navsteps'][0]==true && $jsonArr['navsteps'][1]==true && $jsonArr['navsteps'][2]==true && $jsonArr['navsteps'][3]==true )
@@ -324,8 +301,6 @@
              $wpdb->update( 'next_formdvpv', array( 'docid' => $docId ), array( 'pkey' => $pkey ) );
 
 
-
-
              if($wpdb->last_error!='')
              {
                  $jsonArr['dberror']=$wpdb->last_error;
@@ -334,39 +309,48 @@
              {
                  $jsonArr['id']=$row['id'];
 
-                 $pdf=genPDF($row['id']);
-                 $filename=getcwd().'/../../formdvpv/'.$row['id'].'.pdf';
-                 $pdf->Output($filename,'F');
+
+
+                 $body='';
+                 $body.='Sehr geehrte(r) '.$_REQUEST['formdata']['vorname'].' '.$_REQUEST['formdata']['nachname'].',';
+                 $body.='<br/><br/>';
+                 $body.='vielen Dank f&uuml;r Ihr Interesse an der Direktvermarktung Ihrer PV-Anlage &ouml;ber Next Kraftwerke.';
+                 $body.='<br/><br/>';
+                 $body.='Anbei finden Sie das von uns auf Basis Ihrer Eingaben erzeugte Dokument. Bitte drucken Sie sowohl den Auftrag als auch die Vollmacht aus, unterschreiben beide Dokumente und senden uns diese per Post zu.';
+                 $body.='<br/><br/>';
+                 $body.='Nach Pr&uuml;fung Ihrer Unterlagen erhalten Sie von uns eine Auftragsbest&auml;tigung mit dem Hinweis auf den Zeitpunkt, ab dem wir die PV-Anlage f&uuml;r Sie voraussichtlich vermarkten k&ouml;nnen. Erst durch die Auftragsbest&auml;tigung ist der Vertrag zur Direktvermarktung Ihrer PV-Anlage mit uns abgeschlossen.';
+                 $body.='<br/><br/>';
+                 $body.='Bitte beachten Sie die Hinweise zur Fernsteuerbarkeit  sowie die Allgemeinen Vermarktungsbedingungen f&uuml;r kleine Photovoltaik-Anlagen.<br/>';
+                 $body.='F&uuml;r PV-Anlagen mit mehr als 800 kW Nennleistung ben&ouml;tigen wir leider ein paar zus&auml;tzliche Informationen: Ein individuelles Angebot k&ouml;nnen Sie hier anfragen.';
+                 $body.='<br/><br/>';
+                 $body.='Mit freundlichen Gr&uuml;&szlig;en,<br/>';
+                 $body.='Ihr Next Kraftwerke Team<br/><br/>';
+
+
+
+                 $dompdf = genPDF($row['id']);
+                 $filename = getcwd().'/../../formdvpv/Direktvermarktung_'.$docId.'.pdf';
+                 $output = $dompdf->output();
+                 file_put_contents($filename, $output);
 
                  $email = new PHPMailer();
-                 $email->From      = 'you@example.com';
-                 $email->FromName  = 'Your Name';
-                 $email->Subject   = 'Message Subject';
-                 $email->Body      = 'form dv pv...';
+                 $email->From      = 'vermarktung@next-kraftwerke.de';
+                 $email->FromName  = 'Next Kraftwerke';
+                 $email->Subject   = 'Direktvermarktung Ihrer PV-Anlage > Dokumente zur Unterschrift';
+                 $email->Body      = $body;
+
                  $email->AddAddress( $_REQUEST['formdata']['email'] );
+                 $email->AddAttachment( $filename , "Direktvermarktung_".$docId.".pdf" );
+                 $email->addBCC('ew@next-kraftwerke.de');
+                 $email->isHTML(true);
 
-
-                //  $file_to_attach = 'PATH_OF_YOUR_FILE_HERE';
-
-                 $email->AddAttachment( $filename , 'formular.pdf' );
-
-                //  return $email->Send();
-
-
-
+                 $email->Send();
 
              }
 
          }
 
         echo json_encode($jsonArr);
-
-        //  if($_REQUEST['pdf']==true)
-        //  {
-        //  }
-
-
-
 
         die();
     }
@@ -383,7 +367,7 @@
         }
 
         $dompdf = new DOMPDF();
-
+        $dompdf->set_paper("A4");
         $day=date("j", strtotime($rows[0]->date));
         $year=date("Y", strtotime($rows[0]->date));
         $month=date("m", strtotime($rows[0]->date));
@@ -408,9 +392,6 @@
         $template = $twig->loadTemplate('form_dvpv_pdf_de.html');
         $html=$template->render(array( 'data' => $rows[0] ));
 
-
-
-
         $dompdf->load_html($html);
 
         $dompdf->render();
@@ -422,10 +403,11 @@
     {
         $dompdf=genPDF($_REQUEST['id']);
 
-        $dompdf->stream("sample.pdf",[ 'Attachment'=>0  ]);
+        global $wpdb;
+        $rows = $wpdb->get_results('SELECT * FROM next_formdvpv WHERE id="'.esc_sql($_REQUEST['id']).'";');
 
+        $dompdf->stream("Direktvermarktung_".$rows[0]->docid.".pdf",[ 'Attachment'=>0  ]);
 
-        // $pdf->Output();
         die();
     }
 

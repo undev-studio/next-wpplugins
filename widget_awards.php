@@ -59,9 +59,12 @@ class nextAwardsWidget extends unWidget
 
         $data=array();
 
-        echo'<div class="bgbox">';
+        $style='padding-bottom:0px;';
+        if($instance['text']=='')$style.='padding-top:0px; !important';
+
+        echo'<div class="bgbox" style="'.$style.'">';
         echo'<h3>'.$instance['title'].'</h3>';
-        echo'<p class="space-bottom">'.$instance['text'].'</p>';
+        if($instance['text']!='') echo'<p class="space-bottom">'.$instance['text'].'</p>';
 
         echo'<div id="next_awards"></div>';
         echo'</div>';
