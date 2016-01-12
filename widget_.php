@@ -1,8 +1,31 @@
-<?php 
+<?php
 
 
 class unWidget extends WP_Widget
 {
+
+    function getWidgetMediaCategory($title,$id,$fieldname,$value)
+    {
+        $html='<p>'.
+                $title.': ';
+
+        $categories = get_terms( 'media_category', 'orderby=count&hide_empty=0' );
+
+        $html.='<select name="'.$fieldname.'" id="'.$id.'" >';
+        $html.='<option value=""> - </option>';
+
+        foreach ($categories as $cat)
+        {
+            $sel="";
+            if($cat->term_id==$value)$sel=' selected="SELECTED" ';
+            $html.='<option value="'.$cat->term_id.'" '.$sel.'>'.$cat->name.'</option>';
+        }
+        $html.='</select>';
+        $html.='</p>';
+        return $html;
+    }
+
+
     function getWidgetInputDisplaySize($title,$id,$fieldname,$value)
     {
         $str='<p>'.

@@ -132,6 +132,15 @@
             $jsonArr['errormsg'][]='steuer';
         }
 
+        if($_REQUEST['formdata']['ustid']!='')
+        {
+            if(substr(strtolower($_REQUEST['formdata']['ustid']),0,2)!='de' || strlen($_REQUEST['formdata']['ustid'])>11 )
+            {
+                $jsonArr['navsteps'][$currentStep]=false;
+                $jsonArr['errors'][]='ustid';
+            }
+        }
+
         /////////////////////////////////////////////////////////////////
         // step 2
         $currentStep=1;
@@ -143,7 +152,7 @@
              if($fromStep >= $currentStep) $jsonArr['errors'][]='nennleistung';
          }
 
-        if($_REQUEST['formdata']['hasNoZaehlbezeichnung']==true)
+        if($_REQUEST['formdata']['hasNoZaehlbezeichnung']=='true')
         {
             if($_REQUEST['formdata']['registrnr']=='')
             {
@@ -153,7 +162,7 @@
         }
         else
         {
-            if($_REQUEST['formdata']['zaehlbezeichn']=='')
+            if($_REQUEST['formdata']['zaehlbezeichn']=='' || substr(strtolower($_REQUEST['formdata']['zaehlbezeichn']),0,2)!='de' || strlen($_REQUEST['formdata']['zaehlbezeichn'])!=33 )
             {
                 $jsonArr['navsteps'][$currentStep]=false;
                 if($fromStep >= $currentStep) $jsonArr['errors'][]='zaehlbezeichn';
@@ -254,7 +263,7 @@
              if($fromStep >= $currentStep) $jsonArr['errors'][]='konto_inhaber';
          }
 
-         if($jsonArr['navsteps'][0]==true && $jsonArr['navsteps'][1]==true && $jsonArr['navsteps'][2]==true && $jsonArr['navsteps'][3]==true )
+         if($fromStep==3 && $jsonArr['navsteps'][0]==true && $jsonArr['navsteps'][1]==true && $jsonArr['navsteps'][2]==true && $jsonArr['navsteps'][3]==true )
          {
              global $wpdb;
 
@@ -312,24 +321,25 @@
                  $body='';
                  $body.='Sehr geehrte(r) '.$_REQUEST['formdata']['vorname'].' '.$_REQUEST['formdata']['nachname'].',';
                  $body.='<br/><br/>';
-                 $body.='vielen Dank f&uuml;r Ihr Interesse an der Direktvermarktung Ihrer PV-Anlage &ouml;ber Next Kraftwerke.';
+                 $body.='vielen Dank f&uuml;r Ihr Interesse an der Direktvermarktung Ihrer PV-Anlage &uuml;ber Next Kraftwerke.';
                  $body.='<br/><br/>';
-                 $body.='Anbei finden Sie das von uns auf Basis Ihrer Eingaben erzeugte Dokument. Bitte drucken Sie sowohl den Auftrag als auch die Vollmacht aus, unterschreiben beide Dokumente und senden uns diese per Post zu.';
+                 $body.='Anbei finden Sie das von uns auf Basis Ihrer Eingaben erzeugte Dokument. Bitte drucken Sie sowohl den <b>Auftrag</b> als auch die <b>Vollmacht</b> aus, <b>unterschreiben beide</b> Dokumente und senden uns diese <b>per Post</b> zu.';
                  $body.='<br/><br/>';
                  $body.='Nach Pr&uuml;fung Ihrer Unterlagen erhalten Sie von uns eine Auftragsbest&auml;tigung mit dem Hinweis auf den Zeitpunkt, ab dem wir die PV-Anlage f&uuml;r Sie voraussichtlich vermarkten k&ouml;nnen. Erst durch die Auftragsbest&auml;tigung ist der Vertrag zur Direktvermarktung Ihrer PV-Anlage mit uns abgeschlossen.';
                  $body.='<br/><br/>';
-                 $body.='Bitte beachten Sie die Hinweise zur Fernsteuerbarkeit  sowie die Allgemeinen Vermarktungsbedingungen f&uuml;r kleine Photovoltaik-Anlagen.<br/>';
-                 $body.='F&uuml;r PV-Anlagen mit mehr als 800 kW Nennleistung ben&ouml;tigen wir leider ein paar zus&auml;tzliche Informationen: Ein individuelles Angebot k&ouml;nnen Sie hier anfragen.';
+                 $body.='Bitte beachten Sie die <a href="https://www.next-kraftwerke.de/wp-content/uploads/Umsetzung-verpflichtende-Fernsteuerbarkeit.pdf">Hinweise zur Fernsteuerbarkeit</a> sowie die <a href="https://www.next-kraftwerke.de/wp-content/uploads/Vermarktungsbedingungen-Direktvermarktung-PV-Next-Kraftwerke.pdf">Allgemeinen Vermarktungsbedingungen f&uuml;r kleine Photovoltaik-Anlagen</a>.<br/>';
+                 $body.='F&uuml;r PV-Anlagen mit mehr als 800 kW Nennleistung ben&ouml;tigen wir leider ein paar zus&auml;tzliche Informationen: Ein <a href="https://www.next-kraftwerke.de/meta/erloesrechner">individuelles Angebot k&ouml;nnen Sie hier anfragen.</a>';
                  $body.='<br/><br/>';
                  $body.='Mit freundlichen Gr&uuml;&szlig;en,<br/>';
                  $body.='Ihr Next Kraftwerke Team<br/><br/>';
 
                  $dompdf = genPDF($row['id']);
-                 $filename = getcwd().'/../../formdvpv/Direktvermarktung_'.$docId.'.pdf';
+                 $filename = getcwd().'/../../formdvpv/Direktvermarktung_PV-Anlage_'.$docId.'.pdf';
                  $output = $dompdf->output();
                  file_put_contents($filename, $output);
 
                  $email = new PHPMailer();
+                 $email->CharSet = 'utf-8';
                  $email->From      = 'vermarktung@next-kraftwerke.de';
                  $email->FromName  = 'Next Kraftwerke';
                  $email->Subject   = 'Direktvermarktung Ihrer PV-Anlage > Dokumente zur Unterschrift';
@@ -380,7 +390,7 @@
 
         $rows[0]->readableDate=$day.' '.$month.' '.$year;
 
-        if( substr( $rows[0]->beginvermarktung,2,1 )=='.') $rows[0]->beginvermarktung='dem '.$rows[0]->beginvermarktung;
+        if( substr( $rows[0]->beginvermarktung,2,1 )=='.') $rows[0]->beginvermarktung=''.$rows[0]->beginvermarktung;
 
         $twig=initTwig();
         $template = $twig->loadTemplate('form_dvpv_pdf_de.html');
@@ -400,7 +410,7 @@
         global $wpdb;
         $rows = $wpdb->get_results('SELECT * FROM next_formdvpv WHERE id="'.esc_sql($_REQUEST['id']).'";');
 
-        $dompdf->stream("Direktvermarktung_".$rows[0]->docid.".pdf",[ 'Attachment'=>0  ]);
+        $dompdf->stream("Direktvermarktung_PV-Anlage_".$rows[0]->docid.".pdf",[ 'Attachment'=>0  ]);
 
         die();
     }
