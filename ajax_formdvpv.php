@@ -71,6 +71,12 @@
             $jsonArr['errors'][]='ort';
         }
 
+        if($_REQUEST['formdata']['land']=='')
+        {
+            $jsonArr['navsteps'][$currentStep]=false;
+            $jsonArr['errors'][]='land';
+        }
+
         if($_REQUEST['formdata']['plz']=='' || !is_numeric($_REQUEST['formdata']['plz']) || strlen($_REQUEST['formdata']['plz'])!=5 )
         {
             $jsonArr['navsteps'][$currentStep]=false;
@@ -134,7 +140,7 @@
 
         if($_REQUEST['formdata']['ustid']!='')
         {
-            if(substr(strtolower($_REQUEST['formdata']['ustid']),0,2)!='de' || strlen($_REQUEST['formdata']['ustid'])>11 )
+            if(substr(strtolower($_REQUEST['formdata']['ustid']),0,2)!='de' || strlen($_REQUEST['formdata']['ustid'])!=11 )
             {
                 $jsonArr['navsteps'][$currentStep]=false;
                 $jsonArr['errors'][]='ustid';
@@ -222,7 +228,7 @@
          $currentStep=3;
          $jsonArr['navsteps'][$currentStep]=true;
 
-         if($_REQUEST['formdata']['konto_format']=='' || $_REQUEST['formdata']['konto_format']=='new' )
+         // if($_REQUEST['formdata']['konto_format']=='' || $_REQUEST['formdata']['konto_format']=='new' )
          {
              if($_REQUEST['formdata']['konto_iban']=='')
              {
@@ -236,26 +242,26 @@
                  if($fromStep >= $currentStep) $jsonArr['errors'][]='konto_bic';
              }
          }
-         else
-         {
-             if($_REQUEST['formdata']['konto_nr']=='')
-             {
-                 $jsonArr['navsteps'][$currentStep]=false;
-                 if($fromStep >= $currentStep) $jsonArr['errors'][]='konto_nr';
-             }
+         // else
+         // {
+         //     if($_REQUEST['formdata']['konto_nr']=='')
+         //     {
+         //         $jsonArr['navsteps'][$currentStep]=false;
+         //         if($fromStep >= $currentStep) $jsonArr['errors'][]='konto_nr';
+         //     }
 
-             if($_REQUEST['formdata']['konto_blz']=='')
-             {
-                 $jsonArr['navsteps'][$currentStep]=false;
-                 if($fromStep >= $currentStep) $jsonArr['errors'][]='konto_blz';
-             }
+         //     if($_REQUEST['formdata']['konto_blz']=='')
+         //     {
+         //         $jsonArr['navsteps'][$currentStep]=false;
+         //         if($fromStep >= $currentStep) $jsonArr['errors'][]='konto_blz';
+         //     }
 
-             if($_REQUEST['formdata']['konto_institut']=='')
-             {
-                 $jsonArr['navsteps'][$currentStep]=false;
-                 if($fromStep >= $currentStep) $jsonArr['errors'][]='konto_institut';
-             }
-         }
+         //     if($_REQUEST['formdata']['konto_institut']=='')
+         //     {
+         //         $jsonArr['navsteps'][$currentStep]=false;
+         //         if($fromStep >= $currentStep) $jsonArr['errors'][]='konto_institut';
+         //     }
+         // }
 
          if($_REQUEST['formdata']['konto_inhaber']=='')
          {
@@ -277,6 +283,7 @@
              $row['strassenr'] = $_REQUEST['formdata']['strassenr'];
              $row['plz'] = $_REQUEST['formdata']['plz'];
              $row['ort'] = $_REQUEST['formdata']['ort'];
+             $row['land'] = $_REQUEST['formdata']['land'];
              $row['vorname'] = $_REQUEST['formdata']['vorname'];
              $row['nachname'] = $_REQUEST['formdata']['nachname'];
              $row['email'] = $_REQUEST['formdata']['email'];
@@ -293,10 +300,12 @@
              $row['konto_inhaber'] = $_REQUEST['formdata']['konto_inhaber'];
              $row['konto_iban'] = $_REQUEST['formdata']['konto_iban'];
              $row['konto_bic'] = $_REQUEST['formdata']['konto_bic'];
-             $row['konto_nr'] = $_REQUEST['formdata']['konto_nr'];
-             $row['konto_blz'] = $_REQUEST['formdata']['konto_blz'];
-             $row['konto_institut'] = $_REQUEST['formdata']['konto_institut'];
+             // $row['konto_nr'] = $_REQUEST['formdata']['konto_nr'];
+             // $row['konto_blz'] = $_REQUEST['formdata']['konto_blz'];
+             // $row['konto_institut'] = $_REQUEST['formdata']['konto_institut'];
              $row['ustid'] = $_REQUEST['formdata']['ustid'];
+             $row['steuernr'] = $_REQUEST['formdata']['steuernr'];
+             
              $row['vermarktung'] = $_REQUEST['formdata']['vermarktung'];
              $row['beginvermarktung'] = $_REQUEST['formdata']['beginvermarktung'];
              $row['anlage_fernsteuerung'] = $_REQUEST['formdata']['anlage_fernsteuerung'];
@@ -347,6 +356,7 @@
 
                  $email->AddAddress( $_REQUEST['formdata']['email'] );
                  $email->AddAttachment( $filename , "Direktvermarktung_".$docId.".pdf" );
+                 $email->AddAttachment( '/var/www/website/sites/de/htdocs/wp-content/uploads/Vermarktungsbedingungen-Direktvermarktung-PV-Next-Kraftwerke.pdf' , "Allgemeine_Vermarktungsbedingungen.pdf" );
                  $email->addBCC('ew@next-kraftwerke.de');
                  $email->isHTML(true);
 
