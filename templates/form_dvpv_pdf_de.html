@@ -77,10 +77,13 @@
                 margin-bottom: 20px;
             }
 
+
+            .pageNumber { position: fixed; left: 0px; bottom: -180px; right: 0px; height: 150px; text-align: center; padding-bottom: 20px; background-color: white;}
+
         </style>
     </head>
     <body>
-
+        <div class="pageNumber">Seite 1 von 2</div>
         <table cellspacing="0">
             <tr>
                 <td style="width:60%" valign="top">
@@ -123,7 +126,7 @@
         <br/><br/>
         Sehr geehrte Damen und Herren,
         <br/><br/>
-        hiermit beauftrage ich die Direktvermarktung folgender Photovoltaik-Anlage am Standort <i>{{ data.anlage_strasse }} {{ data.anlage_strassenr }}, {{ data.anlage_plz }} {{ data.anlage_ort }}, Deutschland ({{ data.netzbetreiber }}) </i>durch die Next Kraftwerke GmbH.
+        hiermit beauftrage ich die Direktvermarktung folgender Photovoltaik-Anlage am Standort <i>{{ data.anlage_strasse }} {{ data.anlage_strassenr }}, {{ data.anlage_plz }} {{ data.anlage_ort }}, Deutschland ({{ data.netzbetreiber }}) </i>durch die Next Kraftwerke GmbH. Dem Auftrag liegen die allgemeinen Vermarktungsbedingungen für Photovoltaik-Anlagen unter 800 kW der Next Kraftwerke GmbH zu Grunde (AVB PV unter 800 kW).
 
         <br/><br/>
 
@@ -131,55 +134,51 @@
 
         <table cellspacing="0">
             <tr>
-                <td class="borderTop borderLeft">Nennleistung:</td>
-                <td class="borderTop borderLeft"><i>{{ data.nennleistung }}<i></td>
-                <td class="borderTop borderLeft">Eigenverbrauch:</td>
-                <td class="borderTop borderLeft borderRight"><i>{% if data.eigenverbrauch %}Ja{% else %}Nein{% endif %}</i></td>
+                <td style="width:15%" class="borderTop borderLeft">Installierte Nennleistung:</td>
+                <td style="width:20%" class="borderTop borderLeft"><i>{{ data.nennleistung }} kW<sub>peak</sub><i></td>
+                <td style="width:15%" class="borderTop borderLeft">Eigenverbrauch:</td>
+                <td style="width:10%" class="borderTop borderLeft"><i>{% if data.eigenverbrauch %}Ja{% else %}Nein{% endif %}</i></td>
+                <td style="width:20%" class="borderTop borderLeft">Anteil Eigenverbrauch:</td>
+                <td style="width:17%" class="borderTop borderLeft borderRight"><i>{% if data.eigenverbrauch %}{{ data.eigenverbrauch }}{% else %}0{% endif %}  % </i></td>
             </tr>
-            <tr>
-                <td class="borderTop borderLeft">Zählpunktbezeichnung oder <br/>Vorgangs-/Reg.Nummer:</td>
-                <td class="borderTop borderLeft"><i>{{ data.registrnr }}</i></td>
-                <td class="borderTop borderLeft">Anteil Eigenverbrauch:</td>
-                <td class="borderTop borderLeft borderRight"><i>{{ data.eigenverbrauch }}</i></td>
-            </tr>
+
             <tr>
                 <td class="borderTop borderBottom borderLeft">Zählernummer:</td>
                 <td class="borderTop borderBottom borderLeft"><i>{{ data.zaehlernr }}</i></td>
                 <td class="borderTop borderBottom borderLeft">Aktueller Vermarktungsstatus:</td>
-                <td class="borderTop borderBottom borderLeft borderRight"><i>{{ data.vermarktung }}</i></td>
+                <td class="borderTop borderBottom borderLeft borderRight" colspan="3"><i>{{ data.vermarktung }}</i></td>
             </tr>
-
-            <!-- <tr>
-                <td class="borderTop borderBottom borderLeft">Sonstiges</td>
-                <td class="borderTop borderBottom borderLeft" colspan="3"><i>{{ data.anlage_sonstiges }}</i></td>
-            </tr> -->
             <tr>
-                <td class="borderTop borderBottom borderLeft">Fernsteuerung</td>
-                <td class="borderTop borderBottom borderLeft borderRight" colspan="3"><i>{{ data.anlage_fernsteuerung }}</i></td>
+                <td class="borderTop borderLeft" colspan="2">Zählpunktbezeichnung oder <nobr>Vorgangs-/Registrier-Nr:</nobr></td>
+                <td class="borderTop borderLeft borderRight" colspan="4"><i>{{ data.registrnr }}{{ data.zaehlbezeichn }}</i></td>
+            </tr>
+            <tr>
+                <td class="borderTop borderBottom borderLeft">Fernsteuerung:</td>
+                <td class="borderTop borderBottom borderLeft borderRight" colspan="5"><i>{{ data.anlage_fernsteuerung }}</i></td>
             </tr>
         </table>
 
         <br/>
         <br/>
 
-        <h3>II) Vermarktungsstart und Vertragslaufzeit (vgl. § 4 AVB kleine PV):</h3>
+        <h3>II) Vermarktungsstart und Vertragslaufzeit (vgl. § 4 AVB PV unter 800 kW)</h3>
 
         <table cellspacing="0">
             <tr>
                 <td class="borderTop borderBottom borderLeft">
-                    Angestrebter Vermarktungsstart:
+                    <b>Angestrebter Vermarktungsstart:</b>
                     <br/>
                     <br/>
                     <i>{{ data.beginvermarktung }}</i>
                 </td>
                 <td class="borderTop borderBottom borderLeft">
-                    Mindestvertragslaufzeit ab tatsächlichem Vermarktungsstart:
+                    <b>Mindestvertragslaufzeit ab tatsächlichem Vermarktungsstart:</b>
                     <br/>
                     <br/>
                     24 Monate
                 </td>
                 <td class="borderTop borderBottom borderLeft borderRight">
-                    Kündigungsfrist zum Ende der Vertragslaufzeit
+                    <b>Kündigungsfrist zum Ende der Vertragslaufzeit:</b>
                     <br/>
                     <br/>
                     3 Monate
@@ -187,11 +186,13 @@
             </tr>
         </table>
 
+
         <div class="newpage"></div>
+        <div class="pageNumber">Seite 2 von 2</div>
 
         <h3>III) Vergütung und Entgelt</h3>
         <ol>
-            <li>Auszahlungsbetrag (vgl. § 2 AVB kleine PV):
+            <li>Auszahlungsbetrag (vgl. § 2 AVB PV unter 800 kW):
                 <br/><br/>
 
                 <table style="width:50%;margin-left:15px;">
@@ -209,7 +210,9 @@
                     </tr>
                 </table>
             </li>
-            <li>Vergütung des gelieferten Stroms (vgl. § 2 Ziffer 3.1 AVB kleine PV)
+            <li>Stundenkontraktwert der jeweiligen Lieferstunde der Strombörse EPEX Spot SE in € / kWh (abrufbar unter www.netztransparenz.de)
+
+                <!-- Vergütung des gelieferten Stroms (vgl. § 2 Ziffer 3.1 AVB PV unter 800 kW)
                 <br/><br/>
                 <table cellspacing="0">
                     <tr>
@@ -223,15 +226,15 @@
                 </table>
 
                 <div style="text-align:right;opacity:0.5;">* abrufbar unter www.netztransparenz.de
-                </div>
+                </div> -->
 
             </li>
-            <li>Vermarktungsentgelt (vgl. § 2 Ziffer 3.2 AVB kleine PV)
+            <li>Vermarktungsentgelt (vgl. § 2 Ziffer 3.2 AVB PV unter 800 kW)
                 <br/><br/>
                 <table cellspacing="0">
                     <tr>
-                        <td class="borderTop  borderLeft"> Installierte Leistung (kWPeak) </td>
-                        <td class="borderTop  borderLeft borderRight"> Vermarktungsentgelt</td>
+                        <td class="borderTop  borderLeft"> Installierte Nennleistung (kW<sub>Peak</sub>) </td>
+                        <td class="borderTop  borderLeft borderRight"> Vermarktungsentgelt pro Monat</td>
                     </tr>
                     <tr>
                         <td class="borderTop borderBottom borderLeft"> bis 150 kW </td>
@@ -256,18 +259,19 @@
         <h3>IV) Abrechnungsdaten</h3>
 
         <table cellspacing="0">
+            <tr>
+                <td style="width:20%" class="borderTop borderLeft">Kontoinhaber:</td>
+                <td class="borderTop borderLeft" colspan="3"><i>{{ data.konto_inhaber }}</i></td>
+<!--                 <td style="width:20%" class="borderTop borderLeft"></td>
+                <td class="borderTop borderLeft borderRight"><i></i></td>
+ -->
+            </tr>
 
             <tr>
-                <td class="borderTop borderLeft">IBAN/Kontonummer:</td>
-                <td class="borderTop borderLeft"><i>{{ data.konto_iban }} {{ data.konto_nr }}</i></td>
-                <td class="borderTop borderLeft">BIC/Bankleitzahl:</td>
-                <td class="borderTop borderLeft borderRight"><i>{{ data.konto_bic }}</i></td>
-            </tr>
-            <tr>
-                <td class="borderTop borderLeft">Kontoinhaber:</td>
-                <td class="borderTop borderLeft"><i>{{ data.konto_inhaber }}</i></td>
-                <td class="borderTop borderLeft">KreditIinstitut:</td>
-                <td class="borderTop borderLeft borderRight"><i>{{ data.konto_institut }}</i></td>
+                <td class="borderTop borderLeft">IBAN:</td>
+                <td class="borderTop borderLeft"><i>{{ data.konto_iban }}</i></td>
+                <td class="borderTop borderLeft">BIC:</td>
+                <td class="borderTop borderLeft borderRight"><i>{{ data.konto_bic }}</i></td> 
             </tr>
             <tr>
                 <td class="borderTop borderBottom borderLeft">Ust-ID:</td>
@@ -281,8 +285,12 @@
 
 
 
-        <br/><br/>
-        Hiermit erkläre ich, dass ich die Allgemeinen Vermarktungsbedingungen für kleine Photovoltaik-Anlagen der Next Kraftwerke GmbH vom 13.1.2016 (AVB PV klein) zur Kenntnis genommen habe und akzeptiere (einsehbar unter URL).
+        <br/>
+        <br/>
+        Der Vertrag über die Direktvermarktung o.g. Photovoltaik-Anlage kommt durch die von Next Kraftwerke an Sie versandte Auftragsbestätigung zu Stande.
+        <br/>
+        <br/>
+        Hiermit erkläre ich, dass ich die Allgemeinen Vermarktungsbedingungen für kleine Photovoltaik-Anlagen der Next Kraftwerke GmbH vom 14.1.2016 in der Version 16.0 (AVB PV unter 800 kW) zur Kenntnis genommen habe und akzeptiere (einsehbar unter <a href="https://www.next-kraftwerke.de/avb-pv-unter-800kw">https://www.next-kraftwerke.de/avb-pv-unter-800kw</a>).
         <br/><br/>
         <br/><br/>
         Mit freundlichen Grüßen,
@@ -318,6 +326,7 @@
         </table>
 
         <div class="newpage"></div>
+        <div class="pageNumber"></div>
 
 
         <h2>Bestätigung und Vollmacht</h2>
@@ -332,7 +341,7 @@
             </tr>
             <tr>
                 <td valign="top" class=""><br/>Adresse:</td>
-                <td valign="top" class="borderBottom"><br/><i>{{ data.strasse }} {{ data.strassenr }}, {{ data.plz }} {{ data.ort }}, Deutschland</i></td>
+                <td valign="top" class="borderBottom"><br/><i>{{ data.strasse }} {{ data.strassenr }}, {{ data.plz }} {{ data.ort }}, {{ data.land }}</i></td>
             </tr>
             <tr>
                 <td valign="top" class=""><br/>vertreten durch:</td>
@@ -341,7 +350,7 @@
         </table>
 
         <br/><br/>
-        Mit der Next Kraftwerke GmbH besteht ein Vertrag über den Bezug und die Vermarktung von Strom aus Energieerzeugungsanlage(n) im Rahmen der EEG-Direktvermarktung Dieser Vertrag betrifft die nachstehende Anlage:
+        Mit der Next Kraftwerke GmbH besteht ein Vertrag über den Bezug und die Vermarktung von Strom aus Energieerzeugungsanlage(n) im Rahmen der EEG-Direktvermarktung. Dieser Vertrag betrifft die nachstehende Anlage:
         <br/><br/>
 
         <table cellspacing="0">
@@ -359,7 +368,7 @@
             </tr>
             <tr>
                 <td valign="top" class=""><br/>Zählpunktbezeichnung:</td>
-                <td valign="top" class="borderBottom"><br/><i>{{ data.zaehlernr }}</i></td>
+                <td valign="top" class="borderBottom"><br/><i>{{ data.zaehlbezeichn }}</i></td>
             </tr>
         </table>
         <br/><br/>

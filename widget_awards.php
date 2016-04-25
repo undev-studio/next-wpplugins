@@ -31,6 +31,7 @@ class nextAwardsWidget extends unWidget
         $instance = wp_parse_args( (array) $instance, array(
             'title' => '',
             'text' => '',
+            'mediaCategory' => '',
             ));
 
         echo $this->getWidgetInput(
@@ -44,6 +45,12 @@ class nextAwardsWidget extends unWidget
             $this->get_field_id('text'),
             $this->get_field_name('text'),
             $instance['text']);
+
+        echo $this->getWidgetMediaCategory(
+            'media',
+            $this->get_field_id('mediaCategory'),
+            $this->get_field_name('mediaCategory'),
+            $instance['mediaCategory']);
 
 
     }
@@ -66,7 +73,7 @@ class nextAwardsWidget extends unWidget
         echo'<h3>'.$instance['title'].'</h3>';
         if($instance['text']!='') echo'<p class="space-bottom">'.$instance['text'].'</p>';
 
-        echo'<div id="next_awards"></div>';
+        echo'<div id="next_awards" data-catid="'.$instance['mediaCategory'].'"></div>';
         echo'</div>';
 
 

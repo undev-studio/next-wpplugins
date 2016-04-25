@@ -34,7 +34,13 @@ function insertHrefLang($post)
     
     for($i=0;$i<$num+1;$i++)
     {
-        if(isset($url[$i])) echo '<link rel="alternate" hreflang="'.$lang[$i].'-'.$country[$i].'" href="'.$url[$i].'" />'."\n";
+        $str=$lang[$i];
+        if($country[$i]!='')
+        {
+            $str.='-';
+            $str.=$country[$i];
+        }
+        if(isset($url[$i])) echo '<link rel="alternate" hreflang="'.$str.'" href="'.$url[$i].'" />'."\n";
     }
 
 }
@@ -52,7 +58,7 @@ add_action( 'add_meta_boxes', 'hreflang_add_custom_meta_box' );
 
 function hreflang_addLine($which)
 {
-    $countries=Array( 'at','de','fr','be','nl','pl','uk');
+    $countries=Array( 'x-default','at','de','fr','be','nl','pl','gb','en');
 
     echo '<p>';
     echo '    Sprache:';
@@ -68,13 +74,18 @@ function hreflang_addLine($which)
 
     echo '    Land:';
     echo '    <select name="hreflang_country[]">';
+    echo '        <option value="">-</option>';
 
+    $count=0;
     foreach ($countries as $key => $value)
     {
-        $sel='';
-        if(hreflang_get_custom_field( 'hreflang_country' )[$which]==$value)$sel="selected";
-        echo '<option '.$sel.' value="'.$value.'">'.$value.'</option>';
-        // echo '<option value="'.$value.'">'.$value.'</option>';
+        if($count!=0)
+        {
+            $sel='';
+            if(hreflang_get_custom_field( 'hreflang_country' )[$which]==$value)$sel="selected";
+            echo '<option '.$sel.' value="'.$value.'">'.$value.'</option>';
+        }
+        $count++;
     }
 
     echo '    </select>';
@@ -99,8 +110,11 @@ function hrefLangMB_output( $post )
     
     for($i=0;$i<$num+1;$i++)
     {
+        if($i==$num) echo '<b>Create new:</b><br/>';
         hreflang_addLine($i);
     }
+
+    echo '<input name="save" type="submit" class="button button-primary button-large" id="publish" value="Add">';
     
 }
 

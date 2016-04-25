@@ -70,7 +70,7 @@ function next_cleverreach_ajax_callback()
 }
 
 add_action( 'wp_ajax_next_cleverreach', 'next_cleverreach_ajax_callback' );
-
+add_action( 'wp_ajax_nopriv_next_cleverreach', 'next_cleverreach_ajax_callback' );
 
 class nextCleverreachWidget extends WP_Widget
 {
@@ -234,7 +234,7 @@ echo '  <h3>'.$instance['title'].'</h3>';
         echo '  <br/><br/>';
         echo '  <input id="cleverreachemail" placeholder="E-Mail Adresse" type="text" />';
         echo '  <br/>';
-        echo '  <input type="submit" value="Anmelden" class="button" onclick="testajax();"/>';
+        echo '  <input type="submit" value="Anmelden" class="button" onclick="subscribeNewsLetter();"/>';
 
         echo '</div>';
 
