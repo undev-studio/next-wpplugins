@@ -1,0 +1,218 @@
+{
+    "title":"Key Data",
+    "id":"keydata",
+    "vars":
+    [
+        {
+            "title":"Title", 
+            "name":"title", 
+            "input":"input",
+            "default":"Lorem Ipsum"
+        },
+        {
+            "title":"Title Icon", 
+            "name":"icon", 
+            "input":"select",
+            "options":
+            [
+                {"name":"-","value":""},
+                {"name":"Telefon","value":"f095"},
+                {"name":"E-Mail","value":"f003"},
+                {"name":"Ihr neuer Stromtarif","value":"f153"},
+                {"name":"FAQs","value":"f05a"},
+                {"name":"Mitmachen","value":"f090"},
+                {"name":"Nützliche Downloads","value":"f019"},
+                {"name":"Hilfreiche Links","value":"f0c1"},
+                {"name":"Redneranfrage","value":"f0e6"},
+                {"name":"Kennzahlen","value":"f03a"},
+                {"name":"Treffen Sie uns","value":"f073"},
+                {"name":"Mini-Erlösrechner","value":"f1ec"},
+                {"name":"Flex-Heft bestellen","value":"f07a"},
+                {"name":"Social Twitter","value":"f099"},
+                {"name":"Social Facebook","value":"f09a"},
+                {"name":"Social Google+","value":"f0d5"},
+                {"name":"List Arrow","value":"f0a9"}
+
+            ]
+        },
+        {
+            "title":"Text", 
+            "name":"text", 
+            "input":"textarea",
+            "default":"Lorem ipsum dolor sit amet"
+        },
+
+
+
+        {
+            "title":"Number 1", 
+            "name":"number1", 
+            "input":"input",
+            "default":"100%"
+        },
+        {
+            "title":"Title 1", 
+            "name":"title1", 
+            "input":"input",
+            "default":"Lorem ipsum dolor"
+        },
+
+
+
+        {
+            "title":"Number 2", 
+            "name":"number2", 
+            "input":"input",
+            "default":"200%"
+        },
+        {
+            "title":"Title 2", 
+            "name":"title2", 
+            "input":"input",
+            "default":"Lorem ipsum dolor"
+        },
+
+
+
+        {
+            "title":"Number 3", 
+            "name":"number3", 
+            "input":"input",
+            "default":"300%"
+        },
+        {
+            "title":"Title 3", 
+            "name":"title3", 
+            "input":"input",
+            "default":"Lorem ipsum dolor"
+        },
+
+
+
+
+        {
+            "title":"Number 4", 
+            "name":"number4", 
+            "input":"input",
+            "default":"400%"
+        },
+        {
+            "title":"Title 4", 
+            "name":"title4", 
+            "input":"input",
+            "default":"Lorem ipsum dolor"
+        },
+
+
+
+
+        {
+            "title":"Number 5", 
+            "name":"number5", 
+            "input":"input",
+            "default":"500%"
+        },
+        {
+            "title":"Title 5", 
+            "name":"title5", 
+            "input":"input",
+            "default":"Lorem ipsum dolor"
+        },
+
+
+
+
+        {
+            "title":"Number 6", 
+            "name":"number6", 
+            "input":"input",
+            "default":"600%"
+        },
+        {
+            "title":"Title 6", 
+            "name":"title6", 
+            "input":"input",
+            "default":"Lorem ipsum dolor"
+        },
+
+
+
+
+        {
+            "title":"Number 7", 
+            "name":"number7", 
+            "input":"input",
+            "default":"700%"
+        },
+        {
+            "title":"Title 7", 
+            "name":"title7", 
+            "input":"input",
+            "default":"Lorem ipsum dolor"
+        },
+
+
+
+
+        {
+            "title":"Number 8", 
+            "name":"number8", 
+            "input":"input",
+            "default":"800%"
+        },
+        {
+            "title":"Title 8", 
+            "name":"title8", 
+            "input":"input",
+            "default":"Lorem ipsum dolor"
+        },
+
+
+
+
+        {
+            "title":"Number 9", 
+            "name":"number9", 
+            "input":"input",
+            "default":"900%"
+        },
+        {
+            "title":"Title 9", 
+            "name":"title9", 
+            "input":"input",
+            "default":"Lorem ipsum dolor"
+        },
+
+
+
+
+        {
+            "title":"Number 10", 
+            "name":"number10", 
+            "input":"input",
+            "default":"1000%"
+        },
+        {
+            "title":"Title 10", 
+            "name":"title10", 
+            "input":"input",
+            "default":"Lorem ipsum dolor"
+        }
+
+
+
+
+
+
+
+
+
+
+    ]
+
+
+
+}
+
+
+

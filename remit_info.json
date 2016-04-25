@@ -1,0 +1,61 @@
+{
+    "title":"Remit",
+    "tablename":"next_remit_info",
+    "path":"next_content/remit_info.php",
+    "idName":"id",
+    "sortable":false,
+    "orderby":"pubdate DESC",
+
+    "vars":
+    [
+        {
+            "title":"Company",
+            "name":"company",
+            "input":"input",
+            "visible":true,
+            "editable":true,
+            "default":"-"
+        },
+        {
+            "title":"Title",
+            "name":"title",
+            "input":"input",
+            "editable":true,
+            "default":""
+        },
+        {
+            "title":"Comment",
+            "name":"comment",
+            "input":"input",
+            "editable":true,
+            "default":""
+        },
+        {
+            "title":"Date of Occasion",
+            "name":"date",
+            "input":"date",
+            "visible":false,
+            "editable":true,
+            "default":""
+        },
+        {
+            "title":"Publication Date",
+            "name":"pubdate",
+            "input":"date",
+            "visible":false,
+            "editable":true,
+            "default":""
+        }
+
+
+    ],
+
+    "l":
+    {
+        "edit":"Bearbeiten",
+        "save":"Speichern",
+        "delete":"Löschen",
+        "create":"Neuen Eintrag erstellen",
+        "save_order":"Reihenfolge speichern"
+    }
+}

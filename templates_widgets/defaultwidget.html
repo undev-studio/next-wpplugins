@@ -1,0 +1,59 @@
+
+
+{% if data.widget_image %}
+    <div 
+        onclick="{% if data.widget_link %}document.location.href='{{data.widget_link}}';{% endif %}" 
+        class="{% if data.widget_link %}clickable{% endif %}">
+            <img class="responsive-img" src="{{data.widget_image}}"/>
+    </div>
+{% endif %}
+
+<div 
+    onclick="{% if data.widget_link %}document.location.href='{{data.widget_link}}';{% endif %}" 
+    class="bgbox {% if data.widget_link %}clickable{% endif %}">
+        {% if data.widget_icon %}
+            <span class="bigGreenIcon" style="float:left">&#x{{data.widget_icon}};</span>
+            <div style="float:left;margin-left:5px;">
+        {% endif %}
+        
+        <h3>
+            {{data.widget_title}}
+        </h3>
+
+        {% if data.widget_icon %}
+            </div>
+            <div class="clear"></div>
+        {% endif %}
+
+    <p>
+        {{data.widget_text|raw|nl2br}}
+    </p>
+
+
+    {% if data.widget_iconlineicon1 %}
+        <div class="iconline">
+            <div class="roundwhiteicon left">&#x{{data.widget_iconlineicon1}};</div>
+            <div class="left title">{{ data.widget_iconline1|raw }}</div>
+            <div class="clear"></div>
+        </div>
+    {% endif %}
+
+    {% if data.widget_iconlineicon2 %}
+        <div class="iconline">
+            <div class="roundwhiteicon left">&#x{{data.widget_iconlineicon2}};</div>
+            <div class="left title">{{ data.widget_iconline2|raw }}</div>
+            <div class="clear"></div>
+        </div>
+    {% endif %}
+
+    {% if data.widget_iconlineicon3 %}
+        <div class="iconline">
+            <div class="roundwhiteicon left">&#x{{data.widget_iconlineicon3}};</div>
+            <div class="left title">{{ data.widget_iconline3|raw }}</div>
+            <div class="clear"></div>
+        </div>
+    {% endif %}
+
+
+
+</div>

@@ -1,0 +1,244 @@
+{
+    "title":"Accordion Link List",
+    "id":"accordionlinklist",
+    "vars":
+    [
+        {
+            "title":"Title", 
+            "name":"title", 
+            "input":"input",
+            "default":"Lorem ipsum dolor sit amet"
+        },
+        {
+            "title":"Title Icon", 
+            "name":"icon", 
+            "input":"select",
+            "options":
+            [
+                {"name":"-","value":""},
+                {"name":"Telefon","value":"f10b"},
+                {"name":"E-Mail","value":"f003"},
+                {"name":"Ihr neuer Stromtarif","value":"f153"},
+                {"name":"FAQs","value":"f129"},
+                {"name":"Mitmachen","value":"f090"},
+                {"name":"Nützliche Downloads","value":"f019"},
+                {"name":"Hilfreiche Links","value":"f0c1"},
+                {"name":"Redneranfrage","value":"f0e6"},
+                {"name":"Kennzahlen","value":"f03a"},
+                {"name":"Treffen Sie uns","value":"f073"},
+                {"name":"Mini-Erlösrechner","value":"f1ec"},
+                {"name":"Flex-Heft bestellen","value":"f07a"},
+                {"name":"Social Twitter","value":"f099"},
+                {"name":"Social Facebook","value":"f082"},
+                {"name":"Social Google+","value":"f0d5"},
+                {"name":"List Arrow","value":"f0a9"}
+
+            ]
+        },
+        {
+            "title":"Text", 
+            "name":"text", 
+            "input":"textarea",
+            "default":"Lorem ipsum dolor sit amet"
+        },
+        {
+            "title":"Link Title 1", 
+            "name":"link1", 
+            "input":"input",
+            "default":""
+        },
+        {
+            "title":"URL 1", 
+            "name":"url1", 
+            "input":"input",
+            "default":""
+        },
+        {
+            "title":"Icon 1", 
+            "name":"icon1", 
+            "input":"select",
+            "options":
+            [
+                {"name":"-","value":""},
+                {"name":"Telefon","value":"f10b"},
+                {"name":"E-Mail","value":"f003"},
+                {"name":"Ihr neuer Stromtarif","value":"f153"},
+                {"name":"FAQs","value":"f129"},
+                {"name":"Mitmachen","value":"f090"},
+                {"name":"Nützliche Downloads","value":"f019"},
+                {"name":"Hilfreiche Links","value":"f0c1"},
+                {"name":"Redneranfrage","value":"f0e6"},
+                {"name":"Kennzahlen","value":"f03a"},
+                {"name":"Treffen Sie uns","value":"f073"},
+                {"name":"Mini-Erlösrechner","value":"f1ec"},
+                {"name":"Flex-Heft bestellen","value":"f07a"},
+                {"name":"Social Twitter","value":"f099"},
+                {"name":"Social Facebook","value":"f082"},
+                {"name":"Social Google+","value":"f0d5"},
+                {"name":"List Arrow","value":"f0a9"}
+
+            ]
+        },
+
+
+
+        {
+            "title":"Link Title 2", 
+            "name":"link2", 
+            "input":"input",
+            "default":""
+        },
+        {
+            "title":"URL 2", 
+            "name":"url2", 
+            "input":"input",
+            "default":""
+        },
+        {
+            "title":"Icon 2", 
+            "name":"icon2", 
+            "input":"select",
+            "options":
+            [
+                {"name":"-","value":""},
+                {"name":"Telefon","value":"f10b"},
+                {"name":"E-Mail","value":"f003"},
+                {"name":"Ihr neuer Stromtarif","value":"f153"},
+                {"name":"FAQs","value":"f129"},
+                {"name":"Mitmachen","value":"f090"},
+                {"name":"Nützliche Downloads","value":"f019"},
+                {"name":"Hilfreiche Links","value":"f0c1"},
+                {"name":"Redneranfrage","value":"f0e6"},
+                {"name":"Kennzahlen","value":"f03a"},
+                {"name":"Treffen Sie uns","value":"f073"},
+                {"name":"Mini-Erlösrechner","value":"f1ec"},
+                {"name":"Flex-Heft bestellen","value":"f07a"},
+                {"name":"Social Twitter","value":"f099"},
+                {"name":"Social Facebook","value":"f082"},
+                {"name":"Social Google+","value":"f0d5"},
+                {"name":"List Arrow","value":"f0a9"}
+
+            ]
+        },
+
+
+        {
+            "title":"Link Title 3", 
+            "name":"link3", 
+            "input":"input",
+            "default":""
+        },
+        {
+            "title":"URL 3", 
+            "name":"url3", 
+            "input":"input",
+            "default":""
+        },
+        {
+            "title":"Icon 3", 
+            "name":"icon3", 
+            "input":"select",
+            "options":
+            [
+                {"name":"-","value":""},
+                {"name":"Telefon","value":"f10b"},
+                {"name":"E-Mail","value":"f003"},
+                {"name":"Ihr neuer Stromtarif","value":"f153"},
+                {"name":"FAQs","value":"f129"},
+                {"name":"Mitmachen","value":"f090"},
+                {"name":"Nützliche Downloads","value":"f019"},
+                {"name":"Hilfreiche Links","value":"f0c1"},
+                {"name":"Redneranfrage","value":"f0e6"},
+                {"name":"Kennzahlen","value":"f03a"},
+                {"name":"Treffen Sie uns","value":"f073"},
+                {"name":"Mini-Erlösrechner","value":"f1ec"},
+                {"name":"Flex-Heft bestellen","value":"f07a"},
+                {"name":"Social Twitter","value":"f099"},
+                {"name":"Social Facebook","value":"f082"},
+                {"name":"Social Google+","value":"f0d5"},
+                {"name":"List Arrow","value":"f0a9"}
+
+            ]
+        },
+
+
+        {
+            "title":"Link Title 4", 
+            "name":"link4", 
+            "input":"input",
+            "default":""
+        },
+        {
+            "title":"URL 4", 
+            "name":"url4", 
+            "input":"input",
+            "default":""
+        },
+        {
+            "title":"Icon 4", 
+            "name":"icon4", 
+            "input":"select",
+            "options":
+            [
+                {"name":"-","value":""},
+                {"name":"Telefon","value":"f10b"},
+                {"name":"E-Mail","value":"f003"},
+                {"name":"Ihr neuer Stromtarif","value":"f153"},
+                {"name":"FAQs","value":"f129"},
+                {"name":"Mitmachen","value":"f090"},
+                {"name":"Nützliche Downloads","value":"f019"},
+                {"name":"Hilfreiche Links","value":"f0c1"},
+                {"name":"Redneranfrage","value":"f0e6"},
+                {"name":"Kennzahlen","value":"f03a"},
+                {"name":"Treffen Sie uns","value":"f073"},
+                {"name":"Mini-Erlösrechner","value":"f1ec"},
+                {"name":"Flex-Heft bestellen","value":"f07a"},
+                {"name":"Social Twitter","value":"f099"},
+                {"name":"Social Facebook","value":"f082"},
+                {"name":"Social Google+","value":"f0d5"},
+                {"name":"List Arrow","value":"f0a9"}
+
+            ]
+        },
+
+
+        {
+            "title":"Link Title 5", 
+            "name":"link5", 
+            "input":"input",
+            "default":""
+        },
+        {
+            "title":"URL 5", 
+            "name":"url5", 
+            "input":"input",
+            "default":""
+        },
+        {
+            "title":"Icon 5", 
+            "name":"icon5", 
+            "input":"select",
+            "options":
+            [
+                {"name":"-","value":""},
+                {"name":"Telefon","value":"f10b"},
+                {"name":"E-Mail","value":"f003"},
+                {"name":"Ihr neuer Stromtarif","value":"f153"},
+                {"name":"FAQs","value":"f129"},
+                {"name":"Mitmachen","value":"f090"},
+                {"name":"Nützliche Downloads","value":"f019"},
+                {"name":"Hilfreiche Links","value":"f0c1"},
+                {"name":"Redneranfrage","value":"f0e6"},
+                {"name":"Kennzahlen","value":"f03a"},
+                {"name":"Treffen Sie uns","value":"f073"},
+                {"name":"Mini-Erlösrechner","value":"f1ec"},
+                {"name":"Flex-Heft bestellen","value":"f07a"},
+                {"name":"Social Twitter","value":"f099"},
+                {"name":"Social Facebook","value":"f082"},
+                {"name":"Social Google+","value":"f0d5"},
+                {"name":"List Arrow","value":"f0a9"}
+
+            ]
+        }
+    ]
+}
