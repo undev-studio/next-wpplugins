@@ -32,16 +32,42 @@ foreach ($posts as &$item)
 {
     $newItem = $feed->createNewItem();
 
-    $newItem->setTitle($item->title);
-    $newItem->setLink('https://www.next-kraftwerke.de/remit');
-    $newItem->setDescription(
-        ''.$item->comment
-        .'<br/>'
-        .'<br/>Date of occasion: '.date('j.n.Y',strtotime($item->date))
-        .'<br/>Company: '.$item->company
-        );
 
-    $newItem->setDate($item->pubdate);
+    if(isset($item->facility) && $item->facility!='')
+    {
+        $newItem->setTitle($item->company.' '.$item->facility.' '.$item->status);
+        $newItem->setDescription(''
+            .'Company: '.$item->company
+            .'<br/>Facility: '.$item->facility
+            .'<br/>Status: '.$item->status
+            .'<br/>Source: '.$item->source
+            .'<br/>Start: '.date('j.n.Y ',strtotime($item->start))
+            .'<br/>Estimated End: '.date('j.n.Y ',strtotime($item->end))
+            .'<br/>Installed Capacity: '.$item->capacity_installed
+            .'<br/>Available Capacity: '.$item->capacity_available
+            .'<br/>Cause: '.$item->cause
+            .'<br/>Comment: '.$item->comment
+            .'<br/>Last Update: '.date('j.n.Y H:i',strtotime($item->last_update))
+            );
+
+        $newItem->setDate($item->pubdate);        
+
+    }
+    else
+    {
+        $newItem->setTitle($item->title);
+        $newItem->setDescription(
+            ''.$item->comment
+            .'<br/>'
+            .'<br/>Date of occasion: '.date('j.n.Y H:i',strtotime($item->date))
+            .'<br/>Company: '.$item->company
+            );
+
+        $newItem->setDate($item->pubdate);        
+    }
+    $newItem->setLink('https://www.next-kraftwerke.de/remit');
+
+
     $newItem->setId('https://www.next-kraftwerke.de/remit?id='.$item->id, true);
 
     $feed->addItem($newItem);
