@@ -1,0 +1,48 @@
+{
+    "title":"Widgets",
+    "tablename":"next_widgets",
+    "path":"next_content/next_widgets.php",
+    "idName":"id",
+    "sortable":false,
+    "orderby":"title",
+    
+    "vars":
+    [
+        { 
+            "title":"Titel", 
+            "name":"title", 
+            "input":"input",
+            "visible":true,
+            "editable":true,
+            "default":"Neuer Titel"
+        },
+        { 
+            "title":"Modul", 
+            "name":"rowfile", 
+            "input":"selectTemplate",
+            "visible":true,
+            "editable":true,
+            "default":""
+        },
+        { 
+            "title":"rowdata", 
+            "name":"rowdata", 
+            "input":"textarea",
+            "visible":false,
+            "editable":false,
+            "default":""
+        }
+
+    ],
+
+    "l":
+    {
+        "edit":"Bearbeiten",
+        "save":"Speichern",
+        "delete":"Löschen",
+        "create":"Neuen Eintrag erstellen",
+        "save_order":"Reihenfolge speichern",
+        "list":"Zurück zur Liste"
+    }
+}
+

@@ -1,0 +1,58 @@
+
+
+<div class="bgbox">
+    
+    <h3 class="clickable accordion-header closed" style="margin:0px;padding:0px;" data-amount="2">
+
+        {% if data.widget_icon %}
+            <span class="bigGreenIcon" style="float:left;margin-bottom:0px;padding-top:0px;">&#x{{data.widget_icon}};</span>
+            <div style="float:left;margin-left:5px;">
+        {% endif %}
+        
+        {% if data.widget_title %}{{data.widget_title}}{% endif %}
+
+        {% if data.widget_icon %}
+            </div>
+            <div class="clear"></div>
+        {% endif %}
+
+    </h3>
+
+    <div class="space-top">
+        {{data.widget_text|nl2br|raw}}
+        <br/><br/>
+        <ul>
+            {% if data.widget_url1 %}
+                <li class="bullet">
+                    {% if data.widget_icon1 %}<a class="widgetIcon"  href="{{data.widget_url5}}">&#x{{data.widget_icon1}};</a>{% endif %}
+                    <a href="{{data.widget_url1}}">{{data.widget_link1}}</a>
+                </li>
+            {% endif %}
+            {% if data.widget_url2 %}
+                <li class="bullet">
+                    {% if data.widget_icon2 %}<a class="widgetIcon"  href="{{data.widget_url5}}">&#x{{data.widget_icon2}};</a>{% endif %}
+                    <a href="{{data.widget_url2}}">{{data.widget_link2}}</a>
+                </li>
+            {% endif %}
+            {% if data.widget_url3 %}
+                <li class="bullet">
+                    {% if data.widget_icon3 %}<a class="widgetIcon"  href="{{data.widget_url5}}">&#x{{data.widget_icon3}};</a>{% endif %}
+                    <a href="{{data.widget_url3}}">{{data.widget_link3}}</a>
+                </li>
+            {% endif %}
+            {% if data.widget_url4 %}
+                <li class="bullet">
+                    {% if data.widget_icon4 %}<a class="widgetIcon"  href="{{data.widget_url5}}">&#x{{data.widget_icon4}};</a>{% endif %}
+                    <a href="{{data.widget_url4}}">{{data.widget_link4}}</a>
+                </li>
+            {% endif %}
+            {% if data.widget_url5 %}
+                <li class="bullet">
+                    {% if data.widget_icon5 %}<a class="widgetIcon" href="{{data.widget_url5}}">&#x{{data.widget_icon5}};</a>{% endif %}
+                    <a href="{{data.widget_url5}}">{{data.widget_link5}}</a>
+                </li>
+            {% endif %}
+        </ul>
+
+    </div>
+</div>

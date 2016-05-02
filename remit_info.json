@@ -1,0 +1,133 @@
+{
+    "title":"Remit",
+    "tablename":"next_remit_info",
+    "path":"next_content/remit_info.php",
+    "idName":"id",
+    "sortable":false,
+    "orderby":"pubdate DESC",
+
+    "vars":
+    [
+        {
+            "title":"Company",
+            "name":"company",
+            "input":"input",
+            "visible":true,
+            "editable":true,
+            "default":"-"
+        },
+        {
+            "title":"Title",
+            "name":"title",
+            "input":"input",
+            "editable":true,
+            "default":""
+        },
+        {
+            "title":"Comment",
+            "name":"comment",
+            "input":"input",
+            "editable":true,
+            "default":""
+        },
+        {
+            "title":"Date of Occasion",
+            "name":"date",
+            "input":"date",
+            "visible":false,
+            "editable":true,
+            "default":""
+        },
+        {
+            "title":"Publication Date",
+            "name":"pubdate",
+            "input":"date",
+            "visible":false,
+            "editable":true,
+            "default":""
+        },
+
+
+
+        {
+            "title":"Facility",
+            "name":"facility",
+            "input":"input",
+            "editable":true,
+            "default":""
+        },
+        {
+            "title":"Status",
+            "name":"status",
+            "input":"input",
+            "editable":true,
+            "default":""
+        },
+        {
+            "title":"Energy Source",
+            "name":"source",
+            "input":"input",
+            "editable":true,
+            "default":""
+        },
+        {
+            "title":"Start",
+            "name":"start",
+            "input":"date",
+            "editable":true,
+            "default":""
+        },
+        {
+            "title":"End",
+            "name":"end",
+            "input":"date",
+            "editable":true,
+            "default":""
+        },
+        {
+            "title":"Installed Capacity",
+            "name":"capacity_installed",
+            "input":"input",
+            "editable":true,
+            "default":""
+        },
+        {
+            "title":"Available Capacity",
+            "name":"capacity_available",
+            "input":"input",
+            "editable":true,
+            "default":""
+        },
+        {
+            "title":"Cause",
+            "name":"cause",
+            "input":"input",
+            "editable":true,
+            "default":""
+        },
+        {
+            "title":"Comment",
+            "name":"comment",
+            "input":"input",
+            "editable":true,
+            "default":""
+        },
+        {
+            "title":"Last update",
+            "name":"last_update",
+            "input":"date",
+            "editable":true,
+            "default":""
+        }
+
+    ],
+
+    "l":
+    {
+        "edit":"Bearbeiten",
+        "save":"Speichern",
+        "delete":"Löschen",
+        "create":"Neuen Eintrag erstellen",
+        "save_order":"Reihenfolge speichern"
+    }
+}

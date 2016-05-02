@@ -56,6 +56,15 @@
             "visible":false,
             "editable":true,
             "default":""
+        },
+        { 
+            "title":"Bild Position", 
+            "name":"imgposition", 
+            "input":"select",
+            "visible":true,
+            "editable":true,
+            "default":"1",
+            "options":[{"title":"top","value":"top"},{"title":"center","value":"center"},{"title":"bottom","value":"bottom"}]
         }
     ],
 
