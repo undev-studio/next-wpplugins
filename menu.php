@@ -71,6 +71,12 @@ add_action( 'widgets_init', create_function('', 'return register_widget("nextErl
 require_once('widget_awards.php');
 add_action( 'widgets_init', create_function('', 'return register_widget("nextAwardsWidget");') );
 
+require_once('widget_iconslefttextright.php');
+add_action( 'widgets_init', create_function('', 'return register_widget("nextIconLeftTextRight");') );
+
+
+
+
 add_action('admin_menu', 'next_content_menu');
 
 function next_content_menu()
