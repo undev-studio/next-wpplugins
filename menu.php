@@ -91,16 +91,19 @@ function next_content_menu()
     );
 
 
+    $isAdmin=current_user_can( 'activate_plugins' );
+
     add_submenu_page( 'next_content/news.php', 'News', 'News',                      'publish_posts', 'next_content/news.php' );
-    if(is_admin()) add_submenu_page( 'next_content/news.php', 'Widgets', 'Widgets',                'publish_posts', 'next_content/next_widgets.php' );
+    if($isAdmin) add_submenu_page( 'next_content/news.php', 'Widgets', 'Widgets',                'publish_posts', 'next_content/next_widgets.php' );
     add_submenu_page( 'next_content/news.php', 'Referenzen', 'Referenzen',          'publish_posts', 'next_content/referenzen.php' );
-    if(is_admin()) add_submenu_page( 'next_content/news.php', 'Erloesrechner', 'Erloesrechner',    'publish_posts', 'next_content/erloesrechner.php' );
+    if($isAdmin) add_submenu_page( 'next_content/news.php', 'Erloesrechner', 'Erloesrechner',    'publish_posts', 'next_content/erloesrechner.php' );
     add_submenu_page( 'next_content/news.php', 'EMaillog', 'EMaillog',              'publish_posts', 'next_content/emaillog.php' );
     add_submenu_page( 'next_content/news.php', 'Next Pool', 'Next Pool',            'publish_posts', 'next_content/nextpool.php' );
     add_submenu_page( 'next_content/news.php', 'Jobs', 'Jobs',                      'publish_posts', 'next_content/jobs.php' );
     add_submenu_page( 'next_content/news.php', 'Termine', 'Termine',                'publish_posts', 'next_content/events.php' );
     add_submenu_page( 'next_content/news.php', 'Partner', 'Partner',                'publish_posts', 'next_content/partner.php' );
-    if(is_admin()) add_submenu_page( 'next_content/news.php', 'Remit', 'Remit',                    'publish_posts', 'next_content/remit_info.php' );
+    if($isAdmin) add_submenu_page( 'next_content/news.php', 'Remit', 'Remit',                    'publish_posts', 'next_content/remit_info.php' );
+
 
     // wp_enqueue_script('custom-script','/wp-content/themes/nextkraftwerke/js/jquery-sortable.js',array( 'jquery' ));
 }
