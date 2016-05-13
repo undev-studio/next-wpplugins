@@ -349,7 +349,7 @@
 
                  $email = new PHPMailer();
                  $email->CharSet = 'utf-8';
-                 $email->From      = 'vermarktung@next-kraftwerke.de';
+                 $email->From      = 'ew@next-kraftwerke.de';
                  $email->FromName  = 'Next Kraftwerke';
                  $email->Subject   = 'Direktvermarktung Ihrer PV-Anlage > Dokumente zur Unterschrift';
                  $email->Body      = $body;
@@ -398,7 +398,7 @@
         if($month==11)$month="November";
         if($month==12)$month="Dezember";
 
-        $rows[0]->readableDate=$day.' '.$month.' '.$year;
+        $rows[0]->readableDate=$day.'. '.$month.' '.$year;
 
         if( substr( $rows[0]->beginvermarktung,2,1 )=='.') $rows[0]->beginvermarktung=''.$rows[0]->beginvermarktung;
 

@@ -159,7 +159,7 @@ if($sum!=100000)
     print('<td><input type="text" value="'.$plz->end.'" name="plz_end"/></td>');
     print('<td><input type="text" value="'.$plz->email.'" name="plz_email"/></td>');
     print('<td><input type="submit" class="button-primary" value="Speichern" /></td>');
-    print('<td><a href="?page=nexterloes&delete='.$plz->pkey.'">L&ouml;schen</a></td>');
+    print('<td><a href="admin.php?page=next_content%2Ferloesrechner.php&delete='.$plz->pkey.'">L&ouml;schen</a></td>');
     print('</form>');
     print('</tr>');
   }

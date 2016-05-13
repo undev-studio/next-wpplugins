@@ -71,6 +71,11 @@ add_action( 'widgets_init', create_function('', 'return register_widget("nextErl
 require_once('widget_awards.php');
 add_action( 'widgets_init', create_function('', 'return register_widget("nextAwardsWidget");') );
 
+require_once('widget_iconslefttextright.php');
+add_action( 'widgets_init', create_function('', 'return register_widget("nextIconLeftTextRight");') );
+
+
+
 require_once('next_widget_widget.php');
 add_action( 'widgets_init', create_function('', 'return register_widget("nextWidget");') );
 
