@@ -419,8 +419,8 @@ jQuery(document).ready(function()
                 {
                     print('<img style="width:'.$thumbnailSize.'px;" src="'.$row->$f['name'].'"/> ');
                 }
-                else
-                print($row->$f['name']);
+                else print($row->$f['name']);
+
                 print('</td>');
             }
 
@@ -452,7 +452,7 @@ jQuery(document).ready(function()
         global $wpdb;
         $rows = $wpdb->get_results('SELECT * FROM '.$tablename.' WHERE '.$idName.'='.(int)$_REQUEST['which'].';');
 
-        print('<iframe src="https://staging.next-kraftwerke.de/staff/widget-preview?id='.(int)$_REQUEST['which'].'" style="width:300px;height:900px;position:absolute;right:10px;"></iframe>');
+        print('<iframe src="/staff/widget-preview?id='.(int)$_REQUEST['which'].'" style="width:300px;height:900px;position:absolute;right:10px;"></iframe>');
 
         print('<div class="postbox-container" style="max-width:755px;">');
         print('<div class="postbox">');
@@ -572,7 +572,7 @@ jQuery(document).ready(function()
             print('</tr>');
 
             print('<tr>');
-            print(' <td><br/><br/>');
+            print(' <td colspan="4"><br/><br/>');
             print(' <input type="button" class="button-primary" onClick="saveWidgetForm();" value="'.lang('save').'" />');
             print(' <input type="button" class="button-secondary" onClick="document.location.href=\'admin.php?page=next_content%2Fnext_widgets.php\';" value="'.lang('list').'" />');
 

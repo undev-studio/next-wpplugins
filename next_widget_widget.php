@@ -12,6 +12,8 @@ require_once('widget_.php');
 
 add_action('admin_enqueue_scripts', 'upload_scripts');
 
+
+
 class nextWidget extends unWidget
 {
 
@@ -35,21 +37,35 @@ class nextWidget extends unWidget
 
         if($wpdb->last_error!='') printError($wpdb->last_error);
 
-        echo '<select name="'.$this->get_field_name('module').'">';
+        $widgetTitle='Next Widget';
+
+        echo '<select name="'.$this->get_field_name('module').'" style="max-width: 390px;">';
         foreach( $jobs as $job)
         {
             $sel='';
-            if($job->id==$instance['module'])$sel="SELECTED";
+            if($job->id==$instance['module'])
+            {
+                $widgetTitle='Next Widget: '.$job->title;
+                $sel="SELECTED";
+            }
+
             echo '<option '.$sel.' value="'.$job->id.'">'.$job->title.'</option>';
         }
         
         echo '</select>';
 
         echo $this->getWidgetInputDisplaySize(
-            'Geräte',
+            'Devices',
             $this->get_field_id('displaysize'),
             $this->get_field_name('displaysize'),
             $instance['displaysize']);
+
+        // echo '!!! '.$this->get_field_id('displaysize');
+        // echo '<script>console.log( jQuery(\'#'.$this->get_field_id('displaysize').'\').parent().parent().parent().parent().parent().find("h3").html() );</script>';
+        echo '<script>jQuery(\'#'.$this->get_field_id('displaysize').'\').parent().parent().parent().parent().parent().find("h3").html(\''.$widgetTitle.'\'); </script>';
+
+        // $this->name="test 1234";
+        // $instance['title']='test 1234';
 
     }
 
@@ -58,6 +74,7 @@ class nextWidget extends unWidget
         $instance = $old_instance;
         $instance['title'] = $new_instance['title'];
         $instance['module'] = $new_instance['module'];
+        $instance['displaysize'] = $new_instance['displaysize'];
         return $instance;
     }
 
@@ -87,6 +104,7 @@ class nextWidget extends unWidget
         // $data['title']=$instance['title'];
         // $data['recent']=$recent;
 
+
         global $twig;
         Twig_Autoloader::register();
 
@@ -105,6 +123,7 @@ class nextWidget extends unWidget
                 'data' => $data,
                 'classes' => $this->getDisplaySizeClasses($instance)
             ));
+
 
             echo $html;
         }

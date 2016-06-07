@@ -79,6 +79,12 @@ add_action( 'widgets_init', create_function('', 'return register_widget("nextIco
 require_once('next_widget_widget.php');
 add_action( 'widgets_init', create_function('', 'return register_widget("nextWidget");') );
 
+require_once('next_widget_random.php');
+add_action( 'widgets_init', create_function('', 'return register_widget("nextWidgetRandom");') );
+
+
+
+
 add_action('admin_menu', 'next_content_menu');
 
 function next_content_menu()
