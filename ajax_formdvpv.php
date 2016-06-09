@@ -179,54 +179,56 @@
             $jsonArr['navsteps'][$currentStep]=false;
             if($fromStep >= $currentStep) $jsonArr['errors'][]='zaehlernr';
         }
+
         //  if($_REQUEST['formdata']['eigenverbrauch']=='')
         //  {
         //      $jsonArr['navsteps'][$currentStep]=false;
-         //
+        //
         //      if($fromStep >= $currentStep)
         //         $jsonArr['errors'][]='eigenverbrauch';
         //  }
-         if($_REQUEST['formdata']['anlage_strasse']=='')
-         {
-             $jsonArr['navsteps'][$currentStep]=false;
-             if($fromStep >= $currentStep) $jsonArr['errors'][]='anlage_strasse';
-         }
-         if($_REQUEST['formdata']['anlage_strassenr']=='')
-         {
-             $jsonArr['navsteps'][$currentStep]=false;
-             if($fromStep >= $currentStep) $jsonArr['errors'][]='anlage_strassenr';
-         }
-         if($_REQUEST['formdata']['anlage_plz']=='')
-         {
-             $jsonArr['navsteps'][$currentStep]=false;
-             if($fromStep >= $currentStep) $jsonArr['errors'][]='anlage_plz';
-         }
 
-         if($_REQUEST['formdata']['anlage_ort']=='')
-         {
-             $jsonArr['navsteps'][$currentStep]=false;
-             if($fromStep >= $currentStep) $jsonArr['errors'][]='anlage_ort';
-         }
+        if($_REQUEST['formdata']['anlage_strasse']=='')
+        {
+            $jsonArr['navsteps'][$currentStep]=false;
+            if($fromStep >= $currentStep) $jsonArr['errors'][]='anlage_strasse';
+        }
+        if($_REQUEST['formdata']['anlage_strassenr']=='')
+        {
+            $jsonArr['navsteps'][$currentStep]=false;
+            if($fromStep >= $currentStep) $jsonArr['errors'][]='anlage_strassenr';
+        }
+        if($_REQUEST['formdata']['anlage_plz']=='')
+        {
+            $jsonArr['navsteps'][$currentStep]=false;
+            if($fromStep >= $currentStep) $jsonArr['errors'][]='anlage_plz';
+        }
 
-         if($_REQUEST['formdata']['netzbetreiber']=='')
-         {
-             $jsonArr['navsteps'][$currentStep]=false;
-             if($fromStep >= $currentStep) $jsonArr['errors'][]='netzbetreiber';
-         }
+        if($_REQUEST['formdata']['anlage_ort']=='')
+        {
+            $jsonArr['navsteps'][$currentStep]=false;
+            if($fromStep >= $currentStep) $jsonArr['errors'][]='anlage_ort';
+        }
 
-         if($_REQUEST['formdata']['anlage_fernsteuerung']=='')
-         {
-             $jsonArr['navsteps'][$currentStep]=false;
-             if($fromStep >= $currentStep) $jsonArr['errors'][]='anlage_fernsteuerung';
-         }
+        if($_REQUEST['formdata']['netzbetreiber']=='')
+        {
+            $jsonArr['navsteps'][$currentStep]=false;
+            if($fromStep >= $currentStep) $jsonArr['errors'][]='netzbetreiber';
+        }
 
-         // step 3
-         $currentStep=2;
-         $jsonArr['navsteps'][$currentStep]=true;
+        if($_REQUEST['formdata']['anlage_fernsteuerung']=='')
+        {
+            $jsonArr['navsteps'][$currentStep]=false;
+            if($fromStep >= $currentStep) $jsonArr['errors'][]='anlage_fernsteuerung';
+        }
 
-         // step 4
-         $currentStep=3;
-         $jsonArr['navsteps'][$currentStep]=true;
+        // step 3
+        $currentStep=2;
+        $jsonArr['navsteps'][$currentStep]=true;
+
+        // step 4
+        $currentStep=3;
+        $jsonArr['navsteps'][$currentStep]=true;
 
          // if($_REQUEST['formdata']['konto_format']=='' || $_REQUEST['formdata']['konto_format']=='new' )
          {

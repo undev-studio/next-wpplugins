@@ -1,12 +1,9 @@
 <div class="wrap">
 <h2>Erl&ouml;srechner</h2>
 
-
 <?php
 
-
 $user_reg="";
-
 
 
 global $wpdb;

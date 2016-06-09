@@ -20,7 +20,6 @@ add_action('admin_enqueue_scripts', 'upload_scripts');
 
 class nextJobsWidget extends unWidget
 {
-
     function nextJobsWidget()
     {
         $widget_ops = array('classname' => 'nextJobsWidget', 'description' => '' );
@@ -35,7 +34,7 @@ class nextJobsWidget extends unWidget
             'text' => '',
             'title' => '',
             'displaysize' => ''
-            ) );
+            ));
 
         echo $this->getWidgetInput(
             'title',
@@ -67,8 +66,6 @@ class nextJobsWidget extends unWidget
             $this->get_field_id('displaysize'),
             $this->get_field_name('displaysize'),
             $instance['displaysize']);
-
-
     }
 
     function update($new_instance, $old_instance)
@@ -114,8 +111,6 @@ class nextJobsWidget extends unWidget
         ));
         
         echo $html;
-
-
     }
 }
 

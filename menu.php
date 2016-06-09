@@ -8,17 +8,21 @@ Version: 1
 Author URI: http://undev.de/
 */
 
+
 error_reporting(E_ERROR|E_WARNING);
 ini_set('display_errors', '1');
-
-
 
 // error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
 // ini_set('display_errors', '1');
 
 
+
 require_once('ajax_formdvpv.php');
+require_once('ajax_widget_forms.php');
 require_once('ajax_gallery.php');
+require_once('ajax_erloesrechner.php');
+
+
 
 require_once('widget_footernav.php');
 add_action( 'widgets_init', create_function('', 'return register_widget("next_footernav");') );
@@ -74,6 +78,9 @@ add_action( 'widgets_init', create_function('', 'return register_widget("nextAwa
 require_once('widget_iconslefttextright.php');
 add_action( 'widgets_init', create_function('', 'return register_widget("nextIconLeftTextRight");') );
 
+require_once('widget_form_flexheft.php');
+add_action( 'widgets_init', create_function('', 'return register_widget("nextFormFlexheftWidget");') );
+
 
 
 require_once('next_widget_widget.php');
@@ -95,7 +102,6 @@ function next_content_menu()
         0,
         'next_content/news.php'
     );
-
 
     $isAdmin=current_user_can( 'activate_plugins' );
 
