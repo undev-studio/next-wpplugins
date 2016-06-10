@@ -9,15 +9,15 @@
     "vars":
     [
         { 
-            "title":"Titel", 
+            "title":"Title", 
             "name":"title", 
             "input":"input",
             "visible":true,
             "editable":true,
-            "default":"Neuer Titel"
+            "default":"New Title"
         },
         { 
-            "title":"Start", 
+            "title":"Date Start", 
             "name":"date_start", 
             "input":"date",
             "visible":false,
@@ -25,7 +25,7 @@
             "default":""
         },
         { 
-            "title":"Ende", 
+            "title":"Date End", 
             "name":"date_end", 
             "input":"date",
             "visible":false,
@@ -33,7 +33,7 @@
             "default":""
         },
         { 
-            "title":"Ort", 
+            "title":"City", 
             "name":"city", 
             "input":"input",
             "visible":false,
@@ -126,11 +126,12 @@
 
     "l":
     {
-        "edit":"Bearbeiten",
-        "save":"Speichern",
-        "delete":"Löschen",
-        "create":"Neuen Eintrag erstellen",
-        "save_order":"Reihenfolge speichern"
+        "edit":"Edit",
+        "save":"Save",
+        "delete":"Delete",
+        "create":"Create new Entry",
+        "save_order":"Save Order",
+        "list":"Back to list"
     }
 }
 

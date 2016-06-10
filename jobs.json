@@ -9,7 +9,7 @@
     "vars":
     [
         { 
-            "title":"Titel", 
+            "title":"Title", 
             "name":"title", 
             "input":"input",
             "visible":true,
@@ -26,7 +26,7 @@
             "options":[{"title":"Aktiv","value":"1"},{"title":"Inaktiv","value":"0"}]
         },
         { 
-            "title":"Standort", 
+            "title":"Location", 
             "name":"location", 
             "input":"input",
             "visible":true,
@@ -43,7 +43,7 @@
             "default":""
         },
         { 
-            "title":"Liste 1 Titel", 
+            "title":"Liste 1 Title", 
             "name":"list_title", 
             "input":"input",
             "visible":true,
@@ -51,7 +51,7 @@
             "default":"Ihr Aufgabengebiet"
         },
         { 
-            "title":"Liste 1",
+            "title":"List 1",
             "name":"list", 
             "input":"textarea",
             "visible":false,
@@ -60,7 +60,7 @@
         }
         ,
         { 
-            "title":"Liste 2 Titel", 
+            "title":"List 2 Titel", 
             "name":"list2_title", 
             "input":"input",
             "visible":true,
@@ -68,7 +68,7 @@
             "default":"Ihr Idealprofil"
         },
         { 
-            "title":"Liste 2",
+            "title":"List 2",
             "name":"list2", 
             "input":"textarea",
             "visible":false,
@@ -96,11 +96,12 @@
 
     "l":
     {
-        "edit":"Bearbeiten",
-        "save":"Speichern",
-        "delete":"Löschen",
-        "create":"Neuen Eintrag erstellen",
-        "save_order":"Reihenfolge speichern"
+        "edit":"Edit",
+        "save":"Save",
+        "delete":"Delete",
+        "create":"Create new Entry",
+        "save_order":"Save Order",
+        "list":"Back to list"
     }
 
 }

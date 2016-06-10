@@ -1,5 +1,13 @@
+<?php
+
+//  error_reporting(E_ERROR|E_WARNING);
+//  ini_set('display_errors', '1');
+
+  global $nextLangAdmin;
+
+  ?>
 <div class="wrap">
-<h2>Erl&ouml;srechner</h2>
+<h2><? echo $nextLangAdmin['revenue_calculator']; ?></h2>
 
 <?php
 
@@ -8,12 +16,6 @@ $user_reg="";
 
 global $wpdb;
 $wpdb->get_results("DELETE FROM erloes_plz WHERE start = 0 AND end = 0;");
-
-
-
-//  error_reporting(E_ERROR|E_WARNING);
-//  ini_set('display_errors', '1');
-
 
 class PlzRangedb
 { 
@@ -90,46 +92,23 @@ global $user_reg;
 //global $user_details
 //print_r($user_details);
 //if($user_details)print('<div style="padding:5px;border:1px solid #aaa;">Benutzer existiert schon: '.$_REQUEST['login']."</div>");
-if($user_reg!="")print('<div style="padding:5px;border:1px solid #aaa;">Datensatz wurde gespeichert </div>');
+if($user_reg!="")print('<div style="padding:5px;border:1px solid #aaa;">Entry was saved</div>');
 
 ?>
 <br/>
-<h2>PLZ/E-Mail Zordnungen</h2>
+<h2><?php echo $nextLangAdmin['postal_code_alloc']; ?></h2>
 
 
 <table>
 <tr>
-  <td>PLZ Start:</td>
-  <td>PLZ Ende:</td>
+  <td><?php echo $nextLangAdmin['zipStart']; ?></td>
+  <td><?php echo $nextLangAdmin['zipEnd']; ?></td>
   <td>E-Mail:</td>
 </tr>
 
 <?php
 
   $allPLZ = PlzRangedb::loadAll();
-  //print_r($all);
-
-
-/*
-$plznotfound=0;
-for($i=0;$i<100000;$i++)
-{
-  $found=false;
-  foreach ($allPLZ as &$plz)
-  {
-    if($plz->start<=$i && $plz->end>$vi)
-    {
-      $found=true;
-
-    }
-  }
-  if(!$found)
-  {
-    $plznotfound++;
-  }
-
-}
-*/
 
 
   $sum=0;
@@ -138,12 +117,10 @@ for($i=0;$i<100000;$i++)
     $sum+=($plz->end - $plz->start);
   }
 
-
-if($sum!=100000)
-{
-  print('<div class="error" style="padding:10px;">Summe aller Postleitzahlen: '.$sum.' <br/><b>Diese Summe sollte 100000 ergeben!</b> </div>');
-}
-
+  if($sum!=100000)
+  {
+    print('<div class="error" style="padding:10px;">Sum of all Postal Codes: '.$sum.' <br/><b>This should be 100000 !</b> </div>');
+  }
 
 
 
@@ -152,23 +129,23 @@ if($sum!=100000)
     print('<tr>');
     print('<form method="post" action=""><input type="hidden" name="action" value="update" />');
     print('<input type="hidden" name="pkey" value="'.$plz->pkey.'" />');
-    print('<td><input type="text" value="'.$plz->start.'" name="plz_start"/></td>');
-    print('<td><input type="text" value="'.$plz->end.'" name="plz_end"/></td>');
-    print('<td><input type="text" value="'.$plz->email.'" name="plz_email"/></td>');
-    print('<td><input type="submit" class="button-primary" value="Speichern" /></td>');
-    print('<td><a href="admin.php?page=next_content%2Ferloesrechner.php&delete='.$plz->pkey.'">L&ouml;schen</a></td>');
+    print('<td><input type="text" value="'.$plz->start.'" name="plz_start" style="width:100px"/></td>');
+    print('<td><input type="text" value="'.$plz->end.'" name="plz_end" style="width:100px"/></td>');
+    print('<td><input type="text" value="'.$plz->email.'" name="plz_email" style="width:300px"/></td>');
+    print('<td><input type="submit" class="button-primary" value="'.$nextLangAdmin['save'].'" /></td>');
+    print('<td><a href="admin.php?page=next_content%2Ferloesrechner.php&delete='.$plz->pkey.'">'.$nextLangAdmin['delete'].'</a></td>');
     print('</form>');
     print('</tr>');
   }
   print('</table><br/><hr/><table>');
-  print('<tr><td colspan="5"><br/><h2>Neuer Eintrag</h2></td></tr>');
+  print('<tr><td colspan="5"><br/><h2>'.$nextLangAdmin['delete'].'</h2></td></tr>');
 
   print('<form method="post" action=""><input type="hidden" name="action" value="create" />');
   print('<tr>');
   print('<td><input type="text" value="0" name="plz_start"/></td>');
   print('<td><input type="text" value="1000" name="plz_end"/></td>');
   print('<td><input type="text" value="beispiel@next-kraftwerke.de" name="plz_email"/></td>');
-  print('<td><input type="submit" class="button-primary" value="Neu Erstellen" /></td>');
+  print('<td><input type="submit" class="button-primary" value="'.$nextLangAdmin['new'].'" /></td>');
   print('</tr>');
   print('</form>');
 
@@ -176,9 +153,10 @@ if($sum!=100000)
 
 </table>
 
-<br/>
+
+<br/> 
 <hr/>
-<h2>Testen</h2>
+<h2><?php echo $nextLangAdmin['testme']; ?></h2>
 
 <form method="post" action="">
   <input type="hidden" name="action" value="test" />
@@ -196,8 +174,8 @@ if($sum!=100000)
     $q='SELECT * FROM erloes_plz WHERE start <= '.$val.' AND end > '.$val;
     $res = $wpdb->get_results($q);
 
-    if($res[0]->email=='') print("<h3>Keine Zuordnung gefunden!</h3>");
-      else print("<h3>Ergebnis: ".$res[0]->email.'</h3>');
+    if($res[0]->email=='') print("<h3>No mapping found!</h3>");
+      else print("<h3>Result: ".$res[0]->email.'</h3>');
   }
 
 ?>

@@ -124,10 +124,10 @@
 
     "l":
     {
-        "edit":"Bearbeiten",
-        "save":"Speichern",
-        "delete":"Löschen",
-        "create":"Neuen Eintrag erstellen",
-        "save_order":"Reihenfolge speichern"
+        "edit":"Edit",
+        "save":"Save",
+        "delete":"Delete",
+        "create":"Create new Entry",
+        "save_order":"Save Order"
     }
 }

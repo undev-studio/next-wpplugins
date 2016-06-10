@@ -9,7 +9,7 @@
     "vars":
     [
         { 
-            "title":"Titel", 
+            "title":"Title", 
             "name":"title", 
             "input":"input",
             "visible":true,
@@ -17,7 +17,7 @@
             "default":"Neuer Titel"
         },
         { 
-            "title":"Modul", 
+            "title":"Module", 
             "name":"rowfile", 
             "input":"selectTemplate",
             "visible":true,
@@ -35,14 +35,16 @@
 
     ],
 
+
     "l":
     {
-        "edit":"Bearbeiten",
-        "save":"Speichern",
-        "delete":"Löschen",
-        "create":"Neuen Eintrag erstellen",
-        "save_order":"Reihenfolge speichern",
-        "list":"Zurück zur Liste"
+        "edit":"Edit",
+        "save":"Save",
+        "delete":"Delete",
+        "create":"Create new Entry",
+        "save_order":"Save Order",
+        "list":"Back to list"
     }
+
 }
 

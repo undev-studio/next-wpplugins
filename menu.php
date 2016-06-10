@@ -24,6 +24,25 @@ require_once('ajax_erloesrechner.php');
 
 
 
+$nextLangAdmin=Array(
+
+    'references' => 'References',
+
+    'edit' => 'Edit',
+    'save' => 'Save',
+    'delete' => 'Delete',
+    'new' => 'New Entry',
+
+    'revenue_calculator' => 'Revenue Calculator',
+    'postal_code_alloc' => 'Postal Code Mapping',
+    'postal_code_alloc_email' => 'Postal Code Mapping for E-Mails',
+    'testme'=>'Test me',
+    'zipStart'=>'Postal Code<br/> starts with',
+    'zipEnd'=>'Postal Code<br/> ends with',
+
+    );
+
+
 require_once('widget_footernav.php');
 add_action( 'widgets_init', create_function('', 'return register_widget("next_footernav");') );
 
@@ -96,23 +115,40 @@ add_action('admin_menu', 'next_content_menu');
 
 function next_content_menu()
 {
+    global $nextLangAdmin;
+    
+    
+
+    
     $settings_page = add_menu_page(
         'next_content/news.php',
-        'NEXT Inhalte',
+        'NEXT Content',
         0,
         'next_content/news.php'
     );
 
     $isAdmin=current_user_can( 'activate_plugins' );
 
-    add_submenu_page( 'next_content/news.php', 'News', 'News',                      'publish_posts', 'next_content/news.php' );
-    if($isAdmin) add_submenu_page( 'next_content/news.php', 'Widgets', 'Widgets',                'publish_posts', 'next_content/next_widgets.php' );
-    add_submenu_page( 'next_content/news.php', 'Referenzen', 'Referenzen',          'publish_posts', 'next_content/referenzen.php' );
-    if($isAdmin) add_submenu_page( 'next_content/news.php', 'Erloesrechner', 'Erloesrechner',    'publish_posts', 'next_content/erloesrechner.php' );
+    add_submenu_page( 'next_content/news.php', 
+        'News', 'News','publish_posts', 
+        'next_content/news.php' );
+    
+    if($isAdmin) add_submenu_page( 'next_content/news.php', 
+        'Widgets', 'Widgets', 'publish_posts', 
+        'next_content/next_widgets.php' );
+
+    add_submenu_page( 'next_content/news.php', 
+        $nextLangAdmin['references'], $nextLangAdmin['references'], 'publish_posts', 
+        'next_content/referenzen.php' );
+    
+    if($isAdmin) add_submenu_page( 'next_content/news.php', 
+        $nextLangAdmin['revenue_calculator'], $nextLangAdmin['revenue_calculator'], 'publish_posts', 
+        'next_content/erloesrechner.php' );
+
     add_submenu_page( 'next_content/news.php', 'EMaillog', 'EMaillog',              'publish_posts', 'next_content/emaillog.php' );
     add_submenu_page( 'next_content/news.php', 'Next Pool', 'Next Pool',            'publish_posts', 'next_content/nextpool.php' );
     add_submenu_page( 'next_content/news.php', 'Jobs', 'Jobs',                      'publish_posts', 'next_content/jobs.php' );
-    add_submenu_page( 'next_content/news.php', 'Termine', 'Termine',                'publish_posts', 'next_content/events.php' );
+    add_submenu_page( 'next_content/news.php', 'Events', 'Events',                'publish_posts', 'next_content/events.php' );
     add_submenu_page( 'next_content/news.php', 'Partner', 'Partner',                'publish_posts', 'next_content/partner.php' );
     if($isAdmin) add_submenu_page( 'next_content/news.php', 'Remit', 'Remit',                    'publish_posts', 'next_content/remit_info.php' );
 
