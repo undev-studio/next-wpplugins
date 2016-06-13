@@ -145,7 +145,7 @@ function next_content_menu()
         $nextLangAdmin['revenue_calculator'], $nextLangAdmin['revenue_calculator'], 'publish_posts', 
         'next_content/erloesrechner.php' );
 
-    add_submenu_page( 'next_content/news.php', 'EMaillog', 'EMaillog',              'publish_posts', 'next_content/emaillog.php' );
+    add_submenu_page( 'next_content/news.php', 'EMail Log', 'EMail Log',              'publish_posts', 'next_content/emaillog.php' );
     add_submenu_page( 'next_content/news.php', 'Next Pool', 'Next Pool',            'publish_posts', 'next_content/nextpool.php' );
     add_submenu_page( 'next_content/news.php', 'Jobs', 'Jobs',                      'publish_posts', 'next_content/jobs.php' );
     add_submenu_page( 'next_content/news.php', 'Events', 'Events',                'publish_posts', 'next_content/events.php' );

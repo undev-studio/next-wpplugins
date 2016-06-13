@@ -150,10 +150,10 @@
   print('<thead>');
   print('<tr>');
   print('<th>ID</th>');
-  print('<th>An</th>');
-  print('<th>Datum</th>');
-  print('<th>Template</th>');
-  print('<th>Inhalt</th>');
+  print('<th>To</th>');
+  print('<th>Date</th>');
+  print('<th>Form</th>');
+  print('<th>Content</th>');
   print('</tr>');
   print('</thead>');
   echo $html;

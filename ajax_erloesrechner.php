@@ -302,9 +302,9 @@ function sendErloesMail($message)
       return;
     }
 
-    // put raw data into database
     $lastid = $wpdb->insert('emaillog', array(
       'content' => json_encode($formData),
+      'templatename' => 'erloesrechner',
       'to' => $res[0]->email
       )
     );

@@ -230,20 +230,38 @@
         $currentStep=3;
         $jsonArr['navsteps'][$currentStep]=true;
 
+
+
+        // echo $_REQUEST['formdata']['voucher'];
+
+        if($_REQUEST['formdata']['voucher']!='')
+        {
+            if( strtolower($_REQUEST['formdata']['voucher'])!=="solar2016" && strtolower($_REQUEST['formdata']['voucher'])!=="solar 2016" )
+            {
+                $jsonArr['navsteps'][$currentStep]=false;
+                if($fromStep >= $currentStep) $jsonArr['errors'][]='voucher';
+                $jsonArr['errormsg'][]='voucher';
+            }
+        }
+
+
          // if($_REQUEST['formdata']['konto_format']=='' || $_REQUEST['formdata']['konto_format']=='new' )
          {
-             if($_REQUEST['formdata']['konto_iban']=='')
-             {
-                 $jsonArr['navsteps'][$currentStep]=false;
-                 if($fromStep >= $currentStep) $jsonArr['errors'][]='konto_iban';
-             }
+            if($_REQUEST['formdata']['konto_iban']=='')
+            {
+                $jsonArr['navsteps'][$currentStep]=false;
+                if($fromStep >= $currentStep) $jsonArr['errors'][]='konto_iban';
+            }
 
-             if($_REQUEST['formdata']['konto_bic']=='')
-             {
-                 $jsonArr['navsteps'][$currentStep]=false;
-                 if($fromStep >= $currentStep) $jsonArr['errors'][]='konto_bic';
-             }
+            if($_REQUEST['formdata']['konto_bic']=='')
+            {
+                $jsonArr['navsteps'][$currentStep]=false;
+                if($fromStep >= $currentStep) $jsonArr['errors'][]='konto_bic';
+            }
+
+
          }
+
          // else
          // {
          //     if($_REQUEST['formdata']['konto_nr']=='')
@@ -302,6 +320,8 @@
              $row['konto_inhaber'] = $_REQUEST['formdata']['konto_inhaber'];
              $row['konto_iban'] = $_REQUEST['formdata']['konto_iban'];
              $row['konto_bic'] = $_REQUEST['formdata']['konto_bic'];
+             $row['voucher'] = $_REQUEST['formdata']['voucher'];
+
              // $row['konto_nr'] = $_REQUEST['formdata']['konto_nr'];
              // $row['konto_blz'] = $_REQUEST['formdata']['konto_blz'];
              // $row['konto_institut'] = $_REQUEST['formdata']['konto_institut'];
@@ -312,8 +332,12 @@
              $row['beginvermarktung'] = $_REQUEST['formdata']['beginvermarktung'];
              $row['anlage_fernsteuerung'] = $_REQUEST['formdata']['anlage_fernsteuerung'];
 
+
+
              $wpdb->insert('next_formdvpv', $row);
              $pkey=$wpdb->insert_id;
+
+
 
              $hashids = new Hashids\Hashids('superSekretNextSalt!!11', 6, 'ABCDEFGHIKMPRSTUWXYZ123456789');
              $docId = $hashids->encode($pkey);
@@ -327,42 +351,50 @@
              }
              else
              {
-                 $jsonArr['id']=$row['id'];
+                $jsonArr['id']=$row['id'];
 
-                 $body='';
-                 $body.='Sehr geehrte(r) '.$_REQUEST['formdata']['vorname'].' '.$_REQUEST['formdata']['nachname'].',';
-                 $body.='<br/><br/>';
-                 $body.='vielen Dank f&uuml;r Ihr Interesse an der Direktvermarktung Ihrer PV-Anlage &uuml;ber Next Kraftwerke.';
-                 $body.='<br/><br/>';
-                 $body.='Anbei finden Sie das von uns auf Basis Ihrer Eingaben erzeugte Dokument. Bitte drucken Sie sowohl den <b>Auftrag</b> als auch die <b>Vollmacht</b> aus, <b>unterschreiben beide</b> Dokumente und senden uns diese <b>per Post</b> zu.';
-                 $body.='<br/><br/>';
-                 $body.='Nach Pr&uuml;fung Ihrer Unterlagen erhalten Sie von uns eine Auftragsbest&auml;tigung mit dem Hinweis auf den Zeitpunkt, ab dem wir die PV-Anlage f&uuml;r Sie voraussichtlich vermarkten k&ouml;nnen. Erst durch die Auftragsbest&auml;tigung ist der Vertrag zur Direktvermarktung Ihrer PV-Anlage mit uns abgeschlossen.';
-                 $body.='<br/><br/>';
-                 $body.='Bitte beachten Sie die <a href="https://www.next-kraftwerke.de/wp-content/uploads/Umsetzung-verpflichtende-Fernsteuerbarkeit.pdf">Hinweise zur Fernsteuerbarkeit</a> sowie die <a href="https://www.next-kraftwerke.de/wp-content/uploads/Vermarktungsbedingungen-Direktvermarktung-PV-Next-Kraftwerke.pdf">Allgemeinen Vermarktungsbedingungen f&uuml;r kleine Photovoltaik-Anlagen</a>.<br/>';
-                 $body.='F&uuml;r PV-Anlagen mit mehr als 800 kW Nennleistung ben&ouml;tigen wir leider ein paar zus&auml;tzliche Informationen: Ein <a href="https://www.next-kraftwerke.de/meta/erloesrechner">individuelles Angebot k&ouml;nnen Sie hier anfragen.</a>';
-                 $body.='<br/><br/>';
-                 $body.='Mit freundlichen Gr&uuml;&szlig;en,<br/>';
-                 $body.='Ihr Next Kraftwerke Team<br/><br/>';
+                $body='';
+                $body.='Sehr geehrte(r) '.$_REQUEST['formdata']['vorname'].' '.$_REQUEST['formdata']['nachname'].',';
+                $body.='<br/><br/>';
+                $body.='vielen Dank f&uuml;r Ihr Interesse an der Direktvermarktung Ihrer PV-Anlage &uuml;ber Next Kraftwerke.';
+                $body.='<br/><br/>';
+                $body.='Anbei finden Sie das von uns auf Basis Ihrer Eingaben erzeugte Dokument. Bitte drucken Sie sowohl den <b>Auftrag</b> als auch die <b>Vollmacht</b> aus, <b>unterschreiben beide</b> Dokumente und senden uns diese <b>per Post</b> zu.';
+                $body.='<br/><br/>';
+                $body.='Nach Pr&uuml;fung Ihrer Unterlagen erhalten Sie von uns eine Auftragsbest&auml;tigung mit dem Hinweis auf den Zeitpunkt, ab dem wir die PV-Anlage f&uuml;r Sie voraussichtlich vermarkten k&ouml;nnen. Erst durch die Auftragsbest&auml;tigung ist der Vertrag zur Direktvermarktung Ihrer PV-Anlage mit uns abgeschlossen.';
+                $body.='<br/><br/>';
+                $body.='Bitte beachten Sie die <a href="https://www.next-kraftwerke.de/wp-content/uploads/Umsetzung-verpflichtende-Fernsteuerbarkeit.pdf">Hinweise zur Fernsteuerbarkeit</a> sowie die <a href="https://www.next-kraftwerke.de/wp-content/uploads/Vermarktungsbedingungen-Direktvermarktung-PV-Next-Kraftwerke.pdf">Allgemeinen Vermarktungsbedingungen f&uuml;r kleine Photovoltaik-Anlagen</a>.<br/>';
+                $body.='F&uuml;r PV-Anlagen mit mehr als 800 kW Nennleistung ben&ouml;tigen wir leider ein paar zus&auml;tzliche Informationen: Ein <a href="https://www.next-kraftwerke.de/meta/erloesrechner">individuelles Angebot k&ouml;nnen Sie hier anfragen.</a>';
+                $body.='<br/><br/>';
+                $body.='Mit freundlichen Gr&uuml;&szlig;en,<br/>';
+                $body.='Ihr Next Kraftwerke Team<br/><br/>';
 
-                 $dompdf = genPDF($row['id']);
-                 $filename = getcwd().'/../../formdvpv/Direktvermarktung_PV-Anlage_'.$docId.'.pdf';
-                 $output = $dompdf->output();
-                 file_put_contents($filename, $output);
+                $dompdf = genPDF($row['id']);
+                $filename = getcwd().'/../../formdvpv/Direktvermarktung_PV-Anlage_'.$docId.'.pdf';
+                $output = $dompdf->output();
+                file_put_contents($filename, $output);
 
-                 $email = new PHPMailer();
-                 $email->CharSet = 'utf-8';
-                 $email->From      = 'ew@next-kraftwerke.de';
-                 $email->FromName  = 'Next Kraftwerke';
-                 $email->Subject   = 'Direktvermarktung Ihrer PV-Anlage > Dokumente zur Unterschrift';
-                 $email->Body      = $body;
+                $email = new PHPMailer();
+                $email->CharSet = 'utf-8';
+                $email->From      = 'ew@next-kraftwerke.de';
+                $email->FromName  = 'Next Kraftwerke';
+                $email->Subject   = 'Direktvermarktung Ihrer PV-Anlage > Dokumente zur Unterschrift';
+                $email->Body      = $body;
 
-                 $email->AddAddress( $_REQUEST['formdata']['email'] );
-                 $email->AddAttachment( $filename , "Direktvermarktung_".$docId.".pdf" );
-                 $email->AddAttachment( '/var/www/website/sites/de/htdocs/wp-content/uploads/Vermarktungsbedingungen-Direktvermarktung-PV-Next-Kraftwerke.pdf' , "Allgemeine_Vermarktungsbedingungen.pdf" );
-                 $email->addBCC('ew@next-kraftwerke.de');
-                 $email->isHTML(true);
+                $email->AddAddress( $_REQUEST['formdata']['email'] );
+                $email->AddAttachment( $filename , "Direktvermarktung_".$docId.".pdf" );
+                $email->AddAttachment( '/var/www/website/sites/de/htdocs/wp-content/uploads/Vermarktungsbedingungen-Direktvermarktung-PV-Next-Kraftwerke.pdf' , "Allgemeine_Vermarktungsbedingungen.pdf" );
+                $email->addBCC('ew@next-kraftwerke.de');
+                $email->isHTML(true);
 
-                 $email->Send();
+                $email->Send();
+
+                global $wpdb;
+                $lastid = $wpdb->insert('emaillog', array(
+                  'content' => json_encode($email),
+                  'templatename' => 'form_dvpv',
+                  'to' => $_REQUEST['formdata']['email']
+                  )
+                );
              }
          }
 
@@ -375,7 +407,8 @@
     function genPDF($id)
     {
         global $wpdb;
-        $rows = $wpdb->get_results('SELECT * FROM next_formdvpv WHERE id="'.esc_sql($id).'";');
+        $sql='SELECT * FROM next_formdvpv WHERE id="'.esc_sql($id).'";';
+        $rows = $wpdb->get_results($sql);
 
         if($wpdb->last_error!='')
         {

@@ -70,6 +70,16 @@
 
 
             $jsonArr['mailsent']=true;
+
+            global $wpdb;
+            $lastid = $wpdb->insert('emaillog', array(
+              'content' => json_encode($email),
+              'templatename' => 'widget_'.$form['form'],
+              'to' => $form['email']
+              )
+            );
+
+
         }
 
         echo json_encode($jsonArr);
