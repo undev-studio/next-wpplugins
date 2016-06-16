@@ -97,8 +97,14 @@ add_action( 'widgets_init', create_function('', 'return register_widget("nextAwa
 require_once('widget_iconslefttextright.php');
 add_action( 'widgets_init', create_function('', 'return register_widget("nextIconLeftTextRight");') );
 
+require_once('widget_linklist.php');
+add_action( 'widgets_init', create_function('', 'return register_widget("nextLinkListWidget");') );
+
 require_once('widget_form_flexheft.php');
 add_action( 'widgets_init', create_function('', 'return register_widget("nextFormFlexheftWidget");') );
+
+require_once('widget_form_minierloes.php');
+add_action( 'widgets_init', create_function('', 'return register_widget("nextFormMiniErloesWidget");') );
 
 
 
@@ -116,10 +122,7 @@ add_action('admin_menu', 'next_content_menu');
 function next_content_menu()
 {
     global $nextLangAdmin;
-    
-    
 
-    
     $settings_page = add_menu_page(
         'next_content/news.php',
         'NEXT Content',

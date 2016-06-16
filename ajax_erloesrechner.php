@@ -287,16 +287,14 @@ function sendErloesMail($message)
     if($res[0]->email=='')
     {
       $obj=array();
+      $headers = 
+          'MIME-Version: 1.0' . "\r\n".
+          'Content-type: text/html; charset=iso-8859-1'."\r\n" .
+          $next_email_from. "\r\n" .
+          'Reply-To: wordpress@next-kraftwerke.de' . "\r\n" .
+          'X-Mailer: PHP/' . phpversion();
 
-
-    $headers = 
-        'MIME-Version: 1.0' . "\r\n".
-        'Content-type: text/html; charset=iso-8859-1'."\r\n" .
-        $next_email_from. "\r\n" .
-        'Reply-To: wordpress@next-kraftwerke.de' . "\r\n" .
-        'X-Mailer: PHP/' . phpversion();
       wp_mail('tom@undev.de', 'erleosberechner / keine plz zuordnung', Util::umlaute('keine zuordnung gefunden fuer plz:'.$plzValue) , '','' );
-
 
       $response['errorfail']="keine zuordnung gefunden!";
       return;

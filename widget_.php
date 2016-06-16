@@ -4,6 +4,47 @@
 class unWidget extends WP_Widget
 {
 
+
+    function getWidgetIconSelect($title,$id,$fieldname,$value)
+    {
+        $html='<p>'.$title.': ';
+
+        $icons = array();
+
+        $icons[] = array("Telefon","f10b");
+        $icons[] = array("E-Mail","f003");
+        $icons[] = array("Ihr neuer Stromtarif","f153");
+        $icons[] = array("FAQs","f129");
+        $icons[] = array("Mitmachen","f090");
+        $icons[] = array("Nützliche Downloads","f019");
+        $icons[] = array("Hilfreiche Links","f0c1");
+        $icons[] = array("Redneranfrage","f0e6");
+        $icons[] = array("Kennzahlen","f03a");
+        $icons[] = array("Treffen Sie uns","f073");
+        $icons[] = array("Mini-Erlösrechner","f1ec");
+        $icons[] = array("Flex-Heft bestellen","f07a");
+        $icons[] = array("Social Twitter","f099");
+        $icons[] = array("Social Facebook","f082");
+        $icons[] = array("Social Google+","f0d5");
+        $icons[] = array("List Arrow","f0a9");
+
+
+        $html.='<select name="'.$fieldname.'" id="'.$id.'" >';
+        $html.='<option value=""> - </option>';
+
+        foreach ($icons as $icon)
+        {
+            $sel="";
+            if($icon[1]==$value)$sel=' selected="SELECTED" ';
+            $html.='<option value="'.$icon[1].'" '.$sel.'>'.$icon[0].'</option>';
+        }
+        $html.='</select>';
+        $html.='</p>';
+        return $html;
+    }
+
+
+
     function getWidgetMediaCategory($title,$id,$fieldname,$value)
     {
         $html='<p>'.
