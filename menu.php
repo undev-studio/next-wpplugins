@@ -100,11 +100,11 @@ add_action( 'widgets_init', create_function('', 'return register_widget("nextIco
 require_once('widget_linklist.php');
 add_action( 'widgets_init', create_function('', 'return register_widget("nextLinkListWidget");') );
 
-require_once('widget_form_flexheft.php');
-add_action( 'widgets_init', create_function('', 'return register_widget("nextFormFlexheftWidget");') );
+// require_once('widget_form_flexheft.php');
+// add_action( 'widgets_init', create_function('', 'return register_widget("nextFormFlexheftWidget");') );
 
-require_once('widget_form_minierloes.php');
-add_action( 'widgets_init', create_function('', 'return register_widget("nextFormMiniErloesWidget");') );
+// require_once('widget_form_minierloes.php');
+// add_action( 'widgets_init', create_function('', 'return register_widget("nextFormMiniErloesWidget");') );
 
 
 

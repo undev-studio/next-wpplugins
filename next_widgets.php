@@ -216,7 +216,11 @@ jQuery(document).ready(function()
 </script>
 
 <?php
+function cleanString($string) {
+   $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
 
+   return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
+}
 
     function getPageSelect($fieldName,$value)
     {
@@ -357,6 +361,8 @@ jQuery(document).ready(function()
 
         print('<br/><br/><a class="button-primary" href="?page='.$path.'&func=create">'.lang('create').'</a>');
 
+        print('&nbsp;&nbsp;<input id="widgetsearch" placeholder="Search Widgets"/>');
+
         print('<div class="wrap">');
 
 
@@ -408,7 +414,17 @@ jQuery(document).ready(function()
 
         foreach ($rows as &$row)
         {
-            print('<tr>');
+
+            $search='';
+            foreach ($json['vars'] as $f)
+            {
+                $search.=$row->$f['name'];
+            }
+            $search=cleanString(strtolower($search));
+
+
+
+            print('<tr class="searchable" data-index="'.$search.'">');
 
             foreach ($json['vars'] as $f)
             {
@@ -439,12 +455,10 @@ jQuery(document).ready(function()
         print('</table>');
         print('</div>');
 
-        print('<div class="metainf">'.sizeof($rows).' Entries.</div>');
+        print('<div class="metainf">&nbsp;&nbsp;'.sizeof($rows).' Entries.</div>');
 
         if($sortable) print('<br/><a class="button-primary" onclick=" saveOrder();">'.lang('save_order').'</a>');
     }
-
-
 
 
     if($func=='edit')
@@ -495,14 +509,11 @@ jQuery(document).ready(function()
                     print('</tr>');
                 }
 
-
                 if($f['input']=='selectTemplate')
                 {
                     print('<tr style="'.$visi.'">');
                     print('<td valign="middle" class="edittitle">'.$f['title'].':</td>');
                     print('<td>');
-
-
                     
                     if($row->$f['name']!='')
                     {
@@ -535,16 +546,11 @@ jQuery(document).ready(function()
                             closedir($dh);
                         }
                         print('</select>');
-
                     }
-
-
-                    // echo $row->$f['name'];
 
                     print('</td>');
                     print('</tr>');
                 }
-
             }
 
 
@@ -582,15 +588,9 @@ jQuery(document).ready(function()
             print('</table>');
         }
 
-
-
         print('</form>');
         print('</div>');
-
         print('</div>');
-
-
-
     }
 ?>
 </div>
@@ -600,9 +600,20 @@ jQuery(document).ready(function()
 <script type="text/javascript" src="/wp-includes/js/jquery/ui/mouse.min.js"></script>
 <script type="text/javascript" src="/wp-includes/js/jquery/ui/sortable.min.js"></script>
 
+<style id="search_style"></style>
 <script>
-<?php
-    if($sortable) print(" jQuery('.sorted_table tbody').sortable({ containerSelector: 'table', itemSelector: 'tr', placeholder: 'placeholder' }); ");
-?>
+
+    jQuery('#widgetsearch').on('input',widgetSearch);
+
+    function widgetSearch()
+    {
+        searchFor=jQuery('#widgetsearch').val().toLowerCase();
+
+        jQuery('.metainf').hide();
+
+        if(!searchFor) jQuery('#search_style').html('.searchable:{display:block;}');
+            else jQuery('#search_style').html(".searchable:not([data-index*=\"" + searchFor.toLowerCase() + "\"]) { display: none; }");
+    }
+
 </script>
 
