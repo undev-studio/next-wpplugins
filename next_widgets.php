@@ -176,7 +176,7 @@ function unrowsForm($count,$json)
 <h2><?php echo $json['title']; ?></h2>
 
 <style>
-<?php include('unlist.css'); ?></style>
+<?php include('unlist/unlist.css'); ?></style>
 
 <script type="text/javascript">
 
@@ -202,8 +202,13 @@ jQuery(document).ready(function()
     for(var i in data)
     {
         var id='[name=\"'+i+'\"]';
-        console.log(id);
+
         jQuery(id).val(data[i])
+
+        if ( jQuery( '#'+i+'_thumbnail' ).length )
+        {
+            jQuery('#'+i+'_thumbnail').attr('src',data[i]);
+        }
     }
 });
 
@@ -388,11 +393,10 @@ function cleanString($string) {
             print('</div>');
         }
 
-
-
         print('<br/><table id="unlistTable" class="wp-list-table widefat sorted_table" >');
         print('<thead>');
         print('<tr>');
+        print('<th></th>');
 
         foreach ($json['vars'] as $f)
         {
@@ -422,6 +426,14 @@ function cleanString($string) {
 
             print('<tr class="searchable" data-index="'.$search.'">');
 
+            print('<td>');
+            if($editable) 
+            {
+               print('<a class="button" href="?page='.$path.'&func=edit&which='.$row->id.'">'.lang('edit').'</a>  &nbsp; ');
+            }
+            print('</td>');
+
+
             foreach ($json['vars'] as $f)
             {
                 if(!$f['visible'])continue;
@@ -439,7 +451,6 @@ function cleanString($string) {
             print('<td>');
             if($editable) 
             {
-               print('<a href="?page='.$path.'&func=edit&which='.$row->id.'">'.lang('edit').'</a> | ');
                print('<a href="?page='.$path.'&func=delete&which='.$row->id.'" onclick="return confirm(\''.lang('delete').' ?\')">'.lang('delete').'</a> ');
             }
 
