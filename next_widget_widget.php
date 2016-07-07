@@ -30,7 +30,6 @@ class nextWidget extends unWidget
             'displaysize' => ''
             ));
 
-
         global $wpdb;
         $sql='SELECT * FROM next_widgets ORDER BY title ';
         $jobs=$wpdb->get_results( $sql );
@@ -86,7 +85,7 @@ class nextWidget extends unWidget
         $entry=$wpdb->get_results( $sql );
         $entry=$entry[0];
 
-
+// echo $instance['module'];
 
         // $data=array();
 

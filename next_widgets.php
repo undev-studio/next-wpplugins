@@ -206,8 +206,14 @@ jQuery(document).ready(function()
     for(var i in data)
     {
         var id='[name=\"'+i+'\"]';
-        console.log(id);
+
         jQuery(id).val(data[i])
+
+        if ( jQuery( '#'+i+'_thumbnail' ).length )
+        {
+console.log(i);
+            jQuery('#'+i+'_thumbnail').attr('src',data[i]);
+        }
     }
 });
 

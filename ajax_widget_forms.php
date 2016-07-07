@@ -91,6 +91,16 @@
                 $email->isHTML(true);
 
                 $email->Send();
+
+                global $wpdb;
+                $wpdb->insert('emaillog', array(
+                  'content' => json_encode($email)+json_encode($form),
+                  'templatename' => 'widget_'.$form['form'],
+                  'to' => $form['email']
+                  )
+                );
+
+
             }
 
             $email = new PHPMailer();
@@ -101,12 +111,14 @@
             
             $email->Body      = 'Das Formular "'.$form['form'].'" wurde ausgefüllt:<br/><br/>';
             $email->Body     .= '<b>Name:</b> '.$form['name'].' <br/>';
+            $email->Body     .= '<b>EMail:</b> '.$form['email'].' <br/>';
             
             if($form['form']=='Flexheft')
             {
                 $email->Body     .= '<b>Firma:</b> '.$form['company'].' <br/>';
                 $email->Body     .= '<b>Strasse:</b> '.$form['street'].' <br/>';
             }
+
 
             $email->Body     .= '<b>PLZ/Ort:</b> '.$form['zip'].' '.$form['city'].' <br/>';
             $email->Body     .= '<b>Telefonnummer:</b> '.$form['phone'].' <br/>';
@@ -151,7 +163,6 @@
  
             $email->AddAddress( 'beratung@next-kraftwerke.de' );
             $email->addCC('tom@undev.de');
-            $email->addCC('romina.pankoke@gmail.com');
             $email->addCC('presse@next-kraftwerke.de');
             $email->isHTML(true);
             $email->Send();
@@ -160,9 +171,9 @@
 
             global $wpdb;
             $lastid = $wpdb->insert('emaillog', array(
-              'content' => json_encode($email),
+              'content' => json_encode($email)+json_encode($form),
               'templatename' => 'widget_'.$form['form'],
-              'to' => $form['email']
+              'to' => $form['beratung@next-kraftwerke.de']
               )
             );
 
