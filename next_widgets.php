@@ -1,7 +1,5 @@
 <?php
 
-
-
     $DEBUG_SHOW_SQL=false;
 
     error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
@@ -49,8 +47,6 @@
 
     $thumbnailSize=$json['thumbnailSize'];
     $thumbnailSizeEdit=$json['thumbnailSizeEdit'];
-
-
 
 
 
