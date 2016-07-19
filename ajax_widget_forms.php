@@ -99,7 +99,31 @@
                   'to' => $form['email']
                   )
                 );
+            }
+            else
+            {
+                $email = new PHPMailer();
+                $email->CharSet = 'utf-8';
+                $email->From      = 'beratung@next-kraftwerke.de';
+                $email->FromName  = 'Next Kraftwerke';
+                $email->Subject   = 'Next-Kraftwerke Formular';
+                $email->Body      = 'Vielen Dank für Ihre Anfrage!<br/><br/>Wir melden uns innerhalb der nächsten Tage mit einem unverbindlichen Angebot bei Ihnen. <br/>Wenn Sie Rückfragen haben, melden Sie sich bitte telefonisch unter 0221 820085 70 oder per E-Mail an beratung@next-kraftwerke.de';
 
+                $email->AddAddress( $form['email'] );
+                // $email->addBCC('tom@undev.de');
+                // $email->addBCC('beratung@next-kraftwerke.de');
+                // $email->addBCC('presse@next-kraftwerke.de');
+                $email->isHTML(true);
+
+                $email->Send();
+
+                global $wpdb;
+                $wpdb->insert('emaillog', array(
+                  'content' => json_encode($email)+json_encode($form),
+                  'templatename' => 'widget_'.$form['form'],
+                  'to' => $form['email']
+                  )
+                );
 
             }
 

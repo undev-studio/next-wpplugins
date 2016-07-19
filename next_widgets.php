@@ -51,6 +51,12 @@
 
 
 
+    function getWidgetAlias($name)
+    {
+        if($name=='defaultwidget.json')return 'Folded out Widget';
+        return $name;
+    }
+
 
     wp_enqueue_media();
 
@@ -443,7 +449,7 @@ function cleanString($string) {
                 {
                     print('<img style="width:'.$thumbnailSize.'px;" src="'.$row->$f['name'].'"/> ');
                 }
-                else print($row->$f['name']);
+                else print(getWidgetAlias($row->$f['name']));
 
                 print('</td>');
             }
@@ -524,7 +530,7 @@ function cleanString($string) {
                     
                     if($row->$f['name']!='')
                     {
-                        print($row->$f['name']);
+                        print(getWidgetAlias($row->$f['name']));
                         print('<input  name="'.$f['name'].'" type="hidden" value="'.$row->$f['name'].'">');
                         $widgetJsonFilename=$row->$f['name'];
                     }
@@ -546,7 +552,7 @@ function cleanString($string) {
                                             $sel=" selected ";
                                             $widgetJsonFilename=$row->$f['name'];
                                         }
-                                        print('<option '.$sel.' value="'.$file.'">'.$file.'</option>');
+                                        print('<option '.$sel.' value="'.$file.'">'.getWidgetAlias($file).'</option>');
                                     }
                                 }
                             }

@@ -17,6 +17,14 @@
             "default":"Neuer Titel"
         },
         { 
+            "title":"Language", 
+            "name":"language", 
+            "input":"language",
+            "visible":true,
+            "editable":true,
+            "default":""
+        },
+        { 
             "title":"date", 
             "name":"newsdate", 
             "input":"date",

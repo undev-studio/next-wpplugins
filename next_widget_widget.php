@@ -62,6 +62,7 @@ class nextWidget extends unWidget
         // echo '!!! '.$this->get_field_id('displaysize');
         // echo '<script>console.log( jQuery(\'#'.$this->get_field_id('displaysize').'\').parent().parent().parent().parent().parent().find("h3").html() );</script>';
         echo '<script>jQuery(\'#'.$this->get_field_id('displaysize').'\').parent().parent().parent().parent().parent().find("h3").html(\''.$widgetTitle.'\'); </script>';
+        echo '<script>jQuery(\'#'.$this->get_field_id('displaysize').'\').parent().parent().parent().parent().parent().find("h4").html(\''.$widgetTitle.'\'); </script>';
 
         // $this->name="test 1234";
         // $instance['title']='test 1234';
@@ -103,13 +104,11 @@ class nextWidget extends unWidget
         // $data['title']=$instance['title'];
         // $data['recent']=$recent;
 
-
         global $twig;
         Twig_Autoloader::register();
 
         $loader = new Twig_Loader_Filesystem(__DIR__.'/templates_widgets/');
         $twig = new Twig_Environment($loader, array());
-
         $tmplFile=str_replace( '.json' , '.html' , $entry->rowfile );
 
         if(isset($tmplFile) && $tmplFile!='')
@@ -122,7 +121,6 @@ class nextWidget extends unWidget
                 'data' => $data,
                 'classes' => $this->getDisplaySizeClasses($instance)
             ));
-
 
             echo $html;
         }

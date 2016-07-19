@@ -26,7 +26,7 @@
             "default":"Neuer Titel"
         },
         {
-            "title":"Image (Sidebar Widget) 350x190 pixel:",
+            "title":"Image Project Overview 350x190 pixel",
             "name":"image", 
             "input":"media",
             "visible":true,
@@ -34,7 +34,7 @@
             "default":""
         },
         {
-            "title":"Image Large (Home/Slider) 1280x426 pixel:",
+            "title":"Image Large (Home/Slider) 1280x426 pixel",
             "name":"imagebig", 
             "input":"media",
             "visible":false,
@@ -42,7 +42,7 @@
             "default":""
         },
         {
-            "title":"Image small mobile (Home/Slider):",
+            "title":"Image small mobile (Home/Slider)",
             "name":"imageMobile", 
             "input":"media",
             "visible":false,

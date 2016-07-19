@@ -73,7 +73,13 @@ class nextNewsWidget extends unWidget
     {
         global $post;
         global $wpdb;
-        $sql='SELECT * FROM next_news ORDER BY newsdate DESC LIMIT 0,3';
+
+        $lang='';
+
+        if(function_exists('pll_the_languages')) $lang='WHERE language="'.pll_current_language().'" ';
+
+        $sql='SELECT * FROM next_news  '.$lang.' ORDER BY newsdate DESC LIMIT 0,3';
+        // echo $sql;
         $news=$wpdb->get_results( $sql );
 
         if($wpdb->last_error!='') echo($wpdb->last_error); 

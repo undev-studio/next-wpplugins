@@ -5,7 +5,7 @@
     "idName":"id",
     "sortable":false,
     "orderby":"title",
-    
+
     "vars":
     [
         { 

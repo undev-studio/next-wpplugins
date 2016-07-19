@@ -13,7 +13,7 @@ Author URI: http://undev.de/
 // error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
 // ini_set('display_errors', '1');
 
-// require_once(__DIR__.'/../themes/next2015/util/next.php');
+require_once(__DIR__.'/../theme/util/next.php');
 
 
 $hookName="erloesberechner";
@@ -24,24 +24,33 @@ $debug='';
 
 $plzValue='';
 
-if(isset($_REQUEST['data']))
+$ignoreMandatory=false;
+if(isset($_REQUEST['data']) && is_string($_REQUEST['data']) )
 {
+
   $formData=json_decode($_REQUEST['data'], true);
   $response=array();
   $response['errors']=array();
   $response['values']=array();
 
+  $ignoreMandatory=$_REQUEST['ignoreMandatory'];
+
   $emailHTML="";
   // $translation=array();
 }
 
-  $countryCode='';
-  $countryExt='';
-  if (strpos($_SERVER['HTTP_HOST'], '.at') !== false)
-  {
-    $countryCode='at';
-    $countryExt='_at';
-  }
+$countryCode='de';
+$countryExt='';
+if (strpos($_SERVER['HTTP_HOST'], '.at') !== false)
+{
+  $countryCode='at';
+  $countryExt='_at';
+}
+if (strpos($_SERVER['HTTP_HOST'], '.be') !== false)
+{
+  $countryCode='be';
+  $countryExt='_be';
+}
 
 
 function getIdData($id,$type)
@@ -71,13 +80,12 @@ function erlEndsWith($haystack, $needle)
 function translateString($str)
 {
   $lang='de';
+  global $translation;
+  if(isset($translation[$lang]))$lang='en';
 
   $arr=explode('-',$str);
   if(count($arr)>0){ $str=$arr[count($arr)-1]; }
 
-  
-
-  global $translation;
   if( isset($translation['root'][$lang][$str]) ) return $translation['root'][$lang][$str];
   else
     if(erlEndsWith($str,'_group')) return translateString(substr($str,0,strlen($str)-strlen('_group')));
@@ -87,7 +95,6 @@ function translateString($str)
 
 function translateE($obj)
 {
-  $lang='de';
   global $translation;
   return translateString($obj['id']);
   // if( isset($translation['root'][$lang][$obj['id']]) ) return $translation['root'][$lang][$obj['id']];
@@ -144,8 +151,7 @@ function parseGroup($group,$parentName,$parentRequired=true)
         global $countryCode;
         $plzValue=$val;
 
-
-        if($countryCode=='at')
+        if($countryCode=='at' || $countryCode=='be')
         {
           if( !is_numeric($val) || strlen($val)<4)
           {
@@ -257,7 +263,7 @@ function printEmailValue($root)
       $emailHTML.=$endl.'<h3>'.transParent($lastParent).'</h3>';
     }
 
-    if($input['type']=='checkbox' && $input['value']) $input['value']="Ja";
+    if($input['type']=='checkbox' && $input['value']) $input['value']=translateString("ja");
     $emailHTML.=translateE($input).': <b>'.$input['value'].'</b>'.$endl;
   }
 }
@@ -266,8 +272,9 @@ function buildEMail()
 {
   global $countryCode;
   global $response,$emailHTML;
-  $emailHTML='<h3>Der Erlösberechner '.$countryCode.' wurde ausgefüllt:</h3>';
+  $emailHTML='<h3>Revenue Calculator [.'.$countryCode.'] was filled out:</h3>';
   printEmailValue($response['values']);
+  $emailHTML.='<br/><br/>Host: '.$_SERVER['HTTP_HOST'];
 }
 
 
@@ -277,6 +284,7 @@ function sendErloesMail($message)
     global $wpdb;
     global $plzValue;
     global $wpdb;
+    global $countryCode;
     global $erloesUserName;
 
     // get email adress of consultant
@@ -294,7 +302,8 @@ function sendErloesMail($message)
           'Reply-To: wordpress@next-kraftwerke.de' . "\r\n" .
           'X-Mailer: PHP/' . phpversion();
 
-      wp_mail('tom@undev.de', 'erleosberechner / keine plz zuordnung', Util::umlaute('keine zuordnung gefunden fuer plz:'.$plzValue) , '','' );
+
+      wp_mail('tom@undev.de', 'erleosberechner / keine plz zuordnung', Util::umlaute('keine zuordnung gefunden fuer plz:'.$plzValue).' - '.$_SERVER['HTTP_HOST'] , '','' );
 
       $response['errorfail']="keine zuordnung gefunden!";
       return;
@@ -310,7 +319,8 @@ function sendErloesMail($message)
     // compose email
     $username=getIdData("ihreDaten-ihrName","text")["value"];
 
-    $subject = 'Neue Nachricht von '.$erloesUserName;
+
+    $subject = 'Revenue Calculator [.'.$countryCode.'] was filled by '.$erloesUserName;
     $headers = 
         'MIME-Version: 1.0' . "\r\n".
         'Content-type: text/html; charset=iso-8859-1'."\r\n" .
@@ -334,6 +344,7 @@ function the_action_function()
   $structure = json_decode($string, true);
   parseGroup($structure['root'],'root');
 
+
   global $translation;
   $transStr = file_get_contents(__DIR__."/../theme/json/erloesberechner_trans".$countryExt.".json");
   $translation = json_decode($transStr, true);
@@ -348,6 +359,7 @@ function the_action_function()
 
   if(!$response['errors'] || $_REQUEST['force']==true)
   {
+
     sendErloesMail($emailHTML);
     // all is ok, send email!
     // die("all ok! send email!".$plzValue );
