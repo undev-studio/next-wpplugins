@@ -104,10 +104,10 @@
             {
                 $email = new PHPMailer();
                 $email->CharSet = 'utf-8';
-                $email->From      = 'beratung@next-kraftwerke.de';
-                $email->FromName  = 'Next Kraftwerke';
-                $email->Subject   = 'Next-Kraftwerke Formular';
-                $email->Body      = 'Vielen Dank für Ihre Anfrage!<br/><br/>Wir melden uns innerhalb der nächsten Tage mit einem unverbindlichen Angebot bei Ihnen. <br/>Wenn Sie Rückfragen haben, melden Sie sich bitte telefonisch unter 0221 820085 70 oder per E-Mail an beratung@next-kraftwerke.de';
+                $email->From      = nextTranslate('widget_form_minierloes_from_email');;
+                $email->FromName  = nextTranslate('widget_form_minierloes_from_name');
+                $email->Subject   = nextTranslate('widget_form_minierloes_subject');
+                $email->Body      = nextTranslate('widget_form_minierloes_body');
 
                 $email->AddAddress( $form['email'] );
                 // $email->addBCC('tom@undev.de');

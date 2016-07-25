@@ -86,7 +86,7 @@ class nextWidget extends unWidget
         $entry=$wpdb->get_results( $sql );
         $entry=$entry[0];
 
-// echo $instance['module'];
+        // echo $instance['module'];
 
         // $data=array();
 
