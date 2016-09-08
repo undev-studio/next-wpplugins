@@ -63,6 +63,12 @@ class nextEventsWidget extends unWidget
             $this->get_field_id('linktext'),
             $this->get_field_name('linktext'),
             $instance['linktext']);
+        
+        echo $this->getWidgetInput(
+            'eventurl',
+            $this->get_field_id('eventurl'),
+            $this->get_field_name('eventurl'),
+            $instance['eventurl']);
 
         echo $this->getWidgetInputDisplaySize(
             'Geräte',
@@ -79,6 +85,7 @@ class nextEventsWidget extends unWidget
         $instance['textlength'] = $new_instance['textlength'];
         $instance['displaysize'] = $new_instance['displaysize'];
         $instance['linktext'] = $new_instance['linktext'];
+        $instance['eventurl'] = $new_instance['eventurl'];
         return $instance;
     }
 
@@ -96,6 +103,7 @@ class nextEventsWidget extends unWidget
         $data['text']=$instance['text'];
         $data['title']=$instance['title'];
         $data['linktext']=$instance['linktext'];
+        $data['eventurl']=$instance['eventurl'];
 
         if(!is_numeric($instance['textlength']) )$instance['textlength']=60;
 
