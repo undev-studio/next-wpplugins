@@ -24,6 +24,7 @@ require_once('ajax_gallery.php');
 require_once('ajax_erloesrechner.php');
 require_once('ajax_newsletter.php');
 require_once('ajax_status.php');
+require_once('ajax_language.php');
 
 
 
@@ -159,6 +160,7 @@ function next_content_menu()
     add_submenu_page( 'next_content/news.php', 'Events', 'Events',                'publish_posts', 'next_content/events.php' );
     add_submenu_page( 'next_content/news.php', 'Partner', 'Partner',                'publish_posts', 'next_content/partner.php' );
     if($isAdmin) add_submenu_page( 'next_content/news.php', 'Remit', 'Remit',                    'publish_posts', 'next_content/remit_info.php' );
+    if($isAdmin) add_submenu_page( 'next_content/news.php', 'Translation', 'Translation','publish_posts', 'next_content/language-edit.php' );
 
 
     // wp_enqueue_script('custom-script','/wp-content/themes/nextkraftwerke/js/jquery-sortable.js',array( 'jquery' ));

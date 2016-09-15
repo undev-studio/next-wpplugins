@@ -1,0 +1,50 @@
+{
+    "content":
+    [
+        {
+            "title":"backend",
+            "childs":
+            [
+                {
+                    "title":"save",
+                    "comment":"save button text",
+                    "default":"save",
+                },
+                {
+                    "title":"edit",
+                    "comment":"edit button text",
+                    "default":"edit",
+                },
+                {
+                    "title":"create",
+                    "comment":"create button text",
+                    "default":"create",
+                }
+            ]
+        },
+        {
+            "title":"widget",
+            "childs":
+            [
+                {
+                    "title":"minierloes",
+                    "childs":
+                    [
+                        {
+                            "title":"mail_subject",
+                            "comment":"",
+                            "default":"",
+                        },
+                        {
+                            "title":"mail_body",
+                            "comment":"",
+                            "default":"",
+                        }
+                    ]
+                }
+
+            ]
+        }
+    ]
+
+}
