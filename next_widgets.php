@@ -530,7 +530,7 @@ function cleanString($string) {
                     
                     if($row->$f['name']!='')
                     {
-                        print(getWidgetAlias($row->$f['name']));
+                        print(getWidgetAlias($row->$f['name']).' ('.$row->$f['name'].' ) ');
                         print('<input  name="'.$f['name'].'" type="hidden" value="'.$row->$f['name'].'">');
                         $widgetJsonFilename=$row->$f['name'];
                     }
