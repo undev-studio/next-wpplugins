@@ -2,43 +2,43 @@
     "content":
     [
         {
-            "title":"backend",
+            "name":"backend",
             "childs":
             [
                 {
-                    "title":"save",
+                    "name":"save",
                     "comment":"save button text",
-                    "default":"save",
+                    "default":"save"
                 },
                 {
-                    "title":"edit",
+                    "name":"edit",
                     "comment":"edit button text",
-                    "default":"edit",
+                    "default":"edit"
                 },
                 {
-                    "title":"create",
+                    "name":"create",
                     "comment":"create button text",
-                    "default":"create",
+                    "default":"create"
                 }
             ]
         },
         {
-            "title":"widget",
+            "name":"widget",
             "childs":
             [
                 {
-                    "title":"minierloes",
+                    "name":"minierloes",
                     "childs":
                     [
                         {
-                            "title":"mail_subject",
+                            "name":"mail_subject",
                             "comment":"",
-                            "default":"",
+                            "default":""
                         },
                         {
-                            "title":"mail_body",
+                            "name":"mail_body",
                             "comment":"",
-                            "default":"",
+                            "default":""
                         }
                     ]
                 }
@@ -48,3 +48,6 @@
     ]
 
 }
+
+
+

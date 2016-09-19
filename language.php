@@ -8,6 +8,9 @@ function getTLD()
     return $urlParts[count($urlParts)-1];
 }
 
+
+
+
 $tld=getTLD();
 if($tld=='de' || $tld=='at')
 {
