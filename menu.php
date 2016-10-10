@@ -161,7 +161,7 @@ function next_content_menu()
     add_submenu_page( 'next_content/news.php', 'Partner', 'Partner',                'publish_posts', 'next_content/partner.php' );
     if($isAdmin) add_submenu_page( 'next_content/news.php', 'Remit', 'Remit',                    'publish_posts', 'next_content/remit_info.php' );
     if($isAdmin) add_submenu_page( 'next_content/news.php', 'Translation', 'Translation','publish_posts', 'next_content/language-edit.php' );
-
+    if($isAdmin) add_submenu_page( 'next_content/news.php', 'Status', 'Status','publish_posts', 'next_content/status.php' );
 
     // wp_enqueue_script('custom-script','/wp-content/themes/nextkraftwerke/js/jquery-sortable.js',array( 'jquery' ));
 }

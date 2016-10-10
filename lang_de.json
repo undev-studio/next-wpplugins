@@ -1,10 +1,1 @@
-{
-    "widget_form_minierloes_from_email":"beratung@next-kraftwerke.de",
-    "widget_form_minierloes_from_name":"Next Kraftwerke",
-    "widget_form_minierloes_subject":"Next-Kraftwerke Formular",
-    "widget_form_minierloes_body":"Vielen Dank für Ihre Anfrage!<br/><br/>Wir melden uns innerhalb der nächsten Tage mit einem unverbindlichen Angebot bei Ihnen. <br/>Wenn Sie Rückfragen haben, melden Sie sich bitte telefonisch unter 0221 820085 70 oder per E-Mail an beratung@next-kraftwerke.de",
-
-    "test":"test",
-
-    "backend_create":"create"
-}
+{"widget_form_minierloes_mail_from_email":"beratung@next-kraftwerke.de","widget_form_minierloes_mail_from_name":"Next Kraftwerke","widget_form_minierloes_mail_subject":"Next-Kraftwerke Formular","widget_form_minierloes_mail_body":"Vielen Dank f\u00fcr Ihre Anfrage!<br\/><br\/>Wir melden uns innerhalb der n\u00e4chsten Tage mit einem unverbindlichen Angebot bei Ihnen. <br\/>Wenn Sie R\u00fcckfragen haben, melden Sie sich bitte telefonisch unter 0221 820085 70 oder per E-Mail an beratung@next-kraftwerke.de","test":"test","backend_create":"Erstellen","backend_translation_language":"Sprache","post_published_link":"Hier geht&#39;s zur vollen Meldung.","post_published":"Ver\u00f6ffentlicht am _DATE_ um _TIME_ von","events_upcoming":"Kommende Veranstaltungen","events_passed":"Vergangene Veranstaltungen","common_more":"Weiter","backend_save":"Speichern","backend_edit":"Bearbeiten"}

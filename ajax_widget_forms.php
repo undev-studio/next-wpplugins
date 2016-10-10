@@ -104,10 +104,10 @@
             {
                 $email = new PHPMailer();
                 $email->CharSet = 'utf-8';
-                $email->From      = nextTranslate('widget_form_minierloes_from_email');;
-                $email->FromName  = nextTranslate('widget_form_minierloes_from_name');
-                $email->Subject   = nextTranslate('widget_form_minierloes_subject');
-                $email->Body      = nextTranslate('widget_form_minierloes_body');
+                $email->From      = nextTranslate('widget_form_minierloes_mail_from_email');;
+                $email->FromName  = nextTranslate('widget_form_minierloes_mail_from_name');
+                $email->Subject   = nextTranslate('widget_form_minierloes_mail_subject');
+                $email->Body      = nextTranslate('widget_form_minierloes_mail_body');
 
                 $email->AddAddress( $form['email'] );
                 // $email->addBCC('tom@undev.de');

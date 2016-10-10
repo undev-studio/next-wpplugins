@@ -8,7 +8,7 @@
 
     function ajax_status()
     {
-         header('Access-Control-Allow-Origin: https://www.next-kraftwerke.de');
+        header('Access-Control-Allow-Origin: *');
 
         $response=Array();
         global $wp_version;
