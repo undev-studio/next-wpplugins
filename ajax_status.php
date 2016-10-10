@@ -9,7 +9,6 @@
     function ajax_status()
     {
         header('Access-Control-Allow-Origin: *');
-        
 
         $response=Array();
         global $wp_version;

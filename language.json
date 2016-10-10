@@ -1,0 +1,109 @@
+{
+    "content":
+    [
+        {
+            "name":"common",
+            "childs":
+            [
+                {
+                    "name":"more",
+                    "default":""
+                }
+            ]
+        },
+        {
+            "name":"backend",
+            "childs":
+            [
+                {
+                    "name":"save",
+                    "comment":"save button text",
+                    "default":"save"
+                },
+                {
+                    "name":"edit",
+                    "comment":"edit button text",
+                    "default":"edit"
+                },
+                {
+                    "name":"create",
+                    "comment":"create button text",
+                    "default":"create"
+                },
+                {
+                    "name":"translation_language",
+                    "comment":"",
+                    "default":"language"
+                }
+            ]
+        },
+        {
+            "name":"widget",
+            "childs":
+            [
+                {
+                    "name":"form_minierloes",
+                    "childs":
+                    [
+                        {
+                            "name":"mail_from_email",
+                            "comment":"",
+                            "default":""
+                        },
+                        {
+                            "name":"mail_from_name",
+                            "comment":"",
+                            "default":""
+                        },
+                        {
+                            "name":"mail_subject",
+                            "comment":"",
+                            "default":""
+                        },
+                        {
+                            "name":"mail_body",
+                            "comment":"",
+                            "default":""
+                        }
+                    ]
+                }
+
+            ]
+        },
+        {
+            "name":"events",
+            "childs":
+            [
+                {
+                    "name":"upcoming",
+                    "default":""
+                },
+                {
+                    "name":"passed",
+                    "default":""
+                }
+            ]
+        },
+        {
+            "name":"post",
+            "childs":
+            [
+                {
+                    "name":"published",
+                    "default":""
+                },
+                {
+                    "name":"published_link",
+                    "default":""
+                }
+            ]
+        }
+
+
+
+    ]
+
+}
+
+
+
