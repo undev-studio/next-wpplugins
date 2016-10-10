@@ -8,18 +8,16 @@
 
     function ajax_status()
     {
-         header('Access-Control-Allow-Origin: https://www.next-kraftwerke.de');
+        header('Access-Control-Allow-Origin: *');
+        
 
         $response=Array();
         global $wp_version;
 
         $response['version']=$wp_version;
 
-
-// var_dump(wp_get_update_data());
-
-// $response['updates']=wp_get_update_data();
-
+        // var_dump(wp_get_update_data());
+        // $response['updates']=wp_get_update_data();
 
         $update_plugins = get_site_transient( 'update_plugins' );
         if ( ! empty( $update_plugins->response ) )

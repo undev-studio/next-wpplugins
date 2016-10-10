@@ -94,7 +94,7 @@
 
                 global $wpdb;
                 $wpdb->insert('emaillog', array(
-                  'content' => json_encode($email)+json_encode($form),
+                  'content' => json_encode($email).json_encode($form),
                   'templatename' => 'widget_'.$form['form'],
                   'to' => $form['email']
                   )
@@ -119,7 +119,7 @@
 
                 global $wpdb;
                 $wpdb->insert('emaillog', array(
-                  'content' => json_encode($email)+json_encode($form),
+                  'content' => json_encode($email).json_encode($form),
                   'templatename' => 'widget_'.$form['form'],
                   'to' => $form['email']
                   )
@@ -195,7 +195,7 @@
 
             global $wpdb;
             $lastid = $wpdb->insert('emaillog', array(
-              'content' => json_encode($email)+json_encode($form),
+              'content' => json_encode($email).json_encode($form),
               'templatename' => 'widget_'.$form['form'],
               'to' => $form['beratung@next-kraftwerke.de']
               )

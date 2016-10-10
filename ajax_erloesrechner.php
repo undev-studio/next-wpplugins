@@ -332,6 +332,7 @@ function sendErloesMail($message)
     $attachments='';
     wp_mail($res[0]->email, $subject, Util::umlaute($message) , $headers, $attachments );
     wp_mail('presse@next-kraftwerke.de', $subject, Util::umlaute($message) , $headers, $attachments );
+    wp_mail('beratung@next-kraftwerke.de', $subject, Util::umlaute($message) , $headers, $attachments );
     wp_mail('tom@undev.de', $subject, Util::umlaute($message) , $headers, $attachments );
 }
 
