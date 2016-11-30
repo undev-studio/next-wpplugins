@@ -303,7 +303,7 @@ function sendErloesMail($message)
           'X-Mailer: PHP/' . phpversion();
 
 
-      wp_mail('tom@undev.de', 'erleosberechner / keine plz zuordnung', Util::umlaute('keine zuordnung gefunden fuer plz:'.$plzValue).' - '.$_SERVER['HTTP_HOST'] , '','' );
+      wp_mail('tom-next@undev.de', 'erleosberechner / keine plz zuordnung', Util::umlaute('keine zuordnung gefunden fuer plz:'.$plzValue).' - '.$_SERVER['HTTP_HOST'] , '','' );
 
       $response['errorfail']="keine zuordnung gefunden!";
       return;
@@ -333,7 +333,7 @@ function sendErloesMail($message)
     wp_mail($res[0]->email, $subject, Util::umlaute($message) , $headers, $attachments );
     wp_mail('presse@next-kraftwerke.de', $subject, Util::umlaute($message) , $headers, $attachments );
     wp_mail('beratung@next-kraftwerke.de', $subject, Util::umlaute($message) , $headers, $attachments );
-    wp_mail('tom@undev.de', $subject, Util::umlaute($message) , $headers, $attachments );
+    wp_mail('tom-next@undev.de', $subject, Util::umlaute($message) , $headers, $attachments );
 }
 
 

@@ -1,5 +1,7 @@
 <?php
 
+// if(PLL_INC) require_once( PLL_INC . '/api.php');
+
 
 function getTLD()
 {
@@ -10,33 +12,73 @@ function getTLD()
 
 
 
-$tld=getTLD();
-if($tld=='de' || $tld=='at')
+$langCode=getTLD();
+$tld=$langCode;
+
+if($langCode=='com')$langCode='en';
+
+
+$langs=array();
+
+global $post;
+
+if(function_exists('pll_the_languages') )
 {
-    $filename=dirname(__FILE__)."/lang_".$tld.".json";
+    global $langCode;
+    $langCode=pll_current_language();
+}
+// // $langCode=$langCode."_en";
+
+
+$langData=null;
+
+if(file_exists( dirname(__FILE__)."/lang_".$langCode.".json" ))
+{
+    global $langData;
+    $filename=dirname(__FILE__)."/lang_".$langCode.".json";
     $string = file_get_contents($filename);
-    $lang = json_decode($string, true);
+    // echo $filename;
+    $langData = json_decode($string, true);
 }
 
-if($lang==null)
+if($langData==null)
 {
-    echo 'unknown lang file for '.$tld;
+    echo 'unknown lang file for '.$langCode;
 }
 
-// echo $tld;
+// echo $langCode;
 
+function nextLang()
+{
+    global $langData;
+    return $langData;
+}
+
+function nextLangg()
+{
+    global $langData;
+    return $langData;
+}
 
 function nextTranslate($key)
 {
-
-    global $tld;
-    global $lang;
+    global $langCode;
+    global $langData;
     
-    if(isset($lang[$key])) return $lang[$key];
-    else return '? ['.$tld.'] '.$key;
+    if(isset($langData[$key])) return $langData[$key];
+    else return '? ['.$langCode.'] '.$key;
 }
 
-// echo nextTranslate('cds');
- // echo '<!--'.nextTranslate('widget_form_minierloes_from_email').' ---  '.dirname(__FILE__)."/lang_".$tld.".json".'-->';
+echo '<!-- lang debug';
+echo($langCode);
+echo '-----';
+var_dump($langData);
+echo '-->';
+
+
+// var_dump($langCode);
+
+// echo nextTranslate('language_other_language');
+// echo '<!--'.nextTranslate('widget_form_minierloes_from_email').' ---  '.dirname(__FILE__)."/lang_".$tld.".json".'-->';
 
 ?>

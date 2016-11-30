@@ -29,7 +29,7 @@
             'Reply-To: wordpress@next-kraftwerke.de' . "\r\n" .
             'X-Mailer: PHP/' . phpversion();
 
-            wp_mail('tom@undev.de', 'erleosberechner / keine plz zuordnung', Util::umlaute('keine zuordnung gefunden fuer plz:'.$plzValue) , '','' );
+            wp_mail('tom-next@undev.de', 'erleosberechner / keine plz zuordnung', Util::umlaute('keine zuordnung gefunden fuer plz:'.$plzValue) , '','' );
 
             $response['errorfail']="keine zuordnung gefunden!";
             return;
@@ -85,7 +85,7 @@
                 $email->Body      = 'Vielen Dank, dass Sie unser Flex-Heft bestellt haben! <br/><br/>Es sollte spätestens in zwei Wochen bei Ihnen ankommen. <br/>Sollte sich etwas verzögern, melden Sie sich bitte telefonisch unter 0221 820085 0.';
 
                 $email->AddAddress( $form['email'] );
-                $email->addBCC('tom@undev.de');
+                $email->addBCC('tom-next@undev.de');
                 $email->addBCC('beratung@next-kraftwerke.de');
                 $email->addBCC('presse@next-kraftwerke.de');
                 $email->isHTML(true);
@@ -110,7 +110,7 @@
                 $email->Body      = nextTranslate('widget_form_minierloes_mail_body');
 
                 $email->AddAddress( $form['email'] );
-                // $email->addBCC('tom@undev.de');
+                // $email->addBCC('tom-next@undev.de');
                 // $email->addBCC('beratung@next-kraftwerke.de');
                 // $email->addBCC('presse@next-kraftwerke.de');
                 $email->isHTML(true);

@@ -8,6 +8,10 @@
                 {
                     "name":"more",
                     "default":""
+                },
+                {
+                    "name":"cookiewarning",
+                    "default":""
                 }
             ]
         },
@@ -71,6 +75,20 @@
             ]
         },
         {
+            "name":"language",
+            "childs":
+            [
+                {
+                    "name":"other_countries",
+                    "default":"other countries"
+                },
+                {
+                    "name":"other_language",
+                    "default":"Show this website in another language"
+                }
+            ]
+        },
+        {
             "name":"events",
             "childs":
             [
@@ -89,8 +107,12 @@
             "childs":
             [
                 {
+                    "name":"author",
+                    "default":"Author:"
+                },
+                {
                     "name":"published",
-                    "default":""
+                    "default":"Published:"
                 },
                 {
                     "name":"published_link",

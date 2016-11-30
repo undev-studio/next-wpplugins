@@ -19,6 +19,13 @@
             <option value="at">AT</option>
             <option value="fr">FR</option>
             <option value="en">EN</option>
+            <option value="pl">PL</option>
+            <option value="be">BE</option>
+            <option value="it">IT</option>
+            <option value="nl">NL</option>
+
+
+            
         </select>
 
     </div>
@@ -153,6 +160,8 @@ NEXTLANG.setTranslation=function(key)
                 console.log('LANGUAGE ',jQuery('#langselect').val() );
 
                 console.log('------');
+                jQuery('#editrow_'+key).toggle();
+
                 // console.log(res);
             }
             catch(e)
@@ -304,4 +313,3 @@ NEXTLANG.setTranslation=function(key)
 
 
 
-?>
