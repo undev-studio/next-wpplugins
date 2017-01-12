@@ -3,6 +3,7 @@
     require_once('libs/fpdf/fpdf.php');
     require_once('libs/phpmailer/PHPMailerAutoload.php');
     require_once('libs/dompdf/dompdf_config.inc.php');
+    require_once('libs/iban/iban.php');
 
     require_once('libs/hashids/HashGenerator.php');
     require_once('libs/hashids/Hashids.php');
@@ -147,6 +148,11 @@
             }
         }
 
+
+
+
+
+
         /////////////////////////////////////////////////////////////////
         // step 2
         $currentStep=1;
@@ -226,6 +232,18 @@
         $currentStep=2;
         $jsonArr['navsteps'][$currentStep]=true;
 
+
+
+        if( substr( $_REQUEST['formdata']['beginvermarktung'],2,1 )!='.')
+        {
+            $jsonArr['navsteps'][$currentStep]=false;
+            // $jsonArr['errors'][]='beginvermarktunginput';
+            // $jsonArr['errors'][]='datuminbetriebnahme';
+            
+            $jsonArr['errormsg'][]='beginvermarktung';
+
+        }
+
         // step 4
         $currentStep=3;
         $jsonArr['navsteps'][$currentStep]=true;
@@ -236,22 +254,74 @@
 
         if($_REQUEST['formdata']['voucher']!='')
         {
-            if( strtolower($_REQUEST['formdata']['voucher'])!=="solar2016" && strtolower($_REQUEST['formdata']['voucher'])!=="solar 2016" )
+
+            global $wpdb;
+            $sql='SELECT * FROM next_formdvpv_codes WHERE BINARY code = "'.esc_sql( $_REQUEST['formdata']['voucher'] ).'";';
+            $rows = $wpdb->get_results($sql);
+
+            if($wpdb->last_error!='')
+            {
+                echo($wpdb->last_error);
+            }
+
+            $sql='SELECT * FROM next_formdvpv WHERE BINARY voucher = "'.esc_sql( $_REQUEST['formdata']['voucher'] ).'";';
+            $rowsExisting = $wpdb->get_results($sql);
+
+            if($wpdb->last_error!='')
+            {
+                echo($wpdb->last_error);
+            }
+
+
+            if(count($rows)==0 || count($rowsExisting)>0 )
             {
                 $jsonArr['navsteps'][$currentStep]=false;
                 if($fromStep >= $currentStep) $jsonArr['errors'][]='voucher';
                 $jsonArr['errormsg'][]='voucher';
             }
+
+
+
+            // if( strtolower($_REQUEST['formdata']['voucher'])!=="solar2016" && strtolower($_REQUEST['formdata']['voucher'])!=="solar 2016" )
+            // {
+            //     $jsonArr['navsteps'][$currentStep]=false;
+            //     if($fromStep >= $currentStep) $jsonArr['errors'][]='voucher';
+            //     $jsonArr['errormsg'][]='voucher';
+            // }
         }
 
 
          // if($_REQUEST['formdata']['konto_format']=='' || $_REQUEST['formdata']['konto_format']=='new' )
          {
-            if($_REQUEST['formdata']['konto_iban']=='')
+
+            if(!iban_verify_checksum($_REQUEST['formdata']['konto_iban']))
             {
                 $jsonArr['navsteps'][$currentStep]=false;
                 if($fromStep >= $currentStep) $jsonArr['errors'][]='konto_iban';
+                $jsonArr['errormsg'][]='iban';
             }
+
+            $iso=strtoupper(substr($_REQUEST['formdata']['konto_iban'],0,2 ));
+            $isoArr=array("BE","BG","DK","DE","EE","FI","FR","GR","GB","IE","IS","IT","HR","LV","LI","LT","LU","MT","MC","NL","NO","AT","PL","PT","RO","SM","SE","CH","SK","SI","ES","CZ","HU","CY");
+
+            if(!in_array($iso,$isoArr))
+            {
+                $jsonArr['navsteps'][$currentStep]=false;
+                if($fromStep >= $currentStep) $jsonArr['errors'][]='konto_iban';
+                $jsonArr['errormsg'][]='iban';
+            }
+
+
+
+
+
+
+
+            // if($_REQUEST['formdata']['konto_iban']=='')
+            // {
+            //     $jsonArr['navsteps'][$currentStep]=false;
+            //     if($fromStep >= $currentStep) $jsonArr['errors'][]='konto_iban';
+            // }
 
             if($_REQUEST['formdata']['konto_bic']=='')
             {
