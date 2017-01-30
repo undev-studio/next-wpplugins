@@ -10,41 +10,47 @@ function getTLD()
     return $urlParts[count($urlParts)-1];
 }
 
-
-
 $langCode=getTLD();
 $tld=$langCode;
 
 if($langCode=='com')$langCode='en';
-
+if($langCode=='ch')$langCode='de';
 
 $langs=array();
 
 global $post;
 
+// echo pll_current_language();
 if(function_exists('pll_the_languages') )
 {
     global $langCode;
     $langCode=pll_current_language();
 }
 // // $langCode=$langCode."_en";
+    // echo $langCode.'!!!';
 
 
 $langData=null;
 
-if(file_exists( dirname(__FILE__)."/lang_".$langCode.".json" ))
+function loadLangData($langCode)
 {
-    global $langData;
-    $filename=dirname(__FILE__)."/lang_".$langCode.".json";
-    $string = file_get_contents($filename);
-    // echo $filename;
-    $langData = json_decode($string, true);
+    if(file_exists( dirname(__FILE__)."/lang_".$langCode.".json" ))
+    {
+        global $langData;
+        $filename=dirname(__FILE__)."/lang_".$langCode.".json";
+        $string = file_get_contents($filename);
+        // echo $filename;
+        $langData = json_decode($string, true);
+    }
+
+    if($langData==null)
+    {
+        echo 'unknown lang file for '.$langCode;
+    }
+
 }
 
-if($langData==null)
-{
-    echo 'unknown lang file for '.$langCode;
-}
+loadLangData($langCode);
 
 // echo $langCode;
 
@@ -63,17 +69,27 @@ function nextLangg()
 function nextTranslate($key)
 {
     global $langCode;
+    
+    if(function_exists('pll_the_languages') )
+    {
+        if($langCode!=pll_current_language())
+        {
+            $langCode=pll_current_language();
+            loadLangData($langCode);
+        }
+    } 
+
     global $langData;
     
     if(isset($langData[$key])) return $langData[$key];
     else return '? ['.$langCode.'] '.$key;
 }
 
-echo '<!-- lang debug';
-echo($langCode);
-echo '-----';
-var_dump($langData);
-echo '-->';
+// echo '<!-- lang debug';
+// echo($langCode);
+// echo '-----';
+// var_dump($langData);
+// echo '-->';
 
 
 // var_dump($langCode);

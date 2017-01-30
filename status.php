@@ -8,11 +8,9 @@
 ?>
 
 <div class="wrap">
-    <h2>Status</h2>
-
+    <h2>Status2</h2>
 
     <div id="transcontent" class="wrap">
-
     </div>
 
 </div>
@@ -97,7 +95,7 @@ h3
         'www.next-kraftwerke.de',
         'www.next-kraftwerke.at',
         'www.next-kraftwerke.be',
-        'www.next-kraftwerke.ch',
+        'www.suisse-next.ch',
         'www.centrales-next.fr',
         'www.next-kraftwerke.com',
         'www.elektrownie-next.pl',

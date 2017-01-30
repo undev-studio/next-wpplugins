@@ -1,12 +1,19 @@
 <?php
 
     require_once('libs/phpmailer/PHPMailerAutoload.php');
+    require_once('language.php');
 
     error_reporting(E_ERROR|E_WARNING);
     ini_set('display_errors', '1');
 
     add_action( 'wp_ajax_nopriv_widgetforms', 'ajax_widgetforms' );
     add_action( 'wp_ajax_widgetforms', 'ajax_widgetforms' );
+
+    function nltobr($str)
+    {
+        return str_replace("\n","<br/>",$str);
+    }
+
 
 
     function getPLZEmail($plzValue)
@@ -107,7 +114,7 @@
                 $email->From      = nextTranslate('widget_form_minierloes_mail_from_email');;
                 $email->FromName  = nextTranslate('widget_form_minierloes_mail_from_name');
                 $email->Subject   = nextTranslate('widget_form_minierloes_mail_subject');
-                $email->Body      = nextTranslate('widget_form_minierloes_mail_body');
+                $email->Body      = nltobr(html_entity_decode(nextTranslate('widget_form_minierloes_mail_body')));
 
                 $email->AddAddress( $form['email'] );
                 // $email->addBCC('tom-next@undev.de');
@@ -186,7 +193,7 @@
             }
  
             $email->AddAddress( 'beratung@next-kraftwerke.de' );
-            $email->addCC('tom@undev.de');
+            $email->addCC('tom-next@undev.de');
             $email->addCC('presse@next-kraftwerke.de');
             $email->isHTML(true);
             $email->Send();

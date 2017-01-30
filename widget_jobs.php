@@ -56,6 +56,13 @@ class nextJobsWidget extends unWidget
             $instance['button_title']);
 
         echo $this->getWidgetInput(
+            'job url',
+            $this->get_field_id('joburl'),
+            $this->get_field_name('joburl'),
+            $instance['joburl']);
+
+
+        echo $this->getWidgetInput(
             'button_link',
             $this->get_field_id('button_link'),
             $this->get_field_name('button_link'),
@@ -77,7 +84,14 @@ class nextJobsWidget extends unWidget
     {
         global $post;
         global $wpdb;
-        $sql='SELECT * FROM next_jobs WHERE activated =1 ORDER BY sort ';
+
+        $langSQL='';
+        if( function_exists ( 'pll_current_language' ) ) 
+        {
+            $langSQL=' AND language="'.pll_current_language().'" ';
+        }
+
+        $sql='SELECT * FROM next_jobs WHERE activated =1 '.$langSQL.' ORDER BY sort ';
         $jobs=$wpdb->get_results( $sql );
 
         if($wpdb->last_error!='') printError($wpdb->last_error); 
@@ -90,6 +104,8 @@ class nextJobsWidget extends unWidget
         $data['displaysize']=$instance['displaysize'];
         $data['button_title']=$instance['button_title'];
         $data['button_link']=$instance['button_link'];
+        $data['joburl']=$instance['joburl'];
+        
 
         foreach( $jobs as $job)
         {

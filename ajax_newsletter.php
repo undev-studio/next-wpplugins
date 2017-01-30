@@ -38,8 +38,8 @@ function next_cleverreach_ajax_callback()
     $doidata = array(
         "user_ip" => $_SERVER['REMOTE_ADDR'], //the IP of the user who registered. not yours!
         "user_agent" => $_SERVER['HTTP_USER_AGENT'],
-        "referer" => "https://www.nextkraftwerke.de",
-        "postdata" => "firtsname:bruce,lastname:whayne,nickname:Batman" //just an example. any txt format will do.
+        "referer" => "https://www.nextkraftwerke.de" //,
+        // "postdata" => "firtsname:bruce,lastname:whayne,nickname:Batman" //just an example. any txt format will do.
     );
 
     $result = $api->formsSendActivationMail($apiKey, $formId, $_REQUEST['email'],$doidata);

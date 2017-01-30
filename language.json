@@ -103,6 +103,16 @@
             ]
         },
         {
+            "name":"jobs",
+            "childs":
+            [
+                {
+                    "name":"alljobs",
+                    "default":""
+                }
+            ]
+        },
+        {
             "name":"post",
             "childs":
             [

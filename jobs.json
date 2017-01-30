@@ -17,6 +17,14 @@
             "default":"Neuer Job"
         },
         { 
+            "title":"Language", 
+            "name":"language", 
+            "input":"language",
+            "visible":true,
+            "editable":true,
+            "default":""
+        },
+        { 
             "title":"Status", 
             "name":"activated", 
             "input":"select",
