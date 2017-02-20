@@ -1,5 +1,7 @@
 <?php
 
+
+
 error_reporting(E_ERROR|E_WARNING);
 ini_set('display_errors', '1');
 
@@ -16,7 +18,9 @@ include 'libs/feedwriter/RSS2.php';
 
 date_default_timezone_set('UTC');
 
+
 use \FeedWriter\RSS2;
+
 
 
 $feed = new RSS2();
@@ -79,6 +83,7 @@ $myFeed = $feed->generateFeed();
 header('Content-Type: application/xml');
 
 $feed->printFeed();
+die();
 
 
 ?>

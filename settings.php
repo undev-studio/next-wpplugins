@@ -35,6 +35,10 @@
     require_once( realpath(dirname(__FILE__)). '/language.php');
 
 
+if(is_admin())
+{
+
+
     echo '<form method="POST">';
     echo '<input type="hidden" name="savenextsettings" value="true"/>';
  
@@ -124,6 +128,8 @@
 echo "<pre>";
 // var_dump($cfg);
 echo "</pre>";
+
+}
 
 
 ?>
