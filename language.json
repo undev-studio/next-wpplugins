@@ -85,7 +85,29 @@
                 {
                     "name":"other_language",
                     "default":"Show this website in another language"
-                }
+                },
+                {"name":"lang_de"},
+                {"name":"lang_fr"},
+                {"name":"lang_en"},
+                {"name":"lang_it"},
+                {"name":"lang_nl"},
+                {"name":"lang_pl"},
+                {"name":"country_de" },
+                {"name":"country_de_url" },
+                {"name":"country_nl"},
+                {"name":"country_nl_url"},
+                {"name":"country_at"},
+                {"name":"country_at_url"},
+                {"name":"country_it"},
+                {"name":"country_it_url"},
+                {"name":"country_ch"},
+                {"name":"country_ch_url"},
+                {"name":"country_pl"},
+                {"name":"country_pl_url"},
+                {"name":"country_en"},
+                {"name":"country_en_url"},
+                {"name":"country_be"},
+                {"name":"country_be_url"}
             ]
         },
         {
