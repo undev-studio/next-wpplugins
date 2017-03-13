@@ -85,6 +85,25 @@ function nextTranslate($key)
     else return '? ['.$langCode.'] '.$key;
 }
 
+function nextTranslateStartsWith($s)
+{
+    global $langData;
+    $result=array();
+
+    foreach ($langData as $key =>  $d)
+    {
+        if(Util::startsWith($key,$s))
+        {
+            $result[$key]=$d;
+
+        }
+    }
+
+
+
+    return $result;
+}
+
 // echo '<!-- lang debug';
 // echo($langCode);
 // echo '-----';
