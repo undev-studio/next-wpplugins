@@ -13,12 +13,8 @@ function next_cleverreach_ajax_callback()
     $listId = "526774";
     $formId="156538";
 
-
-
-
     global $wpdb; // this is how you get access to the database
     // $whatever = intval( $_POST['whatever'] );
-
 
     $api = new SoapClient($wsdl_url);
 

@@ -25,6 +25,7 @@ require_once('ajax_erloesrechner.php');
 require_once('ajax_newsletter.php');
 require_once('ajax_status.php');
 require_once('ajax_language.php');
+require_once('ajax_uptodate.php');
 
 
 
