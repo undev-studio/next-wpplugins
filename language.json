@@ -112,7 +112,9 @@
                 {"name":"country_en"},
                 {"name":"country_en_url"},
                 {"name":"country_be"},
-                {"name":"country_be_url"}
+                {"name":"country_be_url"},
+                {"name":"country_fr"},
+                {"name":"country_fr_url"}
             ]
         },
         {

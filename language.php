@@ -99,6 +99,8 @@ function nextTranslateStartsWith($s)
         }
     }
 
+
+
     return $result;
 }
 
