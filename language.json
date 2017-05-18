@@ -12,7 +12,12 @@
                 {
                     "name":"cookiewarning",
                     "default":""
+                },
+                {
+                    "name":"search_result_link",
+                    "default":""
                 }
+                
             ]
         },
         {
