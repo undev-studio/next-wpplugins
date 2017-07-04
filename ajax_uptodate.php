@@ -97,6 +97,8 @@
 
             $thumb = wp_get_attachment_image_src( get_post_thumbnail_id($p['ID']) , "thumbnail" );
             if($thumb[0])$recent[$key]['thumb']=$thumb[0];
+            $recent[$key]['date_readable']=date('j.n.Y', strtotime($recent[$key]['post_date']));
+
         }
 
         return $recent;
