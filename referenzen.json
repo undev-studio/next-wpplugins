@@ -20,10 +20,26 @@
         { 
             "title":"Link Title",
             "name":"longtitle", 
-            "input":"textarea",
+            "input":"input",
             "visible":true,
             "editable":true,
             "default":"Neuer Titel"
+        },
+        { 
+            "title":"text",
+            "name":"text", 
+            "input":"textarea",
+            "visible":true,
+            "editable":true,
+            "default":""
+        },
+        { 
+            "title":"subtitle",
+            "name":"subtitle", 
+            "input":"input",
+            "visible":true,
+            "editable":true,
+            "default":""
         },
         {
             "title":"Image Project Overview 350x190 pixel",
