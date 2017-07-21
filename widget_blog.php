@@ -14,6 +14,7 @@ Author URI: http://undev.de/
 
 require_once('twig.php');
 require_once('widget_.php');
+require_once('settings_next.php');
 
 add_action('admin_enqueue_scripts', 'upload_scripts');
 
@@ -40,10 +41,22 @@ class nextBlogWidget extends unWidget
             $instance['title']);
 
         echo $this->getWidgetInputDisplaySize(
-            'Geräte',
+            'Devices',
             $this->get_field_id('displaysize'),
             $this->get_field_name('displaysize'),
             $instance['displaysize']);
+
+        echo $this->getWidgetInput(
+            'Link Title',
+            $this->get_field_id('linktitle'),
+            $this->get_field_name('linktitle'),
+            $instance['linktitle']);
+
+        echo $this->getWidgetInput(
+            'Link URL',
+            $this->get_field_id('linkurl'),
+            $this->get_field_name('linkurl'),
+            $instance['linkurl']);
 
     }
 
@@ -51,6 +64,8 @@ class nextBlogWidget extends unWidget
     {
         $instance = $old_instance;
         $instance['title'] = $new_instance['title'];
+        $instance['linktitle'] = $new_instance['linktitle'];
+        $instance['linkurl'] = $new_instance['linkurl'];
         return $instance;
     }
 
@@ -61,9 +76,11 @@ class nextBlogWidget extends unWidget
 
         $instance['numberposts']=3;
 
+        $cfg=nextSettings::load();
+
         $args=array(
                 'numberposts' => $instance['numberposts'],
-                'category_name' => 'energie-blog',
+                'category_name' => $cfg[nextSettings::POST_CAT_BLOG],
                 'post_status' => 'publish'
         );
 
@@ -80,6 +97,8 @@ class nextBlogWidget extends unWidget
 
         $data['title']=$instance['title'];
         $data['recent']=$recent;
+        $data['linktitle']=$instance['linktitle'];
+        $data['linkurl']=$instance['linkurl'];
 
         $twig=initTwig();
         $template = $twig->loadTemplate('widget_blog.html');

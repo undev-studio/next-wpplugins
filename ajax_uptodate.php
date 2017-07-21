@@ -6,11 +6,13 @@
     add_action( 'wp_ajax_nopriv_uptodate', 'ajax_uptodate_callback' );
     add_action( 'wp_ajax_uptodate', 'ajax_uptodate_callback' );
 
+require_once("settings_next.php");
+
 
     function getEvents()
     {
         global $wpdb;
-        $sql='SELECT * FROM next_events WHERE DATEDIFF(date_start,NOW())>=0 OR DATEDIFF(date_end,NOW())>=0 ORDER BY DATEDIFF(date_start,NOW()) ASC LIMIT 0,3';
+        $sql='SELECT * FROM next_events WHERE DATEDIFF(date_start,NOW())>=0 OR DATEDIFF(date_end,NOW())>=0 ORDER BY DATEDIFF(date_start,NOW()) ASC LIMIT 0,4';
         $events=$wpdb->get_results( $sql );
 
         if($wpdb->last_error!='') echo($wpdb->last_error);
@@ -56,7 +58,7 @@
             $langSQL=' AND  (language="'.pll_current_language().'" OR language="" ) ';
         }
 
-        $sql='SELECT * FROM next_jobs WHERE activated=1 '.$langSQL.' ORDER BY sort ';
+        $sql='SELECT * FROM next_jobs WHERE activated=1 '.$langSQL.' ORDER BY sort LIMIT 0,7';
         // echo $sql;
         $jobs=$wpdb->get_results( $sql );
 
@@ -82,9 +84,13 @@
 
     function uptodateGetBlog()
     {
+
+        $cfg=nextSettings::load();
+
+
         $args=array(
                 'numberposts' => 3,
-                'category_name' => 'energie-blog',
+                'category_name' => $cfg[nextSettings::POST_CAT_BLOG],
                 'post_status' => 'publish'
         );
 
@@ -114,7 +120,7 @@
                         $langSQL=' WHERE (language="'.pll_current_language().'" OR language="" ) ';
 
 
-        $sql='SELECT * FROM next_news '.$langSQL.' ORDER BY newsdate DESC LIMIT 0,3';
+        $sql='SELECT * FROM next_news '.$langSQL.' ORDER BY newsdate DESC LIMIT 0,4';
 
 
         $news=$wpdb->get_results( $sql );

@@ -95,11 +95,13 @@ h3
         'www.next-kraftwerke.de',
         'www.next-kraftwerke.at',
         'www.next-kraftwerke.be',
+        'www.next-kraftwerke.nl',
         'www.suisse-next.ch',
         'www.centrales-next.fr',
         'www.next-kraftwerke.com',
         'www.elektrownie-next.pl',
         'www.centrali-next.it',
+
         ];
     var states=[];
 

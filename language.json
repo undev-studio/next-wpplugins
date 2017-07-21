@@ -158,6 +158,25 @@
                     "default":""
                 }
             ]
+        },
+        {
+            "name":"search",
+            "childs":
+            [
+                {
+                    "name":"resultfor",
+                    "default":"Results for:"
+                },
+                {
+                    "name":"noresults",
+                    "default":"Sorry, nothing to display."
+                },
+                {
+                    "name":"search",
+                    "default":"Search"
+                }
+
+            ]
         }
 
 
