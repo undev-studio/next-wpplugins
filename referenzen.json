@@ -77,10 +77,18 @@
             "title":"Image Position", 
             "name":"imgposition", 
             "input":"select",
-            "visible":true,
+            "visible":false,
             "editable":true,
             "default":"1",
             "options":[{"title":"top","value":"top"},{"title":"center","value":"center"},{"title":"bottom","value":"bottom"}]
+        },
+        {
+            "title":"tags",
+            "name":"tags", 
+            "input":"input",
+            "visible":false,
+            "editable":true,
+            "default":""
         }
     ],
 

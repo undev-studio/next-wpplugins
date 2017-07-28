@@ -1,0 +1,65 @@
+{
+    
+    "title":"Quotes",
+    "tablename":"next_quotes",
+    "path":"next_content/quotes.php",
+    "idName":"id",
+    "sortable":false,
+    "orderby":"name",
+    
+    "vars":
+    [
+        { 
+            "title":"Name",
+            "name":"name", 
+            "input":"input",
+            "visible":true,
+            "editable":true,
+            "default":""
+        },
+        { 
+            "title":"Title",
+            "name":"title", 
+            "input":"input",
+            "visible":true,
+            "editable":true,
+            "default":"New title"
+        },
+        { 
+            "title":"Text",
+            "name":"text", 
+            "input":"textarea",
+            "visible":false,
+            "editable":true,
+            "default":"Neuer Titel"
+        },
+
+        {
+            "title":"Image",
+            "name":"image", 
+            "input":"media",
+            "visible":true,
+            "editable":true,
+            "default":""
+        },
+        { 
+            "title":"tags",
+            "name":"tags", 
+            "input":"input",
+            "visible":false,
+            "editable":true,
+            "default":""
+        }
+    ],
+
+    "l":
+    {
+        "edit":"Edit",
+        "save":"Save",
+        "delete":"Delete",
+        "create":"Create new Entry",
+        "save_order":"Save Order"
+    }
+
+}
+

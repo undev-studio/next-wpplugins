@@ -26,6 +26,8 @@ require_once('ajax_newsletter.php');
 require_once('ajax_status.php');
 require_once('ajax_language.php');
 require_once('ajax_uptodate.php');
+require_once('ajax_references.php');
+require_once('ajax_quotes.php');
 
 
 
@@ -150,6 +152,10 @@ function next_content_menu()
     add_submenu_page( 'next_content/news.php', 
         $nextLangAdmin['references'], $nextLangAdmin['references'], 'publish_posts', 
         'next_content/referenzen.php' );
+
+    add_submenu_page( 'next_content/news.php', 
+        $nextLangAdmin['quotes'], 'Quotes', 'publish_posts',
+        'next_content/quotes.php' );
     
     if($isAdmin) add_submenu_page( 'next_content/news.php', 
         $nextLangAdmin['revenue_calculator'], $nextLangAdmin['revenue_calculator'], 'publish_posts', 
