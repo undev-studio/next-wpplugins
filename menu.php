@@ -124,6 +124,11 @@ require_once('next_widget_random.php');
 add_action( 'widgets_init', create_function('', 'return register_widget("nextWidgetRandom");') );
 
 
+require_once('tagcloud.php');
+add_action( 'widgets_init', create_function('', 'return register_widget("TagCloudWidgetNew");') );
+
+
+
 
 
 add_action('admin_menu', 'next_content_menu');

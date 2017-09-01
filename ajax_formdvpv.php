@@ -228,6 +228,14 @@
             if($fromStep >= $currentStep) $jsonArr['errors'][]='anlage_fernsteuerung';
         }
 
+
+        if($_REQUEST['formdata']['anlage_modul_anzahl']!='' && !is_numeric($_REQUEST['formdata']['anlage_modul_anzahl']) )
+        {
+            $jsonArr['navsteps'][$currentStep]=false;
+            if($fromStep >= $currentStep) $jsonArr['errors'][]='anlage_modul_anzahl';
+        }
+
+
         // step 3
         $currentStep=2;
         $jsonArr['navsteps'][$currentStep]=true;
@@ -391,6 +399,15 @@
              $row['konto_iban'] = $_REQUEST['formdata']['konto_iban'];
              $row['konto_bic'] = $_REQUEST['formdata']['konto_bic'];
              $row['voucher'] = $_REQUEST['formdata']['voucher'];
+             
+             $row['anlage_modul_anzahl'] = $_REQUEST['formdata']['anlage_modul_anzahl'];
+             $row['anlage_modul_hersteller'] = $_REQUEST['formdata']['anlage_modul_hersteller'];
+             $row['anlage_modul_typ'] = $_REQUEST['formdata']['anlage_modul_typ'];
+
+             $row['anlage_pos_ausrichtungswinkel'] = $_REQUEST['formdata']['anlage_pos_ausrichtungswinkel'];
+             $row['anlage_pos_neigungswinkel'] = $_REQUEST['formdata']['anlage_pos_neigungswinkel'];
+
+
 
              // $row['konto_nr'] = $_REQUEST['formdata']['konto_nr'];
              // $row['konto_blz'] = $_REQUEST['formdata']['konto_blz'];
