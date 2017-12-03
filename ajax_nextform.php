@@ -38,7 +38,7 @@ function nextform_ajax_callback()
     $email->isHTML(true);
     $email->Send();
 
-    echo 'aa{"success":true}';
+    echo '{"success":true}';
 
     wp_die(); 
 }

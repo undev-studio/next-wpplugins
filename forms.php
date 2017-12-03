@@ -4,26 +4,43 @@
     {
         margin:5px;
         border:1px solid #ccc;
-        background-color: #ddd;
+        background-color: #e6e6e6;
         border-radius: 4px;
         height:50px;
         padding:5px;
         cursor:move;
+        opacity: 0.9;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        max-width: 300px;
+    }
+
+    .activefield
+    {
+        border:1px solid #888 !important;
+        background-color: #ffba00 !important;
+        /*background-color: #fff !important;*/
+        opacity: 1 !important;
     }
 
     .nextformedit .placeholder
     {
         /*background-color: red;*/
+        opacity: 0.3;
     }
 
     .formeditform
     {
-        position: absolute;
-        right:0px;
+        position: fixed;
+        top:30%;
+        right:20px;
         /*top:100px;*/
         /*border:2px solid red;*/
-        background-color: #ddd;
+        background-color: #e6e6e6;
         padding:10px;
+        border-radius: 4px;
+        border:1px solid #ccc !important;
+        max-width: 300px;
     }
 
     .formeditform tr
@@ -31,10 +48,21 @@
         background-color: transparent !important;
     }
 
+    #footer-thankyou,#footer-upgrade
+    {
+        display: none;
+    }
+
+    #input_rowdata
+    {
+        display: none;
+    }
+
 </style>
 <script type="text/javascript">
 
 var NEXTFORM={};
+
 
 NEXTFORM.save=function()
 {
@@ -76,6 +104,20 @@ NEXTFORM.save=function()
     jQuery('#input_rowdata').val(str)
 }
 
+
+NEXTFORM.addField=function()
+{
+    var arr1 = jQuery('.dragarea1').sortable('toArray');
+    var arr2 = jQuery('.dragarea2').sortable('toArray');
+
+    if(arr1.length>arr2.length) NEXTFORM.addColumnField('.dragarea2');
+        else NEXTFORM.addColumnField('.dragarea1');
+
+    NEXTFORM.save();
+    NEXTFORM.bindFieldEvents();
+};
+
+
 NEXTFORM.guid=function()
 {
     function s4() {
@@ -86,6 +128,24 @@ NEXTFORM.guid=function()
     return s4() + s4() + '-' + s4() + '-' + s4() + '-' +s4() + '-' + s4() + s4() + s4();
 }
 
+
+NEXTFORM.addColumnField=function(selector)
+{
+    var id=NEXTFORM.guid();
+    var html='<div class="draggable" id="'+id+'" ></div>';
+    jQuery(selector).append(html);
+    NEXTFORM.updateField(id,{});
+    return id;
+}
+
+NEXTFORM.deleteField=function(id)
+{
+    jQuery('#'+id).remove();
+    jQuery('#field-edit').html('');
+    
+    NEXTFORM.save();
+}
+
 NEXTFORM.buildColumnFields=function(selector,arr)
 {
     jQuery(selector).html('');
@@ -93,10 +153,7 @@ NEXTFORM.buildColumnFields=function(selector,arr)
     for(var i in arr)
     {
         var data=arr[i];
-        var id=NEXTFORM.guid();
-        var html='<div class="draggable" id="'+id+'" ></div>';
-
-        jQuery(selector).append(html);
+        var id=NEXTFORM.addColumnField(selector);
 
         NEXTFORM.updateField(id,data)
     }
@@ -111,18 +168,45 @@ NEXTFORM.deserialize=function()
     NEXTFORM.buildColumnFields('.dragarea2',data.column2);
 }
 
+
 NEXTFORM.editField=function(which)
 {
+    console.log('edit field');
     var html='';
     var ele=jQuery('#'+which);
 
-    html+='edit: '+which;
+    jQuery('.draggable').removeClass('activefield');
+    ele.addClass('activefield');
+
+    html+='Edit Field: <b>'+ele.data('title')+'</b>';
     html+='<br/>';
-    html+='<input id="field_title" oninput="NEXTFORM.saveField(\''+which+'\');" value="'+(ele.data('title')||'')+'"/>';
     html+='<br/>';
+
+    html+='<table>';
+
+    html+='<tr>';
+    html+='<td>Title</td>';
+    html+='<td>';
+    html+='  <input id="field_title" oninput="NEXTFORM.saveField(\''+which+'\');" value="'+(ele.data('title')||'')+'"/>';
+    html+='</td>';
+    html+='</tr>';
+
+    html+='<tr>';
+    html+='<td>Type</td>';
+    html+='<td>';
     html+='  <select id="field_type" onchange="NEXTFORM.saveField(\''+which+'\');" >';
 
+
     var sel='';
+    html+='    <option value="empty">empty space</option>';
+
+
+
+
+    sel='';
+    if(ele.data('type')=='headline')sel='selected';
+    html+='    <option '+sel+' value="headline">headline</option>';
+
     if(ele.data('type')=='input')sel='selected';
     html+='    <option '+sel+' value="input">input field</option>';
     
@@ -134,7 +218,39 @@ NEXTFORM.editField=function(which)
     if(ele.data('type')=='select')sel='selected';
     html+='    <option '+sel+' value="select">selectbox</option>';
 
+    sel='';
+    if(ele.data('type')=='checkbox')sel='selected';
+    html+='    <option '+sel+' value="checkbox">checkbox</option>';
+
+    sel='';
+    if(ele.data('type')=='fineprint')sel='selected';
+    html+='    <option '+sel+' value="fineprint">fine-print</option>';
+
+    sel='';
+    if(ele.data('type')=='divider')sel='selected';
+    html+='    <option '+sel+' value="divider">divider</option>';
+
+    sel='';
+    if(ele.data('type')=='dividerfullwidth') sel='selected';
+    html+='    <option '+sel+' value="dividerfullwidth">divider full width</option>';
+
+
+    sel='';
+    if(ele.data('type')=='emptyfullwidth')sel='selected';
+    html+='    <option '+sel+' value="emptyfullwidth">empty full width</option>';
+
+
+
+
+
+
     html+='  </select>';
+
+    html+='</td>';
+    html+='</tr>';
+    html+='</table>';
+    html+='<br/>';
+    html+='<a  onclick="NEXTFORM.deleteField(\''+which+'\');" style="text-decoration:underline">Delete Field</a>';
     html+='<br/>';
 
     jQuery('#field-edit').html(html);
@@ -154,15 +270,26 @@ NEXTFORM.saveField=function(which)
 NEXTFORM.updateField=function(which,data)
 {
     data.title=data.title||'';
-    data.type=data.type||'';
+    data.type=data.type||'empty';
 
     var html='';
-    html+=data.title;
+    html+='<b>'+data.title+'</b>';
     html+=' ('+data.type+') ';
 
     jQuery('#'+which).data('title',data.title);
     jQuery('#'+which).data('type',data.type);
     jQuery('#'+which).html(html);
+}
+
+NEXTFORM.bindFieldEvents=function()
+{
+
+    jQuery(".draggable").unbind();
+    jQuery(".draggable").bind("click",function()
+    {
+        NEXTFORM.editField(jQuery(this).attr("id"));
+    });
+
 }
 
 jQuery( document ).ready(function()
@@ -177,11 +304,7 @@ jQuery( document ).ready(function()
     });
 
     NEXTFORM.deserialize();
-
-    jQuery(".draggable").bind("click",function()
-    {
-        NEXTFORM.editField(jQuery(this).attr("id"));
-    });
+    NEXTFORM.bindFieldEvents();
 });
 
 
@@ -669,47 +792,32 @@ function cleanString($string) {
             print('</td>');
             print('</tr>');
 
+            print('<tr>');
+            print('<td class="edittitle"  valign="top">');
+            print('    <div id="field-edit" class="formeditform"></div>');
+            print('Modules');
 
-print('<tr>');
-print('<td class="edittitle"  valign="top">');
-print('Modules');
-
-print('    <div id="field-edit" class="formeditform">');
-print('    </div>');
-
+            
 
 
-print('</td>');
-print('<td class="nextformedit">');
+
+            print('</td>');
+            print('<td class="nextformedit">');
 
 
-print('<div class="dragarea dragarea1" style="width:40%;float:left;">');
-// print('  <div class="draggable" id="field1" >1</div>');
-// print('  <div class="draggable" id="field2" >2</div>');
+            print('<div class="dragarea dragarea1" style="width:50%;float:left;">');
+            print('</div>');
 
-// print('  <div class="draggable" id="field3" >3</div>');
-// print('  <div class="draggable" id="field4" >4</div>');
+            print('<div class="dragarea dragarea2" style="width:50%;float:left;">');
+            print('</div>');
 
-// print('  <div class="draggable" id="field5" >5</div>');
-// print('  <div class="draggable" id="field6" ><div class="">6 hund</div></div>');
-print('</div>');
 
-print('<div class="dragarea dragarea2" style="width:40%;float:left;">');
-// print('  <div class="draggable" id="field7" >7</div>');
-// print('  <div class="draggable" id="field8" >8</div>');
+            print('<div style="clear:both;"></div>');
+            print('<input type="button" class="button-secondary" onclick="NEXTFORM.addField();" value="add field" style="float:right;margin-right:5px;margin-top:25px;">');
 
-// print('  <div class="draggable" id="field9" >9</div>');
-// print('  <div class="draggable" id="field10" >10</div>');
 
-// print('  <div class="draggable" id="field11" >11</div>');
-// print('  <div class="draggable" id="field12" >');
-// print('  <div class="">');
-// print('  der titel');
-// print('  </div>');
-print('</div>');
-
-print('</td>');
-print('</tr>');
+            print('</td>');
+            print('</tr>');
 
 
             print('<tr>');
