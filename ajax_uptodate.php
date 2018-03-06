@@ -6,8 +6,7 @@
     add_action( 'wp_ajax_nopriv_uptodate', 'ajax_uptodate_callback' );
     add_action( 'wp_ajax_uptodate', 'ajax_uptodate_callback' );
 
-require_once("settings_next.php");
-
+    require_once("settings_next.php");
 
     function getEvents()
     {
@@ -19,6 +18,20 @@ require_once("settings_next.php");
 
 
         if(!is_numeric($instance['textlength']) )$instance['textlength']=60;
+
+
+        $args = [
+            'post_type' => 'page',
+            'fields' => 'ids',
+            'nopaging' => true,
+            'meta_key' => '_wp_page_template',
+            'meta_value' => 'page-events.php'
+        ];
+        $pages = get_posts( $args );
+        foreach ( $pages as $page ) 
+            $eventPageUrl=get_permalink($page);
+            // echo get_permalink($page) . '</br>';
+
 
         foreach( $events as $event)
         {
@@ -39,6 +52,7 @@ require_once("settings_next.php");
             else
             // start end in same month
             $event->date_readable=date( 'd.m.', $ds ).' - '.date( 'd.m.Y', $de );
+            $event->permalinkAllEvents=$eventPageUrl;
 
 
             $event->text=strip_tags($event->text);

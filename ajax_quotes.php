@@ -14,15 +14,19 @@
 
         $sql='SELECT * FROM next_quotes';
 
+        $tag=esc_sql($_REQUEST['tag']);
+
         if(isset($_REQUEST['tag']))
         {
-            $sql='SELECT * FROM next_quotes WHERE tags LIKE "%biogas%"';
+            
+            $sql='SELECT * FROM next_quotes WHERE tags LIKE "%'.$tag.'%"';
         }
 
         $refs=$wpdb->get_results( $sql );
 
         $response=Array();
         $response['quotes']=$refs;
+        $response['tag']=$tag;
 
         echo json_encode($response);
 
