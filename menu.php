@@ -28,9 +28,7 @@ require_once('ajax_language.php');
 require_once('ajax_uptodate.php');
 require_once('ajax_references.php');
 require_once('ajax_quotes.php');
-
-
-
+require_once('ajax_nextform.php');
 
 
 $nextLangAdmin=Array(
@@ -41,6 +39,8 @@ $nextLangAdmin=Array(
     'save' => 'Save',
     'delete' => 'Delete',
     'new' => 'New Entry',
+
+    'forms' => 'Forms',
 
     'revenue_calculator' => 'Revenue Calculator',
     'postal_code_alloc' => 'Postal Code Mapping',
@@ -172,6 +172,18 @@ function next_content_menu()
     add_submenu_page( 'next_content/news.php', 'Events', 'Events',                'publish_posts', 'next_content/events.php' );
     add_submenu_page( 'next_content/news.php', 'Partner', 'Partner',                'publish_posts', 'next_content/partner.php' );
     if($isAdmin) add_submenu_page( 'next_content/news.php', 'Remit', 'Remit',                    'publish_posts', 'next_content/remit_info.php' );
+
+
+
+    add_submenu_page( 'next_content/news.php', 
+        $nextLangAdmin['forms'], $nextLangAdmin['forms'], 'publish_posts', 
+        'next_content/forms.php' );
+
+
+    // ---
+
+
+
     if($isAdmin) add_submenu_page( 'next_content/news.php', 'Translation', 'Translation','publish_posts', 'next_content/language-edit.php' );
     if($isAdmin) add_submenu_page( 'next_content/news.php', 'Status', 'Status','publish_posts', 'next_content/status.php' );
     if($isAdmin) add_submenu_page( 'next_content/news.php', 'Settings', 'Settings','publish_posts', 'next_content/settings.php' );
