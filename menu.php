@@ -28,7 +28,7 @@ require_once('ajax_language.php');
 require_once('ajax_uptodate.php');
 require_once('ajax_references.php');
 require_once('ajax_quotes.php');
-require_once('ajax_nextform.php');
+require_once('forms_ajax.php');
 
 
 $nextLangAdmin=Array(
@@ -42,7 +42,7 @@ $nextLangAdmin=Array(
 
     'forms' => 'Forms',
 
-    'revenue_calculator' => 'Revenue Calculator',
+    'revenue_calculator' => 'Forms Postal',
     'postal_code_alloc' => 'Postal Code Mapping',
     'postal_code_alloc_email' => 'Postal Code Mapping for E-Mails',
     'testme'=>'Test me',
@@ -109,6 +109,10 @@ add_action( 'widgets_init', create_function('', 'return register_widget("nextIco
 require_once('widget_linklist.php');
 add_action( 'widgets_init', create_function('', 'return register_widget("nextLinkListWidget");') );
 
+
+require_once('forms_widget.php');
+add_action( 'widgets_init', create_function('', 'return register_widget("nextFormsWidget");') );
+
 // require_once('widget_form_flexheft.php');
 // add_action( 'widgets_init', create_function('', 'return register_widget("nextFormFlexheftWidget");') );
 
@@ -162,9 +166,6 @@ function next_content_menu()
         $nextLangAdmin['quotes'], 'Quotes', 'publish_posts',
         'next_content/quotes.php' );
     
-    if($isAdmin) add_submenu_page( 'next_content/news.php', 
-        $nextLangAdmin['revenue_calculator'], $nextLangAdmin['revenue_calculator'], 'publish_posts', 
-        'next_content/erloesrechner.php' );
 
     add_submenu_page( 'next_content/news.php', 'EMail Log', 'EMail Log',              'publish_posts', 'next_content/emaillog.php' );
     add_submenu_page( 'next_content/news.php', 'Next Pool', 'Next Pool',            'publish_posts', 'next_content/nextpool.php' );
@@ -173,16 +174,15 @@ function next_content_menu()
     add_submenu_page( 'next_content/news.php', 'Partner', 'Partner',                'publish_posts', 'next_content/partner.php' );
     if($isAdmin) add_submenu_page( 'next_content/news.php', 'Remit', 'Remit',                    'publish_posts', 'next_content/remit_info.php' );
 
-
-
-    add_submenu_page( 'next_content/news.php', 
+    if($isAdmin) add_submenu_page( 'next_content/news.php', 
         $nextLangAdmin['forms'], $nextLangAdmin['forms'], 'publish_posts', 
         'next_content/forms.php' );
 
+    if($isAdmin) add_submenu_page( 'next_content/news.php', 
+        $nextLangAdmin['revenue_calculator'], $nextLangAdmin['revenue_calculator'], 'publish_posts', 
+        'next_content/erloesrechner.php' );
 
     // ---
-
-
 
     if($isAdmin) add_submenu_page( 'next_content/news.php', 'Translation', 'Translation','publish_posts', 'next_content/language-edit.php' );
     if($isAdmin) add_submenu_page( 'next_content/news.php', 'Status', 'Status','publish_posts', 'next_content/status.php' );

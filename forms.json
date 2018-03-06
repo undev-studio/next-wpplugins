@@ -17,7 +17,7 @@
             "default":"Neuer Titel"
         },
         { 
-            "title":"email", 
+            "title":"Always send to EMail", 
             "name":"email", 
             "input":"input",
             "visible":true,
@@ -25,7 +25,16 @@
             "default":""
         },
         { 
-            "title":"language", 
+            "title":"Mail Logic", 
+            "name":"maillogic", 
+            "input":"select",
+            "visible":true,
+            "editable":true,
+            "default":"",
+            "options":[{"title":"None","value":""},{"title":"ZIP Code","value":"zip"}]
+        },
+        { 
+            "title":"Language", 
             "name":"language", 
             "input":"input",
             "visible":true,
@@ -33,14 +42,21 @@
             "default":""
         },
         { 
-            "title":"rowdata", 
+            "title":"Success Page", 
+            "name":"successPage", 
+            "input":"page",
+            "visible":false,
+            "editable":true,
+            "default":""
+        },
+        { 
+            "title":"", 
             "name":"rowdata", 
             "input":"textarea",
             "visible":false,
             "editable":true,
             "default":""
         }
-
     ],
 
 

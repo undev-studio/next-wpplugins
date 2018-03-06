@@ -77,10 +77,10 @@ class unWidget extends WP_Widget
                     '>';
 
         $sel='';
-        $str.='<option '.$sel.' value="">Alle Geräte</option>';
+        $str.='<option '.$sel.' value="">Alle Devices</option>';
 
         if($value=="allbutphones")$sel=' selected="SELECTED" ';
-        $str.='<option '.$sel.' value="allbutphones">Alles ausser Telefone</option>';
+        $str.='<option '.$sel.' value="allbutphones">All but Phones</option>';
 
         // $sel=''; if($value=="phones")$sel=' selected="SELECTED" ';
         // $str.='<option '.$sel.' value="phones">Nur Telefone</option>';

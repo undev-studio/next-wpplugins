@@ -21,6 +21,30 @@
             ]
         },
         {
+            "name":"forms",
+            "childs":
+            [
+                {
+                    "name":"form_error",
+                    "default":"The form is not valid, please check content of the red fields."
+                },
+                {
+                    "name":"required",
+                    "default":"required field"
+                },
+                {
+                    "name":"invalid_email",
+                    "default":"Invalid EMail"
+                },
+                {
+                    "name":"invalid_zip",
+                    "default":"Invalid ZIP code"
+                }
+                
+            ]
+        },
+
+        {
             "name":"backend",
             "childs":
             [

@@ -76,6 +76,11 @@ NEXTFORM.save=function()
     {
         if(data.sortableItem) delete data.sortableItem;
         if(data['sortable.preventClickEvent']) delete data['sortable.preventClickEvent'];
+
+        if(data.required && (!data.title || data.title.length==0))
+        {
+        	data.title='unknown required field';
+        }
         return data;
     }
 
@@ -94,6 +99,15 @@ NEXTFORM.save=function()
         data=cleanData(data);
         arr2.push(data);
     }
+
+
+
+	for(var i=0;i<arr.length;i++)
+	{
+		console.log(arr[i].title+'required',arr[i].required);
+		console.log(arr2[i].title+'required',arr2[i].required);
+	}
+
 
     var str=JSON.stringify(
         {
@@ -192,6 +206,15 @@ NEXTFORM.editField=function(which)
     html+='</tr>';
 
     html+='<tr>';
+    html+='<td>Required</td>';
+    html+='<td>';
+    var isChecked='';
+    if(ele.data('required'))isChecked='checked';
+    html+='  <input id="field_required" '+isChecked+' onchange="NEXTFORM.saveField(\''+which+'\');" type="checkbox"/>';
+    html+='</td>';
+    html+='</tr>';
+
+    html+='<tr>';
     html+='<td>Type</td>';
     html+='<td>';
     html+='  <select id="field_type" onchange="NEXTFORM.saveField(\''+which+'\');" >';
@@ -207,8 +230,17 @@ NEXTFORM.editField=function(which)
     if(ele.data('type')=='headline')sel='selected';
     html+='    <option '+sel+' value="headline">headline</option>';
 
+    sel='';
     if(ele.data('type')=='input')sel='selected';
     html+='    <option '+sel+' value="input">input field</option>';
+
+    sel='';
+    if(ele.data('type')=='input_email')sel='selected';
+    html+='    <option '+sel+' value="input_email">input email</option>';
+
+    sel='';
+    if(ele.data('type')=='input_plz')sel='selected';
+    html+='    <option '+sel+' value="input_plz">input german zip code</option>';
     
     sel='';
     if(ele.data('type')=='textarea')sel='selected';
@@ -261,8 +293,10 @@ NEXTFORM.saveField=function(which)
     NEXTFORM.updateField(which,
     {
         "title":jQuery('#field_title').val(),
-        "type":jQuery('#field_type').val()
+        "type":jQuery('#field_type').val(),
+        "required":jQuery('#field_required').attr('checked')
     });
+
 
     NEXTFORM.save();
 }
@@ -275,9 +309,15 @@ NEXTFORM.updateField=function(which,data)
     var html='';
     html+='<b>'+data.title+'</b>';
     html+=' ('+data.type+') ';
+    if(data.required) html+=' (required) ';
 
     jQuery('#'+which).data('title',data.title);
     jQuery('#'+which).data('type',data.type);
+
+    req=false;
+    if(data.required)req=true;
+
+    jQuery('#'+which).data('required',req);
     jQuery('#'+which).html(html);
 }
 
@@ -424,11 +464,47 @@ function saveWidgetForm()
 </script>
 
 <?php
-function cleanString($string) {
-   $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
 
-   return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
-}
+    function checkErrors()
+    {
+        global $wpdb;
+        global $tablename;
+
+        $errors=array();
+
+        
+        $rows = $wpdb->get_results("SELECT * FROM ".$tablename." WHERE email ='' AND maillogic='';");
+        printSQLError();
+        foreach ($rows as $row)
+        {
+            $errors[]='<b>'.$row->title.':</b> INVALID: Will never send email: form has no email and no mail logic !';
+        }
+
+
+        $sql="SELECT * FROM ".$tablename." WHERE maillogic !='' AND rowdata NOT LIKE '%input_plz%';";
+        $rows = $wpdb->get_results($sql);
+        printSQLError();
+        foreach ($rows as $row)
+        {
+            $errors[]='<b>'.$row->title.':</b> INVALID: Will never send email: form has PLZ logic but no PLZ input field!';
+        }
+
+
+
+        if(count($errors)>0)
+        {
+            print('<br/>');
+            foreach ($errors as $err) 
+                print('<br/><div id="message" class="error below-h2"><p>'.$err.'</p></div>'); 
+        }
+    }
+
+    function cleanString($string) {
+       $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
+
+       return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
+    }
+
 
     function getPageSelect($fieldName,$value)
     {
@@ -567,6 +643,8 @@ function cleanString($string) {
 
         printSQLError();
 
+        checkErrors();
+
         print('<br/><br/><a class="button-primary" href="?page='.$path.'&func=create">'.lang('create').'</a>');
 
         print('&nbsp;&nbsp;<input id="widgetsearch" placeholder="Search Widgets"/>');
@@ -629,11 +707,9 @@ function cleanString($string) {
             }
             $search=cleanString(strtolower($search));
 
-
-
             print('<tr class="searchable" data-index="'.$search.'">');
-
             print('<td>');
+
             if($editable) 
             {
                print('<a class="button" href="?page='.$path.'&func=edit&which='.$row->id.'">'.lang('edit').'</a>  &nbsp; ');
@@ -721,6 +797,36 @@ function cleanString($string) {
                     print('<tr style="'.$visi.'">');
                     print(' <td valign="top" class="edittitle">'.$f['title'].':</td>');
                     print(' <td><textarea id="input_'.$f['name'].'" '.$maxlength.' type="text" style="height:160px;width:600px;" name="'.$f['name'].'" >'.$row->$f['name'].'</textarea></td>');
+                    print('</tr>');
+                }
+
+                if($f['input']=='page')
+                {
+                    print('<tr style="'.$visi.'">');
+                    print(' <td valign="top" class="edittitle">'.$f['title'].':</td>');
+                    print(' <td>'.getPageSelect($f['name'],$row->$f['name']) .'</td>');
+                    print('</tr>');
+                    
+                }
+
+                if($f['input']=='select')
+                {
+                    print('<tr style="'.$visi.'">');
+                    print('<td valign="middle" class="edittitle">'.$f['title'].':</td>');
+                    print('<td>');
+
+                    print('<select name="'.$f['name'].'">');
+
+                    foreach ($f['options'] as $key => $opt) 
+                    {
+                        $sel='';
+                        if($row->$f['name']==$opt['value'])$sel=" selected ";
+                        print('<option '.$sel.' value="'.$opt['value'].'">'.$opt['title'].'</option>');
+                    }
+
+                    print('</select>');
+
+                    print('</td>');
                     print('</tr>');
                 }
 
