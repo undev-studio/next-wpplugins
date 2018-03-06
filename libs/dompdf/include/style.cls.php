@@ -498,7 +498,7 @@ class Style {
       }
       
       if ( ($i = mb_strpos($l, "%"))  !== false ) {
-        $ret += (float)mb_substr($l, 0, $i)/100 * $ref_size;
+        $ret += (float)mb_substr($l, 0, $i)/100 * (float)$ref_size;
         continue;
       }
 
@@ -539,7 +539,7 @@ class Style {
       }
           
       // Bogus value
-      $ret += $ref_size;
+      $ret += (float)$ref_size;
     }
 
     return $cache[$key] = $ret;

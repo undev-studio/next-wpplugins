@@ -30,7 +30,7 @@
             "input":"select",
             "visible":true,
             "editable":true,
-            "default":"1",
+            "default":"0",
             "options":[{"title":"Aktiv","value":"1"},{"title":"Inaktiv","value":"0"}]
         },
         { 

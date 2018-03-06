@@ -22,7 +22,13 @@
 
         $refs=$wpdb->get_results( $sql );
 
+        foreach ($refs as &$ref)
+        {
+            $ref->url = get_permalink($ref->page);    
+        }
+
         $response=Array();
+
         $response['references']=$refs;
 
         echo json_encode($response);
