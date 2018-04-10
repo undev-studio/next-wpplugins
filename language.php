@@ -20,7 +20,6 @@ $langs=array();
 
 global $post;
 
-// echo pll_current_language();
 if(function_exists('pll_the_languages') )
 {
     global $langCode;
@@ -34,6 +33,8 @@ $langData=null;
 
 function loadLangData($langCode)
 {
+    if(!file_exists( dirname(__FILE__)."/lang_".$langCode.".json" ))$langCode='en';
+
     if(file_exists( dirname(__FILE__)."/lang_".$langCode.".json" ))
     {
         global $langData;

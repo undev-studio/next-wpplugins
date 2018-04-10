@@ -28,7 +28,7 @@ class nextFormsWidget extends unWidget
         $html='<p>Form: ';
 
         global $wpdb;
-        $rows = $wpdb->get_results("SELECT * FROM next_forms ORDER BY title" );
+        $rows = $wpdb->get_results("SELECT * FROM next_forms ORDER BY name" );
 
         var_dump($instance);
 
@@ -40,7 +40,7 @@ class nextFormsWidget extends unWidget
         {
             $sel="";
             if($f->id==$instance['form'] )$sel=' selected="SELECTED" ';
-            $html.='<option value="'.$f->id.'" '.$sel.'>'.$f->title.'</option>';
+            $html.='<option value="'.$f->id.'" '.$sel.'>'.$f->name.'</option>';
         }
 
         $html.='</select>';

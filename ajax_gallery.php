@@ -18,12 +18,15 @@
 
         $query_images = new WP_Query( $query_images_args );
 
+// var_dump($query_images);
+
         $images = array();
         foreach ( $query_images->posts as $image)
         {
             $images[]=array(
                 'url'=> wp_get_attachment_url( $image->ID ),
-                'descr'=>$image->post_excerpt );
+                'descr'=>$image->post_excerpt ,
+                'content'=>$image->post_content);
         }
 
         echo json_encode($images);

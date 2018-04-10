@@ -259,6 +259,10 @@ NEXTFORM.editField=function(which)
     html+='    <option '+sel+' value="fineprint">fine-print</option>';
 
     sel='';
+    if(ele.data('type')=='text')sel='selected';
+    html+='    <option '+sel+' value="text">text</option>';
+
+    sel='';
     if(ele.data('type')=='divider')sel='selected';
     html+='    <option '+sel+' value="divider">divider</option>';
 

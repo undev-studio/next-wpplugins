@@ -4,17 +4,25 @@
     "path":"next_content/forms.php",
     "idName":"id",
     "sortable":false,
-    "orderby":"title",
+    "orderby":"name",
 
     "vars":
     [
         { 
-            "title":"Title", 
-            "name":"title", 
+            "title":"Name", 
+            "name":"name", 
             "input":"input",
             "visible":true,
             "editable":true,
-            "default":"Neuer Titel"
+            "default":"Name"
+        },
+        { 
+            "title":"Title", 
+            "name":"title", 
+            "input":"input",
+            "visible":false,
+            "editable":true,
+            "default":"New Title"
         },
         { 
             "title":"Always send to EMail", 
@@ -28,7 +36,7 @@
             "title":"Mail Logic", 
             "name":"maillogic", 
             "input":"select",
-            "visible":true,
+            "visible":true, 
             "editable":true,
             "default":"",
             "options":[{"title":"None","value":""},{"title":"ZIP Code","value":"zip"}]

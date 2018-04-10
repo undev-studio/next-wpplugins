@@ -58,7 +58,7 @@
             "default":""
         },
         {
-            "title":"Image small mobile (Home/Slider)",
+            "title":"Image small mobile 800x800 pixel (sichtbarer bereich min. 640x800)",
             "name":"imageMobile", 
             "input":"media",
             "visible":false,

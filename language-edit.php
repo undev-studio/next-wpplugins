@@ -20,7 +20,6 @@
             <option value="fr">FR</option>
             <option value="en">EN</option>
             <option value="pl">PL</option>
-            <option value="be">BE</option>
             <option value="it">IT</option>
             <option value="nl">NL</option>
 
