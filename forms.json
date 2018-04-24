@@ -30,7 +30,7 @@
             "input":"input",
             "visible":true,
             "editable":true,
-            "default":""
+            "default":"info@next-kraftwerke.com"
         },
         { 
             "title":"Mail Logic", 

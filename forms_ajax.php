@@ -71,7 +71,19 @@ function nextform_getEmailAdresses($form,$formFields,$data)
 {
     global $wpdb;
     $toEmail=array();
-    $toEmail[]=$form->email;
+    
+
+    if(strpos($form->email, ',') !== false)
+    {
+        // echo 'true';
+        $toEmail=explode(',',$form->email);
+
+    }
+    else
+    {
+        $toEmail[]=$form->email;
+    }
+
     
     if($form->maillogic=='zip')
     {

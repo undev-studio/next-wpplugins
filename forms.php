@@ -614,6 +614,39 @@ function saveWidgetForm()
 
         printSQLError();
     }
+
+    if($func=='copy')
+    {
+        $which=(int)$_REQUEST['which'];
+        $qrystr = 'SELECT * FROM '.$tablename.'  WHERE '.$idName.'= ' . $which;
+        $result=$wpdb->get_results( $qrystr );
+
+        unset($result[0]->id);
+
+        $keys=[];
+        $values=[];
+
+        foreach ($result[0] as $key => $opt) 
+        {
+            $keys[]=($key);
+            $values[]=($opt);
+        }
+
+        $qrystr = 'INSERT INTO '.$tablename;
+        $qrystr .= " ( " .implode(", ",$keys).") ";
+        $qrystr .= " VALUES ('".implode("', '",$values). "')";
+
+        // echo $qrystr;
+        // echo '<br/>';
+        // echo '<br/>';
+
+        $wpdb->query( $qrystr );
+
+        $func="";
+
+        printSQLError();
+    }
+
     
     if($func=='create')
     {
@@ -739,6 +772,9 @@ function saveWidgetForm()
             if($editable) 
             {
                print('<a href="?page='.$path.'&func=delete&which='.$row->id.'" onclick="return confirm(\''.lang('delete').' ?\')">'.lang('delete').'</a> ');
+
+            print(' &nbsp;|&nbsp;<a href="?page='.$path.'&func=copy&which='.$row->id.'" >Copy</a>');
+
             }
 
             print('</td>');
@@ -937,6 +973,10 @@ function saveWidgetForm()
             print(' <input type="button" class="button-secondary" onClick="document.location.href=\'admin.php?page=next_content%2Fforms.php\';" value="'.lang('list').'" />');
 
             print(' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="?page='.$path.'&func=delete&which='.$row->id.'" onclick="return confirm(\''.lang('delete').' ?\')">'.lang('delete').'</a> ');
+
+
+
+
             print('</td>');
             print('</tr>');
             print('</table>');
