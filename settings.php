@@ -23,11 +23,6 @@
         echo '<br/>';
     }
 
-
-
-
-
-
     $cfg=nextSettings::load();
 
 

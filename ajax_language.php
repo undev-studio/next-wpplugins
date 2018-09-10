@@ -29,13 +29,18 @@
             return $json;
         }
         return null;
-
     }
 
     function getLanguage()
     {
         echo getLanguageText();
         die();
+    }
+
+
+    function updateSimulationLanguage()
+    {
+
     }
 
     function setTranslation()

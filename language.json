@@ -25,6 +25,10 @@
             "childs":
             [
                 {
+                    "name":"send",
+                    "default":"Send"
+                },
+                {
                     "name":"form_error",
                     "default":"The form is not valid, please check content of the red fields."
                 },
@@ -162,7 +166,27 @@
                 {
                     "name":"alljobs",
                     "default":""
-                }
+                },
+                {
+                    "name":"applynow",
+                    "default":"Apply Now"
+                },
+                { "name":"intro1_title", "default":"" },
+                { "name":"intro1", "default":"" },
+                { "name":"intro2_title", "default":"" },
+                { "name":"intro2", "default":"" },
+                { "name":"intro3_title", "default":"" },
+                { "name":"intro3", "default":"" },
+                { "name":"intro4_title", "default":"" },
+                { "name":"intro4", "default":"" },
+                { "name":"intro5_title", "default":"" },
+                { "name":"intro5", "default":"" },
+                { "name":"intro6_title", "default":"" },
+                { "name":"intro6", "default":"" },
+                { "name":"intro7_title", "default":"" },
+                { "name":"intro7", "default":"" },
+                { "name":"intro8_title", "default":"" },
+                { "name":"intro8", "default":"" }
             ]
         },
         {
@@ -204,6 +228,286 @@
                     "default":"Enter search term and press enter"
                 }
 
+            ]
+        },
+        {
+            "name":"numbersfacts",
+            "childs":
+            [
+                {
+                    "name":"number1",
+                    "default":""
+                },
+                {
+                    "name":"title1",
+                    "default":""
+                },
+                {
+                    "name":"subtitle1",
+                    "default":""
+                },
+                {
+                    "name":"number2",
+                    "default":""
+                },
+                {
+                    "name":"title2",
+                    "default":""
+                },
+                {
+                    "name":"subtitle2",
+                    "default":""
+                },
+                {
+                    "name":"number3",
+                    "default":""
+                },
+                {
+                    "name":"title3",
+                    "default":""
+                },
+                {
+                    "name":"subtitle3",
+                    "default":""
+                },
+                {
+                    "name":"number4",
+                    "default":""
+                },
+                {
+                    "name":"title4",
+                    "default":""
+                },
+                {
+                    "name":"subtitle4",
+                    "default":""
+                },
+                {
+                    "name":"number5",
+                    "default":""
+                },
+                {
+                    "name":"title5",
+                    "default":""
+                },
+                {
+                    "name":"subtitle5",
+                    "default":""
+                },
+                {
+                    "name":"number6",
+                    "default":""
+                },
+                {
+                    "name":"title6",
+                    "default":""
+                },
+                {
+                    "name":"subtitle6",
+                    "default":""
+                }
+            ]
+        },
+        {
+            "name":"simulation",
+            "childs":
+            [
+                {
+                    "name":"vpp_mode",
+                    "default": "VPP Mode"
+                },
+                {
+                    "name":"manual_mode",
+                    "default": "Manual Mode"
+                },
+                {
+                    "name":"backButton_link",
+                    "default": ""
+                },
+                {
+                    "name":"button_startscreen",
+                    "default": "Menu"
+                },
+                {
+                    "name":"percentage_goal",
+                    "default":"Erneuerbare Energien im Stromsystem"
+                },
+                {
+                    "name":"solar",
+                    "default":"Solar"
+                },
+                {
+                    "name":"wind",
+                    "default":"Wind"
+                },
+                {
+                    "name":"kwk",
+                    "default":"KWK"
+                },
+                {
+                    "name":"biogas",
+                    "default":"Biogas"
+                },
+                {
+                    "name":"wasser",
+                    "default":"Laufwasserkraftwerke"
+                },
+                {
+                    "name":"industry",
+                    "default":"Lastmanagement"
+                },
+                {
+                    "name":"server",
+                    "default":"Virtuelles Kraftwerk"
+                },
+                {
+                    "name":"headline",
+                    "default": "Nextfrequenz"
+                },
+                {
+                    "name":"sub_headline",
+                    "default": "Wie viel Prozent erneuerbare Energien im Stromsystem kannst du ermöglichen?"
+                },
+                {
+                    "name":"page_title",
+                    "default": "Steuern Sie das virtuelle Kraftwerk, um den Blackout zu verhindern!"
+                },
+                {
+                    "name":"page_description",
+                    "default": "Seien Sie der Kraftwerksmeister des virtuellen Kraftwerks! In unserer Simulation sehen Sie, wie ein virtuelles Kraftwerk funktioniert…"
+                },
+                {
+                    "name":"startButton_text",
+                    "default":"Spiel Starten"
+                },
+                {
+                    "name":"blackout",
+                    "default": "Blackout!"
+                },
+                {
+                    "name":"points",
+                    "default": "Punkte"
+                },
+                {
+                    "name":"retry",
+                    "default":"Noch einmal versuchen"
+                },
+                {
+                    "name":"manual_caption",
+                    "default": "Anleitung"
+                },
+                {
+                    "name":"manual_headline",
+                    "default": "Seien Sie der Kraftwerksmeister des virtuellen Kraftwerks und sorgen Sie dafür, dass es nicht zum Blackout kommt."
+                },
+                {
+                    "name":"manual_text",
+                    "default": "Am oberen Bildrand sehen Sie die Netzfrequenz, die zwischen 49,8 Hertz und 50,2 Hertz liegen muss, um einen Zusammenbruch des Stromnetzes zu verhindern. Die Netzfrequenz schwankt permanent. Und oftmals sorgen unvorhersehbare Ereignisse für weitere Schwankungen. Über die vier Regler können Sie die einzelnen dezentralen Anlagen nutzen, um die Netzfrequenz auszuregeln. Sinkt die Netzfrequenz, ist mehr Stromproduktion oder weniger Stromnachfrage gefragt. Steigt die Netzfrequenz, müssen Sie durch verminderte Stromproduktion oder steigende Stromentnahme gegensteuern. Und ein kleiner Tipp: Mit einem Klick auf unser Logo in der Bildmitte sehen Sie, wie die automatische Regelung über das Leitsystem eines virtuellen Kraftwerks funktioniert."
+                },
+                {
+                    "name":"backButton_title",
+                    "default": "Virtuelles Kraftwerk für Bioenergie, Solar, Wind, KWK und Demand Side Management"
+                },
+                {
+                    "name":"backButton_text",
+                    "default": "Zurück zur Startseite"
+                },
+                {
+                    "name":"backbutton_app_text",
+                    "default": "Zurück zum NextDisplay"
+                },
+                {
+                    "name":"infoIndustry",
+                    "default":"Nicht nur Stromproduzenten können helfen, das Stromnetz stabil zu halten. Auch Verbraucher leisten über das Lastmanagement ihren Beitrag. Aber Vorsicht: Hier ist Umdenken gefragt. Wenn ein Industrieprozess mehr Strom verbraucht, fällt die Netzfrequenz. Verbraucht er weniger Strom, steigt die Netzfrequenz."
+                },
+                {
+                    "name":"infoBio",
+                    "default":"Biogasanlagen können dank der eingesetzten BHKW-Technologie ihre Stromproduktion zuverlässig und schnell anpassen, wenn sie in einem virtuellen Kraftwerk vernetzt sind. Dadurch liefern sie wertvolle Regelenergie und beugen Blackouts vor. Bereits heute sind viele hundert Biogasanlagen im virtuellen Kraftwerk Next Pool vernetzt und jeden Tag werden es mehr…"
+                },
+                {
+                    "name":"infoWater",
+                    "default":"Pumpspeicherkraftwerke liefern schon seit vielen Jahrzehnten Regelenergie zur Netzfrequenzstabilisierung. Aber auch Laufwasserkraftwerke mit oder ohne Staufläche können dazu beitragen, das Stromnetz im Gleichgewicht zu halten. Vor allem im Süden von Deutschland hat Next Kraftwerke verschiedene Wasserkraftwerke vernetzt."
+                },
+                {
+                    "name":"infoWood",
+                    "default":"Nicht nur fossile Kraftwerke sind steuerbar, auch viele neue Kraftwerkstypen sind in der Lage Regelenergie zu liefern. Darunter fallen beispielsweise Holzheizkraftwerke, Grubengasanlagen, Klärgasanlagen oder auch Müllheizkraftwerke."
+                },
+                {
+                    "name":"infoWind",
+                    "default":"Ebenso wie Solaranlagen dürfen auch Windkraftanlagen keine Regelenergie zur Stabilisierung der Netzfrequenz liefern, da ihre Stromproduktion zu sehr schwankt. Trotzdem sind sie im virtuellen Kraftwerk vernetzt, um den aktuellen Status der Anlage auszulesen und mit den Wetterprognosen zu vergleichen. Und bei stark negativen Börsenpreisen regelt das virtuelle Kraftwerk auch."
+                },
+                {
+                    "name":"infoHaushalt",
+                    "default":"Private Haushalte werden heute noch nicht in virtuellen Kraftwerken vernetzt. Zukünftig bieten sich in diesem Bereich aber viele Möglichkeiten an, da ähnlich wie bei Industrieprozessen auch Geräte in Haushalten ihren Stromverbrauch für einen kurzen Moment anpassen können – das berühmte Beispiel ist hier der Kühlschrank."
+                },
+                {
+                    "name":"infoSolar",
+                    "default":"Solaranlagen sind ebenfalls Teil des virtuellen Kraftwerks Next Pool. Allerdings dürfen Solaranlagen heute noch keine Regelenergie liefern, da ihre Stromeinspeisung noch zu sehr schwankt. Trotzdem können Solaranlagen im virtuellen Kraftwerk abgeregelt werden, etwa bei stark negativen Börsenpreisen."
+                },
+                {
+                    "name":"infoNetze",
+                    "default":"Die Stromnetze speichern Strom nicht, sie transportieren ihn. Um Blackouts vorzubeugen, muss immer eine Netzfrequenz von 50 Hertz eingehalten werden. Ab einer Netzfrequenz von 49,98 Hz bzw. 50,02 Hz wird die Regelenergie aktiviert, um das Netz wieder ins Lot zu bringen. Fällt die Netzfrequenz trotz des Einsatzes von Regelenergie unter 49,8 Hz oder steigt sie über 50,2 Hz, greifen die Übertragungsnetzbetreiber auf Notmaßnahmen zurück, die wir hier nicht berücksichtigt haben."
+                },
+                {
+                    "name":"infoVKW",
+                    "default":"Next Kraftwerke betreibt ein Virtuelles Kraftwerk, das in sieben europäischen Regelzonen aktiv ist. Über den Einsatz von Regelenergie helfen die im Virtuellen Kraftwerk Next Pool vernetzten Erneuerbaren Energien dabei, die Netzfrequenz zu stabilisieren. Die Zentrale des Next Pool liegt in Köln. Von dort aus werden alle Anlagen im Falle eines Regelenergieabrufs vollautomatisch gesteuert."
+                },
+                {
+                    "name":"updateBrowser_text",
+                    "default":"Es tut uns leid! Das NextFrequenz-Spiel ist mit dieser Version Ihres Browsers leider nicht spielbar. Bitte installieren Sie die neueste Version Ihres Browsers."
+                },
+                {
+                    "name":"updateBrowser_suggest",
+                    "default":"Wir empfehlen Mozilla Firefox"
+                },
+                {
+                    "name":"updateBrowser_link",
+                    "default":"https://www.mozilla.org/de/firefox/new/"
+                },
+                {
+                    "name":"BlockInKohlekraftwerkAusgefallen",
+                    "default":"Block in Kohlekraftwerk ausgefallen"
+                },
+                {
+                    "name":"UnerwarteteSturmfront",
+                    "default":"Unerwartete Sturmfront"
+                },
+                {
+                    "name":"Windflaute",
+                    "default":"Windflaute"
+                },
+                {
+                    "name":"PlötzlicheWolkendecke",
+                    "default":"Plötzliche Wolkendecke"
+                },
+                {
+                    "name":"MehrSonnenscheinAlsPrognostiziert",
+                    "default":"Mehr Sonnenschein als prognostiziert"
+                },
+                {
+                    "name":"HalbzeitpausImWM-Finale",
+                    "default":"Halbzeitpause im WM-Finale"
+                },
+                {
+                    "name":"Stromspartag",
+                    "default":"Stromspartag"
+                },
+                {
+                    "name":"SicherheitsabschaltungAKW",
+                    "default":"Sicherheitsabschaltung AKW"
+                },
+                {
+                    "name":"Wintereinbruch",
+                    "default":"Wintereinbruch"
+                },
+                {
+                    "name":"Hitzewelle",
+                    "default":"Hitzewelle"
+                },
+                {
+                    "name":"Sonnenfinsternis",
+                    "default": "Sonnenfinsternis"
+                }
             ]
         }
 

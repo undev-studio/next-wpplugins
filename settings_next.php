@@ -10,13 +10,14 @@
 
         private $tablename='next_settings';
 
-        static function getFileName()
-        {
-            $file=__DIR__.'/settings.json';
-            return $file;
-        }
+        // static function getFileName()
+        // {
+        //     $file=__DIR__.'/settings.json';
+        //     return $file;
+        // }
 
         static function printError($error) { print('<br/><br/><div id="message" class="error below-h2"><p>SQL Error: '.$error.'</p></div>'); }
+
         static function printSQLError()
         { 
             global $wpdb; 
@@ -30,6 +31,22 @@
             return false;
         }
 
+        static function loadGlobal($settings)
+        {
+
+            $globalDb = new wpdb(DB_USER,DB_PASSWORD,'next_global','localhost');
+            if($globalDb->last_error!='') echo($globalDb->last_error);
+
+            $rows=$globalDb->get_results("SELECT * FROM settings");
+
+            foreach ($rows as $key => $row)
+            {
+                $settings[$row->param]=$row->value;
+            }
+
+            $globalDb->close();
+            return $settings;
+        }
 
         static function load()
         {
@@ -42,6 +59,9 @@
             {
                 $settings[$row->param]=$row->value;
             }
+
+            $settings=nextSettings::loadGlobal($settings);
+
             return $settings;
         }
 
@@ -59,6 +79,7 @@
                     $sql='UPDATE next_settings SET value="'.$row.'" WHERE param="'.$key.'"';
                     $wpdb->query( $sql );
                 }
+
                 if(count($rows)==0)
                 {
                     $data['param']=$key;
@@ -67,7 +88,6 @@
                 }
 
                 nextSettings::printSQLError();
-
             }
         }
     }

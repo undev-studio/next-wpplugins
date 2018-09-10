@@ -117,7 +117,7 @@ function nextform_ajax_callback()
     $data=$_REQUEST['formdata'];
     $form = $wpdb->get_results('SELECT * FROM next_forms WHERE id='.(int)$_REQUEST['formId'].';');
 
-    $title=$form[0]->title;
+    $title=$form[0]->name;
     $formFields=json_decode($form[0]->rowdata);
     $formFields=array_merge($formFields->column1,$formFields->column2);
     $emails=nextform_getEmailAdresses($form[0],$formFields,$data);

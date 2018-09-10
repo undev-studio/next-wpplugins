@@ -102,11 +102,11 @@ NEXTFORM.save=function()
 
 
 
-	for(var i=0;i<arr.length;i++)
-	{
-		console.log(arr[i].title+'required',arr[i].required);
-		console.log(arr2[i].title+'required',arr2[i].required);
-	}
+	// for(var i=0;i<arr.length;i++)
+	// {
+	// 	console.log(arr[i].title+'required',arr[i].required);
+	// 	console.log(arr2[i].title+'required',arr2[i].required);
+	// }
 
 
     var str=JSON.stringify(
@@ -629,16 +629,16 @@ function saveWidgetForm()
         foreach ($result[0] as $key => $opt) 
         {
             $keys[]=($key);
-            $values[]=($opt);
+            $values[]=(addslashes($opt));
         }
 
         $qrystr = 'INSERT INTO '.$tablename;
         $qrystr .= " ( " .implode(", ",$keys).") ";
         $qrystr .= " VALUES ('".implode("', '",$values). "')";
 
-        // echo $qrystr;
-        // echo '<br/>';
-        // echo '<br/>';
+        echo $qrystr;
+        echo '<br/>';
+        echo '<br/>';
 
         $wpdb->query( $qrystr );
 
@@ -684,7 +684,7 @@ function saveWidgetForm()
 
         print('<br/><br/><a class="button-primary" href="?page='.$path.'&func=create">'.lang('create').'</a>');
 
-        print('&nbsp;&nbsp;<input id="widgetsearch" placeholder="Search Widgets"/>');
+        print('&nbsp;&nbsp;<input id="widgetsearch" placeholder="Search "/>');
 
         print('<div class="wrap">');
 

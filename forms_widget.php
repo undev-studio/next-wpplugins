@@ -93,6 +93,7 @@ class nextFormsWidget extends unWidget
         echo '  var data='.$json.';';
         echo '  data.htmlId="#formwidget'.$id.'";';
         echo '  data.formId='.$form[0]->id.';';
+  
         echo '  data.errorId="#formerrors'.$form[0]->id.'";';
         echo '  nextFormData.push(data);';
         echo '</script>';

@@ -22,9 +22,7 @@
             <option value="pl">PL</option>
             <option value="it">IT</option>
             <option value="nl">NL</option>
-
-
-            
+            <option value="cn">CN</option>
         </select>
 
     </div>
@@ -238,7 +236,7 @@ NEXTLANG.setTranslation=function(key)
                 html+=' </td>';
                 html+=' <td>';
                 html+='   <b>Default:</b><br/>';
-                html+=el[i].default||'-';
+                html+= el[i].default||'-';
                 html+=' </td>';
 
                 html+='</tr>';
