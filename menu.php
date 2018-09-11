@@ -83,8 +83,8 @@ add_action( 'widgets_init', create_function('', 'return register_widget("nextIma
 require_once('widget_news.php');
 add_action( 'widgets_init', create_function('', 'return register_widget("nextNewsWidget");') );
 
-// require_once('widget_cleverreach.php');
-// add_action( 'widgets_init', create_function('', 'return register_widget("nextCleverreachWidget");') );
+require_once('widget_mailchimp.php');
+add_action( 'widgets_init', create_function('', 'return register_widget("nextmailchimpWidget");') );
 
 require_once('widget_text.php');
 add_action( 'widgets_init', create_function('', 'return register_widget("nextTextWidget");') );

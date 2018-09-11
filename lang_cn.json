@@ -1,0 +1,47 @@
+{
+    "simulation_headline": "Nextfrequency",
+    "simulation_backButton_link": "",
+
+    "simulation_page_title": "虚拟世界之能源大挑战，防止大停电！",
+    "simulation_page_description": "您现在是虚拟电厂的厂长，担负起防止大停电的重担!",
+
+    "simulation_startButton_text":"开始游戏",
+
+    "simulation_blackout": "大停电!",
+    "simulation_points": "分",
+    "simulation_retry":"再玩一次",
+
+    "simulation_manual_caption":"游戏指南",
+    "simulation_manual_text": "<h2>您现在是虚拟电厂的厂长了，肩负起维持平衡防止大停电的责任!</h2>在屏幕右上方显示的电网频率，需要被稳定在49.8赫兹到50.2赫兹之间防止电网崩溃。电网的频率一直都会波动，而且不可预测的事件还会导致更大的波动。使用四个控制器来调整各分布式发电单元的发电功率，以保持平衡电网频率。<br/>如果频率降低，则需要提高发电功率或降低用电需求。如果频率上升，则需要减少发电功率或提高用电需求。按一下屏幕中央的Next Kraftwerke 可以看到虚拟电厂自动控制系统的原理。",
+
+    "simulation_backButton_text": "返回",
+    "simulation_backButton_title": "连接生物质能，光能，风能，热电联产和需求侧响应的虚拟电厂",
+    "simulation_backbutton_app_text": "返回",
+
+    "simulation_infoIndustry":"需求侧响应<br/>不止发电单元，大型的用电单元也可以通过需求侧响应的方式来帮助电网维持平衡。用电多了，电网频率就会降低，用电少了，频率就会升高。",
+    "simulation_infoBio":"生物气热电厂<br/>生物气热电厂可以可靠地、迅速地调整其发电功率，是给电网提供调峰调频的最佳选择之一。",
+    "simulation_infoWater":"水电厂<br/>抽水蓄能电站已经是几十年为电网调平调峰的老将了。常规水电厂也能为电网提供一定量的平衡调节能力。",
+    "simulation_infoWood":"新型火电厂<br/>可调度可控制（dispatchable）的发电厂可不止传统化石能源发电厂哦，大量的新型绿色火电厂可以为电网调频调峰，例如沼气发电厂，垃圾发电厂，木材热电联产。",
+    "simulation_infoWind":"风力发电<br/>与光伏发电相似，风力发电也有波动性和不可调度性。但虚拟电厂能够监测其实时发电量，一旦发现与预测电量的偏离或者偏离趋势，可以调用其他类型发电来抵消其偏离。供大于求，电力交易市场上电价太低时，虚拟电厂可以降低风力发电并网功率。",
+
+    "simulation_infoHaushalt":"居民用户<br/>居民用户没有显示在此款游戏里，但居民用户也可以通过需求侧响应为电网平衡做出贡献。家用电器可以自动根据电网情况来调整其用电功率，比如电冰箱、空调。",
+    "simulation_infoSolar":"光伏发电<br/>光伏发电虽然有波动性和不可调度性（non-dispatchable），无法为电网调频（有时甚至是电网频率不稳的原因之一）。但通过整合光伏发电进入虚拟电厂，可以监测其发电量，及时修正发电量与预测量之间的偏离，以其他类型发电为其补足。而在风光过剩的日子里，电力市场上会出现负电价，虚拟电厂可以关闭光伏发电或停止光伏并网避免损失。",
+    "simulation_infoNetze":"电网和其频率<br/>电网只能传输电力，无法储存电力。为了防止大停电，电网的频率必须稳定在50赫兹。如果电网的频率低于49.98赫兹或者高于50.02赫兹，就需要启动平衡功率把电网频率拉回来或者压下去。当电网频率低于49.8赫兹或者高于50.2赫兹，电网调度就要启动一系列紧急措施，这些措施目前暂时没有体现在此款游戏里。",
+    "simulation_infoVKW":"Next Kraftwerke是德国的一家大型虚拟电厂运营商。泰豪与Next Kraftwerke非常看好虚拟电厂技术在中国的发展。虚拟电厂通过中央控制系统把可再生能源发电整合在一个发电能量池，为电网提供平衡功率。一旦电网频率偏离，各可再生能源发电单元会自动被调控从而稳定电网。",
+
+    "simulation_updateBrowser_text":"We're sorry, but unfortunately it's not possible to play NextFrequenz with your browser version. Please update to the most recent version of your browser.",
+    "simulation_updateBrowser_suggest":"We recommend Firefox:",
+    "simulation_updateBrowser_link":"https://www.mozilla.org/en/firefox/new/",
+
+    "simulation_BlockInKohlekraftwerkAusgefallen":"火电机组出事故了",
+    "simulation_UnerwarteteSturmfront":"刮台风了！",
+    "simulation_Windflaute":"今日无风",
+    "simulation_PlötzlicheWolkendecke":"天空飘来一大朵云",
+    "simulation_MehrSonnenscheinAlsPrognostiziert":"阳光灿烂，万里无云",
+    "simulation_HalbzeitpausImWM-Finale":"世界杯决赛半场休息",
+    "simulation_Stromspartag":"世界节能日",
+    "simulation_SicherheitsabschaltungAKW":"核电厂停电",
+    "simulation_Wintereinbruch":"入冬了",
+    "simulation_Hitzewelle":"热浪滚滚",
+    "simulation_Sonnenfinsternis": "日全食来啦"
+}
