@@ -10,29 +10,25 @@ Author URI: http://undev.de/
 
 class next_footernav extends WP_Widget
 {
-
     function next_footernav()
     {
         $widget_ops = array('classname' => 'next_footernav', 'title' => '' );
         $this->WP_Widget('next_footernav', 'Next Footer Nav', $widget_ops);
     }
 
+    function getWidgetInput($title,$id,$fieldname,$value)
+    {
+        $str='<p>'.
+                $title.': '.
+                '<input class="widefat" type="text" '.
+                    'id="'.$id.'" '.
+                    'name="'.$fieldname.'" '.
+                    'value="'.$value.'" />'.
+                '</label>'.
+            '</p>';
 
-
-function getWidgetInput($title,$id,$fieldname,$value)
-{
-    $str='<p>'.
-            $title.': '.
-            '<input class="widefat" type="text" '.
-                'id="'.$id.'" '.
-                'name="'.$fieldname.'" '.
-                'value="'.$value.'" />'.
-            '</label>'.
-        '</p>';
-
-    return $str;
-}
-
+        return $str;
+    }
 
     function getPageInput($title,$id,$fieldname,$value)
     {
@@ -60,7 +56,6 @@ function getWidgetInput($title,$id,$fieldname,$value)
         return $str;
     }
 
-
     function form($instance)
     {
         $instance = wp_parse_args( (array) $instance, array( 
@@ -80,7 +75,6 @@ function getWidgetInput($title,$id,$fieldname,$value)
             $this->get_field_name('title'),
             $instance['title']);
 
-
         echo $this->getPageInput(
             'Page 2',
             $this->get_field_id('pageid1'),
@@ -93,7 +87,6 @@ function getWidgetInput($title,$id,$fieldname,$value)
             $this->get_field_name('title1'),
             $instance['title1']);
 
-
         echo $this->getPageInput(
             'Page 3',
             $this->get_field_id('pageid2'),
@@ -105,8 +98,6 @@ function getWidgetInput($title,$id,$fieldname,$value)
             $this->get_field_id('title2'),
             $this->get_field_name('title2'),
             $instance['title2']);
-
-
     }
 
     function update($new_instance, $old_instance)
@@ -123,7 +114,6 @@ function getWidgetInput($title,$id,$fieldname,$value)
         return $instance;
     }
 
-
     function getDepth()
     {
         global $wp_query;
@@ -138,7 +128,6 @@ function getWidgetInput($title,$id,$fieldname,$value)
         return $depth;
     }
 
-
     function printNav($pageid,$title,$children)
     {
         echo '<b>';
@@ -147,14 +136,10 @@ function getWidgetInput($title,$id,$fieldname,$value)
         echo '</a>';
         echo '</b>';
 
-        if(sizeof($children)>0)
-        {
-            print($children);
-        }
-        // echo '<div class="clear"></div>';
+        if($children && count($children)>0) print($children);
+
         echo '<br/>';
     }
-
 
     function widget($args, $instance)
     {
@@ -180,7 +165,6 @@ function getWidgetInput($title,$id,$fieldname,$value)
         echo '</div>';        
     }
 }
-
 
 
 ?>
