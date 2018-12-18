@@ -170,7 +170,7 @@ function next_content_menu()
 
     add_submenu_page( 'next_content/news.php', 'EMail Log', 'EMail Log',              'publish_posts', 'next_content/emaillog.php' );
     add_submenu_page( 'next_content/news.php', 'Next Pool', 'Next Pool',            'publish_posts', 'next_content/nextpool.php' );
-    add_submenu_page( 'next_content/news.php', 'Jobs', 'Jobs',                      'publish_posts', 'next_content/jobs.php' );
+    // add_submenu_page( 'next_content/news.php', 'Jobs', 'Jobs',                      'publish_posts', 'next_content/jobs.php' );
     add_submenu_page( 'next_content/news.php', 'Jobs Softgarden', 'Jobs Softgarden',                      'publish_posts', 'next_content/jobs_softgarden.php' );
     add_submenu_page( 'next_content/news.php', 'Events', 'Events',                'publish_posts', 'next_content/events.php' );
     add_submenu_page( 'next_content/news.php', 'Partner', 'Partner',                'publish_posts', 'next_content/partner.php' );

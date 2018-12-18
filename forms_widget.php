@@ -30,7 +30,7 @@ class nextFormsWidget extends unWidget
         global $wpdb;
         $rows = $wpdb->get_results("SELECT * FROM next_forms ORDER BY name" );
 
-        var_dump($instance);
+        // var_dump($instance);
 
 
         $html.='<select name="'.$this->get_field_name('form').'" id="'.$this->get_field_id('form').'" >';
@@ -81,7 +81,6 @@ class nextFormsWidget extends unWidget
         $json= $form[0]->rowdata;
         $id=uniqid();
 
-        // var_dump($form);
         echo '<div class="bgbox {{classes}}">';
         echo '<h3 class="clickable accordion-header closed" style="margin:0px;padding:0px;" data-amount="1">'.$form[0]->title.'</h3>';
         echo '<div class="erloescontainer forms" style="border:none;">';

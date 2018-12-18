@@ -8,6 +8,10 @@ require_once('libs/phpmailer/PHPMailerAutoload.php');
 add_action( 'wp_ajax_nextform', 'nextform_ajax_callback' );
 add_action( 'wp_ajax_nopriv_nextform', 'nextform_ajax_callback' );
 
+add_action( 'wp_ajax_nextform_formadata', 'nextform_ajax_formdata' );
+add_action( 'wp_ajax_nopriv_nextform_formadata', 'nextform_ajax_formdata' );
+
+
 function nextform_validate($data,$form)
 {
     $errors=array();
@@ -71,19 +75,15 @@ function nextform_getEmailAdresses($form,$formFields,$data)
 {
     global $wpdb;
     $toEmail=array();
-    
 
     if(strpos($form->email, ',') !== false)
     {
-        // echo 'true';
         $toEmail=explode(',',$form->email);
-
     }
     else
     {
         $toEmail[]=$form->email;
     }
-
     
     if($form->maillogic=='zip')
     {
@@ -104,7 +104,7 @@ function nextform_getEmailAdresses($form,$formFields,$data)
         }
     }
 
-    if( count($toEmail)==0 ) $toEmail[]='tom-unknownemail@undev.de';
+    if(count($toEmail)==0) $toEmail[]='tom-unknownemail@undev.de';
 
     return $toEmail;
 }
@@ -134,7 +134,8 @@ function nextform_ajax_callback()
     $lastid = $wpdb->insert('emaillog', array(
         'content' => json_encode($data),
         'templatename' => 'forms '.$title,
-        'to' => $flatEmails
+        'to' => $flatEmails,
+        'url' => $data['url']
         ));
 
     $body='<h3>'.$title.'</h3><br/>';
@@ -150,6 +151,10 @@ function nextform_ajax_callback()
     }
 
     $body.='<br/>send to: '.$flatEmails;
+
+    $body.='<br/>URL: '.$data['url'];
+
+    
 
     $email = new PHPMailer();
     $email->CharSet = 'utf-8';
@@ -176,22 +181,17 @@ function nextform_ajax_callback()
 
 
 
+function nextform_ajax_formdata()
+{
+    global $wpdb;
 
+    $data=$_REQUEST['formdata'];
+    $form = $wpdb->get_results('SELECT * FROM next_forms WHERE id='.(int)$_REQUEST['formId'].';');
 
+    echo json_encode($form);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    wp_die();
+}
 
 
 

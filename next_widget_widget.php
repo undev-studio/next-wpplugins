@@ -122,6 +122,13 @@ class nextWidget extends unWidget
                 'classes' => $this->getDisplaySizeClasses($instance)
             ));
 
+            echo '<!-- nextwidgets - "'.$entry->title.'" / '.$entry->rowfile.'-->';
+            echo '<!--';
+
+            var_dump($entry);
+
+            echo '-->';
+
             echo $html;
         }
         else

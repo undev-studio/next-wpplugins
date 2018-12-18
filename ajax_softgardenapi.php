@@ -22,28 +22,37 @@
         Unirest\Request::auth('f799c05f-8293-43cc-8c8d-580450847565', '');
         $response = Unirest\Request::get('https://api.softgarden.io/api/rest/v2/frontend/jobboards/27828_extern/jobs', $headers, $query);
 
-        $globalDb->query("TRUNCATE TABLE jobs_softgarden");
-
-        foreach($response->body->results as $job)
+        if($response->code==200)
         {
-            $keywords='';
-            if(isset($job->config->softgarden_keywords)) $keywords=join(',',$job->config->softgarden_keywords);
+            $globalDb->query("TRUNCATE TABLE jobs_softgarden");
 
-            $globalDb->insert('jobs_softgarden', array(
-                'sgid' => $job->jobPostingId,
-                'applylink' => $job->applyOnlineLink,
-                'title' => $job->title,
-                'keywords' => $keywords
-            ));
+            foreach($response->body->results as $job)
+            {
+                $keywords='';
+                if(isset($job->config->softgarden_keywords)) $keywords=join(',',$job->config->softgarden_keywords);
 
-            if($globalDb->last_error!='') echo($globalDb->last_error); 
+                $globalDb->insert('jobs_softgarden', array(
+                    'sgid' => $job->jobPostingId,
+                    'applylink' => $job->applyOnlineLink,
+                    'title' => $job->title,
+                    'keywords' => $keywords
+                ));
+
+                if($globalDb->last_error!='') echo($globalDb->last_error); 
+            }
+
+            echo '<script>window.history.back();</script>';
+            // echo count($response->body->results.' jobs');
+            // echo '<pre>';
+            // var_dump($response->body->results);
+        }
+        else
+        {
+            echo 'error: invalid response from softgarden.';
+
+            // var_dump($response->body);            
         }
 
-        echo '<pre>';
-        var_dump($response->body->results);
-        echo '</pre>';
-
-        die();
     }
 
     function ajax_softgardenlist_callback()

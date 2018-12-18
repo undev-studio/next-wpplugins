@@ -235,77 +235,698 @@
             "childs":
             [
                 {
-                    "name":"number1",
+                    "name":"value_mitarbeiter",
                     "default":""
                 },
                 {
-                    "name":"title1",
+                    "name":"title_mitarbeiter",
                     "default":""
                 },
                 {
-                    "name":"subtitle1",
+                    "name":"subtitle_mitarbeiter",
                     "default":""
                 },
                 {
-                    "name":"number2",
+                    "name":"subtitle2_mitarbeiter",
+                    "default":""
+                },
+
+                {
+                    "name":"value_standorte",
                     "default":""
                 },
                 {
-                    "name":"title2",
+                    "name":"title_standorte",
                     "default":""
                 },
                 {
-                    "name":"subtitle2",
+                    "name":"subtitle_standorte",
                     "default":""
                 },
                 {
-                    "name":"number3",
+                    "name":"subtitle2_standorte",
+                    "default":""
+                },
+
+                {
+                    "name":"value_umsatz",
                     "default":""
                 },
                 {
-                    "name":"title3",
+                    "name":"title_umsatz",
                     "default":""
                 },
                 {
-                    "name":"subtitle3",
+                    "name":"subtitle_umsatz",
                     "default":""
                 },
                 {
-                    "name":"number4",
+                    "name":"subtitle2_umsatz",
+                    "default":""
+                },
+
+                {
+                    "name":"value_anlagen",
                     "default":""
                 },
                 {
-                    "name":"title4",
+                    "name":"title_anlagen",
                     "default":""
                 },
                 {
-                    "name":"subtitle4",
+                    "name":"subtitle_anlagen",
                     "default":""
                 },
                 {
-                    "name":"number5",
+                    "name":"subtitle2_anlagen",
+                    "default":""
+                },
+
+                {
+                    "name":"value_gesamtleistung",
                     "default":""
                 },
                 {
-                    "name":"title5",
+                    "name":"title_gesamtleistung",
                     "default":""
                 },
                 {
-                    "name":"subtitle5",
+                    "name":"subtitle_gesamtleistung",
                     "default":""
                 },
                 {
-                    "name":"number6",
+                    "name":"subtitle2_gesamtleistung",
+                    "default":""
+                },
+
+                {
+                    "name":"value_gruendung",
                     "default":""
                 },
                 {
-                    "name":"title6",
+                    "name":"title_gruendung",
                     "default":""
                 },
                 {
-                    "name":"subtitle6",
+                    "name":"subtitle_gruendung",
+                    "default":""
+                },
+                {
+                    "name":"subtitle2_gruendung",
+                    "default":""
+                },
+
+
+
+
+                {
+                    "name":"value_datenpunktejahr",
+                    "default":""
+                },
+                {
+                    "name":"title_datenpunktejahr",
+                    "default":""
+                },
+                {
+                    "name":"subtitle_datenpunktejahr",
+                    "default":""
+                },
+                {
+                    "name":"subtitle2_datenpunktejahr",
+                    "default":""
+                },
+
+
+
+                {
+                    "name":"value_gewinnaward",
+                    "default":""
+                },
+                {
+                    "name":"title_gewinnaward",
+                    "default":""
+                },
+                {
+                    "name":"subtitle_gewinnaward",
+                    "default":""
+                },
+                {
+                    "name":"subtitle2_gewinnaward",
+                    "default":""
+                },
+
+
+                {
+                    "name":"value_numschnittstellenpartner",
+                    "default":""
+                },
+                {
+                    "name":"title_numschnittstellenpartner",
+                    "default":""
+                },
+                {
+                    "name":"subtitle_numschnittstellenpartner",
+                    "default":""
+                },
+                {
+                    "name":"subtitle2_numschnittstellenpartner",
+                    "default":""
+                },
+
+
+                {
+                    "name":"value_num_biogas",
+                    "default":""
+                },
+                {
+                    "name":"title_num_biogas",
+                    "default":""
+                },
+                {
+                    "name":"subtitle_num_biogas",
+                    "default":""
+                },
+                {
+                    "name":"subtitle2_num_biogas",
+                    "default":""
+                },
+
+                {
+                    "name":"value_leistung_biogas",
+                    "default":""
+                },
+                {
+                    "name":"title_leistung_biogas",
+                    "default":""
+                },
+                {
+                    "name":"subtitle_leistung_biogas",
+                    "default":""
+                },
+                {
+                    "name":"subtitle2_leistung_biogas",
+                    "default":""
+                },
+
+                {
+                    "name":"value_strommenge",
+                    "default":""
+                },
+                {
+                    "name":"title_strommenge",
+                    "default":""
+                },
+                {
+                    "name":"subtitle_strommenge",
+                    "default":""
+                },
+                {
+                    "name":"subtitle2_strommenge",
+                    "default":""
+                },
+
+                {
+                    "name":"value_neg_srl_biogas",
+                    "default":""
+                },
+                {
+                    "name":"title_neg_srl_biogas",
+                    "default":""
+                },
+                {
+                    "name":"subtitle_neg_srl_biogas",
+                    "default":""
+                },
+                {
+                    "name":"subtitle2_neg_srl_biogas",
+                    "default":""
+                },
+
+                {
+                    "name":"value_pos_srl_biogas",
+                    "default":""
+                },
+                {
+                    "name":"title_pos_srl_biogas",
+                    "default":""
+                },
+                {
+                    "name":"subtitle_pos_srl_biogas",
+                    "default":""
+                },
+                {
+                    "name":"subtitle2_pos_srl_biogas",
+                    "default":""
+                },
+
+                {
+                    "name":"value_regelzonen",
+                    "default":""
+                },
+                {
+                    "name":"title_regelzonen",
+                    "default":""
+                },
+                {
+                    "name":"subtitle_regelzonen",
+                    "default":""
+                },
+
+                {
+                    "name":"subtitle2_regelzonen",
+                    "default":""
+                },
+
+                {
+                    "name":"value_numpvanlagen",
+                    "default":""
+                },
+                {
+                    "name":"title_numpvanlagen",
+                    "default":""
+                },
+                {
+                    "name":"subtitle_numpvanlagen",
+                    "default":""
+                },
+                {
+                    "name":"subtitle2_numpvanlagen",
+                    "default":""
+                },
+
+
+                {
+                    "name":"value_gesamtphotovoltaik",
+                    "default":""
+                },
+                {
+                    "name":"title_gesamtphotovoltaik",
+                    "default":""
+                },
+                {
+                    "name":"subtitle_gesamtphotovoltaik",
+                    "default":""
+                },
+                {
+                    "name":"subtitle2_gesamtphotovoltaik",
+                    "default":""
+                },
+
+                {
+                    "name":"value_numwindanlagen",
+                    "default":""
+                },
+                {
+                    "name":"title_numwindanlagen",
+                    "default":""
+                },
+                {
+                    "name":"subtitle_numwindanlagen",
+                    "default":""
+                },
+                {
+                    "name":"subtitle2_numwindanlagen",
+                    "default":""
+                },
+
+
+                {
+                    "name":"value_leistung_windanlagen",
+                    "default":""
+                },
+                {
+                    "name":"title_leistung_windanlagen",
+                    "default":""
+                },
+                {
+                    "name":"subtitle_leistung_windanlagen",
+                    "default":""
+                },
+                {
+                    "name":"subtitle2_leistung_windanlagen",
+                    "default":""
+                },
+
+
+                {
+                    "name":"value_num_wasser_anlagen",
+                    "default":""
+                },
+                {
+                    "name":"title_num_wasser_anlagen",
+                    "default":""
+                },
+                {
+                    "name":"subtitle_num_wasser_anlagen",
+                    "default":""
+                },
+                {
+                    "name":"subtitle2_num_wasser_anlagen",
+                    "default":""
+                },
+
+
+                {
+                    "name":"value_leistung_wasseranlagen",
+                    "default":""
+                },
+                {
+                    "name":"title_leistung_wasseranlagen",
+                    "default":""
+                },
+                {
+                    "name":"subtitle_leistung_wasseranlagen",
+                    "default":""
+                },
+                {
+                    "name":"subtitle2_leistung_wasseranlagen",
+                    "default":""
+                },
+
+
+                {
+                    "name":"value_num_stromaggregate",
+                    "default":""
+                },
+                {
+                    "name":"title_num_stromaggregate",
+                    "default":""
+                },
+                {
+                    "name":"subtitle_num_stromaggregate",
+                    "default":""
+                },
+                {
+                    "name":"subtitle2_num_stromaggregate",
+                    "default":""
+                },
+
+
+                {
+                    "name":"value_leistung_stromaggregate",
+                    "default":""
+                },
+                {
+                    "name":"title_leistung_stromaggregate",
+                    "default":""
+                },
+                {
+                    "name":"subtitle_leistung_stromaggregate",
+                    "default":""
+                },
+                {
+                    "name":"subtitle2_leistung_stromaggregate",
+                    "default":""
+                },
+
+
+                {
+                    "name":"value_num_kwk_anlagen",
+                    "default":""
+                },
+                {
+                    "name":"title_num_kwk_anlagen",
+                    "default":""
+                },
+                {
+                    "name":"subtitle_num_kwk_anlagen",
+                    "default":""
+                },
+                {
+                    "name":"subtitle2_num_kwk_anlagen",
+                    "default":""
+                },
+
+
+                {
+                    "name":"value_leistung_kwk_anlagen",
+                    "default":""
+                },
+                {
+                    "name":"title_leistung_kwk_anlagen",
+                    "default":""
+                },
+                {
+                    "name":"subtitle_leistung_kwk_anlagen",
+                    "default":""
+                },
+                {
+                    "name":"subtitle2_leistung_kwk_anlagen",
+                    "default":""
+                },
+
+
+                {
+                    "name":"value_num_batterien",
+                    "default":""
+                },
+                {
+                    "name":"title_num_batterien",
+                    "default":""
+                },
+                {
+                    "name":"subtitle_num_batterien",
+                    "default":""
+                },
+                {
+                    "name":"subtitle2_num_batterien",
+                    "default":""
+                },
+
+
+                {
+                    "name":"value_prl_batterien",
+                    "default":""
+                },
+                {
+                    "name":"title_prl_batterien",
+                    "default":""
+                },
+                {
+                    "name":"subtitle_prl_batterien",
+                    "default":""
+                },
+                {
+                    "name":"subtitle2_prl_batterien",
+                    "default":""
+                },
+
+
+                {
+                    "name":"value_leistung_batterien",
+                    "default":""
+                },
+                {
+                    "name":"title_leistung_batterien",
+                    "default":""
+                },
+                {
+                    "name":"subtitle_leistung_batterien",
+                    "default":""
+                },
+                {
+                    "name":"subtitle2_leistung_batterien",
+                    "default":""
+                },
+
+
+                {
+                    "name":"value_num_powerx_anlagen",
+                    "default":""
+                },
+                {
+                    "name":"title_num_powerx_anlagen",
+                    "default":""
+                },
+                {
+                    "name":"subtitle_num_powerx_anlagen",
+                    "default":""
+                },
+                {
+                    "name":"subtitle2_num_powerx_anlagen",
+                    "default":""
+                },
+
+
+                {
+                    "name":"value_leistung_powerx_anlagen",
+                    "default":""
+                },
+                {
+                    "name":"title_leistung_powerx_anlagen",
+                    "default":""
+                },
+                {
+                    "name":"subtitle_leistung_powerx_anlagen",
+                    "default":""
+                },
+                {
+                    "name":"subtitle2_leistung_powerx_anlagen",
+                    "default":""
+                },
+
+
+
+
+
+                {
+                    "name":"value_praequalifiziert_PRL_europa",
+                    "default":""
+                },
+                {
+                    "name":"title_praequalifiziert_PRL_europa",
+                    "default":""
+                },
+                {
+                    "name":"subtitle_praequalifiziert_PRL_europa",
+                    "default":""
+                },
+                {
+                    "name":"subtitle2_praequalifiziert_PRL_europa",
+                    "default":""
+                },
+
+
+
+
+
+                {
+                    "name":"value_praequalifiziert_SRL_europa",
+                    "default":""
+                },
+                {
+                    "name":"title_praequalifiziert_SRL_europa",
+                    "default":""
+                },
+                {
+                    "name":"subtitle_praequalifiziert_SRL_europa",
+                    "default":""
+                },
+                {
+                    "name":"subtitle2_praequalifiziert_SRL_europa",
+                    "default":""
+                },
+
+
+
+ 
+ 
+ 
+
+
+
+                {
+                    "name":"value_praequalifiziert_MRL_europa",
+                    "default":""
+                },
+                {
+                    "name":"title_praequalifiziert_MRL_europa",
+                    "default":""
+                },
+                {
+                    "name":"subtitle_praequalifiziert_MRL_europa",
+                    "default":""
+                },
+                {
+                    "name":"subtitle2_praequalifiziert_MRL_europa",
+                    "default":""
+                },
+
+
+ 
+
+                {
+                    "name":"value_systemdienstleistungen",
+                    "default":""
+                },
+                {
+                    "name":"title_systemdienstleistungen",
+                    "default":""
+                },
+                {
+                    "name":"subtitle_systemdienstleistungen",
+                    "default":""
+                },
+                {
+                    "name":"subtitle2_systemdienstleistungen",
+                    "default":""
+                },
+
+
+
+
+
+                {
+                    "name":"value_vernetzte_Verbraucher",
+                    "default":""
+                },
+                {
+                    "name":"title_vernetzte_Verbraucher",
+                    "default":""
+                },
+                {
+                    "name":"subtitle_vernetzte_Verbraucher",
+                    "default":""
+                },
+                {
+                    "name":"subtitle2_vernetzte_Verbraucher",
+                    "default":""
+                },
+
+
+ 
+
+
+
+
+
+
+                {
+                    "name":"value_aggregierte_flexibilitaet",
+                    "default":""
+                },
+                {
+                    "name":"title_aggregierte_flexibilitaet",
+                    "default":""
+                },
+                {
+                    "name":"subtitle_aggregierte_flexibilitaet",
+                    "default":""
+                },
+                {
+                    "name":"subtitle2_aggregierte_flexibilitaet",
+                    "default":""
+                },
+
+
+
+
+
+                {
+                    "name":"value_num_praequalifiziert",
+                    "default":""
+                },
+                {
+                    "name":"title_num_praequalifiziert",
+                    "default":""
+                },
+                {
+                    "name":"subtitle_num_praequalifiziert",
+                    "default":""
+                },
+                {
+                    "name":"subtitle2_num_praequalifiziert",
                     "default":""
                 }
+
+
+
+
+
+
+
+
+
             ]
         },
         {

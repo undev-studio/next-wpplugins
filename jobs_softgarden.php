@@ -5,54 +5,51 @@
 
 <h2>Jobs Softgarden</h2>
 
+<br/><br/>
 
-<table id="unlistTable" class="wp-list-table widefat sorted_table">
-	<thead>
-		<tr>
-			<th>Title</th>
-			<th>ID</th>
-			<th>Keywords</th>
-		</tr>
-	</thead>
-	<tbody>
+<a class="button-primary" href="/wp-admin/admin-ajax.php?action=softgardenapi">update jobs from softgarden</a>
+
+
 
 <?php
 
-    require_once '../wp-content/themes/next2015/libs/unirest/Unirest.php';
 
-    $headers = array('Accept' => 'application/json');
-    Unirest\Request::auth('f799c05f-8293-43cc-8c8d-580450847565', '');
-    $response = Unirest\Request::get('https://api.softgarden.io/api/rest/v2/frontend/jobboards/27828_extern/jobs', $headers, $query);
+    $globalDb = new wpdb(DB_USER,DB_PASSWORD,'next_global','localhost');
+    if($globalDb->last_error!='') echo($globalDb->last_error);
 
+    $result=$globalDb->get_results("SELECT * FROM jobs_softgarden");
 
-    foreach($response->body->results as $job)
+    echo '<br/><br/><table class="wp-list-table widefat ">';
+
+    echo '<tr>';
+    echo '<th>';
+    echo 'Title';
+    echo '</th><th>';
+    echo 'Softgarden';
+    echo '</th><th>';
+    echo 'Tags';
+    echo '</th>';
+    echo '</tr>';
+
+    foreach($result as $job)
     {
-    	echo '<tr>';
-    	echo '<td>';
+        echo '<tr>';
+        echo '<td>';
         echo $job->title;
+        echo '</td><td>';
+        echo '<a href="$job->applylink">'.$job->sgid.'</a>';
+        echo '</td><td>';
+        echo $job->keywords;
         echo '</td>';
-
-		echo '<td>';
-        echo $job->jobPostingId;
-        echo '</td>';
-
-		echo '<td>';
-		if(!$job->config->softgarden_keywords)$job->config->softgarden_keywords=Array();
-        echo implode(',',$job->config->softgarden_keywords);
-        echo '</td>';
-
-
         echo '</tr>';
     }
 
-    echo '</tbody>';
     echo '</table>';
-
-
-    echo '<pre>';
-	var_dump($response);
-	echo '</pre>';
+    echo '<br/>';
+    echo count($result).' jobs';
 
 ?>
+
+
 
 </div>

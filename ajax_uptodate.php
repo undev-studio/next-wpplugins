@@ -19,7 +19,6 @@
 
         if(!is_numeric($instance['textlength']) )$instance['textlength']=60;
 
-
         $args = [
             'post_type' => 'page',
             'fields' => 'ids',
@@ -27,6 +26,7 @@
             'meta_key' => '_wp_page_template',
             'meta_value' => 'page-events.php'
         ];
+
         $pages = get_posts( $args );
         foreach ( $pages as $page ) 
             $eventPageUrl=get_permalink($page);

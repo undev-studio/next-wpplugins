@@ -32,8 +32,6 @@
         die();
     }
 
-    
-
     $tablename=$json['tablename'];
     $idName=$json['idName'];
     $sortable=$json['sortable'];
@@ -47,8 +45,6 @@
 
     $thumbnailSize=$json['thumbnailSize'];
     $thumbnailSizeEdit=$json['thumbnailSizeEdit'];
-
-
 
 
     function getWidgetAlias($name)
@@ -93,11 +89,7 @@
         }
 
         if($sortable)$sql.=' ORDER BY sort;';
-        else
-        {
-            if($orderby!='')$sql.=' ORDER BY '.$orderby.';';
-        }
-
+            else if($orderby!='')$sql.=' ORDER BY '.$orderby.';';
 
         return $sql;
     }
@@ -109,7 +101,6 @@ function unrowsForm($count,$json)
     global $post;
     $content = get_post_meta( $post->ID, 'unrowContent' );
     $extraCSS = "";
-
 
     print('<div class="unrow_row"'. $extraCSS .'>');
     print('<div class="unrow_head">');
@@ -169,11 +160,8 @@ function unrowsForm($count,$json)
 
     print('</table>');
     print('</div>');
-
     print('</div>');
-// print('</form>');
 }
-
 
 ?>
 
@@ -186,11 +174,8 @@ function unrowsForm($count,$json)
 
 <script type="text/javascript">
 
-
 function saveWidgetForm()
 {
-    // console.log(1234);
-
     var data={};
     jQuery(".unrow").serializeArray().map(function(x){data[x.name] = x.value;});
     console.log(data);
@@ -198,10 +183,8 @@ function saveWidgetForm()
     jQuery('#finalform').submit();
 }
 
-
 jQuery(document).ready(function()
 {
-
     var data=jQuery('#input_rowdata').val();
     data=JSON.parse(data);
     console.log(data);
@@ -223,11 +206,11 @@ jQuery(document).ready(function()
 </script>
 
 <?php
-function cleanString($string) {
-   $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
-
-   return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
-}
+    function cleanString($string)
+    {
+       $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
+       return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
+    }
 
     function getPageSelect($fieldName,$value)
     {
@@ -256,8 +239,6 @@ function cleanString($string) {
 
         return $html;
     }
-
-
 
     global $wpdb;
 
@@ -291,9 +272,9 @@ function cleanString($string) {
             {
                 if($count!=0)$sql.=",";
                 $sql.=$f['name'].'="'.$val.'" ';
-
             }
 
+            // echo $f['name'].':::::::::::::::'.$val.'<br/>';
             $count++;
         }
 
@@ -345,9 +326,8 @@ function cleanString($string) {
 
         $wpdb->insert(''.$tablename.'', $data);
         $func="";
-
-
         $error=printSQLError();
+
         if(!$error)
         {
             $func='edit';
@@ -361,17 +341,13 @@ function cleanString($string) {
     {
         global $wpdb;
 
-
         $rows = $wpdb->get_results(getListingSQL());
 
         printSQLError();
 
         print('<br/><br/><a class="button-primary" href="?page='.$path.'&func=create">'.lang('create').'</a>');
-
         print('&nbsp;&nbsp;<input id="widgetsearch" placeholder="Search Widgets"/>');
-
         print('<div class="wrap">');
-
 
         if($json['filter'])
         {
@@ -420,7 +396,6 @@ function cleanString($string) {
 
         foreach ($rows as &$row)
         {
-
             $search='';
             foreach ($json['vars'] as $f)
             {
@@ -428,10 +403,7 @@ function cleanString($string) {
             }
             $search=cleanString(strtolower($search));
 
-
-
             print('<tr class="searchable" data-index="'.$search.'">');
-
             print('<td>');
             if($editable) 
             {
@@ -522,6 +494,9 @@ function cleanString($string) {
                     print('</tr>');
                 }
 
+
+
+
                 if($f['input']=='selectTemplate')
                 {
                     print('<tr style="'.$visi.'">');
@@ -565,9 +540,6 @@ function cleanString($string) {
                     print('</tr>');
                 }
             }
-
-
-
 
             print('<tr>');
             print('<td colspan="2">');
