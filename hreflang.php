@@ -30,7 +30,13 @@ function insertHrefLang($post)
     $country=get_post_meta( $post->ID, 'hreflang_country', true );
     $url=get_post_meta( $post->ID, 'hreflang_url', true );
 
-    $num=sizeof(hreflang_get_custom_field('hreflang_url'));
+    $num=0;
+    $hrefurl=hreflang_get_custom_field('hreflang_url');
+
+    if(isset($hrefurl) && is_array($hrefurl))
+    {
+        $num=sizeof($hrefurl);
+    }
     
     for($i=0;$i<$num+1;$i++)
     {
