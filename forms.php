@@ -59,10 +59,10 @@
     }
 
 </style>
+
 <script type="text/javascript">
 
 var NEXTFORM={};
-
 
 NEXTFORM.save=function()
 {
@@ -734,13 +734,17 @@ function saveWidgetForm()
         print('</thead>');
         print('<tbody>');
 
+
+
         foreach ($rows as &$row)
         {
+
+
 
             $search='';
             foreach ($json['vars'] as $f)
             {
-                $search.=$row->$f['name'];
+                $search.=$row->{$f['name']};
             }
             $search=cleanString(strtolower($search));
 
@@ -761,9 +765,9 @@ function saveWidgetForm()
 
                 if($f['input']=='media')
                 {
-                    print('<img style="width:'.$thumbnailSize.'px;" src="'.$row->$f['name'].'"/> ');
+                    print('<img style="width:'.$thumbnailSize.'px;" src="'.$row->{$f['name']}.'"/> ');
                 }
-                else print(getWidgetAlias($row->$f['name']));
+                else print(getWidgetAlias($row->{$f['name']}));
 
                 print('</td>');
             }
@@ -828,7 +832,7 @@ function saveWidgetForm()
                 {
                     print('<tr style="'.$visi.'">');
                     print(' <td valign="middle" class="edittitle">'.$f['title'].':</td>');
-                    print(' <td><input '.$maxlength.' type="text" style="width:600px;" name="'.$f['name'].'" value="'.$row->$f['name'].'"/></td>');
+                    print(' <td><input '.$maxlength.' type="text" style="width:600px;" name="'.$f['name'].'" value="'.$row->{$f['name']}.'"/></td>');
                     print('</tr>');
                 }
 
@@ -836,7 +840,7 @@ function saveWidgetForm()
                 {
                     print('<tr style="'.$visi.'">');
                     print(' <td valign="top" class="edittitle">'.$f['title'].':</td>');
-                    print(' <td><textarea id="input_'.$f['name'].'" '.$maxlength.' type="text" style="height:160px;width:600px;" name="'.$f['name'].'" >'.$row->$f['name'].'</textarea></td>');
+                    print(' <td><textarea id="input_'.$f['name'].'" '.$maxlength.' type="text" style="height:160px;width:600px;" name="'.$f['name'].'" >'.$row->{$f['name']}.'</textarea></td>');
                     print('</tr>');
                 }
 
@@ -844,7 +848,7 @@ function saveWidgetForm()
                 {
                     print('<tr style="'.$visi.'">');
                     print(' <td valign="top" class="edittitle">'.$f['title'].':</td>');
-                    print(' <td>'.getPageSelect($f['name'],$row->$f['name']) .'</td>');
+                    print(' <td>'.getPageSelect($f['name'],$row->{$f['name']}) .'</td>');
                     print('</tr>');
                     
                 }
@@ -860,7 +864,7 @@ function saveWidgetForm()
                     foreach ($f['options'] as $key => $opt) 
                     {
                         $sel='';
-                        if($row->$f['name']==$opt['value'])$sel=" selected ";
+                        if($row->{$f['name']}==$opt['value'])$sel=" selected ";
                         print('<option '.$sel.' value="'.$opt['value'].'">'.$opt['title'].'</option>');
                     }
 
@@ -876,11 +880,11 @@ function saveWidgetForm()
                     print('<td valign="middle" class="edittitle">'.$f['title'].':</td>');
                     print('<td>');
                     
-                    if($row->$f['name']!='')
+                    if($row->{$f['name']}!='')
                     {
-                        print(getWidgetAlias($row->$f['name']).' ('.$row->$f['name'].' ) ');
-                        print('<input  name="'.$f['name'].'" type="hidden" value="'.$row->$f['name'].'">');
-                        $widgetJsonFilename=$row->$f['name'];
+                        print(getWidgetAlias($row->{$f['name']}).' ('.$row->{$f['name']}.' ) ');
+                        print('<input  name="'.$f['name'].'" type="hidden" value="'.$row->{$f['name']}.'">');
+                        $widgetJsonFilename=$row->{$f['name']};
                     }
                     else
                     {
@@ -895,10 +899,10 @@ function saveWidgetForm()
                                     if(unRows::endsWith($file,'.json'))
                                     {
                                         $sel='';
-                                        if($file==$row->$f['name'])
+                                        if($file==$row->{$f['name']})
                                         {
                                             $sel=" selected ";
-                                            $widgetJsonFilename=$row->$f['name'];
+                                            $widgetJsonFilename=$row->{$f['name']};
                                         }
                                         print('<option '.$sel.' value="'.$file.'">'.getWidgetAlias($file).'</option>');
                                     }

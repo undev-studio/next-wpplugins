@@ -136,7 +136,10 @@ class next_footernav extends WP_Widget
         echo '</a>';
         echo '</b>';
 
-        if($children && count($children)>0) print($children);
+// var_dump($children);
+
+        // if(is_array($children) && count($children)>0) 
+            print($children);
 
         echo '<br/>';
     }
