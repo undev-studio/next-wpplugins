@@ -1,4 +1,5 @@
 .DS_Store
-templates/
-templates_widgets/
 .idea/
+next_content
+templates
+templates_widgets
