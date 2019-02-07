@@ -25,6 +25,7 @@ class unWidget extends WP_Widget
         $icons[] = array("Flex-Heft bestellen","f07a");
         $icons[] = array("Social Twitter","f099");
         $icons[] = array("Social Facebook","f082");
+        $icons[] = array("Social Youtube","f167");
         $icons[] = array("Social Google+","f0d5");
         $icons[] = array("List Arrow","f0a9");
 
