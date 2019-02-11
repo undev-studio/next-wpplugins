@@ -180,6 +180,12 @@
                 if($fromStep >= $currentStep) $jsonArr['errors'][]='zaehlbezeichn';
             }
         }
+        if($_REQUEST['formdata']['marktlokation']=='' || strlen($_REQUEST['formdata']['marktlokation'])!=11 )
+        {
+            $jsonArr['navsteps'][$currentStep]=false;
+            if($fromStep >= $currentStep) $jsonArr['errors'][]='marktlokation';
+        }
+
         if($_REQUEST['formdata']['zaehlernr']=='')
         {
             $jsonArr['navsteps'][$currentStep]=false;
@@ -387,6 +393,8 @@
              $row['email'] = $_REQUEST['formdata']['email'];
              $row['nennleistung'] = $_REQUEST['formdata']['nennleistung'];
              $row['zaehlbezeichn'] = $_REQUEST['formdata']['zaehlbezeichn'];
+             $row['marktlokation'] = $_REQUEST['formdata']['marktlokation'];
+
              $row['registrnr'] = $_REQUEST['formdata']['registrnr'];
              $row['zaehlernr'] = $_REQUEST['formdata']['zaehlernr'];
              $row['eigenverbrauch'] = $_REQUEST['formdata']['eigenverbrauch'];
