@@ -436,7 +436,11 @@ class Page_Frame_Decorator extends Frame_Decorator {
       return false;
 
     // Determine the frame's maximum y value
+    if($margin_height === "auto") {
+    $max_y = $frame->get_position("y");
+    }else{
     $max_y = $frame->get_position("y") + $margin_height;
+    }
 
     // If a split is to occur here, then the bottom margins & paddings of all
     // parents of $frame must fit on the page as well:

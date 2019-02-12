@@ -106,7 +106,9 @@ class Inline_Renderer extends Abstract_Renderer {
       if ( is_null($w) )
         $w = $child_w;
       else
-        $w += $child_w;
+	if(is_numeric($child_w)) {
+        	$w += $child_w;
+        }
       
       $h = max($h, $child_h);
 

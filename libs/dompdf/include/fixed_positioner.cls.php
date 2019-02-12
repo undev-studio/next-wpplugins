@@ -44,7 +44,6 @@ class Fixed_Positioner extends Positioner {
 
     $y = $margin_top;
     if ( isset($top) ) {
-      $y = $top + $margin_top;
       if ( $top === "auto" ) {
         $y = $margin_top;
         if ( isset($bottom) && $bottom !== "auto" ) {
@@ -57,6 +56,8 @@ class Fixed_Positioner extends Positioner {
             $y -= $height;
           }
         }
+      }else{
+      	$y = $top + $margin_top;
       }
     }
 
