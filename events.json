@@ -5,6 +5,7 @@
     "idName":"id",
     "sortable":false,
     "orderby":"date_start DESC",
+    "exportable": true,
 
     "vars":
     [
