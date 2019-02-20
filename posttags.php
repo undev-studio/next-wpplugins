@@ -39,7 +39,7 @@ class PostTagsWidget extends WP_Widget
 
     $posttags = get_the_tags();
     if ($posttags) {
-      print('<div class="widget widget_text"><h2 class="widgettitle">'.$instance['title'].'</h2>');
+      print('<div class="widget"><h2 class="widgettitle">'.$instance['title'].'</h2>');
       print('<ul>');
 
       foreach($posttags as $tag) {
