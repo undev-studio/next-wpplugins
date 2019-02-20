@@ -1,7 +1,7 @@
 <?php
  
 /*
-Plugin Name: Tagcloud 2017
+Plugin Name: PostTags 2017
 Description: 
 Author: undefined development
 Version: 1
