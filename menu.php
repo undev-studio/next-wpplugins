@@ -132,6 +132,8 @@ add_action( 'widgets_init', create_function('', 'return register_widget("nextWid
 require_once('tagcloud.php');
 add_action( 'widgets_init', create_function('', 'return register_widget("TagCloudWidgetNew");') );
 
+require_once('posttags.php');
+add_action( 'widgets_init', create_function('', 'return register_widget("PostTagsWidget");') );
 
 
 
