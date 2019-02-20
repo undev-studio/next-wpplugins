@@ -43,8 +43,8 @@ class PostTagsWidget extends WP_Widget
       print('<ul>');
 
       foreach($posttags as $tag) {
-        print('<li class="bullet">')     ;
-        print('<a href="/tag/'.$tag->slug.'">'.$tag->name.'</a>');
+        print('<li>')     ;
+        print('<a class="readmore" href="/tag/'.$tag->slug.'">'.$tag->name.'</a>');
         print('</li>');
 
         $all_tags[] = $tag->term_id;
