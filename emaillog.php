@@ -156,7 +156,9 @@
     $lastDate = $datestr;
     // $lastContent=''.$email->content;
 
-    $stats[$email->year][$email->month]['count']++;
+    $allTemplates[$email->templatename] = true;
+    $allYears[$email->year] = true;
+    $stats[$email->templatename][$email->year][$email->month]['count']++;
 
 
     $html .= '<tr>';
@@ -196,21 +198,43 @@
 
   <?php
 
+  // fill up stats with zero values
+  foreach($allTemplates as $t => $v) {
+	if(!array_key_exists($t, $stats)) $stats[$t] = array();
+  	foreach($allYears as $y => $v) {
+		if(!array_key_exists($y, $stats[$t])) $stats[$t][$y] = array();
+		for($i = 1; $i <= 12; $i++) {
+			if(!array_key_exists($i, $stats[$t][$y])) $stats[$t][$y][$i] = array('count' => 0);
+		}
+		krsort($stats[$t][$y]);
+  	}
+	krsort($stats[$t]);
+  }
+  ksort($stats);
+
   $monthNumbers = array();
   $monthTitles = array();
 
   $months = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
 
-  foreach ($stats as $keyy => $valy) {
-    $yearstr = $keyy;
-    foreach ($valy as $keym => $valm) {
-      $monthTitles[] = $months[$keym - 1] . ' ' . $yearstr;
-      $monthNumbers[] = $valm['count'];
-    }
+  $datasets = [];
+  foreach($stats as $templatename => $data) {
+	$dataset = new \stdClass();
+	$dataset->label = $templatename;
+	$dataset->data = [];
+  	foreach ($data as $keyy => $valy) {
+  	  $yearstr = $keyy;
+  	  foreach ($valy as $keym => $valm) {
+	    $dataset->data[] = $valm['count'];
+            $monthTitle = $months[$keym - 1] . ' ' . $yearstr;
+  	    $monthTitles[$monthTitle] = true;
+  	  }
+	}
+	$datasets[] = $dataset;
   }
 
   $monthTitles = array_reverse($monthTitles);
-  $monthNumbers = array_reverse($monthNumbers);
+  // $monthNumbers = array_reverse($monthNumbers);
 
   ?>
 
@@ -219,36 +243,44 @@
         return Math.round(Math.random() * 100)
       };
 
-      var barChartData = {
-        labels: [
-          <?php foreach ($monthTitles AS $n) echo '"' . $n . '",'; ?>
-        ],
-        datasets: [
-          {
-            fillColor: "rgba(150, 190, 15,0.5)",
-            strokeColor: "rgba(150, 190, 15,1.0)",
-            highlightFill: "rgba(150, 190, 15,1.0)",
-            highlightStroke: "rgba(150, 190, 15,1)",
-            data: [
-              <?php foreach ($monthNumbers AS $n) echo $n . ','; ?>
-            ]
-          },
-          // {
-          //   fillColor : "rgba(151,187,205,0.5)",
-          //   strokeColor : "rgba(151,187,205,0.8)",
-          //   highlightFill : "rgba(151,187,205,0.75)",
-          //   highlightStroke : "rgba(151,187,205,1)",
-          //   data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
-          // }
-        ]
+function getRandomColor() {
+      var letters = '0123456789ABCDEF'.split('');
+      var color = '#';
+      for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
 
+var datasets = <?php echo json_encode($datasets) ?>;
+for(var i = 0; i < datasets.length; i++) {
+  datasets[i].backgroundColor = getRandomColor();
+}
+
+      var barChartData = {
+        labels: <?php echo json_encode(array_keys($monthTitles)); ?>,
+        datasets: datasets
       }
 
       function init(ctx) {
-        window.myBar = new Chart(ctx).Bar(
-          barChartData,
-          {
-            responsive: true
+        window.myBar = new Chart(ctx,{type: 'bar', data: barChartData, 
+title: {
+						display: true,
+						text: 'Chart.js Bar Chart - Stacked'
+					},
+					tooltips: {
+						mode: 'index',
+						intersect: false
+					},
+            responsive: true,
+scales: {
+						xAxes: [{
+							stacked: true,
+						}],
+						yAxes: [{
+							stacked: true
+						}]
+					}
           });
       }
 
