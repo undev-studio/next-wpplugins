@@ -77,7 +77,7 @@
   $filter = "";
 
   if ($_REQUEST["filter"] == "revenuecalc") $filter = "WHERE templatename = 'erloesrechner' ";
-  if ($_REQUEST["filter"] == "erloesrechner") $filter = "WHERE templatename = 'erloesrechner' OR templatename LIKE 'widget_%' ";
+  if ($_REQUEST["filter"] == "erloesrechner") $filter = "WHERE templatename = 'erloesrechner' OR templatename LIKE 'widget_%' OR templatename LIKE 'forms %' OR templatename = 'form_dvpv'";
   if ($_REQUEST["filter"] == "form_dvpv") $filter = "WHERE templatename = 'form_dvpv'";
   if ($_REQUEST["filter"] == "widgets") $filter = "WHERE templatename LIKE 'widget%'";
   if ($_REQUEST["filter"] == "forms") $filter = "WHERE templatename LIKE 'forms %'";
