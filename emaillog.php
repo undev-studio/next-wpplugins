@@ -199,19 +199,21 @@
   <?php
 
   // fill up stats with zero values
+  $currentMonth = date('n');
+  $currentYear = date('Y');
   foreach($allTemplates as $t => $v) {
 	if(!array_key_exists($t, $stats)) $stats[$t] = array();
   	foreach($allYears as $y => $v) {
 		if(!array_key_exists($y, $stats[$t])) $stats[$t][$y] = array();
 		for($i = 1; $i <= 12; $i++) {
+			if($currentYear == $y && $i > $currentMonth) continue;
 			if(!array_key_exists($i, $stats[$t][$y])) $stats[$t][$y][$i] = array('count' => 0);
 		}
-		krsort($stats[$t][$y]);
+		ksort($stats[$t][$y]);
   	}
-	krsort($stats[$t]);
+	ksort($stats[$t]);
   }
   ksort($stats);
-
   $monthNumbers = array();
   $monthTitles = array();
 
@@ -233,7 +235,7 @@
 	$datasets[] = $dataset;
   }
 
-  $monthTitles = array_reverse($monthTitles);
+  // $monthTitles = array_reverse($monthTitles);
   // $monthNumbers = array_reverse($monthNumbers);
 
   ?>
@@ -243,18 +245,25 @@
         return Math.round(Math.random() * 100)
       };
 
-function getRandomColor() {
-      var letters = '0123456789ABCDEF'.split('');
-      var color = '#';
-      for (var i = 0; i < 6; i++ ) {
-        color += letters[Math.floor(Math.random() * 16)];
+function hashCode(str) { // java String#hashCode
+    var hash = 0;
+    for (var i = 0; i < str.length; i++) {
+       hash = str.charCodeAt(i) + ((hash << 5) - hash);
     }
-    return color;
+    return hash;
+} 
+
+function intToRGB(i){
+    var c = (i & 0x00FFFFFF)
+        .toString(16)
+        .toUpperCase();
+
+    return "00000".substring(0, 6 - c.length) + c;
 }
 
 var datasets = <?php echo json_encode($datasets) ?>;
 for(var i = 0; i < datasets.length; i++) {
-  datasets[i].backgroundColor = getRandomColor();
+  datasets[i].backgroundColor = '#' + intToRGB(hashCode(datasets[i].label));
 }
 
       var barChartData = {
@@ -263,14 +272,13 @@ for(var i = 0; i < datasets.length; i++) {
       }
 
       function init(ctx) {
-        window.myBar = new Chart(ctx,{type: 'bar', data: barChartData, 
-title: {
-						display: true,
-						text: 'Chart.js Bar Chart - Stacked'
-					},
+        window.myBar = new Chart(ctx,{type: 'bar', data: barChartData, options: { 
 					tooltips: {
 						mode: 'index',
-						intersect: false
+						intersect: false,
+						filter: function(item, data) { 
+							return item.yLabel > 0;
+						}
 					},
             responsive: true,
 scales: {
@@ -281,7 +289,7 @@ scales: {
 							stacked: true
 						}]
 					}
-          });
+          }});
       }
 
       function preInit() {
