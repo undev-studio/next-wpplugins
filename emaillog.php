@@ -201,17 +201,17 @@
   // fill up stats with zero values
   $currentMonth = date('n');
   $currentYear = date('Y');
-  foreach($allTemplates as $t => $v) {
-	if(!array_key_exists($t, $stats)) $stats[$t] = array();
-  	foreach($allYears as $y => $v) {
-		if(!array_key_exists($y, $stats[$t])) $stats[$t][$y] = array();
-		for($i = 1; $i <= 12; $i++) {
-			if($currentYear == $y && $i > $currentMonth) continue;
-			if(!array_key_exists($i, $stats[$t][$y])) $stats[$t][$y][$i] = array('count' => 0);
-		}
-		ksort($stats[$t][$y]);
-  	}
-	ksort($stats[$t]);
+  foreach ($allTemplates as $t => $v) {
+    if (!array_key_exists($t, $stats)) $stats[$t] = array();
+    foreach ($allYears as $y => $v) {
+      if (!array_key_exists($y, $stats[$t])) $stats[$t][$y] = array();
+      for ($i = 1; $i <= 12; $i++) {
+        if ($currentYear == $y && $i > $currentMonth) continue;
+        if (!array_key_exists($i, $stats[$t][$y])) $stats[$t][$y][$i] = array('count' => 0);
+      }
+      ksort($stats[$t][$y]);
+    }
+    ksort($stats[$t]);
   }
   ksort($stats);
   $monthNumbers = array();
@@ -220,19 +220,19 @@
   $months = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
 
   $datasets = [];
-  foreach($stats as $templatename => $data) {
-	$dataset = new \stdClass();
-	$dataset->label = $templatename;
-	$dataset->data = [];
-  	foreach ($data as $keyy => $valy) {
-  	  $yearstr = $keyy;
-  	  foreach ($valy as $keym => $valm) {
-	    $dataset->data[] = $valm['count'];
-            $monthTitle = $months[$keym - 1] . ' ' . $yearstr;
-  	    $monthTitles[$monthTitle] = true;
-  	  }
-	}
-	$datasets[] = $dataset;
+  foreach ($stats as $templatename => $data) {
+    $dataset = new \stdClass();
+    $dataset->label = $templatename;
+    $dataset->data = [];
+    foreach ($data as $keyy => $valy) {
+      $yearstr = $keyy;
+      foreach ($valy as $keym => $valm) {
+        $dataset->data[] = $valm['count'];
+        $monthTitle = $months[$keym - 1] . ' ' . $yearstr;
+        $monthTitles[$monthTitle] = true;
+      }
+    }
+    $datasets[] = $dataset;
   }
 
   // $monthTitles = array_reverse($monthTitles);
@@ -245,26 +245,26 @@
         return Math.round(Math.random() * 100)
       };
 
-function hashCode(str) { // java String#hashCode
-    var hash = 0;
-    for (var i = 0; i < str.length; i++) {
-       hash = str.charCodeAt(i) + ((hash << 5) - hash);
-    }
-    return hash;
-} 
+      function hashCode(str) { // java String#hashCode
+        var hash = 0;
+        for (var i = 0; i < str.length; i++) {
+          hash = str.charCodeAt(i) + ((hash << 5) - hash);
+        }
+        return hash;
+      }
 
-function intToRGB(i){
-    var c = (i & 0x00FFFFFF)
-        .toString(16)
-        .toUpperCase();
+      function intToRGB(i) {
+        var c = (i & 0x00FFFFFF)
+          .toString(16)
+          .toUpperCase();
 
-    return "00000".substring(0, 6 - c.length) + c;
-}
+        return "00000".substring(0, 6 - c.length) + c;
+      }
 
-var datasets = <?php echo json_encode($datasets) ?>;
-for(var i = 0; i < datasets.length; i++) {
-  datasets[i].backgroundColor = '#' + intToRGB(hashCode(datasets[i].label));
-}
+      var datasets = <?php echo json_encode($datasets) ?>;
+      for (var i = 0; i < datasets.length; i++) {
+        datasets[i].backgroundColor = '#' + intToRGB(hashCode(datasets[i].label));
+      }
 
       var barChartData = {
         labels: <?php echo json_encode(array_keys($monthTitles)); ?>,
@@ -272,24 +272,26 @@ for(var i = 0; i < datasets.length; i++) {
       }
 
       function init(ctx) {
-        window.myBar = new Chart(ctx,{type: 'bar', data: barChartData, options: { 
-					tooltips: {
-						mode: 'index',
-						intersect: false,
-						filter: function(item, data) { 
-							return item.yLabel > 0;
-						}
-					},
+        window.myBar = new Chart(ctx, {
+          type: 'bar', data: barChartData, options: {
+            tooltips: {
+              mode: 'index',
+              intersect: false,
+              filter: function (item, data) {
+                return item.yLabel > 0;
+              }
+            },
             responsive: true,
-scales: {
-						xAxes: [{
-							stacked: true,
-						}],
-						yAxes: [{
-							stacked: true
-						}]
-					}
-          }});
+            scales: {
+              xAxes: [{
+                stacked: true,
+              }],
+              yAxes: [{
+                stacked: true
+              }]
+            }
+          }
+        });
       }
 
       function preInit() {
