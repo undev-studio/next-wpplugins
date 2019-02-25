@@ -174,9 +174,13 @@ h3
 </script>
 
 
+<br/><br/>
+
 <?php
 
 
+$version = phpversion();
+print $version;
 
 
 
