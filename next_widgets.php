@@ -326,6 +326,7 @@ jQuery(document).ready(function()
 
         foreach ($json['vars'] as $f)
         {
+	    if($f['name'] == 'count') continue;
             $data[$f['name']]=$f['default'];
         }
 
