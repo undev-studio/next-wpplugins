@@ -74,7 +74,11 @@
         global $orderby;
         global $json;
         global $tablename;
-        $sql='SELECT * FROM '.$tablename;
+  if ($json['sqlStart']) {
+    $sql = $json['sqlStart'] . ' FROM ' . $tablename;
+  } else {
+    $sql = 'SELECT * FROM ' . $tablename;
+  }
 
         if($json['filter'] && $_REQUEST['filter']!='')
         {
@@ -92,7 +96,6 @@
 
         if($sortable)$sql.=' ORDER BY sort;';
             else if($orderby!='')$sql.=' ORDER BY '.$orderby.';';
-
         return $sql;
     }
 
@@ -323,6 +326,7 @@ jQuery(document).ready(function()
 
         foreach ($json['vars'] as $f)
         {
+	    if($f['name'] == 'count') continue;
             $data[$f['name']]=$f['default'];
         }
 

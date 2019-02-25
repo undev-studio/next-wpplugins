@@ -5,7 +5,7 @@
     "idName":"id",
     "sortable":false,
     "orderby":"title",
-    "sqlStart": "SELECT *, (SELECT LENGTH(wp_options.option_value) - LENGTH(REPLACE(wp_options.option_value, CONCAT('\"', id, '\"'), '')) AS v FROM wp_options where option_name = 'widget_netwidget'\n) as `count`",
+    "sqlStart": "SELECT *, (SELECT FLOOR((LENGTH(wp_options.option_value) - LENGTH(REPLACE(wp_options.option_value, CONCAT('\"', id, '\"'), ''))) / (LENGTH(CONCAT('\"', id, '\"')))) AS v FROM wp_options where option_name = 'widget_netwidget') as `count` ",
 
     "vars":
     [
