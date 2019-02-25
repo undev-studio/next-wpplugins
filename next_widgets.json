@@ -5,6 +5,7 @@
     "idName":"id",
     "sortable":false,
     "orderby":"title",
+    "sqlStart": "SELECT *, (SELECT LENGTH(wp_options.option_value) - LENGTH(REPLACE(wp_options.option_value, CONCAT('\"', id, '\"'), '')) AS v FROM wp_options where option_name = 'widget_netwidget'\n) as `count`",
 
     "vars":
     [
@@ -23,6 +24,14 @@
             "visible":true,
             "editable":true,
             "default":""
+        },
+        {
+            "title": "Nutzungen",
+            "name": "count",
+            "input": "input",
+            "visible": true,
+            "editable": false,
+            "default": "0"
         },
         { 
             "title":"rowdata", 
