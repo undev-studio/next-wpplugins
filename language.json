@@ -204,8 +204,16 @@
                 {
                     "name":"published_link",
                     "default":""
+                },
+                {
+                    "name":"next",
+                    "default":"next"
+                },
+		{
+                    "name":"previous",
+                    "default":"previous"
                 }
-            ]
+]
         },
         {
             "name":"search",
