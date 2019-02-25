@@ -1,12 +1,4 @@
 <?php
- 
-/*
-Plugin Name: PostTags 2017
-Description: 
-Author: undefined development
-Version: 1
-Author URI: http://undev.de/
-*/
 
 require_once('settings_next.php');
 

@@ -1,11 +1,4 @@
 <?php
-/*
-Plugin Name: Next Widgets Random Widget
-Description: 
-Author: undefined development
-Version: 1
-Author URI: http://undev.de/
-*/
 
 require_once('twig.php');
 require_once('widget_.php');

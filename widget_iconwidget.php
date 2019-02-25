@@ -1,11 +1,4 @@
 <?php
-/*
-Plugin Name: Next Icon Widget
-Description: 
-Author: undefined development
-Version: 1
-Author URI: http://undev.de/
-*/
 
 require_once('widget_.php');
 

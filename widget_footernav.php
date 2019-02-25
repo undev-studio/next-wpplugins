@@ -1,11 +1,5 @@
 <?php
-/*
-Plugin Name: Next Foover Nav
-Description: 
-Author: undefined development
-Version: 1
-Author URI: http://undev.de/
-*/
+
 
 
 class next_footernav extends WP_Widget

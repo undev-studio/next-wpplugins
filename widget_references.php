@@ -1,12 +1,5 @@
 <?php
-/*
-Plugin Name: Next Referenzen2
-Description: 
-Author: undefined development
-Version: 1
-Author URI: http://undev.de/
-*/
- 
+
 require_once(__DIR__.'/../theme/util/random_reference.php');
 
 class nextReferenzWidget extends WP_Widget

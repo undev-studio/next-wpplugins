@@ -1,14 +1,5 @@
 <?php
-/*
-Plugin Name: next hreflang
-Plugin URI: http://undev.de/
-Description: hfreflang
-Author: undefined development
-Version: 1
-Author URI: http://undev.de/
-*/
 
- 
 /**
  * function to return a custom field value.
  */
