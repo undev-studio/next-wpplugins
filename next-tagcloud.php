@@ -1,5 +1,13 @@
 <?php
-
+/*
+Plugin Name: TagCloud Energie Blog Widget
+Description: 
+Author: undefined development
+Version: 1
+Author URI: http://jamesbruce.me/
+*/
+ 
+ 
 class EnergieBlogWidget extends WP_Widget
 {
   function EnergieBlogWidget()

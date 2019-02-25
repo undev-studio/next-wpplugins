@@ -1,5 +1,15 @@
 <?php
 
+/*
+Plugin Name: Next Erloesrechner AJAX Backend
+Plugin URI: http://undev.de/
+Description: Next Erloesrechner 
+Author: undefined
+Version: 1
+Author URI: http://undev.de/
+*/
+ 
+
 // error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
 // ini_set('display_errors', '1');
 

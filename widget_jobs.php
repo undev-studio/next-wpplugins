@@ -1,4 +1,12 @@
 <?php
+/*
+Plugin Name: Next Jobs Widget
+Description: 
+Author: undefined development
+Version: 1
+Author URI: http://undev.de/
+*/
+
 // function upload_scripts()
 // {
 //     wp_enqueue_media();

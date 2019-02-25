@@ -1,4 +1,11 @@
 <?php
+/*
+Plugin Name: Next Form MiniErloes
+Description: 
+Author: undefined development
+Version: 1
+Author URI: http://undev.de/
+*/
 
 require_once('widget_.php');
 

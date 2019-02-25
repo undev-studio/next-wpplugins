@@ -1,4 +1,13 @@
 <?php
+/*
+Plugin Name: Next Image Teaser
+Description: 
+Author: undefined development
+Version: 1
+Author URI: http://undev.de/
+*/
+
+
 
 require_once('widget_.php');
 

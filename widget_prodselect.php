@@ -1,4 +1,11 @@
 <?php
+/*
+Plugin Name: Next Product Selector
+Description: 
+Author: undefined development
+Version: 1
+Author URI: http://undev.de/
+*/
 
 // function upload_scripts()
 // {
