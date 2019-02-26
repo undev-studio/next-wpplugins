@@ -256,6 +256,7 @@ jQuery(document).ready(function()
         $count=0;
         foreach ($json['vars'] as $f)
         {
+	    if($f['name'] == 'count') continue;
 
             $val=$_REQUEST[$f['name']];
 
