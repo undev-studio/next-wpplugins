@@ -1,76 +1,56 @@
 <?php
+require_once(__DIR__ . '/../theme/util/next.php');
 
-/*
-Plugin Name: Next Erloesrechner AJAX Backend
-Plugin URI: http://undev.de/
-Description: Next Erloesrechner 
-Author: undefined
-Version: 1
-Author URI: http://undev.de/
-*/
- 
+$hookName = "erloesberechner";
+add_action('wp_ajax_' . $hookName, 'the_action_function');
+add_action('wp_ajax_nopriv_' . $hookName, 'the_action_function'); // need this to serve non logged in users
+$erloesUserName = '';
+$debug = '';
 
-// error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
-// ini_set('display_errors', '1');
+$plzValue = '';
 
-require_once(__DIR__.'/../theme/util/next.php');
+$ignoreMandatory = false;
+if (isset($_REQUEST['data']) && is_string($_REQUEST['data'])) {
 
+  $formData = json_decode($_REQUEST['data'], true);
+  $response = array();
+  $response['errors'] = array();
+  $response['values'] = array();
 
-$hookName="erloesberechner";
-add_action( 'wp_ajax_'.$hookName, 'the_action_function' );
-add_action( 'wp_ajax_nopriv_'.$hookName, 'the_action_function' ); // need this to serve non logged in users
-$erloesUserName='';
-$debug='';
+  $ignoreMandatory = $_REQUEST['ignoreMandatory'];
 
-$plzValue='';
-
-$ignoreMandatory=false;
-if(isset($_REQUEST['data']) && is_string($_REQUEST['data']) )
-{
-
-  $formData=json_decode($_REQUEST['data'], true);
-  $response=array();
-  $response['errors']=array();
-  $response['values']=array();
-
-  $ignoreMandatory=$_REQUEST['ignoreMandatory'];
-
-  $emailHTML="";
+  $emailHTML = "";
   // $translation=array();
 }
 
-$countryCode='de';
-$countryExt='';
-if (strpos($_SERVER['HTTP_HOST'], '.at') !== false)
-{
-  $countryCode='at';
-  $countryExt='_at';
+$countryCode = 'de';
+$countryExt = '';
+if (strpos($_SERVER['HTTP_HOST'], '.at') !== false) {
+  $countryCode = 'at';
+  $countryExt = '_at';
 }
-if (strpos($_SERVER['HTTP_HOST'], '.be') !== false)
-{
-  $countryCode='be';
-  $countryExt='_be';
+if (strpos($_SERVER['HTTP_HOST'], '.be') !== false) {
+  $countryCode = 'be';
+  $countryExt = '_be';
 }
 
 
-function getIdData($id,$type)
+function getIdData($id, $type)
 {
   global $formData;
   global $debug;
-  $idStr=$id;//'in_'.$id.'_'.$type;
+  $idStr = $id;//'in_'.$id.'_'.$type;
 
-  foreach ($formData as $val)
-  {
+  foreach ($formData as $val) {
     // $debug.="".$val['id'].'! ';
-    if($val['id']==$idStr) 
-    {
+    if ($val['id'] == $idStr) {
       // echo "FOUND!";
       return $val;
     }
   }
 }
 
-function erlEndsWith($haystack, $needle) 
+function erlEndsWith($haystack, $needle)
 {
   // search forward starting from end minus needle length characters
   return $needle === "" || (($temp = strlen($haystack) - strlen($needle)) >= 0 && strpos($haystack, $needle, $temp) !== FALSE);
@@ -79,18 +59,20 @@ function erlEndsWith($haystack, $needle)
 
 function translateString($str)
 {
-  $lang='de';
+  $lang = 'de';
   global $translation;
-  if(isset($translation[$lang]))$lang='en';
+  if (isset($translation[$lang])) $lang = 'en';
 
-  $arr=explode('-',$str);
-  if(count($arr)>0){ $str=$arr[count($arr)-1]; }
+  $arr = explode('-', $str);
+  if (count($arr) > 0) {
+    $str = $arr[count($arr) - 1];
+  }
 
-  if( isset($translation['root'][$lang][$str]) ) return $translation['root'][$lang][$str];
+  if (isset($translation['root'][$lang][$str])) return $translation['root'][$lang][$str];
   else
-    if(erlEndsWith($str,'_group')) return translateString(substr($str,0,strlen($str)-strlen('_group')));
+    if (erlEndsWith($str, '_group')) return translateString(substr($str, 0, strlen($str) - strlen('_group')));
 
-  return '?'.$str;
+  return '?' . $str;
 }
 
 function translateE($obj)
@@ -106,124 +88,105 @@ function translateE($obj)
 function isGroupChecked($id)
 {
   global $debug;
-  if($id=="ihreDaten_group")return true;
-  if($id=="erzeuger_group")return true;
-  if($id=="speicher_group")return true;
-  if($id=="stadtwerke_group")return true;
-  if($id=="verbraucher_group")return true;
-  if($id=="ihreMitteilungAnUns_group")return true;
+  if ($id == "ihreDaten_group") return true;
+  if ($id == "erzeuger_group") return true;
+  if ($id == "speicher_group") return true;
+  if ($id == "stadtwerke_group") return true;
+  if ($id == "verbraucher_group") return true;
+  if ($id == "ihreMitteilungAnUns_group") return true;
 
-  $idcheckbox=str_replace ( "_group" , "" , $id );
+  $idcheckbox = str_replace("_group", "", $id);
   // $debug.='<br/> is checked?['.$idcheckbox.'] ';
 
-  $var=getIdData($idcheckbox,'checkbox');
+  $var = getIdData($idcheckbox, 'checkbox');
 
   // $debug.=json_encode($var);
 
-  if( $var['value']==true) return true;
+  if ($var['value'] == true) return true;
 
   return false;
 }
 
 
-function parseGroup($group,$parentName,$parentRequired=true)
+function parseGroup($group, $parentName, $parentRequired = true)
 {
   global $debug;
   global $response;
 
-  if(is_array($group))
-  {
-    foreach ($group as $input)
-    {
+  if (is_array($group)) {
+    foreach ($group as $input) {
 
-      
-      if(isset($input['id']) && $input['id']=='ihreDaten-ihrName')
-      {
-        $val=getIdData($input['id'],$input['type'])['value'];
+
+      if (isset($input['id']) && $input['id'] == 'ihreDaten-ihrName') {
+        $val = getIdData($input['id'], $input['type'])['value'];
         global $erloesUserName;
-        $erloesUserName=$val;
+        $erloesUserName = $val;
       }
 
-      if(isset($input['id']) && $input['id']=='ihreDaten-ihrePostleitzahl')
-      {
-        $val=getIdData($input['id'],$input['type'])['value'];
+      if (isset($input['id']) && $input['id'] == 'ihreDaten-ihrePostleitzahl') {
+        $val = getIdData($input['id'], $input['type'])['value'];
         global $plzValue;
         global $countryCode;
-        $plzValue=$val;
+        $plzValue = $val;
 
-        if($countryCode=='at' || $countryCode=='be')
-        {
-          if( !is_numeric($val) || strlen($val)<4)
-          {
-            $obj=array();
-            $obj['id']=$input['id'];
-            $response['errors'][]=$obj;
+        if ($countryCode == 'at' || $countryCode == 'be') {
+          if (!is_numeric($val) || strlen($val) < 4) {
+            $obj = array();
+            $obj['id'] = $input['id'];
+            $response['errors'][] = $obj;
           }
-        }
-        else
-        {
-          if( !is_numeric($val) || strlen($val)<5)
-          {
-            $obj=array();
-            $obj['id']=$input['id'];
-            $response['errors'][]=$obj;
+        } else {
+          if (!is_numeric($val) || strlen($val) < 5) {
+            $obj = array();
+            $obj['id'] = $input['id'];
+            $response['errors'][] = $obj;
           }
         }
       }
 
-      if(isset($input['type']) && $input['type']=='group' )
-      {
-        if(isGroupChecked($input['id']) )
-        {
-          parseGroup($input,$parentName.','.$input['id']);
+      if (isset($input['type']) && $input['type'] == 'group') {
+        if (isGroupChecked($input['id'])) {
+          parseGroup($input, $parentName . ',' . $input['id']);
 
-          if(isset($input['contents']))
-          {
-            parseGroup($input['contents'],$parentName.','.$input['id']);
+          if (isset($input['contents'])) {
+            parseGroup($input['contents'], $parentName . ',' . $input['id']);
           }
-        }
-        else
-        {
-          parseGroup($input['contents'],$parentName.','.$input['id'],false);
+        } else {
+          parseGroup($input['contents'], $parentName . ',' . $input['id'], false);
         }
       }
 
-      if($parentRequired)
-      {
-        $req=false;
+      if ($parentRequired) {
+        $req = false;
 
-        if(isset($input['required']) ) $req=$input['required']==true;
-        if($req)
-        {
-          $debug.='testing '.$input['id'];
-          $val=getIdData($input['id'],$input['type'])['value'];
+        if (isset($input['required'])) $req = $input['required'] == true;
+        if ($req) {
+          $debug .= 'testing ' . $input['id'];
+          $val = getIdData($input['id'], $input['type'])['value'];
 
-          if($val=='')
-          {
-            $obj=array();
-            $obj['id']=$input['id'];
+          if ($val == '') {
+            $obj = array();
+            $obj['id'] = $input['id'];
             // $obj['htmlid']='in_'.$input['id'].'_'.$input['type'];
-            $response['errors'][]=$obj;
+            $response['errors'][] = $obj;
           }
         }
       }
 
 
-      if(isset($input['id']))
-      {
-        $val=getIdData($input['id'],$input['type'])['value'];
+      if (isset($input['id'])) {
+        $val = getIdData($input['id'], $input['type'])['value'];
 
-        if($val!=null && $val!='')
-        {
-          $obj=array();
-          $obj['id']=$input['id'];
-          $obj['value']=$val;
-          $obj['type']=$input['type'];
-          if(isset($input['trans'])) $obj['trans']=$input['trans'];
-          $obj['parent']=$parentName;
+        if ($val != null && $val != '') {
+          $obj = array();
+          $obj['id'] = $input['id'];
+          $obj['value'] = $val;
+          $obj['type'] = $input['type'];
+          if (isset($input['trans'])) $obj['trans'] = $input['trans'];
+          $obj['parent'] = $parentName;
 
           // $obj['htmlid']='in_'.$input['id'].'_'.$input['type'];
-          $response['values'][]=$obj;
+          $response['values'][] = $obj;
         }
       }
     }
@@ -232,15 +195,13 @@ function parseGroup($group,$parentName,$parentRequired=true)
 
 function transParent($str)
 {
-  $string="";
-  $arr=explode(',',$str);
-  $count=0;
-  foreach ($arr as $s)
-  {
-    if($s!='root')
-    {
-      if($count>0)$string.=' - ';
-      $string.=translateString($s)." ";
+  $string = "";
+  $arr = explode(',', $str);
+  $count = 0;
+  foreach ($arr as $s) {
+    if ($s != 'root') {
+      if ($count > 0) $string .= ' - ';
+      $string .= translateString($s) . " ";
 
       $count++;
     }
@@ -251,115 +212,111 @@ function transParent($str)
 
 function printEmailValue($root)
 {
-  $endl='<br/>';
-  $lastParent="";
+  $endl = '<br/>';
+  $lastParent = "";
   global $emailHTML;
 
-  foreach ($root as $input)
-  {
-    if($input['parent']!=$lastParent)
-    {
-      $lastParent=$input['parent'];
-      $emailHTML.=$endl.'<h3>'.transParent($lastParent).'</h3>';
+  foreach ($root as $input) {
+    if ($input['parent'] != $lastParent) {
+      $lastParent = $input['parent'];
+      $emailHTML .= $endl . '<h3>' . transParent($lastParent) . '</h3>';
     }
 
-    if($input['type']=='checkbox' && $input['value']) $input['value']=translateString("ja");
-    $emailHTML.=translateE($input).': <b>'.$input['value'].'</b>'.$endl;
+    if ($input['type'] == 'checkbox' && $input['value']) $input['value'] = translateString("ja");
+    $emailHTML .= translateE($input) . ': <b>' . $input['value'] . '</b>' . $endl;
   }
 }
 
 function buildEMail()
 {
   global $countryCode;
-  global $response,$emailHTML;
-  $emailHTML='<h3>Revenue Calculator [.'.$countryCode.'] was filled out:</h3>';
+  global $response, $emailHTML;
+  $emailHTML = '<h3>Revenue Calculator [.' . $countryCode . '] was filled out:</h3>';
   printEmailValue($response['values']);
-  $emailHTML.='<br/><br/>Host: '.$_SERVER['HTTP_HOST'];
+  $emailHTML .= '<br/><br/>Host: ' . $_SERVER['HTTP_HOST'];
 }
 
 
 function sendErloesMail($message)
 {
-    global $formData;
-    global $wpdb;
-    global $plzValue;
-    global $wpdb;
-    global $countryCode;
-    global $erloesUserName;
+  global $formData;
+  global $wpdb;
+  global $plzValue;
+  global $wpdb;
+  global $countryCode;
+  global $erloesUserName;
 
-    // get email adress of consultant
-    $q='SELECT * FROM erloes_plz WHERE start <= '.$plzValue.' AND end > '.$plzValue;
-    // echo $q;
-    $res = $wpdb->get_results($q);
+  // get email adress of consultant
+  $q = 'SELECT * FROM erloes_plz WHERE start <= ' . $plzValue . ' AND end > ' . $plzValue;
+  // echo $q;
+  $res = $wpdb->get_results($q);
 
-    if($res[0]->email=='')
-    {
-      $obj=array();
-      $headers = 
-          'MIME-Version: 1.0' . "\r\n".
-          'Content-type: text/html; charset=iso-8859-1'."\r\n" .
-          $next_email_from. "\r\n" .
-          'Reply-To: wordpress@next-kraftwerke.de' . "\r\n" .
-          'X-Mailer: PHP/' . phpversion();
+  if ($res[0]->email == '') {
+    $obj = array();
+    $headers =
+      'MIME-Version: 1.0' . "\r\n" .
+      'Content-type: text/html; charset=iso-8859-1' . "\r\n" .
+      $next_email_from . "\r\n" .
+      'Reply-To: wordpress@next-kraftwerke.de' . "\r\n" .
+      'X-Mailer: PHP/' . phpversion();
 
 
-      wp_mail('tom-next@undev.de', 'erleosberechner / keine plz zuordnung', Util::umlaute('keine zuordnung gefunden fuer plz:'.$plzValue).' - '.$_SERVER['HTTP_HOST'] , '','' );
+    wp_mail('tom-next@undev.de', 'erleosberechner / keine plz zuordnung', Util::umlaute('keine zuordnung gefunden fuer plz:' . $plzValue) . ' - ' . $_SERVER['HTTP_HOST'], '', '');
 
-      $response['errorfail']="keine zuordnung gefunden!";
-      return;
-    }
+    $response['errorfail'] = "keine zuordnung gefunden!";
+    return;
+  }
 
-    $lastid = $wpdb->insert('emaillog', array(
+  $lastid = $wpdb->insert('emaillog', array(
       'content' => json_encode($formData),
       'templatename' => 'erloesrechner',
       'to' => $res[0]->email
-      )
-    );
+    )
+  );
 
-    // compose email
-    $username=getIdData("ihreDaten-ihrName","text")["value"];
+  // compose email
+  $username = getIdData("ihreDaten-ihrName", "text")["value"];
 
 
-    $subject = 'Revenue Calculator [.'.$countryCode.'] was filled by '.$erloesUserName;
-    $headers = 
-        'MIME-Version: 1.0' . "\r\n".
-        'Content-type: text/html; charset=iso-8859-1'."\r\n" .
-        $next_email_from. "\r\n" .
-        'Reply-To: wordpress@next-kraftwerke.de' . "\r\n" .
-        'X-Mailer: PHP/' . phpversion();
+  $subject = 'Revenue Calculator [.' . $countryCode . '] was filled by ' . $erloesUserName;
+  $headers =
+    'MIME-Version: 1.0' . "\r\n" .
+    'Content-type: text/html; charset=iso-8859-1' . "\r\n" .
+    $next_email_from . "\r\n" .
+    'Reply-To: wordpress@next-kraftwerke.de' . "\r\n" .
+    'X-Mailer: PHP/' . phpversion();
 
-    // send email
-    $attachments='';
-    wp_mail($res[0]->email, $subject, Util::umlaute($message) , $headers, $attachments );
-    wp_mail('presse@next-kraftwerke.de', $subject, Util::umlaute($message) , $headers, $attachments );
-    wp_mail('beratung@next-kraftwerke.de', $subject, Util::umlaute($message) , $headers, $attachments );
-    wp_mail('tom-next@undev.de', $subject, Util::umlaute($message) , $headers, $attachments );
+  // send email
+  $attachments = '';
+  wp_mail($res[0]->email, $subject, Util::umlaute($message), $headers, $attachments);
+  wp_mail('presse@next-kraftwerke.de', $subject, Util::umlaute($message), $headers, $attachments);
+  wp_mail('beratung@next-kraftwerke.de', $subject, Util::umlaute($message), $headers, $attachments);
+  wp_mail('tom-next@undev.de', $subject, Util::umlaute($message), $headers, $attachments);
 }
 
 
-function the_action_function() 
+function the_action_function()
 {
   global $countryExt;
-  
-  $string = file_get_contents(__DIR__."/../theme/json/erloesberechner".$countryExt.".json");
+
+  $string = file_get_contents(__DIR__ . "/../theme/json/erloesberechner" . $countryExt . ".json");
   $structure = json_decode($string, true);
-  parseGroup($structure['root'],'root');
+  parseGroup($structure['root'], 'root');
 
 
   global $translation;
-  $transStr = file_get_contents(__DIR__."/../theme/json/erloesberechner_trans".$countryExt.".json");
+  $transStr = file_get_contents(__DIR__ . "/../theme/json/erloesberechner_trans" . $countryExt . ".json");
   $translation = json_decode($transStr, true);
 
   global $response;
-  global $debug,$emailHTML;
-  
+  global $debug, $emailHTML;
+
   buildEMail();
-  $response['mail']=$emailHTML;
+  $response['mail'] = $emailHTML;
 
-  $response['debug']=$debug;
+  $response['debug'] = $debug;
 
-  if(!$response['errors'] || $_REQUEST['force']==true)
-  {
+  if (!$response['errors'] || $_REQUEST['force'] == true) {
 
     sendErloesMail($emailHTML);
     // all is ok, send email!
@@ -371,7 +328,6 @@ function the_action_function()
 
   die();
 }
-
 
 
 ?>

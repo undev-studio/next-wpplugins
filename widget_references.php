@@ -1,64 +1,56 @@
 <?php
-/*
-Plugin Name: Next Referenzen2
-Description: 
-Author: undefined development
-Version: 1
-Author URI: http://undev.de/
-*/
- 
-require_once(__DIR__.'/../theme/util/random_reference.php');
+
+require_once(__DIR__ . '/../theme/util/random_reference.php');
 
 class nextReferenzWidget extends WP_Widget
 {
   function nextReferenzWidget()
   {
-    $widget_ops = array('classname' => 'nextReferenzWidget', 'reference' => '' );
+    $widget_ops = array('classname' => 'nextReferenzWidget', 'reference' => '');
     $this->WP_Widget('nextReferenzWidget', 'Next Referenzen', $widget_ops);
   }
 
 
-    function getDropdown($title,$id,$fieldname,$value)
-    {
-        $str='<p>'.
-                $title.': '.
-                '<select class="widefat" '.
-                    'id="'.$id.'" '.
-                    'name="'.$fieldname.'" '.
-                    '>';
+  function getDropdown($title, $id, $fieldname, $value)
+  {
+    $str = '<p>' .
+      $title . ': ' .
+      '<select class="widefat" ' .
+      'id="' . $id . '" ' .
+      'name="' . $fieldname . '" ' .
+      '>';
 
-        $sel='';
-        if($value=='')$sel=' SELECTED ';
+    $sel = '';
+    if ($value == '') $sel = ' SELECTED ';
 
-        $str.='<option '.$sel.' value="">Random Reference</option>';
+    $str .= '<option ' . $sel . ' value="">Random Reference</option>';
 
-        global $wpdb;
+    global $wpdb;
 
-        $sql='SELECT * FROM next_references';
-        $refs = $wpdb->get_results($sql);
+    $sql = 'SELECT * FROM next_references';
+    $refs = $wpdb->get_results($sql);
 
-        foreach ($refs as &$ref)
-        {
-            $sel='';
-            if($value==$ref->id)$sel=' SELECTED ';
+    foreach ($refs as &$ref) {
+      $sel = '';
+      if ($value == $ref->id) $sel = ' SELECTED ';
 
-            $str.='<option '.$sel.' value="'.$ref->id.'">'.$ref->title.'</option>';
-        }
-
-
-        $str.='</select>'.
-            '</p>';
-
-        return $str;
+      $str .= '<option ' . $sel . ' value="' . $ref->id . '">' . $ref->title . '</option>';
     }
- 
+
+
+    $str .= '</select>' .
+      '</p>';
+
+    return $str;
+  }
+
   function form($instance)
   {
-        echo $this->getDropdown(
-            'Reference',
-            $this->get_field_id('reference'),
-            $this->get_field_name('reference'),
-            $instance['reference']);
+    echo $this->getDropdown(
+      'Reference',
+      $this->get_field_id('reference'),
+      $this->get_field_name('reference'),
+      $instance['reference']);
   }
 
   function update($new_instance, $old_instance)
@@ -71,33 +63,30 @@ class nextReferenzWidget extends WP_Widget
 
   function widget($args, $instance)
   {
-      if($instance['reference']=='')
-      {
-          $ref=getRandomReference();
-      }
-      else 
-      {
-          global $wpdb;
+    if ($instance['reference'] == '') {
+      $ref = getRandomReference();
+    } else {
+      global $wpdb;
 
-          $sql='SELECT * FROM next_references WHERE id='.$instance['reference'];
-          $ref = $wpdb->get_results($sql)[0];
+      $sql = 'SELECT * FROM next_references WHERE id=' . $instance['reference'];
+      $ref = $wpdb->get_results($sql)[0];
 
-          $ref->permalink = get_permalink($ref->page);
-      }
+      $ref->permalink = get_permalink($ref->page);
+    }
 
-      print('<li class="widget reference">');
-      print('  <div class="referenzcontainer">');
-      print('    <span class="h3">'.$ref->title.'</span>');
-      print('      <a class="" href="'.$ref->permalink.'" title="'.$ref->longtitle.'">');
-      print('        <img src="'.$ref->image.'" class="responsive-img"/>');
-      print('      </a>');
-      print('  </div>');
-      print('</li>');
+    print('<li class="widget reference">');
+    print('  <div class="referenzcontainer">');
+    print('    <span class="h3">' . $ref->title . '</span>');
+    print('      <a class="" href="' . $ref->permalink . '" title="' . $ref->longtitle . '">');
+    print('        <img src="' . $ref->image . '" class="responsive-img"/>');
+    print('      </a>');
+    print('  </div>');
+    print('</li>');
   }
- 
+
 }
 
-add_action( 'widgets_init', create_function('', 'return register_widget("nextReferenzWidget");') );
+add_action('widgets_init', create_function('', 'return register_widget("nextReferenzWidget");'));
 
 
 ?>
