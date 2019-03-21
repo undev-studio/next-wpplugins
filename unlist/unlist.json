@@ -1,0 +1,44 @@
+{
+    
+    "title":"News",
+    "tablename":"contentnews",
+    "path":"mf_backend/news.php",
+    "idName":"id",
+    "sortable":false,
+
+    "vars":
+    [
+        { 
+            "title":"Title", 
+            "name":"title", 
+            "input":"input",
+            "visible":true,
+            "default":"New Title"
+        },
+        { 
+            "title":"Text", 
+            "name":"txt", 
+            "input":"input",
+            "visible":true,
+            "default":"Text..."
+        },
+        {
+            "title":"Language",
+            "name":"language", 
+            "input":"input",
+            "visible":true,
+            "default":"de"
+        }
+    ],
+
+    "l":
+    {
+        "edit":"Edit",
+        "save":"Save",
+        "create":"Create new Entry",
+        "save_order":"Save Order"
+    }
+
+}
+
+
