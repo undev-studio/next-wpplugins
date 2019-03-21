@@ -15,7 +15,7 @@ require_once 'libs/unirest/Unirest.php';
 
 function ajax_softgardenapi_callback()
 {
-  $globalDb = new wpdb(DB_USER, DB_PASSWORD, 'next_global', 'localhost');
+  $globalDb = new wpdb(DB_USER, DB_PASSWORD, 'next_global', DB_HOST);
   if ($globalDb->last_error != '') echo($globalDb->last_error);
 
   $headers = array('Accept' => 'application/json');
@@ -54,7 +54,7 @@ function ajax_softgardenapi_callback()
 function ajax_softgardenlist_callback()
 {
 
-  $globalDb = new wpdb(DB_USER, DB_PASSWORD, 'next_global', 'localhost');
+  $globalDb = new wpdb(DB_USER, DB_PASSWORD, 'next_global', DB_HOST);
   if ($globalDb->last_error != '') echo($globalDb->last_error);
 
   $result = $globalDb->get_results("SELECT * FROM jobs_softgarden");

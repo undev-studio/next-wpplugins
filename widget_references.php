@@ -1,6 +1,6 @@
 <?php
-
-require_once(__DIR__ . '/../theme/util/random_reference.php');
+$theme_root = get_theme_root() . '/next2015';
+require_once($theme_root . '/util/random_reference.php');
 
 class nextReferenzWidget extends WP_Widget
 {

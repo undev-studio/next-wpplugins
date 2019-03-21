@@ -1,5 +1,6 @@
 <?php
-require_once(__DIR__ . '/../theme/util/next.php');
+$theme_root = get_theme_root() . '/next2015';
+require_once($theme_root . '/util/next.php');
 
 $hookName = "erloesberechner";
 add_action('wp_ajax_' . $hookName, 'the_action_function');

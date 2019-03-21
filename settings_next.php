@@ -34,7 +34,7 @@
         static function loadGlobal($settings)
         {
 
-            $globalDb = new wpdb(DB_USER,DB_PASSWORD,'next_global','localhost');
+            $globalDb = new wpdb(DB_USER,DB_PASSWORD,'next_global',DB_HOST);
             if($globalDb->last_error!='') echo($globalDb->last_error);
 
             $rows=$globalDb->get_results("SELECT * FROM settings");

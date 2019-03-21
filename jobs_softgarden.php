@@ -14,7 +14,7 @@
 <?php
 
 
-    $globalDb = new wpdb(DB_USER,DB_PASSWORD,'next_global','localhost');
+    $globalDb = new wpdb(DB_USER,DB_PASSWORD,'next_global',DB_HOST);
     if($globalDb->last_error!='') echo($globalDb->last_error);
 
     $result=$globalDb->get_results("SELECT * FROM jobs_softgarden");
