@@ -151,15 +151,15 @@ function ajax_formdvpv()
       if ($fromStep >= $currentStep) $jsonArr['errors'][] = 'zaehlbezeichn';
     }
   }
-  if ($_REQUEST['formdata']['marktlokation'] == '' || strlen($_REQUEST['formdata']['marktlokation']) != 11) {
-    $jsonArr['navsteps'][$currentStep] = false;
-    if ($fromStep >= $currentStep) $jsonArr['errors'][] = 'marktlokation';
-  }
+//  if ($_REQUEST['formdata']['marktlokation'] == '' || strlen($_REQUEST['formdata']['marktlokation']) != 11) {
+//    $jsonArr['navsteps'][$currentStep] = false;
+//    if ($fromStep >= $currentStep) $jsonArr['errors'][] = 'marktlokation';
+//  }
 
-  if ($_REQUEST['formdata']['zaehlernr'] == '') {
-    $jsonArr['navsteps'][$currentStep] = false;
-    if ($fromStep >= $currentStep) $jsonArr['errors'][] = 'zaehlernr';
-  }
+//  if ($_REQUEST['formdata']['zaehlernr'] == '') {
+//    $jsonArr['navsteps'][$currentStep] = false;
+//    if ($fromStep >= $currentStep) $jsonArr['errors'][] = 'zaehlernr';
+//  }
 
   //  if($_REQUEST['formdata']['eigenverbrauch']=='')
   //  {
