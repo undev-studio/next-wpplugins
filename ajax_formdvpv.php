@@ -146,15 +146,16 @@ function ajax_formdvpv()
       if ($fromStep >= $currentStep) $jsonArr['errors'][] = 'registrnr';
     }
   } else {
-    if ($_REQUEST['formdata']['zaehlbezeichn'] == '' || substr(strtolower($_REQUEST['formdata']['zaehlbezeichn']), 0, 2) != 'de' || strlen($_REQUEST['formdata']['zaehlbezeichn']) != 33) {
+    if ($_REQUEST['formdata']['marktlokation'] == '' || strlen($_REQUEST['formdata']['marktlokation']) != 11) {
       $jsonArr['navsteps'][$currentStep] = false;
-      if ($fromStep >= $currentStep) $jsonArr['errors'][] = 'zaehlbezeichn';
+      if ($fromStep >= $currentStep) $jsonArr['errors'][] = 'marktlokation';
     }
   }
-//  if ($_REQUEST['formdata']['marktlokation'] == '' || strlen($_REQUEST['formdata']['marktlokation']) != 11) {
-//    $jsonArr['navsteps'][$currentStep] = false;
-//    if ($fromStep >= $currentStep) $jsonArr['errors'][] = 'marktlokation';
-//  }
+
+  // if ($_REQUEST['formdata']['zaehlbezeichn'] == '' || substr(strtolower($_REQUEST['formdata']['zaehlbezeichn']), 0, 2) != 'de' || strlen($_REQUEST['formdata']['zaehlbezeichn']) != 33) {
+  //  $jsonArr['navsteps'][$currentStep] = false;
+  //  if ($fromStep >= $currentStep) $jsonArr['errors'][] = 'zaehlbezeichn';
+  //}
 
 //  if ($_REQUEST['formdata']['zaehlernr'] == '') {
 //    $jsonArr['navsteps'][$currentStep] = false;
