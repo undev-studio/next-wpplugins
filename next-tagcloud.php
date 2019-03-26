@@ -56,7 +56,7 @@ print('<div class="widget widget_text"><h2 class="widgettitle">'.$instance['titl
 
 
 
-
+    if(!$all_tags) $all_tags = array();
     $tags_arr = array_unique($all_tags);
     $tags_str = implode(",", $tags_arr);
 
