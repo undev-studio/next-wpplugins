@@ -214,10 +214,11 @@ function ajax_formdvpv()
     $jsonArr['navsteps'][$currentStep] = false;
     // $jsonArr['errors'][]='beginvermarktunginput';
     // $jsonArr['errors'][]='datuminbetriebnahme';
-
     $jsonArr['errormsg'][] = 'beginvermarktung';
 
   }
+
+
 
   // step 4
   $currentStep = 3;
@@ -370,6 +371,7 @@ function ajax_formdvpv()
     $row['vermarktung'] = $_REQUEST['formdata']['vermarktung'];
     $row['beginvermarktung'] = $_REQUEST['formdata']['beginvermarktung'];
     $row['anlage_fernsteuerung'] = $_REQUEST['formdata']['anlage_fernsteuerung'];
+    $row['ummeldung'] = $_REQUEST['formdata']['ummeldung_radio'];
 
 
     $wpdb->insert('next_formdvpv', $row);
