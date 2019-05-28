@@ -468,6 +468,7 @@ function genPDF($id)
   if ($month == 11) $month = "November";
   if ($month == 12) $month = "Dezember";
 
+  if(empty($rows[0])) $rows[0] = new stdClass();
   $rows[0]->readableDate = $day . '. ' . $month . ' ' . $year;
 
   if (substr($rows[0]->beginvermarktung, 2, 1) == '.') $rows[0]->beginvermarktung = '' . $rows[0]->beginvermarktung;
