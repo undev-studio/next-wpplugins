@@ -219,7 +219,6 @@ function ajax_formdvpv()
   }
 
 
-
   // step 4
   $currentStep = 3;
   $jsonArr['navsteps'][$currentStep] = true;
@@ -431,6 +430,39 @@ function ajax_formdvpv()
           'to' => $_REQUEST['formdata']['email']
         )
       );
+
+      $nextBody = '';
+      $nextBody .= 'Abgesendet am: ' . strftime('%d.%m.%Y %H:%M:%S');
+      $nextBody .= 'Vorname: ' . $_REQUEST['formdata']['vorname'];
+      $nextBody .= 'Name: ' . $_REQUEST['formdata']['nachname'];
+      $nextBody .= 'Firma: ' . $_REQUEST['formdata']['firma'];
+      $nextBody .= 'Telefon: ' . $_REQUEST['formdata']['phone'];
+      $nextBody .= 'PLZ: ' . $_REQUEST['formdata']['plz'];
+      $nextBody .= 'E-Mail: ' . $_REQUEST['formdata']['email'];
+      $nextBody .= '';
+      $nextBody .= 'Viele Grüße,';
+      $nextBody .= 'eure U-komm';
+
+      $nextEmail = new PHPMailer();
+      $nextEmail->CharSet = 'utf-8';
+      $nextEmail->From = 'ew@next-kraftwerke.de';
+      $nextEmail->FromName = 'Next Kraftwerke';
+      $nextEmail->Subject = 'Neuer Online-Vertrag SolarSpot ausgefüllt';
+      $nextEmail->Body = $nextBody;
+
+      $nextEmail->AddAddress('info@next-kraftwerke.de');
+      $nextEmail->AddAddress('beratung@next-kraftwerke.de');
+      $nextEmail->isHTML(true);
+
+      $nextEmail->Send();
+
+      $lastid = $wpdb->insert('emaillog', array(
+          'content' => json_encode($nextEmail),
+          'templatename' => 'notification_form_dvpv',
+          'to' => 'info@next-kraftwerke.de'
+        )
+      );
+
     }
   }
 
@@ -468,7 +500,7 @@ function genPDF($id)
   if ($month == 11) $month = "November";
   if ($month == 12) $month = "Dezember";
 
-  if(empty($rows[0])) $rows[0] = new stdClass();
+  if (empty($rows[0])) $rows[0] = new stdClass();
   $rows[0]->readableDate = $day . '. ' . $month . ' ' . $year;
 
   if (substr($rows[0]->beginvermarktung, 2, 1) == '.') $rows[0]->beginvermarktung = '' . $rows[0]->beginvermarktung;
