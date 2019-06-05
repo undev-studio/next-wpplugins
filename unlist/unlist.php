@@ -327,7 +327,7 @@ function getListingSQL()
 
 
   if ($func == 'saveorder') {
-    $arr = split(",", $_REQUEST["order"]);
+    $arr = explode(",", $_REQUEST["order"]);
 
     $count = 0;
     foreach ($arr as &$id) {
