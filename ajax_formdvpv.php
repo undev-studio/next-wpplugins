@@ -433,13 +433,20 @@ function ajax_formdvpv()
 
       $nextBody = '';
       $nextBody .= 'Abgesendet am: ' . strftime('%d.%m.%Y %H:%M:%S');
+      $nextBody .= '<br/><br/>';
       $nextBody .= 'Vorname: ' . $_REQUEST['formdata']['vorname'];
+      $nextBody .= '<br/><br/>';
       $nextBody .= 'Name: ' . $_REQUEST['formdata']['nachname'];
+      $nextBody .= '<br/><br/>';
       $nextBody .= 'Firma: ' . $_REQUEST['formdata']['firma'];
+      $nextBody .= '<br/><br/>';
       $nextBody .= 'Telefon: ' . $_REQUEST['formdata']['phone'];
+      $nextBody .= '<br/><br/>';
       $nextBody .= 'PLZ: ' . $_REQUEST['formdata']['plz'];
+      $nextBody .= '<br/><br/>';
       $nextBody .= 'E-Mail: ' . $_REQUEST['formdata']['email'];
-      $nextBody .= '';
+      $nextBody .= '<br/><br/>';
+      $nextBody .= '<br/><br/>';
       $nextBody .= 'Viele Grüße,';
       $nextBody .= 'eure U-komm';
 
