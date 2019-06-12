@@ -458,7 +458,19 @@ function ajax_formdvpv()
       $nextEmail->Body = $nextBody;
 
       $nextEmail->AddAddress('info@next-kraftwerke.de');
-      $nextEmail->AddAddress('beratung@next-kraftwerke.de');
+
+      // try to get responsible recipient
+      $recipients = $wpdb->get_results('SELECT * FROM `erloes_plz` WHERE "' . esc_sql(trim($_REQUEST['formdata']['plz'])) . '"  BETWEEN start AND end;', ARRAY_N);
+      if($recipients) {
+        foreach ($recipients as $recipient) {
+          $sentTo = trim($recipient['email']);
+          break;
+        }
+      }else{
+        $sentTo = 'beratung@next-kraftwerke.de';
+      }
+
+      $nextEmail->AddAddress($sentTo);
       $nextEmail->isHTML(true);
 
       $nextEmail->Send();
@@ -466,7 +478,7 @@ function ajax_formdvpv()
       $lastid = $wpdb->insert('emaillog', array(
           'content' => json_encode($nextEmail),
           'templatename' => 'notification_form_dvpv',
-          'to' => 'info@next-kraftwerke.de'
+          'to' => $sentTo
         )
       );
 
