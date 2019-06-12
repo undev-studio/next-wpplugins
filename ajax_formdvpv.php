@@ -446,6 +446,8 @@ function ajax_formdvpv()
       $nextBody .= '<br/><br/>';
       $nextBody .= 'E-Mail: ' . $_REQUEST['formdata']['email'];
       $nextBody .= '<br/><br/>';
+      $nextBody .= 'Marktlokations-ID:' . $_REQUEST['formdata']['marktlokation'];
+      $nextBody .= '<br/><br/>';
       $nextBody .= '<br/><br/>';
       $nextBody .= 'Viele Grüße,';
       $nextBody .= 'eure U-komm';
