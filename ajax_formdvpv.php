@@ -460,7 +460,7 @@ function ajax_formdvpv()
       $nextEmail->AddAddress('info@next-kraftwerke.de');
 
       // try to get responsible recipient
-      $recipients = $wpdb->get_results('SELECT * FROM `erloes_plz` WHERE "' . esc_sql(trim($_REQUEST['formdata']['plz'])) . '"  BETWEEN start AND end;', ARRAY_N);
+      $recipients = $wpdb->get_results('SELECT * FROM `erloes_plz` WHERE "' . esc_sql(trim($_REQUEST['formdata']['plz'])) . '"  BETWEEN start AND end;', ARRAY_A);
       if($recipients) {
         foreach ($recipients as $recipient) {
           $sentTo = trim($recipient['email']);
