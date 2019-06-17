@@ -152,24 +152,6 @@ function ajax_formdvpv()
     }
   }
 
-  // if ($_REQUEST['formdata']['zaehlbezeichn'] == '' || substr(strtolower($_REQUEST['formdata']['zaehlbezeichn']), 0, 2) != 'de' || strlen($_REQUEST['formdata']['zaehlbezeichn']) != 33) {
-  //  $jsonArr['navsteps'][$currentStep] = false;
-  //  if ($fromStep >= $currentStep) $jsonArr['errors'][] = 'zaehlbezeichn';
-  //}
-
-//  if ($_REQUEST['formdata']['zaehlernr'] == '') {
-//    $jsonArr['navsteps'][$currentStep] = false;
-//    if ($fromStep >= $currentStep) $jsonArr['errors'][] = 'zaehlernr';
-//  }
-
-  //  if($_REQUEST['formdata']['eigenverbrauch']=='')
-  //  {
-  //      $jsonArr['navsteps'][$currentStep]=false;
-  //
-  //      if($fromStep >= $currentStep)
-  //         $jsonArr['errors'][]='eigenverbrauch';
-  //  }
-
   if ($_REQUEST['formdata']['anlage_strasse'] == '') {
     $jsonArr['navsteps'][$currentStep] = false;
     if ($fromStep >= $currentStep) $jsonArr['errors'][] = 'anlage_strasse';
@@ -209,59 +191,45 @@ function ajax_formdvpv()
   $currentStep = 2;
   $jsonArr['navsteps'][$currentStep] = true;
 
-
-  if (substr($_REQUEST['formdata']['beginvermarktung'], 2, 1) != '.') {
-    $jsonArr['navsteps'][$currentStep] = false;
-    // $jsonArr['errors'][]='beginvermarktunginput';
-    // $jsonArr['errors'][]='datuminbetriebnahme';
-    $jsonArr['errormsg'][] = 'beginvermarktung';
-
+  if($fromStep == 2) {
+    if (substr($_REQUEST['formdata']['beginvermarktung'], 2, 1) != '.') {
+      $jsonArr['navsteps'][$currentStep] = false;
+      // $jsonArr['errors'][]='beginvermarktunginput';
+      // $jsonArr['errors'][]='datuminbetriebnahme';
+      $jsonArr['errormsg'][] = 'beginvermarktung';
+    }
   }
-
 
   // step 4
   $currentStep = 3;
   $jsonArr['navsteps'][$currentStep] = true;
 
+  if($fromStep == 3) {
 
-  // echo $_REQUEST['formdata']['voucher'];
+    if ($_REQUEST['formdata']['voucher'] != '') {
 
-  if ($_REQUEST['formdata']['voucher'] != '') {
+      global $wpdb;
+      $sql = 'SELECT * FROM next_formdvpv_codes WHERE BINARY code = "' . esc_sql($_REQUEST['formdata']['voucher']) . '";';
+      $rows = $wpdb->get_results($sql);
 
-    global $wpdb;
-    $sql = 'SELECT * FROM next_formdvpv_codes WHERE BINARY code = "' . esc_sql($_REQUEST['formdata']['voucher']) . '";';
-    $rows = $wpdb->get_results($sql);
+      if ($wpdb->last_error != '') {
+        echo($wpdb->last_error);
+      }
 
-    if ($wpdb->last_error != '') {
-      echo($wpdb->last_error);
+      $sql = 'SELECT * FROM next_formdvpv WHERE BINARY voucher = "' . esc_sql($_REQUEST['formdata']['voucher']) . '";';
+      $rowsExisting = $wpdb->get_results($sql);
+
+      if ($wpdb->last_error != '') {
+        echo($wpdb->last_error);
+      }
+
+
+      if (count($rows) == 0 || count($rowsExisting) > 0) {
+        $jsonArr['navsteps'][$currentStep] = false;
+        if ($fromStep >= $currentStep) $jsonArr['errors'][] = 'voucher';
+        $jsonArr['errormsg'][] = 'voucher';
+      }
     }
-
-    $sql = 'SELECT * FROM next_formdvpv WHERE BINARY voucher = "' . esc_sql($_REQUEST['formdata']['voucher']) . '";';
-    $rowsExisting = $wpdb->get_results($sql);
-
-    if ($wpdb->last_error != '') {
-      echo($wpdb->last_error);
-    }
-
-
-    if (count($rows) == 0 || count($rowsExisting) > 0) {
-      $jsonArr['navsteps'][$currentStep] = false;
-      if ($fromStep >= $currentStep) $jsonArr['errors'][] = 'voucher';
-      $jsonArr['errormsg'][] = 'voucher';
-    }
-
-
-    // if( strtolower($_REQUEST['formdata']['voucher'])!=="solar2016" && strtolower($_REQUEST['formdata']['voucher'])!=="solar 2016" )
-    // {
-    //     $jsonArr['navsteps'][$currentStep]=false;
-    //     if($fromStep >= $currentStep) $jsonArr['errors'][]='voucher';
-    //     $jsonArr['errormsg'][]='voucher';
-    // }
-  }
-
-
-  // if($_REQUEST['formdata']['konto_format']=='' || $_REQUEST['formdata']['konto_format']=='new' )
-  {
 
     if (!iban_verify_checksum($_REQUEST['formdata']['konto_iban'])) {
       $jsonArr['navsteps'][$currentStep] = false;
@@ -279,44 +247,16 @@ function ajax_formdvpv()
     }
 
 
-    // if($_REQUEST['formdata']['konto_iban']=='')
-    // {
-    //     $jsonArr['navsteps'][$currentStep]=false;
-    //     if($fromStep >= $currentStep) $jsonArr['errors'][]='konto_iban';
-    // }
-
     if ($_REQUEST['formdata']['konto_bic'] == '') {
       $jsonArr['navsteps'][$currentStep] = false;
       if ($fromStep >= $currentStep) $jsonArr['errors'][] = 'konto_bic';
     }
 
+    if ($_REQUEST['formdata']['konto_inhaber'] == '') {
+      $jsonArr['navsteps'][$currentStep] = false;
+      if ($fromStep >= $currentStep) $jsonArr['errors'][] = 'konto_inhaber';
+    }
 
-  }
-
-  // else
-  // {
-  //     if($_REQUEST['formdata']['konto_nr']=='')
-  //     {
-  //         $jsonArr['navsteps'][$currentStep]=false;
-  //         if($fromStep >= $currentStep) $jsonArr['errors'][]='konto_nr';
-  //     }
-
-  //     if($_REQUEST['formdata']['konto_blz']=='')
-  //     {
-  //         $jsonArr['navsteps'][$currentStep]=false;
-  //         if($fromStep >= $currentStep) $jsonArr['errors'][]='konto_blz';
-  //     }
-
-  //     if($_REQUEST['formdata']['konto_institut']=='')
-  //     {
-  //         $jsonArr['navsteps'][$currentStep]=false;
-  //         if($fromStep >= $currentStep) $jsonArr['errors'][]='konto_institut';
-  //     }
-  // }
-
-  if ($_REQUEST['formdata']['konto_inhaber'] == '') {
-    $jsonArr['navsteps'][$currentStep] = false;
-    if ($fromStep >= $currentStep) $jsonArr['errors'][] = 'konto_inhaber';
   }
 
   if ($fromStep == 3 && $jsonArr['navsteps'][0] == true && $jsonArr['navsteps'][1] == true && $jsonArr['navsteps'][2] == true && $jsonArr['navsteps'][3] == true) {
@@ -463,12 +403,12 @@ function ajax_formdvpv()
 
       // try to get responsible recipient
       $recipients = $wpdb->get_results('SELECT * FROM `erloes_plz` WHERE "' . esc_sql(trim($_REQUEST['formdata']['plz'])) . '"  BETWEEN start AND end;', ARRAY_A);
-      if($recipients) {
+      if ($recipients) {
         foreach ($recipients as $recipient) {
           $sentTo = trim($recipient['email']);
           break;
         }
-      }else{
+      } else {
         $sentTo = 'beratung@next-kraftwerke.de';
       }
 
