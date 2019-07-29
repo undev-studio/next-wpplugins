@@ -188,7 +188,12 @@ require_once(realpath(dirname(__FILE__)) . '/language.php');
               html += '<td><div class="translation_preview" id="preview_' + path + '">';
               var cleanTrans = trans.replace(/<\/?[^>]+(>|$)/g, '');
 
-              html += decodeURIComponent(cleanTrans);
+	       try {
+              	html += decodeURIComponent(cleanTrans);
+              } catch (e) {
+                // failed to decule uri, not an url, keep original text
+              }
+
               html += '</div></td>';
             } else {
               html += '<td width="50%" class="missing" id="preview_' + path + '">-</td>';
