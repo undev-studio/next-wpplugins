@@ -1,307 +1,278 @@
 <?php
 
-    error_reporting(E_ERROR|E_WARNING);
-    ini_set('display_errors', '1');
+error_reporting(E_ERROR | E_WARNING);
+ini_set('display_errors', '1');
 
-    require_once( realpath(dirname(__FILE__)). '/language.php');
+require_once(realpath(dirname(__FILE__)) . '/language.php');
 
 ?>
 
-<div class="wrap">
-    <h2>Translations</h2>
+    <div class="wrap">
+        <h2>Translations</h2>
 
-    <div class="toolbar">
+        <div class="toolbar">
 
-        <? echo nextTranslate('backend_translation_language'); ?>
+          <? echo nextTranslate('backend_translation_language'); ?>
 
-        <select id="langselect" onchange="loadContent();">
-            <option value="de">DE</option>
-            <option value="at">AT</option>
-            <option value="fr">FR</option>
-            <option value="en">EN</option>
-            <option value="pl">PL</option>
-            <option value="it">IT</option>
-            <option value="nl">NL</option>
-            <option value="cn">CN</option>
-        </select>
+            <select id="langselect" onchange="loadContent();">
+                <option value="de">DE</option>
+                <option value="at">AT</option>
+                <option value="fr">FR</option>
+                <option value="en">EN</option>
+                <option value="pl">PL</option>
+                <option value="it">IT</option>
+                <option value="nl">NL</option>
+                <option value="cn">CN</option>
+            </select>
+
+        </div>
+        <br/><br/>
+
+        <div id="transcontent" class="wrap"></div>
 
     </div>
-    <br/><br/>
-
-    <div id="transcontent" class="wrap"></div>
-
-</div>
 
 
-<style type="text/css">
+    <style type="text/css">
 
-h3
-{
-    margin-top:0px;
-    margin-bottom:6px;
-}
+        h3 {
+            margin-top: 0px;
+            margin-bottom: 6px;
+        }
 
-.treeTable
-{
-    background-color: white;
-}
+        .treeTable {
+            background-color: white;
+        }
 
-.treeTable tr.head
-{
-    /*background-color: #eee;*/
-    
-}
+        .treeTable tr.head {
+            /*background-color: #eee;*/
 
-.treeTable td
-{
-    padding-left: 5px;
-}
+        }
 
-.treeTable th
-{
-    /*background-color: #eee;*/
-    text-align: left;
-    padding:3px;
-    border-bottom: 1px solid #ccc;
-}
+        .treeTable td {
+            padding-left: 5px;
+        }
 
-.treeTable tr
-{
-    border-bottom: 1px solid #ccc;
-}
-.treeTable tr:hover
-{
-    background-color: #ccc;
-    cursor:pointer;
-}
+        .treeTable th {
+            /*background-color: #eee;*/
+            text-align: left;
+            padding: 3px;
+            border-bottom: 1px solid #ccc;
+        }
 
-.treeTable input
-{
-    width:100%;
-}
+        .treeTable tr {
+            border-bottom: 1px solid #ccc;
+        }
 
-.missing
-{
-    background-color: rgba(255,200,200,0.4);
-}
+        .treeTable tr:hover {
+            background-color: #ccc;
+            cursor: pointer;
+        }
 
-.editrow
-{
-    background-color: #f5f5f5;
-}
+        .treeTable input {
+            width: 100%;
+        }
 
-.editrow td
-{
-    padding-top: 10px;
-    padding-bottom: 10px;
-    vertical-align: top;
-}
+        .missing {
+            background-color: rgba(255, 200, 200, 0.4);
+        }
 
-.translation_preview
-{
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    max-width: 400px;
-    overflow: hidden;
-}
+        .editrow {
+            background-color: #f5f5f5;
+        }
 
-</style>
-<script>
+        .editrow td {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            vertical-align: top;
+        }
 
-var NEXTLANG=
-{
+        .translation_preview {
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            max-width: 400px;
+            overflow: hidden;
+        }
 
-};
+    </style>
+    <script>
 
-NEXTLANG
+      var NEXTLANG =
+        {};
 
-function htmlEscape(str) {
-    return str
-        .replace(/&/g, '&amp;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#39;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;');
-}
+      NEXTLANG;
 
-// I needed the opposite function today, so adding here too:
-function htmlUnescape(str){
-    return str
-        .replace(/&quot;/g, '"')
-        .replace(/&#39;/g, "'")
-        .replace(/&lt;/g, '<')
-        .replace(/&gt;/g, '>')
-        .replace(/&amp;/g, '&');
-}
+      function htmlEscape(str) {
+        return str
+          .replace(/&/g, '&amp;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;');
+      }
+
+      // I needed the opposite function today, so adding here too:
+      function htmlUnescape(str) {
+        return str
+          .replace(/&quot;/g, '"')
+          .replace(/&#39;/g, '\'')
+          .replace(/&lt;/g, '<')
+          .replace(/&gt;/g, '>')
+          .replace(/&amp;/g, '&');
+      }
 
 
-NEXTLANG.setTranslation=function(key)
-{
-    jQuery.ajax(
-        {
-            url: "/wp-admin/admin-ajax.php?action=setLangTrans&l="+jQuery('#langselect').val()+"&key="+key+"&trans="+encodeURIComponent(htmlEscape(jQuery('#trans_'+key).val())),
-        })
-        .done(function( res )
-        {
-            try
-            {
-                var result=JSON.parse(res);
-                console.log(result['key']);
+      NEXTLANG.setTranslation = function(key) {
+        jQuery.ajax(
+          {
+            url: '/wp-admin/admin-ajax.php?action=setLangTrans&l=' + jQuery('#langselect').val() + '&key=' + key + '&trans=' + encodeURIComponent(htmlEscape(jQuery('#trans_' + key).val()))
+          })
+          .done(function(res) {
+            try {
+              var result = JSON.parse(res);
 
-                var cleanTrans = htmlUnescape(decodeURIComponent(result[key].replace(/<\/?[^>]+(>|$)/g, "")));
+              let stripped = result[key].replace(/<\/?[^>]+(>|$)/g, '');
+              let decoded = stripped;
+              try {
+                let decoded = decodeURIComponent(stripped);
+              } catch (e) {
+                // failed to decule uri, not an url, keep original text
+              }
+              var cleanTrans = htmlUnescape(decoded);
 
-                console.log('trans got back',cleanTrans);
-                jQuery('#preview_'+key).html(cleanTrans);
-                jQuery('#preview_'+key).removeClass('missing');
+              jQuery('#preview_' + key).html(cleanTrans);
+              jQuery('#preview_' + key).removeClass('missing');
 
-                console.log('LANGUAGE ',jQuery('#langselect').val() );
+              jQuery('#editrow_' + key).toggle();
 
-                console.log('------');
-                jQuery('#editrow_'+key).toggle();
-
-                // console.log(res);
+              // console.log(res);
+            } catch (e) {
+              alert('translation error!');
+              console.log(result);
             }
-            catch(e)
-            {
-                alert('translation error!');
-                console.log(result);
-            }
-        });
-}
+          });
+      };
 
-    function indent(level,charr)
-    {
-        var str='';
-        for(var i=0;i<level;i++) str+=charr;
+      function indent(level, charr) {
+        var str = '';
+        for (var i = 0; i < level; i++) str += charr;
         return str;
-    }
+      }
 
-    function editRow(which)
-    {
-        jQuery('#editrow_'+which).toggle();
-    }
+      function editRow(which) {
+        jQuery('#editrow_' + which).toggle();
+      }
 
-    function parseChild(el, level, _path)
-    {
-        var html='';
-        level=level||0;
+      function parseChild(el, level, _path) {
+        var html = '';
+        level = level || 0;
 
-        for(var i=0;i<el.length;i++)
-        {
-            console.log( indent(level,' ') + el[i].name );
+        for (var i = 0; i < el.length; i++) {
+          console.log(indent(level, ' ') + el[i].name);
 
-            var path=(_path||'')+el[i].name;
+          var path = (_path || '') + el[i].name;
 
-            html+='<tr class="" onclick="editRow(\''+path+'\');">';
-            html+='<td>';
-            if(el[i].childs) html+='<h3>';
+          html += '<tr class="" onclick="editRow(\'' + path + '\');">';
+          html += '<td>';
+          if (el[i].childs) html += '<h3>';
 
-            html+=''+indent(level,'&nbsp;&nbsp;&nbsp;')+el[i].name;
+          html += '' + indent(level, '&nbsp;&nbsp;&nbsp;') + el[i].name;
 
-            if(el[i].childs) html+='</h3>';
+          if (el[i].childs) html += '</h3>';
 
-            html+='</td>';
-            var trans=NEXTLANG.content[path]||'';
+          html += '</td>';
+          var trans = NEXTLANG.content[path] || '';
 
-            if(!el[i].childs)
-            {
-                if(trans)
-                {
-                    html+='<td><div class="translation_preview" id="preview_'+path+'">';
-                    var cleanTrans = trans.replace(/<\/?[^>]+(>|$)/g, "");
+          if (!el[i].childs) {
+            if (trans) {
+              html += '<td><div class="translation_preview" id="preview_' + path + '">';
+              var cleanTrans = trans.replace(/<\/?[^>]+(>|$)/g, '');
 
-                    html+=decodeURIComponent(cleanTrans);
-                    html+='</div></td>';
-                }
-                else
-                {
-                    html+='<td width="50%" class="missing" id="preview_'+path+'">-</td>';
-                }
+              html += decodeURIComponent(cleanTrans);
+              html += '</div></td>';
+            } else {
+              html += '<td width="50%" class="missing" id="preview_' + path + '">-</td>';
             }
-            html+='<td>';
-            html+=el[i].comment || '';
-            html+='</td>';
+          }
+          html += '<td>';
+          html += el[i].comment || '';
+          html += '</td>';
 
-            html+='</tr>';
+          html += '</tr>';
 
-            if(!el[i].childs)
-            {
-                html+='<tr class="hidden editrow" id="editrow_'+path+'">';
-                html+=' <td></td>';
-                html+=' <td>';
-                html+='     <textarea id="trans_'+path+'" style="width:100%;">'+htmlUnescape(trans)+'</textarea>';
-                if(!el[i].childs) html+='<div style="opacity:0.5;">key: '+path+'</div>';
-                html+='     <a class="button-primary" onclick="NEXTLANG.setTranslation(\''+path+'\');">Save</a>';
+          if (!el[i].childs) {
+            html += '<tr class="hidden editrow" id="editrow_' + path + '">';
+            html += ' <td></td>';
+            html += ' <td>';
+            html += '     <textarea id="trans_' + path + '" style="width:100%;">' + htmlUnescape(trans) + '</textarea>';
+            if (!el[i].childs) html += '<div style="opacity:0.5;">key: ' + path + '</div>';
+            html += '     <a class="button-primary" onclick="NEXTLANG.setTranslation(\'' + path + '\');">Save</a>';
 
-                html+=' </td>';
-                html+=' <td>';
-                html+='   <b>Default:</b><br/>';
-                html+= el[i].default||'-';
-                html+=' </td>';
+            html += ' </td>';
+            html += ' <td>';
+            html += '   <b>Default:</b><br/>';
+            html += el[i].default || '-';
+            html += ' </td>';
 
-                html+='</tr>';
-            }
+            html += '</tr>';
+          }
 
-            if(el[i].childs) html+=parseChild(el[i].childs,level+1,path+'_');
+          if (el[i].childs) html += parseChild(el[i].childs, level + 1, path + '_');
         }
 
         return html;
-    }
+      }
 
 
-    function parseStructure(data)
-    {
-        var html='<table cellspacing="0" style="width:100%" class="treeTable">';
+      function parseStructure(data) {
+        var html = '<table cellspacing="0" style="width:100%" class="treeTable">';
 
-        html+='<tr class="head">';
-        html+='  <th>Key</th>';
-        html+='  <th>Translation</th>';
-        html+='  <th>Note</th>';
-        html+='</tr>';
+        html += '<tr class="head">';
+        html += '  <th>Key</th>';
+        html += '  <th>Translation</th>';
+        html += '  <th>Note</th>';
+        html += '</tr>';
 
-        html+=parseChild(data.content);
-        html+='</table>';
+        html += parseChild(data.content);
+        html += '</table>';
 
         jQuery('#transcontent').html(html);
-    }
+      }
 
 
-    function loadContent()
-    {
+      function loadContent() {
         jQuery('#transcontent').html('');
         jQuery.ajax(
-            {
-                url: "/wp-admin/admin-ajax.php?action=getLanguageStructure",
-            })
-            .done(function( res )
-            {
+          {
+            url: '/wp-admin/admin-ajax.php?action=getLanguageStructure'
+          })
+          .done(function(res) {
+            // console.log(res);
+            var structure = JSON.parse(res);
+            console.log('loaded structure...');
+
+            jQuery.ajax(
+              {
+                url: '/wp-admin/admin-ajax.php?action=getLanguage&l=' + jQuery('#langselect').val()
+              })
+              .done(function(res) {
+
+                NEXTLANG.content = JSON.parse(res);
+
                 // console.log(res);
-                var structure=JSON.parse(res);
-                console.log('loaded structure...');
+                console.log('loaded content...');
 
-                jQuery.ajax(
-                    {
-                        url: "/wp-admin/admin-ajax.php?action=getLanguage&l="+jQuery('#langselect').val(),
-                    })
-                    .done(function( res )
-                    {
+                parseStructure(structure);
 
-                        NEXTLANG.content=JSON.parse(res);
+              });
 
-                        // console.log(res);
-                        console.log('loaded content...');
+          });
+      }
 
-                        parseStructure(structure);
-
-                    });
-                
-            });
-    }
-
-    loadContent();
+      loadContent();
 
 
-</script>
+    </script>
 
 
 <?php
