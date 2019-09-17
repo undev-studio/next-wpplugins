@@ -99,7 +99,6 @@ function ajax_widgetforms()
       );
 
       $email->Body .= file_get_contents(dirname(__FILE__) . '/signature_flexheft.html');
-      $email->Body = $body;
       $email->Send();
 
     } else {
