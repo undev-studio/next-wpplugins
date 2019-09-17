@@ -99,7 +99,7 @@ function ajax_widgetforms()
       );
 
       $email->Body .= '---\n';
-      $email->Body .= file_get_contents(getcwd() . 'signature_flexheft.html');
+      $email->Body .= $body .= file_get_contents(dirname(__FILE__) . '/signature_flexheft.html');
       $email->Body = $body;
       $email->Send();
 
