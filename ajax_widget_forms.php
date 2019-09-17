@@ -90,8 +90,6 @@ function ajax_widgetforms()
       $email->addBCC('presse@next-kraftwerke.de');
       $email->isHTML(true);
 
-      $email->Send();
-
       global $wpdb;
       $wpdb->insert('emaillog', array(
           'content' => json_encode($email) . json_encode($form),
@@ -99,6 +97,12 @@ function ajax_widgetforms()
           'to' => $form['email']
         )
       );
+
+      $email->Body .= '---\n';
+      $email->Body .= file_get_contents(getcwd() . 'signature_flexheft.html');
+      $email->Body = $body;
+      $email->Send();
+
     } else {
       $email = new PHPMailer();
       $email->CharSet = 'utf-8';

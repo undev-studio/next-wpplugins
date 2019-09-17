@@ -361,8 +361,6 @@ function ajax_formdvpv()
       $email->addBCC('ew@next-kraftwerke.de');
       $email->isHTML(true);
 
-      $email->Send();
-
       global $wpdb;
       $lastid = $wpdb->insert('emaillog', array(
           'content' => json_encode($email),
@@ -370,6 +368,12 @@ function ajax_formdvpv()
           'to' => $_REQUEST['formdata']['email']
         )
       );
+
+      $body .= '---\n';
+      $body .= file_get_contents(getcwd() . 'signature_solarspot.html');
+      $email->Body = $body;
+
+      $email->Send();
 
       $nextBody = '';
       $nextBody .= 'Abgesendet am: ' . strftime('%d.%m.%Y %H:%M:%S');
