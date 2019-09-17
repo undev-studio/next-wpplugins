@@ -369,7 +369,6 @@ function ajax_formdvpv()
         )
       );
 
-      $body .= '---\n';
       $body .= file_get_contents(dirname(__FILE__) . '/signature_solarspot.html');
       $email->Body = $body;
 
