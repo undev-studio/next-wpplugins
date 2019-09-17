@@ -474,6 +474,7 @@ function genPDF($id)
   $template = $twig->loadTemplate('form_dvpv_pdf_de.html');
   $html = $template->render(array('data' => $rows[0]));
 
+  $html = preg_replace('/>\s+</', '><', $html);
   $dompdf->load_html($html);
 
   $dompdf->render();
