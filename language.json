@@ -14,6 +14,18 @@
                     "default":""
                 },
                 {
+                    "name":"cookiequestion",
+                    "default":""
+                },
+                {
+                    "name":"cookiequestion_yes",
+                    "default":""
+                },
+                {
+                    "name":"cookiequestion_no",
+                    "default":""
+                },
+		{
                     "name":"search_result_link",
                     "default":""
                 }
