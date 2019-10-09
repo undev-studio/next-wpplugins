@@ -337,7 +337,7 @@ function ajax_formdvpv()
       $body .= '<br/><br/>';
       $body .= 'Nach Pr&uuml;fung Ihrer Unterlagen erhalten Sie von uns eine Auftragsbest&auml;tigung mit dem Hinweis auf den Zeitpunkt, ab dem wir die PV-Anlage f&uuml;r Sie voraussichtlich vermarkten k&ouml;nnen. Erst durch die Auftragsbest&auml;tigung ist der Vertrag zur Direktvermarktung Ihrer PV-Anlage mit uns abgeschlossen.';
       $body .= '<br/><br/>';
-      $body .= 'Bitte beachten Sie die <a href="https://www.next-kraftwerke.de/wp-content/uploads/Umsetzung-verpflichtende-Fernsteuerbarkeit.pdf">Hinweise zur Fernsteuerbarkeit</a> sowie die <a href="https://www.next-kraftwerke.de/wp-content/uploads/Vermarktungsbedingungen-Direktvermarktung-PV-Next-Kraftwerke.pdf">Allgemeinen Vermarktungsbedingungen f&uuml;r kleine Photovoltaik-Anlagen</a>.<br/>';
+      $body .= 'Bitte beachten Sie die <a href="https://www.next-kraftwerke.de/wp-content/uploads/Umsetzung-verpflichtende-Fernsteuerbarkeit.pdf">Hinweise zur Fernsteuerbarkeit</a> sowie die <a href="https://www.next-kraftwerke.de/wp-content/uploads/AGB-Direktvermarktung-PhotoVoltaik-bis-800kW.pdf">Allgemeinen Vermarktungsbedingungen f&uuml;r kleine Photovoltaik-Anlagen</a>.<br/>';
       $body .= 'F&uuml;r PV-Anlagen mit mehr als 800 kW Nennleistung ben&ouml;tigen wir leider ein paar zus&auml;tzliche Informationen: Ein <a href="https://www.next-kraftwerke.de/meta/erloesrechner">individuelles Angebot k&ouml;nnen Sie hier anfragen.</a>';
       $body .= '<br/><br/>';
       $body .= 'Mit freundlichen Gr&uuml;&szlig;en,<br/>';
@@ -357,7 +357,7 @@ function ajax_formdvpv()
 
       $email->AddAddress($_REQUEST['formdata']['email']);
       $email->AddAttachment($filename, "Direktvermarktung_" . $docId . ".pdf");
-      $email->AddAttachment('/var/www/website/sites/de/htdocs/wp-content/uploads/Vermarktungsbedingungen-Direktvermarktung-PV-Next-Kraftwerke.pdf', "Allgemeine_Vermarktungsbedingungen.pdf");
+      $email->AddAttachment('/var/www/website/sites/de/htdocs/wp-content/uploads/AGB-Direktvermarktung-PhotoVoltaik-bis-800kW.pdf', "Allgemeine_Vermarktungsbedingungen.pdf");
       $email->addBCC('ew@next-kraftwerke.de');
       $email->isHTML(true);
 
