@@ -7,6 +7,7 @@
         const POST_CAT_BLOG='post_cat_blog';
         const POST_CAT_WE='post_cat_we';
         const POST_CAT_OTHERS='post_cat_others';
+        const TAG_MANAGER_ID='tag_manager_id';
 
         private $tablename='next_settings';
 
