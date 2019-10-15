@@ -15,6 +15,7 @@
         $cfg[nextSettings::POST_CAT_BLOG]=$_REQUEST[nextSettings::POST_CAT_BLOG];
         $cfg[nextSettings::POST_CAT_WE]=$_REQUEST[nextSettings::POST_CAT_WE];
         $cfg[nextSettings::POST_CAT_OTHERS]=$_REQUEST[nextSettings::POST_CAT_OTHERS];
+        $cfg[nextSettings::TAG_MANAGER_ID]=trim($_REQUEST[nextSettings::TAG_MANAGER_ID]);
 
         $cfg=nextSettings::save($cfg);
 
@@ -107,8 +108,24 @@ if(is_admin())
     echo '</tr>';
 
 
-
     // -----------------------------
+
+    echo '<tr>';
+    echo '<th scope="row">Tracking</th>';
+    echo '<td><fieldset><legend class="screen-reader-text"></legend>';
+    echo '<tr>';
+    echo '<th scope="row"></th>';
+
+    echo '<td><fieldset><legend class="screen-reader-text"></legend>';
+    echo '<label for="'.nextSettings::TAG_MANAGER_ID.'">';
+    echo 'Google Tag Manager Id: ';
+    echo '</label>';
+    echo '</td><td>';
+    echo '<input name="'.nextSettings::TAG_MANAGER_ID.'" type="text" id="'.nextSettings::TAG_MANAGER_ID.'" value="'.$cfg[nextSettings::TAG_MANAGER_ID].'" >';
+    echo '</fieldset></td>';
+    echo '</tr>';
+
+// -----------------------------
 
     echo '<tr>';
     echo '<td></td><td></td><td>';
