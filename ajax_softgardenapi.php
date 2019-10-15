@@ -57,7 +57,7 @@ function ajax_softgardenlist_callback()
   $globalDb = new wpdb(DB_USER, DB_PASSWORD, 'next_global', DB_HOST);
   if ($globalDb->last_error != '') echo($globalDb->last_error);
 
-  $result = $globalDb->get_results("SELECT * FROM jobs_softgarden");
+  $result = $globalDb->get_results("SELECT * FROM jobs_softgarden ORDER BY position ASC");
 
   if ($globalDb->last_error != '') echo($globalDb->last_error);
 
