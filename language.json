@@ -28,7 +28,11 @@
 		{
                     "name":"search_result_link",
                     "default":""
-                }
+                },
+		{
+		    "name":"tag_title_prefix",
+		    "default": ""
+		}
                 
             ]
         },
