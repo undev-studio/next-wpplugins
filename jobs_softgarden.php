@@ -28,7 +28,7 @@ if($_POST['submit'] && is_array($_POST['positions'])) {
 
 <?php
 
-    $result=$globalDb->get_results("SELECT * FROM jobs_softgarden");
+    $result=$globalDb->get_results("SELECT * FROM jobs_softgarden ORDER BY position ASC");
 
     echo '<br/><br/><form method="POST"><table class="wp-list-table widefat ">';
 
