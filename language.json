@@ -1,1165 +1,1146 @@
 {
-    "content":
-    [
+  "content": [
+    {
+      "name": "common",
+      "childs": [
         {
-            "name":"common",
-            "childs":
-            [
-                {
-                    "name":"more",
-                    "default":""
-                },
-                {
-                    "name":"cookiewarning",
-                    "default":""
-                },
-                {
-                    "name":"cookiequestion",
-                    "default":""
-                },
-                {
-                    "name":"cookiequestion_yes",
-                    "default":""
-                },
-                {
-                    "name":"cookiequestion_no",
-                    "default":""
-                },
-		{
-                    "name":"search_result_link",
-                    "default":""
-                },
-		{
-		    "name":"tag_title_prefix",
-		    "default": ""
-		}
-                
-            ]
+          "name": "more",
+          "default": ""
         },
         {
-            "name":"forms",
-            "childs":
-            [
-                {
-                    "name":"send",
-                    "default":"Send"
-                },
-                {
-                    "name":"form_error",
-                    "default":"The form is not valid, please check content of the red fields."
-                },
-                {
-                    "name":"required",
-                    "default":"required field"
-                },
-                {
-                    "name":"invalid_email",
-                    "default":"Invalid EMail"
-                },
-                {
-                    "name":"invalid_zip",
-                    "default":"Invalid ZIP code"
-                }
-                
-            ]
-        },
-
-        {
-            "name":"backend",
-            "childs":
-            [
-                {
-                    "name":"save",
-                    "comment":"save button text",
-                    "default":"save"
-                },
-                {
-                    "name":"edit",
-                    "comment":"edit button text",
-                    "default":"edit"
-                },
-                {
-                    "name":"create",
-                    "comment":"create button text",
-                    "default":"create"
-                },
-                {
-                    "name":"translation_language",
-                    "comment":"",
-                    "default":"language"
-                }
-            ]
+          "name": "cookiewarning",
+          "default": ""
         },
         {
-            "name":"widget",
-            "childs":
-            [
-                {
-                    "name":"form_minierloes",
-                    "childs":
-                    [
-                        {
-                            "name":"mail_from_email",
-                            "comment":"",
-                            "default":""
-                        },
-                        {
-                            "name":"mail_from_name",
-                            "comment":"",
-                            "default":""
-                        },
-                        {
-                            "name":"mail_subject",
-                            "comment":"",
-                            "default":""
-                        },
-                        {
-                            "name":"mail_body",
-                            "comment":"",
-                            "default":""
-                        }
-                    ]
-                }
-
-            ]
+          "name": "cookiequestion",
+          "default": ""
         },
         {
-            "name":"language",
-            "childs":
-            [
-                {
-                    "name":"other_countries",
-                    "default":"other countries"
-                },
-                {
-                    "name":"other_language",
-                    "default":"Show this website in another language"
-                },
-                {"name":"lang_de"},
-                {"name":"lang_fr"},
-                {"name":"lang_en"},
-                {"name":"lang_it"},
-                {"name":"lang_nl"},
-                {"name":"lang_pl"},
-                {"name":"country_de" },
-                {"name":"country_de_url" },
-                {"name":"country_nl"},
-                {"name":"country_nl_url"},
-                {"name":"country_at"},
-                {"name":"country_at_url"},
-                {"name":"country_it"},
-                {"name":"country_it_url"},
-                {"name":"country_ch"},
-                {"name":"country_ch_url"},
-                {"name":"country_pl"},
-                {"name":"country_pl_url"},
-                {"name":"country_en"},
-                {"name":"country_en_url"},
-                {"name":"country_be"},
-                {"name":"country_be_url"},
-                {"name":"country_fr"},
-                {"name":"country_fr_url"}
-            ]
+          "name": "cookiequestion_yes",
+          "default": ""
         },
         {
-            "name":"events",
-            "childs":
-            [
-                {
-                    "name":"upcoming",
-                    "default":""
-                },
-                {
-                    "name":"passed",
-                    "default":""
-                }
-            ]
+          "name": "cookiequestion_no",
+          "default": ""
         },
         {
-            "name":"jobs",
-            "childs":
-            [
-                {
-                    "name":"alljobs",
-                    "default":""
-                },
-                {
-                    "name":"applynow",
-                    "default":"Apply Now"
-                },
-                { "name":"intro1_title", "default":"" },
-                { "name":"intro1", "default":"" },
-                { "name":"intro2_title", "default":"" },
-                { "name":"intro2", "default":"" },
-                { "name":"intro3_title", "default":"" },
-                { "name":"intro3", "default":"" },
-                { "name":"intro4_title", "default":"" },
-                { "name":"intro4", "default":"" },
-                { "name":"intro5_title", "default":"" },
-                { "name":"intro5", "default":"" },
-                { "name":"intro6_title", "default":"" },
-                { "name":"intro6", "default":"" },
-                { "name":"intro7_title", "default":"" },
-                { "name":"intro7", "default":"" },
-                { "name":"intro8_title", "default":"" },
-                { "name":"intro8", "default":"" }
-            ]
+          "name": "search_result_link",
+          "default": ""
         },
         {
-            "name":"post",
-            "childs":
-            [
-                {
-                    "name":"author",
-                    "default":"Author:"
-                },
-                {
-                    "name":"published",
-                    "default":"Published:"
-                },
-                {
-                    "name":"published_link",
-                    "default":""
-                },
-                {
-                    "name":"next",
-                    "default":"next"
-                },
-		{
-                    "name":"previous",
-                    "default":"previous"
-                }
-]
+          "name": "tag_title_prefix",
+          "default": ""
         },
         {
-            "name":"search",
-            "childs":
-            [
-                {
-                    "name":"resultfor",
-                    "default":"Results for:"
-                },
-                {
-                    "name":"noresults",
-                    "default":"Sorry, nothing to display."
-                },
-                {
-                    "name":"search",
-                    "default":"Search"
-                },
-                {
-                    "name":"searchheader",
-                    "default":"Enter search term and press enter"
-                }
-
-            ]
+          "name": "comments",
+          "default": ""
         },
         {
-            "name":"numbersfacts",
-            "childs":
-            [
-                {
-                    "name":"value_mitarbeiter",
-                    "default":""
-                },
-                {
-                    "name":"title_mitarbeiter",
-                    "default":""
-                },
-                {
-                    "name":"subtitle_mitarbeiter",
-                    "default":""
-                },
-                {
-                    "name":"subtitle2_mitarbeiter",
-                    "default":""
-                },
-
-                {
-                    "name":"value_standorte",
-                    "default":""
-                },
-                {
-                    "name":"title_standorte",
-                    "default":""
-                },
-                {
-                    "name":"subtitle_standorte",
-                    "default":""
-                },
-                {
-                    "name":"subtitle2_standorte",
-                    "default":""
-                },
-
-                {
-                    "name":"value_umsatz",
-                    "default":""
-                },
-                {
-                    "name":"title_umsatz",
-                    "default":""
-                },
-                {
-                    "name":"subtitle_umsatz",
-                    "default":""
-                },
-                {
-                    "name":"subtitle2_umsatz",
-                    "default":""
-                },
-
-                {
-                    "name":"value_anlagen",
-                    "default":""
-                },
-                {
-                    "name":"title_anlagen",
-                    "default":""
-                },
-                {
-                    "name":"subtitle_anlagen",
-                    "default":""
-                },
-                {
-                    "name":"subtitle2_anlagen",
-                    "default":""
-                },
-
-                {
-                    "name":"value_gesamtleistung",
-                    "default":""
-                },
-                {
-                    "name":"title_gesamtleistung",
-                    "default":""
-                },
-                {
-                    "name":"subtitle_gesamtleistung",
-                    "default":""
-                },
-                {
-                    "name":"subtitle2_gesamtleistung",
-                    "default":""
-                },
-
-                {
-                    "name":"value_gruendung",
-                    "default":""
-                },
-                {
-                    "name":"title_gruendung",
-                    "default":""
-                },
-                {
-                    "name":"subtitle_gruendung",
-                    "default":""
-                },
-                {
-                    "name":"subtitle2_gruendung",
-                    "default":""
-                },
-
-
-
-
-                {
-                    "name":"value_datenpunktejahr",
-                    "default":""
-                },
-                {
-                    "name":"title_datenpunktejahr",
-                    "default":""
-                },
-                {
-                    "name":"subtitle_datenpunktejahr",
-                    "default":""
-                },
-                {
-                    "name":"subtitle2_datenpunktejahr",
-                    "default":""
-                },
-
-
-
-                {
-                    "name":"value_gewinnaward",
-                    "default":""
-                },
-                {
-                    "name":"title_gewinnaward",
-                    "default":""
-                },
-                {
-                    "name":"subtitle_gewinnaward",
-                    "default":""
-                },
-                {
-                    "name":"subtitle2_gewinnaward",
-                    "default":""
-                },
-
-
-                {
-                    "name":"value_numschnittstellenpartner",
-                    "default":""
-                },
-                {
-                    "name":"title_numschnittstellenpartner",
-                    "default":""
-                },
-                {
-                    "name":"subtitle_numschnittstellenpartner",
-                    "default":""
-                },
-                {
-                    "name":"subtitle2_numschnittstellenpartner",
-                    "default":""
-                },
-
-
-                {
-                    "name":"value_num_biogas",
-                    "default":""
-                },
-                {
-                    "name":"title_num_biogas",
-                    "default":""
-                },
-                {
-                    "name":"subtitle_num_biogas",
-                    "default":""
-                },
-                {
-                    "name":"subtitle2_num_biogas",
-                    "default":""
-                },
-
-                {
-                    "name":"value_leistung_biogas",
-                    "default":""
-                },
-                {
-                    "name":"title_leistung_biogas",
-                    "default":""
-                },
-                {
-                    "name":"subtitle_leistung_biogas",
-                    "default":""
-                },
-                {
-                    "name":"subtitle2_leistung_biogas",
-                    "default":""
-                },
-
-                {
-                    "name":"value_strommenge",
-                    "default":""
-                },
-                {
-                    "name":"title_strommenge",
-                    "default":""
-                },
-                {
-                    "name":"subtitle_strommenge",
-                    "default":""
-                },
-                {
-                    "name":"subtitle2_strommenge",
-                    "default":""
-                },
-
-                {
-                    "name":"value_neg_srl_biogas",
-                    "default":""
-                },
-                {
-                    "name":"title_neg_srl_biogas",
-                    "default":""
-                },
-                {
-                    "name":"subtitle_neg_srl_biogas",
-                    "default":""
-                },
-                {
-                    "name":"subtitle2_neg_srl_biogas",
-                    "default":""
-                },
-
-                {
-                    "name":"value_pos_srl_biogas",
-                    "default":""
-                },
-                {
-                    "name":"title_pos_srl_biogas",
-                    "default":""
-                },
-                {
-                    "name":"subtitle_pos_srl_biogas",
-                    "default":""
-                },
-                {
-                    "name":"subtitle2_pos_srl_biogas",
-                    "default":""
-                },
-
-                {
-                    "name":"value_regelzonen",
-                    "default":""
-                },
-                {
-                    "name":"title_regelzonen",
-                    "default":""
-                },
-                {
-                    "name":"subtitle_regelzonen",
-                    "default":""
-                },
-
-                {
-                    "name":"subtitle2_regelzonen",
-                    "default":""
-                },
-
-                {
-                    "name":"value_numpvanlagen",
-                    "default":""
-                },
-                {
-                    "name":"title_numpvanlagen",
-                    "default":""
-                },
-                {
-                    "name":"subtitle_numpvanlagen",
-                    "default":""
-                },
-                {
-                    "name":"subtitle2_numpvanlagen",
-                    "default":""
-                },
-
-
-                {
-                    "name":"value_gesamtphotovoltaik",
-                    "default":""
-                },
-                {
-                    "name":"title_gesamtphotovoltaik",
-                    "default":""
-                },
-                {
-                    "name":"subtitle_gesamtphotovoltaik",
-                    "default":""
-                },
-                {
-                    "name":"subtitle2_gesamtphotovoltaik",
-                    "default":""
-                },
-
-                {
-                    "name":"value_numwindanlagen",
-                    "default":""
-                },
-                {
-                    "name":"title_numwindanlagen",
-                    "default":""
-                },
-                {
-                    "name":"subtitle_numwindanlagen",
-                    "default":""
-                },
-                {
-                    "name":"subtitle2_numwindanlagen",
-                    "default":""
-                },
-
-
-                {
-                    "name":"value_leistung_windanlagen",
-                    "default":""
-                },
-                {
-                    "name":"title_leistung_windanlagen",
-                    "default":""
-                },
-                {
-                    "name":"subtitle_leistung_windanlagen",
-                    "default":""
-                },
-                {
-                    "name":"subtitle2_leistung_windanlagen",
-                    "default":""
-                },
-
-
-                {
-                    "name":"value_num_wasser_anlagen",
-                    "default":""
-                },
-                {
-                    "name":"title_num_wasser_anlagen",
-                    "default":""
-                },
-                {
-                    "name":"subtitle_num_wasser_anlagen",
-                    "default":""
-                },
-                {
-                    "name":"subtitle2_num_wasser_anlagen",
-                    "default":""
-                },
-
-
-                {
-                    "name":"value_leistung_wasseranlagen",
-                    "default":""
-                },
-                {
-                    "name":"title_leistung_wasseranlagen",
-                    "default":""
-                },
-                {
-                    "name":"subtitle_leistung_wasseranlagen",
-                    "default":""
-                },
-                {
-                    "name":"subtitle2_leistung_wasseranlagen",
-                    "default":""
-                },
-
-
-                {
-                    "name":"value_num_stromaggregate",
-                    "default":""
-                },
-                {
-                    "name":"title_num_stromaggregate",
-                    "default":""
-                },
-                {
-                    "name":"subtitle_num_stromaggregate",
-                    "default":""
-                },
-                {
-                    "name":"subtitle2_num_stromaggregate",
-                    "default":""
-                },
-
-
-                {
-                    "name":"value_leistung_stromaggregate",
-                    "default":""
-                },
-                {
-                    "name":"title_leistung_stromaggregate",
-                    "default":""
-                },
-                {
-                    "name":"subtitle_leistung_stromaggregate",
-                    "default":""
-                },
-                {
-                    "name":"subtitle2_leistung_stromaggregate",
-                    "default":""
-                },
-
-
-                {
-                    "name":"value_num_kwk_anlagen",
-                    "default":""
-                },
-                {
-                    "name":"title_num_kwk_anlagen",
-                    "default":""
-                },
-                {
-                    "name":"subtitle_num_kwk_anlagen",
-                    "default":""
-                },
-                {
-                    "name":"subtitle2_num_kwk_anlagen",
-                    "default":""
-                },
-
-
-                {
-                    "name":"value_leistung_kwk_anlagen",
-                    "default":""
-                },
-                {
-                    "name":"title_leistung_kwk_anlagen",
-                    "default":""
-                },
-                {
-                    "name":"subtitle_leistung_kwk_anlagen",
-                    "default":""
-                },
-                {
-                    "name":"subtitle2_leistung_kwk_anlagen",
-                    "default":""
-                },
-
-
-                {
-                    "name":"value_num_batterien",
-                    "default":""
-                },
-                {
-                    "name":"title_num_batterien",
-                    "default":""
-                },
-                {
-                    "name":"subtitle_num_batterien",
-                    "default":""
-                },
-                {
-                    "name":"subtitle2_num_batterien",
-                    "default":""
-                },
-
-
-                {
-                    "name":"value_prl_batterien",
-                    "default":""
-                },
-                {
-                    "name":"title_prl_batterien",
-                    "default":""
-                },
-                {
-                    "name":"subtitle_prl_batterien",
-                    "default":""
-                },
-                {
-                    "name":"subtitle2_prl_batterien",
-                    "default":""
-                },
-
-
-                {
-                    "name":"value_leistung_batterien",
-                    "default":""
-                },
-                {
-                    "name":"title_leistung_batterien",
-                    "default":""
-                },
-                {
-                    "name":"subtitle_leistung_batterien",
-                    "default":""
-                },
-                {
-                    "name":"subtitle2_leistung_batterien",
-                    "default":""
-                },
-
-
-                {
-                    "name":"value_num_powerx_anlagen",
-                    "default":""
-                },
-                {
-                    "name":"title_num_powerx_anlagen",
-                    "default":""
-                },
-                {
-                    "name":"subtitle_num_powerx_anlagen",
-                    "default":""
-                },
-                {
-                    "name":"subtitle2_num_powerx_anlagen",
-                    "default":""
-                },
-
-
-                {
-                    "name":"value_leistung_powerx_anlagen",
-                    "default":""
-                },
-                {
-                    "name":"title_leistung_powerx_anlagen",
-                    "default":""
-                },
-                {
-                    "name":"subtitle_leistung_powerx_anlagen",
-                    "default":""
-                },
-                {
-                    "name":"subtitle2_leistung_powerx_anlagen",
-                    "default":""
-                },
-
-
-
-
-
-                {
-                    "name":"value_praequalifiziert_PRL_europa",
-                    "default":""
-                },
-                {
-                    "name":"title_praequalifiziert_PRL_europa",
-                    "default":""
-                },
-                {
-                    "name":"subtitle_praequalifiziert_PRL_europa",
-                    "default":""
-                },
-                {
-                    "name":"subtitle2_praequalifiziert_PRL_europa",
-                    "default":""
-                },
-
-
-
-
-
-                {
-                    "name":"value_praequalifiziert_SRL_europa",
-                    "default":""
-                },
-                {
-                    "name":"title_praequalifiziert_SRL_europa",
-                    "default":""
-                },
-                {
-                    "name":"subtitle_praequalifiziert_SRL_europa",
-                    "default":""
-                },
-                {
-                    "name":"subtitle2_praequalifiziert_SRL_europa",
-                    "default":""
-                },
-
-
-
- 
- 
- 
-
-
-
-                {
-                    "name":"value_praequalifiziert_MRL_europa",
-                    "default":""
-                },
-                {
-                    "name":"title_praequalifiziert_MRL_europa",
-                    "default":""
-                },
-                {
-                    "name":"subtitle_praequalifiziert_MRL_europa",
-                    "default":""
-                },
-                {
-                    "name":"subtitle2_praequalifiziert_MRL_europa",
-                    "default":""
-                },
-
-
- 
-
-                {
-                    "name":"value_systemdienstleistungen",
-                    "default":""
-                },
-                {
-                    "name":"title_systemdienstleistungen",
-                    "default":""
-                },
-                {
-                    "name":"subtitle_systemdienstleistungen",
-                    "default":""
-                },
-                {
-                    "name":"subtitle2_systemdienstleistungen",
-                    "default":""
-                },
-
-
-
-
-
-                {
-                    "name":"value_vernetzte_Verbraucher",
-                    "default":""
-                },
-                {
-                    "name":"title_vernetzte_Verbraucher",
-                    "default":""
-                },
-                {
-                    "name":"subtitle_vernetzte_Verbraucher",
-                    "default":""
-                },
-                {
-                    "name":"subtitle2_vernetzte_Verbraucher",
-                    "default":""
-                },
-
-
- 
-
-
-
-
-
-
-                {
-                    "name":"value_aggregierte_flexibilitaet",
-                    "default":""
-                },
-                {
-                    "name":"title_aggregierte_flexibilitaet",
-                    "default":""
-                },
-                {
-                    "name":"subtitle_aggregierte_flexibilitaet",
-                    "default":""
-                },
-                {
-                    "name":"subtitle2_aggregierte_flexibilitaet",
-                    "default":""
-                },
-
-
-
-
-
-                {
-                    "name":"value_num_praequalifiziert",
-                    "default":""
-                },
-                {
-                    "name":"title_num_praequalifiziert",
-                    "default":""
-                },
-                {
-                    "name":"subtitle_num_praequalifiziert",
-                    "default":""
-                },
-                {
-                    "name":"subtitle2_num_praequalifiziert",
-                    "default":""
-                }
-
-
-
-
-
-
-
-
-
-            ]
-        },
-        {
-            "name":"simulation",
-            "childs":
-            [
-                {
-                    "name":"vpp_mode",
-                    "default": "VPP Mode"
-                },
-                {
-                    "name":"manual_mode",
-                    "default": "Manual Mode"
-                },
-                {
-                    "name":"backButton_link",
-                    "default": ""
-                },
-                {
-                    "name":"button_startscreen",
-                    "default": "Menu"
-                },
-                {
-                    "name":"percentage_goal",
-                    "default":"Erneuerbare Energien im Stromsystem"
-                },
-                {
-                    "name":"solar",
-                    "default":"Solar"
-                },
-                {
-                    "name":"wind",
-                    "default":"Wind"
-                },
-                {
-                    "name":"kwk",
-                    "default":"KWK"
-                },
-                {
-                    "name":"biogas",
-                    "default":"Biogas"
-                },
-                {
-                    "name":"wasser",
-                    "default":"Laufwasserkraftwerke"
-                },
-                {
-                    "name":"industry",
-                    "default":"Lastmanagement"
-                },
-                {
-                    "name":"server",
-                    "default":"Virtuelles Kraftwerk"
-                },
-                {
-                    "name":"headline",
-                    "default": "Nextfrequenz"
-                },
-                {
-                    "name":"sub_headline",
-                    "default": "Wie viel Prozent erneuerbare Energien im Stromsystem kannst du ermöglichen?"
-                },
-                {
-                    "name":"page_title",
-                    "default": "Steuern Sie das virtuelle Kraftwerk, um den Blackout zu verhindern!"
-                },
-                {
-                    "name":"page_description",
-                    "default": "Seien Sie der Kraftwerksmeister des virtuellen Kraftwerks! In unserer Simulation sehen Sie, wie ein virtuelles Kraftwerk funktioniert…"
-                },
-                {
-                    "name":"startButton_text",
-                    "default":"Spiel Starten"
-                },
-                {
-                    "name":"blackout",
-                    "default": "Blackout!"
-                },
-                {
-                    "name":"points",
-                    "default": "Punkte"
-                },
-                {
-                    "name":"retry",
-                    "default":"Noch einmal versuchen"
-                },
-                {
-                    "name":"manual_caption",
-                    "default": "Anleitung"
-                },
-                {
-                    "name":"manual_headline",
-                    "default": "Seien Sie der Kraftwerksmeister des virtuellen Kraftwerks und sorgen Sie dafür, dass es nicht zum Blackout kommt."
-                },
-                {
-                    "name":"manual_text",
-                    "default": "Am oberen Bildrand sehen Sie die Netzfrequenz, die zwischen 49,8 Hertz und 50,2 Hertz liegen muss, um einen Zusammenbruch des Stromnetzes zu verhindern. Die Netzfrequenz schwankt permanent. Und oftmals sorgen unvorhersehbare Ereignisse für weitere Schwankungen. Über die vier Regler können Sie die einzelnen dezentralen Anlagen nutzen, um die Netzfrequenz auszuregeln. Sinkt die Netzfrequenz, ist mehr Stromproduktion oder weniger Stromnachfrage gefragt. Steigt die Netzfrequenz, müssen Sie durch verminderte Stromproduktion oder steigende Stromentnahme gegensteuern. Und ein kleiner Tipp: Mit einem Klick auf unser Logo in der Bildmitte sehen Sie, wie die automatische Regelung über das Leitsystem eines virtuellen Kraftwerks funktioniert."
-                },
-                {
-                    "name":"backButton_title",
-                    "default": "Virtuelles Kraftwerk für Bioenergie, Solar, Wind, KWK und Demand Side Management"
-                },
-                {
-                    "name":"backButton_text",
-                    "default": "Zurück zur Startseite"
-                },
-                {
-                    "name":"backbutton_app_text",
-                    "default": "Zurück zum NextDisplay"
-                },
-                {
-                    "name":"infoIndustry",
-                    "default":"Nicht nur Stromproduzenten können helfen, das Stromnetz stabil zu halten. Auch Verbraucher leisten über das Lastmanagement ihren Beitrag. Aber Vorsicht: Hier ist Umdenken gefragt. Wenn ein Industrieprozess mehr Strom verbraucht, fällt die Netzfrequenz. Verbraucht er weniger Strom, steigt die Netzfrequenz."
-                },
-                {
-                    "name":"infoBio",
-                    "default":"Biogasanlagen können dank der eingesetzten BHKW-Technologie ihre Stromproduktion zuverlässig und schnell anpassen, wenn sie in einem virtuellen Kraftwerk vernetzt sind. Dadurch liefern sie wertvolle Regelenergie und beugen Blackouts vor. Bereits heute sind viele hundert Biogasanlagen im virtuellen Kraftwerk Next Pool vernetzt und jeden Tag werden es mehr…"
-                },
-                {
-                    "name":"infoWater",
-                    "default":"Pumpspeicherkraftwerke liefern schon seit vielen Jahrzehnten Regelenergie zur Netzfrequenzstabilisierung. Aber auch Laufwasserkraftwerke mit oder ohne Staufläche können dazu beitragen, das Stromnetz im Gleichgewicht zu halten. Vor allem im Süden von Deutschland hat Next Kraftwerke verschiedene Wasserkraftwerke vernetzt."
-                },
-                {
-                    "name":"infoWood",
-                    "default":"Nicht nur fossile Kraftwerke sind steuerbar, auch viele neue Kraftwerkstypen sind in der Lage Regelenergie zu liefern. Darunter fallen beispielsweise Holzheizkraftwerke, Grubengasanlagen, Klärgasanlagen oder auch Müllheizkraftwerke."
-                },
-                {
-                    "name":"infoWind",
-                    "default":"Ebenso wie Solaranlagen dürfen auch Windkraftanlagen keine Regelenergie zur Stabilisierung der Netzfrequenz liefern, da ihre Stromproduktion zu sehr schwankt. Trotzdem sind sie im virtuellen Kraftwerk vernetzt, um den aktuellen Status der Anlage auszulesen und mit den Wetterprognosen zu vergleichen. Und bei stark negativen Börsenpreisen regelt das virtuelle Kraftwerk auch."
-                },
-                {
-                    "name":"infoHaushalt",
-                    "default":"Private Haushalte werden heute noch nicht in virtuellen Kraftwerken vernetzt. Zukünftig bieten sich in diesem Bereich aber viele Möglichkeiten an, da ähnlich wie bei Industrieprozessen auch Geräte in Haushalten ihren Stromverbrauch für einen kurzen Moment anpassen können – das berühmte Beispiel ist hier der Kühlschrank."
-                },
-                {
-                    "name":"infoSolar",
-                    "default":"Solaranlagen sind ebenfalls Teil des virtuellen Kraftwerks Next Pool. Allerdings dürfen Solaranlagen heute noch keine Regelenergie liefern, da ihre Stromeinspeisung noch zu sehr schwankt. Trotzdem können Solaranlagen im virtuellen Kraftwerk abgeregelt werden, etwa bei stark negativen Börsenpreisen."
-                },
-                {
-                    "name":"infoNetze",
-                    "default":"Die Stromnetze speichern Strom nicht, sie transportieren ihn. Um Blackouts vorzubeugen, muss immer eine Netzfrequenz von 50 Hertz eingehalten werden. Ab einer Netzfrequenz von 49,98 Hz bzw. 50,02 Hz wird die Regelenergie aktiviert, um das Netz wieder ins Lot zu bringen. Fällt die Netzfrequenz trotz des Einsatzes von Regelenergie unter 49,8 Hz oder steigt sie über 50,2 Hz, greifen die Übertragungsnetzbetreiber auf Notmaßnahmen zurück, die wir hier nicht berücksichtigt haben."
-                },
-                {
-                    "name":"infoVKW",
-                    "default":"Next Kraftwerke betreibt ein Virtuelles Kraftwerk, das in sieben europäischen Regelzonen aktiv ist. Über den Einsatz von Regelenergie helfen die im Virtuellen Kraftwerk Next Pool vernetzten Erneuerbaren Energien dabei, die Netzfrequenz zu stabilisieren. Die Zentrale des Next Pool liegt in Köln. Von dort aus werden alle Anlagen im Falle eines Regelenergieabrufs vollautomatisch gesteuert."
-                },
-                {
-                    "name":"updateBrowser_text",
-                    "default":"Es tut uns leid! Das NextFrequenz-Spiel ist mit dieser Version Ihres Browsers leider nicht spielbar. Bitte installieren Sie die neueste Version Ihres Browsers."
-                },
-                {
-                    "name":"updateBrowser_suggest",
-                    "default":"Wir empfehlen Mozilla Firefox"
-                },
-                {
-                    "name":"updateBrowser_link",
-                    "default":"https://www.mozilla.org/de/firefox/new/"
-                },
-                {
-                    "name":"BlockInKohlekraftwerkAusgefallen",
-                    "default":"Block in Kohlekraftwerk ausgefallen"
-                },
-                {
-                    "name":"UnerwarteteSturmfront",
-                    "default":"Unerwartete Sturmfront"
-                },
-                {
-                    "name":"Windflaute",
-                    "default":"Windflaute"
-                },
-                {
-                    "name":"PlötzlicheWolkendecke",
-                    "default":"Plötzliche Wolkendecke"
-                },
-                {
-                    "name":"MehrSonnenscheinAlsPrognostiziert",
-                    "default":"Mehr Sonnenschein als prognostiziert"
-                },
-                {
-                    "name":"HalbzeitpausImWM-Finale",
-                    "default":"Halbzeitpause im WM-Finale"
-                },
-                {
-                    "name":"Stromspartag",
-                    "default":"Stromspartag"
-                },
-                {
-                    "name":"SicherheitsabschaltungAKW",
-                    "default":"Sicherheitsabschaltung AKW"
-                },
-                {
-                    "name":"Wintereinbruch",
-                    "default":"Wintereinbruch"
-                },
-                {
-                    "name":"Hitzewelle",
-                    "default":"Hitzewelle"
-                },
-                {
-                    "name":"Sonnenfinsternis",
-                    "default": "Sonnenfinsternis"
-                }
-            ]
+          "name": "no_comments",
+          "default": ""
         }
-
-
-
-    ]
-
+      ]
+    },
+    {
+      "name": "forms",
+      "childs": [
+        {
+          "name": "send",
+          "default": "Send"
+        },
+        {
+          "name": "form_error",
+          "default": "The form is not valid, please check content of the red fields."
+        },
+        {
+          "name": "required",
+          "default": "required field"
+        },
+        {
+          "name": "invalid_email",
+          "default": "Invalid EMail"
+        },
+        {
+          "name": "invalid_zip",
+          "default": "Invalid ZIP code"
+        }
+      ]
+    },
+    {
+      "name": "backend",
+      "childs": [
+        {
+          "name": "save",
+          "comment": "save button text",
+          "default": "save"
+        },
+        {
+          "name": "edit",
+          "comment": "edit button text",
+          "default": "edit"
+        },
+        {
+          "name": "create",
+          "comment": "create button text",
+          "default": "create"
+        },
+        {
+          "name": "translation_language",
+          "comment": "",
+          "default": "language"
+        }
+      ]
+    },
+    {
+      "name": "widget",
+      "childs": [
+        {
+          "name": "form_minierloes",
+          "childs": [
+            {
+              "name": "mail_from_email",
+              "comment": "",
+              "default": ""
+            },
+            {
+              "name": "mail_from_name",
+              "comment": "",
+              "default": ""
+            },
+            {
+              "name": "mail_subject",
+              "comment": "",
+              "default": ""
+            },
+            {
+              "name": "mail_body",
+              "comment": "",
+              "default": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "language",
+      "childs": [
+        {
+          "name": "other_countries",
+          "default": "other countries"
+        },
+        {
+          "name": "other_language",
+          "default": "Show this website in another language"
+        },
+        {
+          "name": "lang_de"
+        },
+        {
+          "name": "lang_fr"
+        },
+        {
+          "name": "lang_en"
+        },
+        {
+          "name": "lang_it"
+        },
+        {
+          "name": "lang_nl"
+        },
+        {
+          "name": "lang_pl"
+        },
+        {
+          "name": "country_de"
+        },
+        {
+          "name": "country_de_url"
+        },
+        {
+          "name": "country_nl"
+        },
+        {
+          "name": "country_nl_url"
+        },
+        {
+          "name": "country_at"
+        },
+        {
+          "name": "country_at_url"
+        },
+        {
+          "name": "country_it"
+        },
+        {
+          "name": "country_it_url"
+        },
+        {
+          "name": "country_ch"
+        },
+        {
+          "name": "country_ch_url"
+        },
+        {
+          "name": "country_pl"
+        },
+        {
+          "name": "country_pl_url"
+        },
+        {
+          "name": "country_en"
+        },
+        {
+          "name": "country_en_url"
+        },
+        {
+          "name": "country_be"
+        },
+        {
+          "name": "country_be_url"
+        },
+        {
+          "name": "country_fr"
+        },
+        {
+          "name": "country_fr_url"
+        }
+      ]
+    },
+    {
+      "name": "events",
+      "childs": [
+        {
+          "name": "upcoming",
+          "default": ""
+        },
+        {
+          "name": "passed",
+          "default": ""
+        }
+      ]
+    },
+    {
+      "name": "jobs",
+      "childs": [
+        {
+          "name": "alljobs",
+          "default": ""
+        },
+        {
+          "name": "applynow",
+          "default": "Apply Now"
+        },
+        {
+          "name": "intro1_title",
+          "default": ""
+        },
+        {
+          "name": "intro1",
+          "default": ""
+        },
+        {
+          "name": "intro2_title",
+          "default": ""
+        },
+        {
+          "name": "intro2",
+          "default": ""
+        },
+        {
+          "name": "intro3_title",
+          "default": ""
+        },
+        {
+          "name": "intro3",
+          "default": ""
+        },
+        {
+          "name": "intro4_title",
+          "default": ""
+        },
+        {
+          "name": "intro4",
+          "default": ""
+        },
+        {
+          "name": "intro5_title",
+          "default": ""
+        },
+        {
+          "name": "intro5",
+          "default": ""
+        },
+        {
+          "name": "intro6_title",
+          "default": ""
+        },
+        {
+          "name": "intro6",
+          "default": ""
+        },
+        {
+          "name": "intro7_title",
+          "default": ""
+        },
+        {
+          "name": "intro7",
+          "default": ""
+        },
+        {
+          "name": "intro8_title",
+          "default": ""
+        },
+        {
+          "name": "intro8",
+          "default": ""
+        }
+      ]
+    },
+    {
+      "name": "post",
+      "childs": [
+        {
+          "name": "author",
+          "default": "Author:"
+        },
+        {
+          "name": "published",
+          "default": "Published:"
+        },
+        {
+          "name": "published_link",
+          "default": ""
+        },
+        {
+          "name": "next",
+          "default": "next"
+        },
+        {
+          "name": "previous",
+          "default": "previous"
+        }
+      ]
+    },
+    {
+      "name": "search",
+      "childs": [
+        {
+          "name": "resultfor",
+          "default": "Results for:"
+        },
+        {
+          "name": "noresults",
+          "default": "Sorry, nothing to display."
+        },
+        {
+          "name": "search",
+          "default": "Search"
+        },
+        {
+          "name": "searchheader",
+          "default": "Enter search term and press enter"
+        }
+      ]
+    },
+    {
+      "name": "numbersfacts",
+      "childs": [
+        {
+          "name": "value_mitarbeiter",
+          "default": ""
+        },
+        {
+          "name": "title_mitarbeiter",
+          "default": ""
+        },
+        {
+          "name": "subtitle_mitarbeiter",
+          "default": ""
+        },
+        {
+          "name": "subtitle2_mitarbeiter",
+          "default": ""
+        },
+        {
+          "name": "value_standorte",
+          "default": ""
+        },
+        {
+          "name": "title_standorte",
+          "default": ""
+        },
+        {
+          "name": "subtitle_standorte",
+          "default": ""
+        },
+        {
+          "name": "subtitle2_standorte",
+          "default": ""
+        },
+        {
+          "name": "value_umsatz",
+          "default": ""
+        },
+        {
+          "name": "title_umsatz",
+          "default": ""
+        },
+        {
+          "name": "subtitle_umsatz",
+          "default": ""
+        },
+        {
+          "name": "subtitle2_umsatz",
+          "default": ""
+        },
+        {
+          "name": "value_anlagen",
+          "default": ""
+        },
+        {
+          "name": "title_anlagen",
+          "default": ""
+        },
+        {
+          "name": "subtitle_anlagen",
+          "default": ""
+        },
+        {
+          "name": "subtitle2_anlagen",
+          "default": ""
+        },
+        {
+          "name": "value_gesamtleistung",
+          "default": ""
+        },
+        {
+          "name": "title_gesamtleistung",
+          "default": ""
+        },
+        {
+          "name": "subtitle_gesamtleistung",
+          "default": ""
+        },
+        {
+          "name": "subtitle2_gesamtleistung",
+          "default": ""
+        },
+        {
+          "name": "value_gruendung",
+          "default": ""
+        },
+        {
+          "name": "title_gruendung",
+          "default": ""
+        },
+        {
+          "name": "subtitle_gruendung",
+          "default": ""
+        },
+        {
+          "name": "subtitle2_gruendung",
+          "default": ""
+        },
+        {
+          "name": "value_datenpunktejahr",
+          "default": ""
+        },
+        {
+          "name": "title_datenpunktejahr",
+          "default": ""
+        },
+        {
+          "name": "subtitle_datenpunktejahr",
+          "default": ""
+        },
+        {
+          "name": "subtitle2_datenpunktejahr",
+          "default": ""
+        },
+        {
+          "name": "value_gewinnaward",
+          "default": ""
+        },
+        {
+          "name": "title_gewinnaward",
+          "default": ""
+        },
+        {
+          "name": "subtitle_gewinnaward",
+          "default": ""
+        },
+        {
+          "name": "subtitle2_gewinnaward",
+          "default": ""
+        },
+        {
+          "name": "value_numschnittstellenpartner",
+          "default": ""
+        },
+        {
+          "name": "title_numschnittstellenpartner",
+          "default": ""
+        },
+        {
+          "name": "subtitle_numschnittstellenpartner",
+          "default": ""
+        },
+        {
+          "name": "subtitle2_numschnittstellenpartner",
+          "default": ""
+        },
+        {
+          "name": "value_num_biogas",
+          "default": ""
+        },
+        {
+          "name": "title_num_biogas",
+          "default": ""
+        },
+        {
+          "name": "subtitle_num_biogas",
+          "default": ""
+        },
+        {
+          "name": "subtitle2_num_biogas",
+          "default": ""
+        },
+        {
+          "name": "value_leistung_biogas",
+          "default": ""
+        },
+        {
+          "name": "title_leistung_biogas",
+          "default": ""
+        },
+        {
+          "name": "subtitle_leistung_biogas",
+          "default": ""
+        },
+        {
+          "name": "subtitle2_leistung_biogas",
+          "default": ""
+        },
+        {
+          "name": "value_strommenge",
+          "default": ""
+        },
+        {
+          "name": "title_strommenge",
+          "default": ""
+        },
+        {
+          "name": "subtitle_strommenge",
+          "default": ""
+        },
+        {
+          "name": "subtitle2_strommenge",
+          "default": ""
+        },
+        {
+          "name": "value_neg_srl_biogas",
+          "default": ""
+        },
+        {
+          "name": "title_neg_srl_biogas",
+          "default": ""
+        },
+        {
+          "name": "subtitle_neg_srl_biogas",
+          "default": ""
+        },
+        {
+          "name": "subtitle2_neg_srl_biogas",
+          "default": ""
+        },
+        {
+          "name": "value_pos_srl_biogas",
+          "default": ""
+        },
+        {
+          "name": "title_pos_srl_biogas",
+          "default": ""
+        },
+        {
+          "name": "subtitle_pos_srl_biogas",
+          "default": ""
+        },
+        {
+          "name": "subtitle2_pos_srl_biogas",
+          "default": ""
+        },
+        {
+          "name": "value_regelzonen",
+          "default": ""
+        },
+        {
+          "name": "title_regelzonen",
+          "default": ""
+        },
+        {
+          "name": "subtitle_regelzonen",
+          "default": ""
+        },
+        {
+          "name": "subtitle2_regelzonen",
+          "default": ""
+        },
+        {
+          "name": "value_numpvanlagen",
+          "default": ""
+        },
+        {
+          "name": "title_numpvanlagen",
+          "default": ""
+        },
+        {
+          "name": "subtitle_numpvanlagen",
+          "default": ""
+        },
+        {
+          "name": "subtitle2_numpvanlagen",
+          "default": ""
+        },
+        {
+          "name": "value_gesamtphotovoltaik",
+          "default": ""
+        },
+        {
+          "name": "title_gesamtphotovoltaik",
+          "default": ""
+        },
+        {
+          "name": "subtitle_gesamtphotovoltaik",
+          "default": ""
+        },
+        {
+          "name": "subtitle2_gesamtphotovoltaik",
+          "default": ""
+        },
+        {
+          "name": "value_numwindanlagen",
+          "default": ""
+        },
+        {
+          "name": "title_numwindanlagen",
+          "default": ""
+        },
+        {
+          "name": "subtitle_numwindanlagen",
+          "default": ""
+        },
+        {
+          "name": "subtitle2_numwindanlagen",
+          "default": ""
+        },
+        {
+          "name": "value_leistung_windanlagen",
+          "default": ""
+        },
+        {
+          "name": "title_leistung_windanlagen",
+          "default": ""
+        },
+        {
+          "name": "subtitle_leistung_windanlagen",
+          "default": ""
+        },
+        {
+          "name": "subtitle2_leistung_windanlagen",
+          "default": ""
+        },
+        {
+          "name": "value_num_wasser_anlagen",
+          "default": ""
+        },
+        {
+          "name": "title_num_wasser_anlagen",
+          "default": ""
+        },
+        {
+          "name": "subtitle_num_wasser_anlagen",
+          "default": ""
+        },
+        {
+          "name": "subtitle2_num_wasser_anlagen",
+          "default": ""
+        },
+        {
+          "name": "value_leistung_wasseranlagen",
+          "default": ""
+        },
+        {
+          "name": "title_leistung_wasseranlagen",
+          "default": ""
+        },
+        {
+          "name": "subtitle_leistung_wasseranlagen",
+          "default": ""
+        },
+        {
+          "name": "subtitle2_leistung_wasseranlagen",
+          "default": ""
+        },
+        {
+          "name": "value_num_stromaggregate",
+          "default": ""
+        },
+        {
+          "name": "title_num_stromaggregate",
+          "default": ""
+        },
+        {
+          "name": "subtitle_num_stromaggregate",
+          "default": ""
+        },
+        {
+          "name": "subtitle2_num_stromaggregate",
+          "default": ""
+        },
+        {
+          "name": "value_leistung_stromaggregate",
+          "default": ""
+        },
+        {
+          "name": "title_leistung_stromaggregate",
+          "default": ""
+        },
+        {
+          "name": "subtitle_leistung_stromaggregate",
+          "default": ""
+        },
+        {
+          "name": "subtitle2_leistung_stromaggregate",
+          "default": ""
+        },
+        {
+          "name": "value_num_kwk_anlagen",
+          "default": ""
+        },
+        {
+          "name": "title_num_kwk_anlagen",
+          "default": ""
+        },
+        {
+          "name": "subtitle_num_kwk_anlagen",
+          "default": ""
+        },
+        {
+          "name": "subtitle2_num_kwk_anlagen",
+          "default": ""
+        },
+        {
+          "name": "value_leistung_kwk_anlagen",
+          "default": ""
+        },
+        {
+          "name": "title_leistung_kwk_anlagen",
+          "default": ""
+        },
+        {
+          "name": "subtitle_leistung_kwk_anlagen",
+          "default": ""
+        },
+        {
+          "name": "subtitle2_leistung_kwk_anlagen",
+          "default": ""
+        },
+        {
+          "name": "value_num_batterien",
+          "default": ""
+        },
+        {
+          "name": "title_num_batterien",
+          "default": ""
+        },
+        {
+          "name": "subtitle_num_batterien",
+          "default": ""
+        },
+        {
+          "name": "subtitle2_num_batterien",
+          "default": ""
+        },
+        {
+          "name": "value_prl_batterien",
+          "default": ""
+        },
+        {
+          "name": "title_prl_batterien",
+          "default": ""
+        },
+        {
+          "name": "subtitle_prl_batterien",
+          "default": ""
+        },
+        {
+          "name": "subtitle2_prl_batterien",
+          "default": ""
+        },
+        {
+          "name": "value_leistung_batterien",
+          "default": ""
+        },
+        {
+          "name": "title_leistung_batterien",
+          "default": ""
+        },
+        {
+          "name": "subtitle_leistung_batterien",
+          "default": ""
+        },
+        {
+          "name": "subtitle2_leistung_batterien",
+          "default": ""
+        },
+        {
+          "name": "value_num_powerx_anlagen",
+          "default": ""
+        },
+        {
+          "name": "title_num_powerx_anlagen",
+          "default": ""
+        },
+        {
+          "name": "subtitle_num_powerx_anlagen",
+          "default": ""
+        },
+        {
+          "name": "subtitle2_num_powerx_anlagen",
+          "default": ""
+        },
+        {
+          "name": "value_leistung_powerx_anlagen",
+          "default": ""
+        },
+        {
+          "name": "title_leistung_powerx_anlagen",
+          "default": ""
+        },
+        {
+          "name": "subtitle_leistung_powerx_anlagen",
+          "default": ""
+        },
+        {
+          "name": "subtitle2_leistung_powerx_anlagen",
+          "default": ""
+        },
+        {
+          "name": "value_praequalifiziert_PRL_europa",
+          "default": ""
+        },
+        {
+          "name": "title_praequalifiziert_PRL_europa",
+          "default": ""
+        },
+        {
+          "name": "subtitle_praequalifiziert_PRL_europa",
+          "default": ""
+        },
+        {
+          "name": "subtitle2_praequalifiziert_PRL_europa",
+          "default": ""
+        },
+        {
+          "name": "value_praequalifiziert_SRL_europa",
+          "default": ""
+        },
+        {
+          "name": "title_praequalifiziert_SRL_europa",
+          "default": ""
+        },
+        {
+          "name": "subtitle_praequalifiziert_SRL_europa",
+          "default": ""
+        },
+        {
+          "name": "subtitle2_praequalifiziert_SRL_europa",
+          "default": ""
+        },
+        {
+          "name": "value_praequalifiziert_MRL_europa",
+          "default": ""
+        },
+        {
+          "name": "title_praequalifiziert_MRL_europa",
+          "default": ""
+        },
+        {
+          "name": "subtitle_praequalifiziert_MRL_europa",
+          "default": ""
+        },
+        {
+          "name": "subtitle2_praequalifiziert_MRL_europa",
+          "default": ""
+        },
+        {
+          "name": "value_systemdienstleistungen",
+          "default": ""
+        },
+        {
+          "name": "title_systemdienstleistungen",
+          "default": ""
+        },
+        {
+          "name": "subtitle_systemdienstleistungen",
+          "default": ""
+        },
+        {
+          "name": "subtitle2_systemdienstleistungen",
+          "default": ""
+        },
+        {
+          "name": "value_vernetzte_Verbraucher",
+          "default": ""
+        },
+        {
+          "name": "title_vernetzte_Verbraucher",
+          "default": ""
+        },
+        {
+          "name": "subtitle_vernetzte_Verbraucher",
+          "default": ""
+        },
+        {
+          "name": "subtitle2_vernetzte_Verbraucher",
+          "default": ""
+        },
+        {
+          "name": "value_aggregierte_flexibilitaet",
+          "default": ""
+        },
+        {
+          "name": "title_aggregierte_flexibilitaet",
+          "default": ""
+        },
+        {
+          "name": "subtitle_aggregierte_flexibilitaet",
+          "default": ""
+        },
+        {
+          "name": "subtitle2_aggregierte_flexibilitaet",
+          "default": ""
+        },
+        {
+          "name": "value_num_praequalifiziert",
+          "default": ""
+        },
+        {
+          "name": "title_num_praequalifiziert",
+          "default": ""
+        },
+        {
+          "name": "subtitle_num_praequalifiziert",
+          "default": ""
+        },
+        {
+          "name": "subtitle2_num_praequalifiziert",
+          "default": ""
+        }
+      ]
+    },
+    {
+      "name": "simulation",
+      "childs": [
+        {
+          "name": "vpp_mode",
+          "default": "VPP Mode"
+        },
+        {
+          "name": "manual_mode",
+          "default": "Manual Mode"
+        },
+        {
+          "name": "backButton_link",
+          "default": ""
+        },
+        {
+          "name": "button_startscreen",
+          "default": "Menu"
+        },
+        {
+          "name": "percentage_goal",
+          "default": "Erneuerbare Energien im Stromsystem"
+        },
+        {
+          "name": "solar",
+          "default": "Solar"
+        },
+        {
+          "name": "wind",
+          "default": "Wind"
+        },
+        {
+          "name": "kwk",
+          "default": "KWK"
+        },
+        {
+          "name": "biogas",
+          "default": "Biogas"
+        },
+        {
+          "name": "wasser",
+          "default": "Laufwasserkraftwerke"
+        },
+        {
+          "name": "industry",
+          "default": "Lastmanagement"
+        },
+        {
+          "name": "server",
+          "default": "Virtuelles Kraftwerk"
+        },
+        {
+          "name": "headline",
+          "default": "Nextfrequenz"
+        },
+        {
+          "name": "sub_headline",
+          "default": "Wie viel Prozent erneuerbare Energien im Stromsystem kannst du ermöglichen?"
+        },
+        {
+          "name": "page_title",
+          "default": "Steuern Sie das virtuelle Kraftwerk, um den Blackout zu verhindern!"
+        },
+        {
+          "name": "page_description",
+          "default": "Seien Sie der Kraftwerksmeister des virtuellen Kraftwerks! In unserer Simulation sehen Sie, wie ein virtuelles Kraftwerk funktioniert…"
+        },
+        {
+          "name": "startButton_text",
+          "default": "Spiel Starten"
+        },
+        {
+          "name": "blackout",
+          "default": "Blackout!"
+        },
+        {
+          "name": "points",
+          "default": "Punkte"
+        },
+        {
+          "name": "retry",
+          "default": "Noch einmal versuchen"
+        },
+        {
+          "name": "manual_caption",
+          "default": "Anleitung"
+        },
+        {
+          "name": "manual_headline",
+          "default": "Seien Sie der Kraftwerksmeister des virtuellen Kraftwerks und sorgen Sie dafür, dass es nicht zum Blackout kommt."
+        },
+        {
+          "name": "manual_text",
+          "default": "Am oberen Bildrand sehen Sie die Netzfrequenz, die zwischen 49,8 Hertz und 50,2 Hertz liegen muss, um einen Zusammenbruch des Stromnetzes zu verhindern. Die Netzfrequenz schwankt permanent. Und oftmals sorgen unvorhersehbare Ereignisse für weitere Schwankungen. Über die vier Regler können Sie die einzelnen dezentralen Anlagen nutzen, um die Netzfrequenz auszuregeln. Sinkt die Netzfrequenz, ist mehr Stromproduktion oder weniger Stromnachfrage gefragt. Steigt die Netzfrequenz, müssen Sie durch verminderte Stromproduktion oder steigende Stromentnahme gegensteuern. Und ein kleiner Tipp: Mit einem Klick auf unser Logo in der Bildmitte sehen Sie, wie die automatische Regelung über das Leitsystem eines virtuellen Kraftwerks funktioniert."
+        },
+        {
+          "name": "backButton_title",
+          "default": "Virtuelles Kraftwerk für Bioenergie, Solar, Wind, KWK und Demand Side Management"
+        },
+        {
+          "name": "backButton_text",
+          "default": "Zurück zur Startseite"
+        },
+        {
+          "name": "backbutton_app_text",
+          "default": "Zurück zum NextDisplay"
+        },
+        {
+          "name": "infoIndustry",
+          "default": "Nicht nur Stromproduzenten können helfen, das Stromnetz stabil zu halten. Auch Verbraucher leisten über das Lastmanagement ihren Beitrag. Aber Vorsicht: Hier ist Umdenken gefragt. Wenn ein Industrieprozess mehr Strom verbraucht, fällt die Netzfrequenz. Verbraucht er weniger Strom, steigt die Netzfrequenz."
+        },
+        {
+          "name": "infoBio",
+          "default": "Biogasanlagen können dank der eingesetzten BHKW-Technologie ihre Stromproduktion zuverlässig und schnell anpassen, wenn sie in einem virtuellen Kraftwerk vernetzt sind. Dadurch liefern sie wertvolle Regelenergie und beugen Blackouts vor. Bereits heute sind viele hundert Biogasanlagen im virtuellen Kraftwerk Next Pool vernetzt und jeden Tag werden es mehr…"
+        },
+        {
+          "name": "infoWater",
+          "default": "Pumpspeicherkraftwerke liefern schon seit vielen Jahrzehnten Regelenergie zur Netzfrequenzstabilisierung. Aber auch Laufwasserkraftwerke mit oder ohne Staufläche können dazu beitragen, das Stromnetz im Gleichgewicht zu halten. Vor allem im Süden von Deutschland hat Next Kraftwerke verschiedene Wasserkraftwerke vernetzt."
+        },
+        {
+          "name": "infoWood",
+          "default": "Nicht nur fossile Kraftwerke sind steuerbar, auch viele neue Kraftwerkstypen sind in der Lage Regelenergie zu liefern. Darunter fallen beispielsweise Holzheizkraftwerke, Grubengasanlagen, Klärgasanlagen oder auch Müllheizkraftwerke."
+        },
+        {
+          "name": "infoWind",
+          "default": "Ebenso wie Solaranlagen dürfen auch Windkraftanlagen keine Regelenergie zur Stabilisierung der Netzfrequenz liefern, da ihre Stromproduktion zu sehr schwankt. Trotzdem sind sie im virtuellen Kraftwerk vernetzt, um den aktuellen Status der Anlage auszulesen und mit den Wetterprognosen zu vergleichen. Und bei stark negativen Börsenpreisen regelt das virtuelle Kraftwerk auch."
+        },
+        {
+          "name": "infoHaushalt",
+          "default": "Private Haushalte werden heute noch nicht in virtuellen Kraftwerken vernetzt. Zukünftig bieten sich in diesem Bereich aber viele Möglichkeiten an, da ähnlich wie bei Industrieprozessen auch Geräte in Haushalten ihren Stromverbrauch für einen kurzen Moment anpassen können – das berühmte Beispiel ist hier der Kühlschrank."
+        },
+        {
+          "name": "infoSolar",
+          "default": "Solaranlagen sind ebenfalls Teil des virtuellen Kraftwerks Next Pool. Allerdings dürfen Solaranlagen heute noch keine Regelenergie liefern, da ihre Stromeinspeisung noch zu sehr schwankt. Trotzdem können Solaranlagen im virtuellen Kraftwerk abgeregelt werden, etwa bei stark negativen Börsenpreisen."
+        },
+        {
+          "name": "infoNetze",
+          "default": "Die Stromnetze speichern Strom nicht, sie transportieren ihn. Um Blackouts vorzubeugen, muss immer eine Netzfrequenz von 50 Hertz eingehalten werden. Ab einer Netzfrequenz von 49,98 Hz bzw. 50,02 Hz wird die Regelenergie aktiviert, um das Netz wieder ins Lot zu bringen. Fällt die Netzfrequenz trotz des Einsatzes von Regelenergie unter 49,8 Hz oder steigt sie über 50,2 Hz, greifen die Übertragungsnetzbetreiber auf Notmaßnahmen zurück, die wir hier nicht berücksichtigt haben."
+        },
+        {
+          "name": "infoVKW",
+          "default": "Next Kraftwerke betreibt ein Virtuelles Kraftwerk, das in sieben europäischen Regelzonen aktiv ist. Über den Einsatz von Regelenergie helfen die im Virtuellen Kraftwerk Next Pool vernetzten Erneuerbaren Energien dabei, die Netzfrequenz zu stabilisieren. Die Zentrale des Next Pool liegt in Köln. Von dort aus werden alle Anlagen im Falle eines Regelenergieabrufs vollautomatisch gesteuert."
+        },
+        {
+          "name": "updateBrowser_text",
+          "default": "Es tut uns leid! Das NextFrequenz-Spiel ist mit dieser Version Ihres Browsers leider nicht spielbar. Bitte installieren Sie die neueste Version Ihres Browsers."
+        },
+        {
+          "name": "updateBrowser_suggest",
+          "default": "Wir empfehlen Mozilla Firefox"
+        },
+        {
+          "name": "updateBrowser_link",
+          "default": "https://www.mozilla.org/de/firefox/new/"
+        },
+        {
+          "name": "BlockInKohlekraftwerkAusgefallen",
+          "default": "Block in Kohlekraftwerk ausgefallen"
+        },
+        {
+          "name": "UnerwarteteSturmfront",
+          "default": "Unerwartete Sturmfront"
+        },
+        {
+          "name": "Windflaute",
+          "default": "Windflaute"
+        },
+        {
+          "name": "PlötzlicheWolkendecke",
+          "default": "Plötzliche Wolkendecke"
+        },
+        {
+          "name": "MehrSonnenscheinAlsPrognostiziert",
+          "default": "Mehr Sonnenschein als prognostiziert"
+        },
+        {
+          "name": "HalbzeitpausImWM-Finale",
+          "default": "Halbzeitpause im WM-Finale"
+        },
+        {
+          "name": "Stromspartag",
+          "default": "Stromspartag"
+        },
+        {
+          "name": "SicherheitsabschaltungAKW",
+          "default": "Sicherheitsabschaltung AKW"
+        },
+        {
+          "name": "Wintereinbruch",
+          "default": "Wintereinbruch"
+        },
+        {
+          "name": "Hitzewelle",
+          "default": "Hitzewelle"
+        },
+        {
+          "name": "Sonnenfinsternis",
+          "default": "Sonnenfinsternis"
+        }
+      ]
+    }
+  ]
 }
 
 
