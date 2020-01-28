@@ -67,10 +67,10 @@ function nextLangg()
     return $langData;
 }
 
-function nextTranslate($key)
+function nextTranslate($key, $createMissing = false)
 {
     global $langCode;
-    
+
     if(function_exists('pll_the_languages') )
     {
         if($langCode!=pll_current_language())
@@ -78,12 +78,19 @@ function nextTranslate($key)
             $langCode=pll_current_language();
             loadLangData($langCode);
         }
-    } 
+    }
 
     global $langData;
-    
-    if(isset($langData[$key])) return $langData[$key];
-    else return '? ['.$langCode.'] '.$key;
+
+    if(isset($langData[$key])) {
+      return $langData[$key];
+    } else if($createMissing || Util::startsWith($key, 'numbersfacts_')) {
+      addTranslation($key);
+      loadLangData($langCode);
+      return $langData[$key];
+    } else {
+      return '? ['.$langCode.'] '.$key;
+    }
 }
 
 function nextTranslateStartsWith($s)
