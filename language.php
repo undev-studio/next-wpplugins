@@ -90,7 +90,7 @@ function nextTranslate($key, $createMissing = false)
     $first_key = key($numbersfacts);
     $suffix = preg_replace('/^numbersfacts_/', '', $key);
     $keyValues = array_filter($numbersfacts[$first_key]->childs, function ($e) use ($suffix) {
-      return $e->name = $suffix;
+      return $e->name == $suffix;
     });
     if (count($keyValues) == 0) {
       addTranslation($key);
