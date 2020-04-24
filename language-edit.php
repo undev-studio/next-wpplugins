@@ -23,6 +23,7 @@ require_once(realpath(dirname(__FILE__)) . '/language.php');
                 <option value="it">IT</option>
                 <option value="nl">NL</option>
                 <option value="cn">CN</option>
+                <option value="es">ES</option>
             </select>
 
         </div>
