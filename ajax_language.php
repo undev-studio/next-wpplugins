@@ -11,11 +11,15 @@ add_action('wp_ajax_getLanguage', 'getLanguage');
 
 add_action('wp_ajax_setLangTrans', 'setTranslation');
 
+
+function getLanguageJson() {
+  $filename = realpath(dirname(__FILE__)) . "/language.json";
+  return file_get_contents($filename);
+}
+
 function getLanguageStructure()
 {
-  $filename = realpath(dirname(__FILE__)) . "/language.json";
-  $json = file_get_contents($filename);
-  echo $json;
+  echo getLanguageJson();
   die();
 }
 
@@ -40,6 +44,30 @@ function getLanguage()
 function updateSimulationLanguage()
 {
 
+}
+
+function addTranslation($key, $value = "") {
+  $json = getLanguageJson();
+  $lang = json_decode($json, true);
+
+  $keys = explode('_', $key);
+  $group = $keys[0];
+  array_shift($keys);
+  $name = join('_', $keys);
+
+  foreach ($lang['content'] as &$langGroup) {
+    if($langGroup['name'] == $group) {
+      $newChild = array();
+      $newChild['name'] = $name;
+      $newChild['default'] = "";
+      $langGroup['childs'][] = $newChild;
+    }
+  }
+
+  $jsonStr = json_encode($lang);
+  if ($jsonStr != null) {
+    file_put_contents(realpath(dirname(__FILE__)) . "/language.json", $jsonStr);
+  }
 }
 
 function setTranslation()
