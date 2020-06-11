@@ -19,6 +19,7 @@ ini_set('display_errors', '1');
 //require_once('language.php');
 
 require_once('ajax_formdvpv.php');
+require_once('ajax_formdvpv_nl.php');
 require_once('ajax_widget_forms.php');
 require_once('ajax_gallery.php');
 require_once('ajax_erloesrechner.php');
