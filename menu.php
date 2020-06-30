@@ -8,7 +8,6 @@ Version: 1
 Author URI: http://undev.de/
 */
 
-
 error_reporting(E_ERROR | E_WARNING);
 ini_set('display_errors', '1');
 
@@ -18,10 +17,14 @@ ini_set('display_errors', '1');
 
 //require_once('language.php');
 
+
 require_once('ajax_formdvpv.php');
 require_once('ajax_formdvpv_nl.php');
+require_once('ajax_formangebot.php');
+
 require_once('ajax_widget_forms.php');
 require_once('ajax_gallery.php');
+
 require_once('ajax_erloesrechner.php');
 require_once('ajax_newsletter.php');
 require_once('ajax_status.php');
