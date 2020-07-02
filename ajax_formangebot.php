@@ -94,6 +94,7 @@ function ajax_formangebot()
   }
 
   if ($fromStep > 0) {
+    //print(json_encode($_REQUEST)); die();
     // validate anlagen
     $currentStep = $fromStep;
     while ($currentStep > 0) {
@@ -172,9 +173,17 @@ function send_angebot_email($lastStep)
   $nextBody .= '<br/><br/>';
   $nextBody .= 'Firma: ' . $_REQUEST['formdata']['firma'];
   $nextBody .= '<br/><br/>';
-  $nextBody .= 'Telefon: ' . $_REQUEST['formdata']['phone'];
+  $nextBody .= 'Straße: ' . $_REQUEST['formdata']['strasse'] . " " . $_REQUEST['formdata']['strassenr'];
   $nextBody .= '<br/><br/>';
-  $nextBody .= 'PLZ: ' . $_REQUEST['formdata']['plz'];
+  if ($_REQUEST['formdata']['zusatz']) {
+    $nextBody .= 'Zusatz: ' . $_REQUEST['formdata']['zusatz'];
+    $nextBody .= '<br/><br/>';
+  }
+  $nextBody .= 'Ort: ' . $_REQUEST['formdata']['plz'] . $_REQUEST['formdata']['ort'];
+  $nextBody .= '<br/><br/>';
+  $nextBody .= 'Land: ' . $_REQUEST['formdata']['land'] . $_REQUEST['formdata']['land'];
+  $nextBody .= '<br/><br/>';
+  $nextBody .= 'Telefon: ' . $_REQUEST['formdata']['phone'];
   $nextBody .= '<br/><br/>';
   $nextBody .= 'E-Mail: ' . $_REQUEST['formdata']['email'];
   $nextBody .= '<br/><br/>';
@@ -184,6 +193,7 @@ function send_angebot_email($lastStep)
   while ($currentStep <= $lastStep) {
     $nextBody .= 'Anlage ' . $currentStep . ':';
     $nextBody .= '<br/><br/>';
+
     $energieTraeger = "energietraeger" . $currentStep;
     $nennleistung = "nennleistung" . $currentStep;
     $datum = "datum" . $currentStep;
@@ -191,11 +201,16 @@ function send_angebot_email($lastStep)
     $ort = "anlage_ort" . $currentStep;
     $verbrauch = "eigenverbrauch" . $currentStep;
     $verbrauch_number = "eigenverbrauch_input" . $currentStep;
+    // $inbetriebname = "inbetriebname" . $currentStep;
+    // $beginvermarktunginput = "beginvermarktunginput" . $currentStep;
+    $betriebdatum = "betriebdatum" . $currentStep;
+    $sonstiges = "sonstiges" . $currentStep;
+
     $nextBody .= 'Energieträger:' . $_REQUEST['formdata'][$energieTraeger];
     $nextBody .= '<br/><br/>';
     $nextBody .= 'Nennleisung:' . $_REQUEST['formdata'][$nennleistung];
     $nextBody .= '<br/><br/>';
-    $nextBody .= 'Datum:' . $_REQUEST['formdata'][$datum];
+    $nextBody .= 'Datum Imbetriebnahme:' . $_REQUEST['formdata'][$datum];
     $nextBody .= '<br/><br/>';
     $nextBody .= 'PLZ:' . $_REQUEST['formdata'][$plz];
     $nextBody .= '<br/><br/>';
@@ -205,10 +220,12 @@ function send_angebot_email($lastStep)
     $nextBody .= '<br/><br/>';
     $nextBody .= 'Eigenverbrauch, Prozent' . $_REQUEST['formdata'][$verbrauch_number];
     $nextBody .= '<br/><br/>';
+    $nextBody .= 'Datum Anmeldung:' . $_REQUEST['formdata'][$betriebdatum];
+    $nextBody .= '<br/><br/>';
+    $nextBody .= 'Sonstiges:' . $_REQUEST['formdata'][$sonstiges];
+    $nextBody .= '<br/><br/>';
     $currentStep++;
   }
-  $nextBody .= 'Marktlokations-ID:' . $_REQUEST['formdata']['marktlokation'];
-  $nextBody .= '<br/><br/>';
   $nextBody .= '<br/><br/>';
   $nextBody .= 'Viele Grüße,';
   $nextBody .= 'eure U-komm';
@@ -243,7 +260,7 @@ function send_angebot_email($lastStep)
   $lastid = $wpdb->insert('emaillog', array(
       'content' => json_encode($nextEmail),
       'templatename' => 'notification_form_angebot',
-      'to' => explode(',', $toAdresses)
+      'to' => implode(',', $toAdresses)
     )
   );
 }
