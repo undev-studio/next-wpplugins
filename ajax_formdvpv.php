@@ -337,8 +337,8 @@ function ajax_formdvpv()
       $body .= '<br/><br/>';
       $body .= 'Nach Pr&uuml;fung Ihrer Unterlagen erhalten Sie von uns eine Auftragsbest&auml;tigung mit dem Hinweis auf den Zeitpunkt, ab dem wir die PV-Anlage f&uuml;r Sie voraussichtlich vermarkten k&ouml;nnen. Erst durch die Auftragsbest&auml;tigung ist der Vertrag zur Direktvermarktung Ihrer PV-Anlage mit uns abgeschlossen.';
       $body .= '<br/><br/>';
-      $body .= 'Bitte beachten Sie die <a href="https://www.next-kraftwerke.de/wp-content/uploads/Umsetzung-verpflichtende-Fernsteuerbarkeit.pdf">Hinweise zur Fernsteuerbarkeit</a> sowie die <a href="https://www.next-kraftwerke.de/wp-content/uploads/AGB-Direktvermarktung-PhotoVoltaik-bis-800kW.pdf">Allgemeinen Vermarktungsbedingungen f&uuml;r kleine Photovoltaik-Anlagen</a>.<br/>';
-      $body .= 'F&uuml;r PV-Anlagen mit mehr als 800 kW Nennleistung ben&ouml;tigen wir leider ein paar zus&auml;tzliche Informationen: Ein <a href="https://www.next-kraftwerke.de/meta/erloesrechner">individuelles Angebot k&ouml;nnen Sie hier anfragen.</a>';
+      $body .= 'Bitte beachten Sie die <a href="https://www.next-kraftwerke.de/wissen/verpflichtende-fernsteuerbarkeit">Hinweise zur Fernsteuerbarkeit</a> sowie die Allgemeinen Vermarktungsbedingungen f&uuml;r kleine Photovoltaik-Anlagen.<br/>';
+      $body .= 'F&uuml;r PV-Anlagen mit mehr als 800 kW Nennleistung ben&ouml;tigen wir leider ein paar zus&auml;tzliche Informationen: Ein <a href="https://www.next-kraftwerke.de/virtuelles-kraftwerk/stromproduzenten/solar#solarueber800">individuelles Angebot k&ouml;nnen Sie hier anfragen.</a>';
       $body .= '<br/><br/>';
       $body .= 'Mit freundlichen Gr&uuml;&szlig;en,<br/>';
       $body .= 'Ihr Next Kraftwerke Team<br/><br/>';
