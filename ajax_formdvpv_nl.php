@@ -8,27 +8,16 @@ require_once('libs/iban/iban.php');
 require_once('libs/hashids/HashGenerator.php');
 require_once('libs/hashids/Hashids.php');
 
-add_action('wp_ajax_nopriv_formdvpv', 'ajax_formdvpv');
-add_action('wp_ajax_nopriv_formdvpv_pdf', 'ajax_formdvpv_pdf');
-add_action('wp_ajax_nopriv_formdvpv_zip', 'ajax_formdvpv_zip');
-add_action('wp_ajax_formdvpv', 'ajax_formdvpv');
-add_action('wp_ajax_formdvpv_pdf', 'ajax_formdvpv_pdf');
-add_action('wp_ajax_formdvpv_zip', 'ajax_formdvpv_zip');
+add_action('wp_ajax_nopriv_formdvpv_nl', 'ajax_formdvpv_nl');
+add_action('wp_ajax_nopriv_formdvpv_nl_pdf', 'ajax_formdvpv_nl_pdf');
+add_action('wp_ajax_nopriv_formdvpv_nl_zip', 'ajax_formdvpv_nl_zip');
+add_action('wp_ajax_formdvpv_nl', 'ajax_formdvpv_nl');
+add_action('wp_ajax_formdvpv_nl_pdf', 'ajax_formdvpv_nl_pdf');
+add_action('wp_ajax_formdvpv_nl_zip', 'ajax_formdvpv_nl_zip');
 
 //--------------------------------------
 
-function generate_uuid()
-{
-  return sprintf('DVPV%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
-    mt_rand(0, 0xffff), mt_rand(0, 0xffff),
-    mt_rand(0, 0xffff),
-    mt_rand(0, 0x0fff) | 0x4000,
-    mt_rand(0, 0x3fff) | 0x8000,
-    mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff)
-  );
-}
-
-function ajax_formdvpv()
+function ajax_formdvpv_nl()
 {
   $jsonArr = Array();
   $jsonArr['errors'] = Array();
@@ -146,7 +135,7 @@ function ajax_formdvpv()
       if ($fromStep >= $currentStep) $jsonArr['errors'][] = 'registrnr';
     }
   } else {
-    if ($_REQUEST['formdata']['marktlokation'] == '' || strlen($_REQUEST['formdata']['marktlokation']) != 11) {
+    if ($_REQUEST['formdata']['marktlokation'] == '' || strlen($_REQUEST['formdata']['marktlokation']) != 18) {
       $jsonArr['navsteps'][$currentStep] = false;
       if ($fromStep >= $currentStep) $jsonArr['errors'][] = 'marktlokation';
     }
@@ -328,7 +317,7 @@ function ajax_formdvpv()
     } else {
       $jsonArr['id'] = $row['id'];
 
-      $body = '<br/>';
+      $body = '';
       $body .= 'Sehr geehrte(r) ' . $_REQUEST['formdata']['vorname'] . ' ' . $_REQUEST['formdata']['nachname'] . ',';
       $body .= '<br/><br/>';
       $body .= 'vielen Dank f&uuml;r Ihr Interesse an der Direktvermarktung Ihrer PV-Anlage &uuml;ber Next Kraftwerke.';
@@ -337,13 +326,13 @@ function ajax_formdvpv()
       $body .= '<br/><br/>';
       $body .= 'Nach Pr&uuml;fung Ihrer Unterlagen erhalten Sie von uns eine Auftragsbest&auml;tigung mit dem Hinweis auf den Zeitpunkt, ab dem wir die PV-Anlage f&uuml;r Sie voraussichtlich vermarkten k&ouml;nnen. Erst durch die Auftragsbest&auml;tigung ist der Vertrag zur Direktvermarktung Ihrer PV-Anlage mit uns abgeschlossen.';
       $body .= '<br/><br/>';
-      $body .= 'Bitte beachten Sie die <a href="https://www.next-kraftwerke.de/wissen/verpflichtende-fernsteuerbarkeit">Hinweise zur Fernsteuerbarkeit</a> sowie die Allgemeinen Vermarktungsbedingungen f&uuml;r kleine Photovoltaik-Anlagen.<br/>';
-      $body .= 'F&uuml;r PV-Anlagen mit mehr als 800 kW Nennleistung ben&ouml;tigen wir leider ein paar zus&auml;tzliche Informationen: Ein <a href="https://www.next-kraftwerke.de/virtuelles-kraftwerk/stromproduzenten/solar#solarueber800">individuelles Angebot k&ouml;nnen Sie hier anfragen.</a>';
+      $body .= 'Bitte beachten Sie die <a href="https://www.next-kraftwerke.de/wp-content/uploads/Umsetzung-verpflichtende-Fernsteuerbarkeit.pdf">Hinweise zur Fernsteuerbarkeit</a> sowie die <a href="https://www.next-kraftwerke.de/wp-content/uploads/AGB-Direktvermarktung-PhotoVoltaik-bis-800kW.pdf">Allgemeinen Vermarktungsbedingungen f&uuml;r kleine Photovoltaik-Anlagen</a>.<br/>';
+      $body .= 'F&uuml;r PV-Anlagen mit mehr als 800 kW Nennleistung ben&ouml;tigen wir leider ein paar zus&auml;tzliche Informationen: Ein <a href="https://www.next-kraftwerke.de/meta/erloesrechner">individuelles Angebot k&ouml;nnen Sie hier anfragen.</a>';
       $body .= '<br/><br/>';
       $body .= 'Mit freundlichen Gr&uuml;&szlig;en,<br/>';
       $body .= 'Ihr Next Kraftwerke Team<br/><br/>';
 
-      $dompdf = genPDF($row['id']);
+      $dompdf = genPDF_nl($row['id']);
       $filename = getcwd() . '/../../formdvpv/Direktvermarktung_PV-Anlage_' . $docId . '.pdf';
       $output = $dompdf->output();
       file_put_contents($filename, $output);
@@ -436,7 +425,7 @@ function ajax_formdvpv()
 }
 
 
-function genPDF($id)
+function genPDF_nl($id)
 {
   global $wpdb;
   $sql = 'SELECT * FROM next_formdvpv WHERE id="' . esc_sql($id) . '";';
@@ -481,9 +470,9 @@ function genPDF($id)
   return $dompdf;
 }
 
-function ajax_formdvpv_pdf()
+function ajax_formdvpv_pdf_nl()
 {
-  $dompdf = genPDF($_REQUEST['id']);
+  $dompdf = genPDF_nl($_REQUEST['id']);
 
   global $wpdb;
   $rows = $wpdb->get_results('SELECT * FROM next_formdvpv WHERE id="' . esc_sql($_REQUEST['id']) . '";');
@@ -493,7 +482,7 @@ function ajax_formdvpv_pdf()
   die();
 }
 
-function ajax_formdvpv_zip()
+function ajax_formdvpv_zip_nl()
 {
   global $wpdb;
   $rows = $wpdb->get_results('SELECT * FROM next_zip WHERE zip="' . esc_sql($_REQUEST['zip']) . '";');

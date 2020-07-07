@@ -328,7 +328,7 @@ function ajax_formdvpv()
     } else {
       $jsonArr['id'] = $row['id'];
 
-      $body = '<br/>';
+      $body = '';
       $body .= 'Sehr geehrte(r) ' . $_REQUEST['formdata']['vorname'] . ' ' . $_REQUEST['formdata']['nachname'] . ',';
       $body .= '<br/><br/>';
       $body .= 'vielen Dank f&uuml;r Ihr Interesse an der Direktvermarktung Ihrer PV-Anlage &uuml;ber Next Kraftwerke.';
