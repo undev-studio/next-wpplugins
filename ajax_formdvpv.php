@@ -289,6 +289,7 @@ function ajax_formdvpv()
     $row['zaehlernr'] = $_REQUEST['formdata']['zaehlernr'];
     $row['zahlungsberechtigter'] = $_REQUEST['formdata']['zahlungsberechtigter_input'];
     $row['eigenverbrauch'] = $_REQUEST['formdata']['eigenverbrauch'];
+    $row['wechselrichterleistung'] = $_REQUEST['formdata']['wechselrichterleistung'];
     $row['anlage_strasse'] = $_REQUEST['formdata']['anlage_strasse'];
     $row['anlage_strassenr'] = $_REQUEST['formdata']['anlage_strassenr'];
     $row['anlage_plz'] = $_REQUEST['formdata']['anlage_plz'];
