@@ -97,6 +97,11 @@ function ajax_formdvpv()
     $jsonArr['errors'][] = 'email2';
   }
 
+  if ($_REQUEST['formdata']['zahlungsberechtigter'] && $_REQUEST['formdata']['zahlungsberechtigter_input'] == "") {
+    $jsonArr['navsteps'][$currentStep] = false;
+    $jsonArr['errors'][] = 'zahlungsberechtigter_input';
+  }
+
   if ($_REQUEST['formdata']['email'] == '' && $_REQUEST['formdata']['email2'] == '') {
     $jsonArr['navsteps'][$currentStep] = false;
     $jsonArr['errors'][] = 'email';
@@ -282,6 +287,7 @@ function ajax_formdvpv()
 
     $row['registrnr'] = $_REQUEST['formdata']['registrnr'];
     $row['zaehlernr'] = $_REQUEST['formdata']['zaehlernr'];
+    $row['zahlungsberechtigter'] = $_REQUEST['formdata']['zahlungsberechtigter_input'];
     $row['eigenverbrauch'] = $_REQUEST['formdata']['eigenverbrauch'];
     $row['anlage_strasse'] = $_REQUEST['formdata']['anlage_strasse'];
     $row['anlage_strassenr'] = $_REQUEST['formdata']['anlage_strassenr'];
