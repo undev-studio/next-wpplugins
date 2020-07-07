@@ -32,7 +32,6 @@ function ajax_formangebot()
   $jsonArr['navsteps'][$currentStep] = true;
 
   if ($_REQUEST['formdata']['firma'] == '') {
-    print "1";
     $jsonArr['navsteps'][$currentStep] = false;
     $jsonArr['errors'][] = 'firma';
   }
