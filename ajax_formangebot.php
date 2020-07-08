@@ -233,7 +233,7 @@ function send_angebot_email($lastStep)
   $nextEmail->CharSet = 'utf-8';
   $nextEmail->From = 'ew@next-kraftwerke.de';
   $nextEmail->FromName = 'Next Kraftwerke';
-  $nextEmail->Subject = 'Neues Formular: SolarSpot für Anlagen unter 750 kWp';
+  $nextEmail->Subject = 'Neues Formular: Angebotsanfrage PV-Direktvermarktung';
   $nextEmail->Body = $nextBody;
 
   $nextEmail->AddAddress('info@next-kraftwerke.de');
