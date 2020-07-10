@@ -135,7 +135,8 @@ class Inline_Renderer extends Abstract_Renderer {
     //different position? $this->_background_image($url, $x, $y, $w, $h, $style);
     if ( ($url = $style->background_image) && $url !== "none" )           
       $this->_background_image($url, $x + $widths[3], $y + $widths[0], $w, $h, $style);
-        
+
+    error_reporting(0);
     // Add the border widths
     $w += $widths[1] + $widths[3];
     $h += $widths[0] + $widths[2];
