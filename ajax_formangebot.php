@@ -180,7 +180,7 @@ function send_angebot_email($lastStep)
   }
   $nextBody .= 'Ort: ' . $_REQUEST['formdata']['plz'] . $_REQUEST['formdata']['ort'];
   $nextBody .= '<br/><br/>';
-  $nextBody .= 'Land: ' . $_REQUEST['formdata']['land'] . $_REQUEST['formdata']['land'];
+  $nextBody .= 'Land: ' . $_REQUEST['formdata']['land'];
   $nextBody .= '<br/><br/>';
   $nextBody .= 'Telefon: ' . $_REQUEST['formdata']['phone'];
   $nextBody .= '<br/><br/>';
@@ -209,7 +209,7 @@ function send_angebot_email($lastStep)
     $nextBody .= '<br/><br/>';
     $nextBody .= 'Nennleisung:' . $_REQUEST['formdata'][$nennleistung];
     $nextBody .= '<br/><br/>';
-    $nextBody .= 'Datum Imbetriebnahme:' . $_REQUEST['formdata'][$datum];
+    $nextBody .= 'Datum Inbetriebnahme:' . $_REQUEST['formdata'][$datum];
     $nextBody .= '<br/><br/>';
     $nextBody .= 'PLZ:' . $_REQUEST['formdata'][$plz];
     $nextBody .= '<br/><br/>';
