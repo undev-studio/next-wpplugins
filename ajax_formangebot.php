@@ -41,6 +41,11 @@ function ajax_formangebot()
     $jsonArr['errors'][] = 'strasse';
   }
 
+  if ($_REQUEST['formdata']['strassenr'] == '') {
+    $jsonArr['navsteps'][$currentStep] = false;
+    $jsonArr['errors'][] = 'strassenr';
+  }
+
   if ($_REQUEST['formdata']['plz'] == '' || !is_numeric($_REQUEST['formdata']['plz']) || strlen($_REQUEST['formdata']['plz']) != 5) {
     $jsonArr['navsteps'][$currentStep] = false;
     $jsonArr['errors'][] = 'plz';
