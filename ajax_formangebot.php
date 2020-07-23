@@ -56,6 +56,10 @@ function ajax_formangebot()
     $jsonArr['errors'][] = 'ort';
   }
 
+  if ($_REQUEST['formdata']['phone'] != '' && strlen($_REQUEST['formdata']['phone']) > 15) {
+    $jsonArr['navsteps'][$currentStep] = false;
+    $jsonArr['errors'][] = 'phone';
+  }
 
   if ($_REQUEST['formdata']['vorname'] == '') {
     $jsonArr['navsteps'][$currentStep] = false;
