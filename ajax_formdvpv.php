@@ -284,6 +284,7 @@ function ajax_formdvpv()
     $row['nennleistung'] = $_REQUEST['formdata']['nennleistung'];
     $row['zaehlbezeichn'] = $_REQUEST['formdata']['zaehlbezeichn'];
     $row['marktlokation'] = $_REQUEST['formdata']['marktlokation'];
+    $row['marktstammdaten'] = $_REQUEST['formdata']['marktstammdaten'];
 
     $row['registrnr'] = $_REQUEST['formdata']['registrnr'];
     $row['zaehlernr'] = $_REQUEST['formdata']['zaehlernr'];
@@ -294,6 +295,8 @@ function ajax_formdvpv()
     $row['anlage_strassenr'] = $_REQUEST['formdata']['anlage_strassenr'];
     $row['anlage_plz'] = $_REQUEST['formdata']['anlage_plz'];
     $row['anlage_ort'] = $_REQUEST['formdata']['anlage_ort'];
+    $row['anlage_srid'] = $_REQUEST['formdata']['anlage_srid'];
+    $row['anlage_trid'] = $_REQUEST['formdata']['anlage_trid'];
     $row['netzbetreiber'] = $_REQUEST['formdata']['netzbetreiber'];
     $row['konto_inhaber'] = $_REQUEST['formdata']['konto_inhaber'];
     $row['konto_iban'] = $_REQUEST['formdata']['konto_iban'];
@@ -365,6 +368,7 @@ function ajax_formdvpv()
       $email->AddAddress($_REQUEST['formdata']['email']);
       $email->AddAttachment($filename, "Direktvermarktung_" . $docId . ".pdf");
       $email->AddAttachment('/var/www/website/sites/de/htdocs/wp-content/uploads/AGB-Direktvermarktung-PhotoVoltaik-bis-800kW.pdf', "Allgemeine_Vermarktungsbedingungen.pdf");
+      $email->AddAttachment('/var/www/website/sites/de/htdocs/wp-content/uploads/pv_anlage_sepa.pdf', "SEPA_Lastschriftmandat.pdf");
       $email->addBCC('ew@next-kraftwerke.de');
       $email->isHTML(true);
 
